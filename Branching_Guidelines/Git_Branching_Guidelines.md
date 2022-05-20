@@ -3,8 +3,10 @@
 ### Navigation:
 1. Important reminders:
     - [Clone Amplifier into your computer.](#remember-to-clone-our-github-repo-is-cloned-into-your-computer) 
-    - [Before starting anything, make sure your dev branch is up to date!](#before-starting-anything-make-sure-your-dev-branch-is-up-to-date)
-    - [If you created a branch, and updates were made in dev... merge.](#if-you-created-a-branch-and-updates-in-dev-were-made-merge) 
+    - [Before starting anything, make sure your dev branch is up to date...pull!](#before-starting-anything-make-sure-your-dev-branch-is-up-to-date)
+    - [If you created a branch, and updates were made in dev... merge.](#if-you-created-a-branch-and-updates-in-dev-were-made-merge)
+    - [Only make changes in your own branch. Switch! Don't make changes to dev!](#always-remember-to-switch-to-your-respective-branch-to-make-changes-please-do-not-make-changes-to-dev)
+    - Always request reviews from Patrick and Calvin in your pull requests.
 2. [How to create a branch from your assigned issue](#creating-your-branch-from-your-assigned-issue)
 3. [How to do Pull Requests](#creating-a-pull-request)
 
@@ -47,18 +49,23 @@
 ### Creating your branch from your assigned issue:
 1. Navigate to the Issues tab.
 ![Issues](./images/Issues.png)
+
 2. Select the Issue that you've been assigned to and want to work on.
+
 3. Go to Development. Click on "Create a branch".
 ![2+3](./images/Go%20to%20Development.png)
+
 4.
 ![4](./images/Create_branch_for_issue.png)  
-    - Select **"Create branch."** 
-    - Our branch source will always be "dev". Calvin has already set it as our default, so we don't need to worry about it. 
-    ![Branch source set to dev](./images/branch%20source%20dev.png)
+- Select **"Create branch."**  
+- Our branch source will always be "dev". Calvin has already set it as our default, so we don't need to worry about it. 
+
 5. Copy and paste the following code into your terminal. (Make you have `git pull` in our dev branch so you're up to date first!) 
 ![Copy and paste](./images/Screen%20Shot%202022-05-20%20at%2006.32.55.png)
+
 6. When you created your branch, your issue should look sometthing like this: 
 ![finished](./images/Finished%20creating%20branch.png)
+- Your branch should be under Development.
 <br>
 <hr>
 
@@ -70,9 +77,17 @@
     3. `git push`
 2. Awesome work! Now... navigate to our GitHub remote repository. For quick access, here is the [link](https://github.com/FullSol/amplifire).
 3. You should see the following:
-4. 
+![PullReq1](./images/PullRequest_1.png)
+4. Click on **Compare & Pull Request**
+5. You should see the following:
+![PullRequest2](./images/PullRequest_2.png)
+    - *Reviewers*: Ideally, set everyone to review, but because of the time constraint, this might not be very feasible as we get closer to our deadline. Thus, no matter what, **please request reviews from Patrick and Calvin**.
+    - *Assignee*:  Yourself
+    - *Labels*: This will match your issue label.
+    - *Projects*: Team Amplifier (seting this will update our project board)
+    - *Milestones*: Will match your issue
+6. Add any comments you want to make.
+7. Click **Create pull request**
+8. When this has been reviewed and approved, Patrick will go ahead and merge this into the dev branch. Merging into the dev is most likely going to happen every day, if not several times a day as we get closer to the deadline, so no matter what, remember: `git pull` in your dev branch!
 
 
-
-
-### Anatomy of an Issue
