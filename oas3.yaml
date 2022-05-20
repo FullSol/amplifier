@@ -140,8 +140,17 @@ paths:
                 items:
                   $ref: '#/components/schemas/img-posts'
 
-  /img-posts/{id}:
-    description: Get img-post by given id
+  /img-post:
+    description: Endpoint to create a new img-post
+    # Create a new img-post
+    post:
+      description: Create a new img-post
+      responses:
+        '200':
+          description: Successful creation of user post
+
+  /img-post/{id}:
+    description: View img-post by given id
     # Clicked into a specific img-post to see comments
     get:
       description: Get img post by id (along with comments)
@@ -154,18 +163,6 @@ paths:
       responses:
         '200':
           description: Successful pull of img-post by given id
-
-  /img-post:
-    description: Endpoint to create a new img-post
-    # Create a new img-post
-    post:
-      description: Create a new img-post
-      responses:
-        '200':
-          description: Successful creation of user post
-
-  /img-post/{id}:
-    description: View img-post by given id
     # Owning user can edit their post
     patch:
       description: Update post by given id
