@@ -1,0 +1,262 @@
+openapi: 3.0.0
+info:
+  title: Amplifier API
+  description: An API that allows users to view characters, ranks, and screenshots of fellow Diablo III players as well as post screenshots and comments.
+  termsOfService: https://localhost:8080/terms-of-use
+  contact:
+    name: Amplifier
+    url: http://localhost:8080
+    email: calvin391@revature.net
+  license:
+    name: MIT License
+    url: http://where-ever-mit-has-its-licese.com
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Dev Server
+  - url: http://localhost:8081
+    description: Production Server
+
+paths:
+#http://amplifier.com/users?bodyLimit=1&pageLimit=1
+  /users:
+    description: User Resources
+    get:
+      description: Operation to fetch all users
+      parameters:
+        - name: bodyLimit
+          in: query
+          description: The amount of users returned
+          schema:
+            type: integer
+            minimum: 10
+            maximum: 100
+            example: 15
+        - name: pageLimit
+          in: query
+          description: The pages to return user info
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 10
+            example: 5
+      responses:
+        "200":
+          description: Successful pull of users
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/users'
+                    
+
+  /user:
+    description: Endpoint to add new user
+    post:
+      description: Add a new User
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: '#/components/schemas/user'
+      responses:
+        "201":
+          description: User Successfully Added!
+
+  /user/{id}:
+    description: Get User based on Path Parameter
+    get:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Sucessful Response with Path Param
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+    patch:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Sucessful Response with Path Param
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+    delete:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Sucessful Response with Path Param
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+
+  /img-posts:
+    description: Get all image posts from the db
+    # List all img-posts
+    get:
+      description: Operation to fetch all users
+      parameters:
+        - name: bodyLimit
+          in: query
+          description: The amount of img-posts returned
+          schema:
+            type: integer
+            minimum: 10
+            maximum: 100
+            example: 15
+        - name: pageLimit
+          in: query
+          description: The pages to return img-posts info
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 10
+            example: 5
+      responses:
+        "200":
+          description: Successful pull of img-posts
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/img-posts'
+      
+
+  /img-posts/{id}:
+    description: Get img-post by given id
+    # Clicked into a specific img-post to see comments
+    get:
+      description: Get img post by id (along with comments)
+      responses:
+        "200":
+          description: Successful pull of img-post by given id
+  /img-post:
+    description: Endpoint to create a new img-post
+    # Create a new img-post
+    post:
+      description: Create a new img-post
+      responses:
+        "200":
+          description: Successful creation of user post
+            
+  /img-post/{id}:
+    description: View img-post by given id
+    # Owning user can edit their post
+    patch:
+      description: Update post by given id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/img-post'
+      responses:
+        "200":
+          description: Successfully updated the post.
+    # Owning user can delete their post
+    delete:
+      description: Delete post by given id
+      responses:
+        "201":
+          description: Successful deletion of post
+
+  /img-post/{id}/comment:
+    description: Create a new comment for given post id
+    # A user is making a comment on an img-post
+    post:
+        description: Add a new Comment
+        requestBody:
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/comment'
+        responses:
+          "201":
+            description: Comment Successfully Added!
+    
+
+components:
+  schemas:
+    user:
+      type: object
+      properties:
+        id: 
+          type: integer
+          example: 3
+        username:
+          type: string
+          example: TheGamer007
+        firstName:
+          type: string
+          example: James
+        lastName:
+          type: string
+          example: Bond
+        email:
+          type: string
+          example: thegamer007@gmail.com
+        characterRealm:
+          type: string
+          example: Gilgamesh
+        characterName:
+          type: string
+          example: MrBadAzz
+        active:
+          type: boolean
+          example: true
+        roleId:
+          type: integer
+          example: 1
+    users:
+      type: array
+      items:
+        $ref: '#/components/schemas/user'
+    img-post:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        imgLocation:
+          type: string
+          example: http://www/awsserver.com/image-location
+        author:
+          $ref: '#/components/schemas/user'
+        comments:
+          $ref: '#/components/schemas/comments'
+    img-posts:
+      type: array
+      items:
+        $ref: '#/components/schemas/img-post'
+    comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        text:
+          type: string
+          example: Good shot bro!
+        author:
+          $ref: '#/components/schemas/user'
+    comments:
+      type: array
+      items:
+        $ref: '#/components/schemas/comment'
