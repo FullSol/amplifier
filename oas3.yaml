@@ -18,7 +18,7 @@ servers:
     description: Production Server
 
 paths:
-#http://amplifier.com/users?bodyLimit=1&pageLimit=1
+  #http://amplifier.com/users?bodyLimit=1&pageLimit=1
   /users:
     description: User Resources
     get:
@@ -41,14 +41,13 @@ paths:
             maximum: 10
             example: 5
       responses:
-        "200":
+        '200':
           description: Successful pull of users
           content:
             application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/users'
-                    
 
   /user:
     description: Endpoint to add new user
@@ -58,9 +57,9 @@ paths:
         content:
           application/json:
             schema:
-                $ref: '#/components/schemas/user'
+              $ref: '#/components/schemas/user'
       responses:
-        "201":
+        '201':
           description: User Successfully Added!
 
   /user/{id}:
@@ -75,7 +74,7 @@ paths:
             format: uuidv4
             example: 669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4
       responses:
-        "200":
+        '200':
           description: Sucessful Response with Path Param
           content:
             application/json:
@@ -89,7 +88,7 @@ paths:
           schema:
             type: integer
       responses:
-        "200":
+        '200':
           description: Sucessful Response with Path Param
           content:
             application/json:
@@ -103,7 +102,7 @@ paths:
           schema:
             type: integer
       responses:
-        "200":
+        '200':
           description: Sucessful Response with Path Param
           content:
             application/json:
@@ -133,7 +132,7 @@ paths:
             maximum: 10
             example: 5
       responses:
-        "200":
+        '200':
           description: Successful pull of img-posts
           content:
             application/json:
@@ -153,16 +152,16 @@ paths:
           schema:
             type: integer
       responses:
-        "200":
+        '200':
           description: Successful pull of img-post by given id
-  
+
   /img-post:
     description: Endpoint to create a new img-post
     # Create a new img-post
     post:
       description: Create a new img-post
       responses:
-        "200":
+        '200':
           description: Successful creation of user post
 
   /img-post/{id}:
@@ -182,7 +181,7 @@ paths:
             schema:
               $ref: '#/components/schemas/img-post'
       responses:
-        "200":
+        '200':
           description: Successfully updated the post.
     # Owning user can delete their post
     delete:
@@ -194,35 +193,35 @@ paths:
           schema:
             type: integer
       responses:
-        "201":
+        '201':
           description: Successful deletion of post
 
   /img-post/{id}/comment:
     description: Create a new comment for given post id
     # A user is making a comment on an img-post
     post:
-        description: Add a new Comment
-        parameters:
+      description: Add a new Comment
+      parameters:
         - in: path
           name: id
           required: true
           schema:
             type: integer
-        requestBody:
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/comment'
-        responses:
-          "201":
-            description: Comment Successfully Added!
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/comment'
+      responses:
+        '201':
+          description: Comment Successfully Added!
 
   /img-post/{post_id}/comment/{comment_id}:
     description: Edit a comment for given post by id
     # A user is editing a comment on an img-post
     patch:
-        description: Edit a Comment
-        parameters:
+      description: Edit a Comment
+      parameters:
         - in: path
           name: post_id
           required: true
@@ -233,21 +232,21 @@ paths:
           required: true
           schema:
             type: integer
-        requestBody:
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/comment'
-        responses:
-          "201":
-            description: Comment Successfully Added!
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/comment'
+      responses:
+        '201':
+          description: Comment Successfully Added!
 
 components:
   schemas:
     user:
       type: object
       properties:
-        id: 
+        id:
           type: string
           format: uuidv4
           example: 669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4
