@@ -254,24 +254,28 @@ _Issues_
     - [ ] Set up Postman workspace
 - Levi
     - [ ] Update/set up Sprints document
-    - [ ] Create Git branching guidelines document 
+    - [ ] Create Git branching guidelines document
 
 [Return to: _Table of Contents_](#table-of-contents)
 <br>
 <hr>
 
-### Spring 1: 5/20/22
+### Sprint 1: 5/20/22
 1. **Progress Check** 
     - Calvin:
-        - [ ] Apiary documentation
+        - [x] Apiary documentation
         - [x] Set up Postman workspace
+        - [x] Project has been initialized
+        - [x] Postman has also been setup (will probs not be using it bc only 3-4 ppl can be added for free in a workspace) -> Julian and Patrick can potentially set up a new one, invite Calvin so he can duplicate it
+        -[x] Sent project proposal to Azhya
     - Levi:
         - [x] Update/set up Sprints document
-        - [ ] Create Git branching guidelines document 
+        - [x] Create Git branching guidelines document
     <br> </br>
 
 2. **Any Issues?** 
-    - [ ] Make sure everyone is receiving GitHub notifications (keep Repo on "WATCH").
+    - [x] Make sure everyone is receiving GitHub notifications (keep Repo on "WATCH").
+    - [x] Go over Reviewing pull requests.
  <br> </br>
 
 3. **Agenda**
@@ -279,38 +283,50 @@ _Issues_
     - [ ] Review User Stories (19)
     - [ ] Review Project Tables
     - [ ] Go over Apirary documentation (work in progress) - Calvin
+    - [ ] Go over project initialization - Calvin
     - [ ] Set expectations for getting work completed & communication (open conversation, holding each other accountable)
         - Issues will be posted for the weekend. If you need help/get stuck/fall behind.... COMMUNICATE(**DISCORD**) :)
+        - Group project: Relying on each other and each other's work to move forward in the project. Don't let any issue you have just sit. Reach out. 
+        - Complete tasks
+        - Respect one another
+        - Julian is very excited, is very optimistic, wants to see the project already running
+        - Joachim: Knowing what exactly is being asked of me.
+        - Levi: Get your $tuff organized af
     - [ ] Patrick, Calvin, Levi -> meeting for Git branching
-        - Feel free to join! 
+        - Feel free to join!
  <br> </br>
 
-4. **Team Milestones/Tasks** 
+4. **Team Milestones/Tasks**
 - _Milestones:_
     - [ ] [Review API Documentation](https://p2amplifier.docs.apiary.io/#)
-    - [ ] Git branching guildelines
+    - [ ] Git branching guidelines
+    - [ ] Complete issues by our next sprint
+    - [ ] Read/Practice examples of String Boot, Restful API, Sprint testing
+    - [ ] Familarize yourself with "user" stories & tables
  <br> </br>
 - _Issues_
-    - Joachim: 
-        - [ ] 
+    - Joachim:
+        - [ ] Pull your dev branch; Review the Branching doc
         - [ ]
-    - Patrick: 
-        - [ ] 
+    - Patrick:
+        - [ ] Pull your dev branch; Review the Branching doc
         - [ ]
-    - Julian: 
-        - [ ] 
-        - [ ] 
-    - Calvin: 
-        - [ ] 
-        - [ ] 
-    - Levi: 
-        - [ ] README.md
+    - Julian:
+        - [ ] Pull your dev branch; Review the Branching doc
+        - [ ]
+    - Calvin:
+        - [ ] Merge into the dev branch - Project initialization
+        - [ ] CI/CD pipelines will use AWS (CodePipeline, CodeBuild, Elastic Beanstalk, and S3)
+        - [ ]
+    - Levi:
+        - [ ] How to review pull requests (add to branching guidelines)
         - [ ] CI/CD pipelines will use AWS (CodePipeline, CodeBuild, Elastic Beanstalk, and S3)
         - [ ] Issues & Milestones
+        - [ ] Pull your dev branch
 - _Reminders: Topics to understand and implement:_
-    - [ ] 
-    - [ ] 
-    - [ ] 
+    - [ ] Study for your quiz!
+    - [ ] No QC next week!
+    - [ ]
  <br> </br>
 
 
