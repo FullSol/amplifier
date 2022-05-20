@@ -1,23 +1,78 @@
+# Team Branching Guidelines <hr>
+
+### Navigation:
+1. Important reminders:
+    - [Clone Amplifier into your computer.](#remember-to-clone-our-github-repo-is-cloned-into-your-computer) 
+    - [Before starting anything, make sure your dev branch is up to date!](#before-starting-anything-make-sure-your-dev-branch-is-up-to-date)
+    - [If you created a branch, and updates were made in dev... merge.](#if-you-created-a-branch-and-updates-in-dev-were-made-merge) 
+2. [How to create a branch from your assigned issue](#creating-your-branch-from-your-assigned-issue)
+3. [How to do Pull Requests](#creating-a-pull-request)
 
 
-Make sure our GitHub Repo is cloned into your local repository: 
-`git clone remote_repo_link` 
+<br>
+<hr>
+
+### Remember to clone our GitHub Repo is cloned into your computer! 
+`git clone (remote_repo_link)` 
 - [Team Amplifier Project 2 Repo](https://github.com/FullSol/amplifire)
+<br>
+<hr>
+
+### Before starting anything, make sure your dev branch is up to date. 
+1. `cd amplifire`
+2. Confirm you're in the _dev_ branch. If not, commit or stash your changes in the branch you're in, and `git switch dev` (switch your branch to dev).
+3. `git pull`.
+    - This will fetch and download content from a remote repository and immediately update the local repository to match that content.
+<br>
+<hr>
+
+### If you created a branch, and updates in dev were made... merge. 
+1. Save and `git commit` or `git stash` your work on the branch you're working on.
+2. `git switch dev`
+3. `git pull`.
+4. `git switch (branch you want to keep working on)` : Return to the branch you're working on. 
+5. `git merge` -> (if needed) `:wq`
+    - This will merge the updates from the dev branch to the branch that you're currently in so that you can work with the most recent changes. 
+<br>
+<hr>
+
+### ALWAYS REMEMBER TO SWITCH TO YOUR RESPECTIVE BRANCH TO MAKE CHANGES. PLEASE DO NOT MAKE CHANGES TO DEV. 
+1. `git switch (your branch based on the issue you're working on)`
+
+>Our Gitflow master, Patrick (and others), will be the only one who can merge any changes you made in your branch to dev after reviewing. That said, remember to always add Patrick and Calvin in your pull requests. 
+<br>
+<hr>
 
 
-Creating your branch from your specific issue: 
-1. Navigate to the Issues tab. 
-2. Select the Issue that you've been assigned to and want to work on. 
-3. Go to Development. Click on "Create a branch". 
-4. Select **"Create branch."**
+### Creating your branch from your assigned issue:
+1. Navigate to the Issues tab.
+![Issues](./images/Issues.png)
+2. Select the Issue that you've been assigned to and want to work on.
+3. Go to Development. Click on "Create a branch".
+![2+3](./images/Go%20to%20Development.png)
+4.
+![4](./images/Create_branch_for_issue.png)  
+    - Select **"Create branch."** 
     - Our branch source will always be "dev". Calvin has already set it as our default, so we don't need to worry about it. 
-5. Copy and paste the following code into your terminal. (Make sure you have changed directories to our project!)
+    ![Branch source set to dev](./images/branch%20source%20dev.png)
+5. Copy and paste the following code into your terminal. (Make you have `git pull` in our dev branch so you're up to date first!) 
+![Copy and paste](./images/Screen%20Shot%202022-05-20%20at%2006.32.55.png)
+6. When you created your branch, your issue should look sometthing like this: 
+![finished](./images/Finished%20creating%20branch.png)
+<br>
+<hr>
+
+
+### Creating a pull request: 
+1. _Once you have finished your work issue or are ready to commit to ask others to review your work, remember to save your changes, commit them, and push them. This will be from the branch that you're in._
+    1. `git add (file name)` or `git add .` (if you're ready to commit everything)
+    2. `git commit -m "(your_message)"
+    3. `git push`
+2. Awesome work! Now... navigate to our GitHub remote repository. For quick access, here is the [link](https://github.com/FullSol/amplifire).
+3. You should see the following:
+4. 
 
 
 
 
-
-Terminal stuff. Cd into you stuff. Git checkout, etc. 
-
-
-every time. make sure you git fetch. then git pull.
+### Anatomy of an Issue
