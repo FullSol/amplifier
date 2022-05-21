@@ -1,5 +1,5 @@
 package com.amplifier.models;
 
-public interface Comment {
+public class Comment {
 
 }
