@@ -1,10 +1,10 @@
-package com.revature.HelloSpringBoot;
+package com.revature.Amplifier;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HelloSpringBootApplicationTests {
+class AmplifierApplicationTests {
 
 	@Test
 	void contextLoads() {
