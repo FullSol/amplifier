@@ -20,6 +20,7 @@ servers:
 paths:
   #http://amplifier.com/users?bodyLimit=1&pageLimit=1
   /users:
+    summary: Returns a list of users
     description: User Resources
     get:
       description: Operation to fetch all users
@@ -42,12 +43,18 @@ paths:
             example: 5
       responses:
         '200':
-          description: Successful pull of users
+          description: Success.
           content:
             application/json:
               schema:
                 items:
                   $ref: '#/components/schemas/users'
+        '400':
+          description: The specified user ID is invalid (not a number).
+        '404':
+          description: A user with the specified ID was not found.
+        default:
+          description: Unexpected error.
 
   /user:
     description: Endpoint to add new user
@@ -86,7 +93,8 @@ paths:
           name: id
           required: true
           schema:
-            type: integer
+            type: string
+            example: 669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4
       responses:
         '200':
           description: Sucessful Response with Path Param
@@ -100,7 +108,8 @@ paths:
           name: id
           required: true
           schema:
-            type: integer
+            type: string
+            example: 669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4
       responses:
         '200':
           description: Sucessful Response with Path Param
