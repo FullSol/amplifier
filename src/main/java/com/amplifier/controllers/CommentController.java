@@ -1,5 +1,5 @@
 package com.amplifier.controllers;
 
-public class CommentsController {
+public class CommentController {
 
 }
