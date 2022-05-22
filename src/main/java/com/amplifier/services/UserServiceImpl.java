@@ -4,18 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.amplifier.models.User;
+import com.amplifier.repositories.UserRepositoryImpl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
-    public boolean createUser(User mockUserCreation) {
-        return false;
-    }
+    private UserRepositoryImpl userRepository;
 
-    public List<User> getAllUsers() {
-        // Retuning a blank list test is meant to fail at this point...
-        return new ArrayList<>();
+    @Override
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 }

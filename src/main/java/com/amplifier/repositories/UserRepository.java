@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.amplifier.models.User;
 
-public interface UserDAO {
+public interface UserRepository {
 
     public List<User> findAll();
 }

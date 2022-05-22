@@ -2,11 +2,30 @@ package com.amplifier.models;
 
 import java.time.LocalDate;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
+@Table(name = "users")
+@Data
+@ApiModel(value = "User", description = "This model serves as the basic model for all candy entity API operations.")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any user entity.", required = true, value = "1")
     private int id;
+
+    @Column(name = "username", unique = true, nullable = false)
+    @ApiModelProperty(name = "username", notes = "A String value that served as the username for the user.", required = true)
     private String username;
     private String email;
     private String password;

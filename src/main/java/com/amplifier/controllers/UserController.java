@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/v1")
-@Api(value = "UserController", description = "REST controller related to User Entities")
+@Api(value = "UserRestController", description = "REST controller related to User Entities")
 public class UserController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class UserController {
     @ApiOperation(value = "Find user by id number", notes = "Retrieve all users from the API")
     @GetMapping(path = "/users", consumes = { MediaType.APPLICATION_JSON_VALUE })
     public @ResponseBody List<User> users() {
-        return userService.getAllUsers();
+        return userService.getAll();
     }
 
 }
