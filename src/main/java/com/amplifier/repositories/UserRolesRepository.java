@@ -1,5 +1,5 @@
 package com.amplifier.repositories;
 
-public interface UserRolesDAO {
+public interface UserRolesRepository {
 
 }

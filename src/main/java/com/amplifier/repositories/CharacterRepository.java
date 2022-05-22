@@ -1,5 +1,5 @@
 package com.amplifier.repositories;
 
-public interface ImgPostDAO {
+public interface CharacterRepository {
 
 }
