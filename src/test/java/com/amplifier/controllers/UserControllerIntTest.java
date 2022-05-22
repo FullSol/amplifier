@@ -46,7 +46,7 @@ public class UserControllerIntTest {
 
         @Test
         @Order(2)
-        @DisplayName("2. Geet all users")
+        @DisplayName("2. Get all users")
         public void getUsers_ShouldReturnUsers() throws Exception {
                 mockMvc.perform(MockMvcRequestBuilders.get("/users"))
                                 .andExpect(status().isOk())
