@@ -136,6 +136,83 @@ paths:
         default:
           description: Unexpected error.
 
+  /characters:
+    description: Get all image characters from the db
+    # List all characters
+    get:
+      tags:
+        - characters
+      description: Operation to fetch all users
+      responses:
+        '200':
+          description: Successful pull of characters
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/characters'
+
+  /character:
+    description: Endpoint to create a new character
+    # Create a new character
+    post:
+      tags:
+        - Character
+      description: Create a new character
+      responses:
+        '200':
+          description: Successful creation of user character
+
+  /character/{id}:
+    description: View character by given id
+    # Clicked into a specific character to see comments
+    get:
+      tags:
+        - Character
+      description: Get img character by id (along with comments)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful pull of character by given id
+    # Owning user can edit their character
+    patch:
+      description: Update character by given id
+      tags:
+        - Character
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/character'
+      responses:
+        '200':
+          description: Successfully updated the character.
+    # Owning user can delete their character
+    delete:
+      description: Delete character by given id
+      tags:
+        - Character
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          description: Successful deletion of character
+
   /img-posts:
     description: Get all image posts from the db
     # List all img-posts
@@ -598,6 +675,10 @@ components:
         - id
         - realm
         - name
+    characters:
+      type: array
+      items:
+        $ref: '#/components/schemas/character'
     social-media:
       type: object
       properties:
