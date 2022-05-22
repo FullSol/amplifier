@@ -6,9 +6,11 @@
     - [Before starting anything, make sure your dev branch is up to date...pull!](#before-starting-anything-make-sure-your-dev-branch-is-up-to-date)
     - [If you created a branch, and updates were made in dev... merge.](#if-you-created-a-branch-and-updates-in-dev-were-made-merge)
     - [Only make changes in your own branch. Switch! Don't make changes to dev!](#always-remember-to-switch-to-your-respective-branch-to-make-changes-please-do-not-make-changes-to-dev)
-    - Always request reviews from Patrick and Calvin in your pull requests.
+    - Always request reviews from Patrick. Patrick will in turn request reviews from Calvin. Calvin will request reviews from Patrick or Levi. 
 2. [How to create a branch from your assigned issue](#creating-your-branch-from-your-assigned-issue)
-3. [How to do Pull Requests](#creating-a-pull-request)
+3. [How to create Pull Requests](#creating-a-pull-request)
+4. [Reviewing Pull Requests](#reviewing-pull-requests)
+5. [Merging into dev (for Gitflow master Patrick)](#merging-into-the-dev-branch)
 
 
 <br>
@@ -81,7 +83,7 @@
 4. Click on **Compare & Pull Request**
 5. You should see the following:
 ![PullRequest2](./images/PullRequest_2.png)
-    - *Reviewers*: Ideally, set everyone to review, but because of the time constraint, this might not be very feasible as we get closer to our deadline. Thus, no matter what, **please request reviews from Patrick and Calvin**.
+    - *Reviewers*: No matter what, **please request reviews from Patrick.**.
     - *Assignee*:  Yourself
     - *Labels*: This will match your issue label.
     - *Projects*: Team Amplifier (seting this will update our project board)
@@ -90,4 +92,8 @@
 7. Click **Create pull request**
 8. When this has been reviewed and approved, Patrick will go ahead and merge this into the dev branch. Merging into the dev is most likely going to happen every day, if not several times a day as we get closer to the deadline, so no matter what, remember: `git pull` in your dev branch!
 
+### Reviewing Pull Requests
 
+
+
+### Merging into the dev branch
