@@ -25,7 +25,7 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Tables](#tables)
 3. [Daily Meeting Format](#daily-meeting-format)
     - [Sprint Meeting Template (for Levi)](#for-levi-sprint-meeting-template)
-4. Meeting Summaries
+4. Meeting (Stand-up) Summaries
     - [Setting things up: 5/19/22](#51922-setting-things-up)
     - [Scrum 1: 5/20/22](#spring-1-52022)
 
@@ -204,34 +204,50 @@ _Resources_
 
 ### Tables
 
-**User Roles:**
-- [ ] Viewers (can ony view; unregistered)
-- [ ] Users (special access - do stuff)
-- [ ] Admin
+##### *(as reflected in ER Diagram)*
 
-**User**
-- [ ] Id
-- [ ] Username
-- [ ] First name
-- [ ] Last Name
-- [ ] Email
-- [ ] RoleId
-- [ ] Social Media
-- [ ] Status: (account is Active/Inactive = True/False = boolean)
-- [ ] Join Date
-- [ ] Character realm
-- [ ] Character name
+To view ER Diagram, click [here](https://github.com/FullSol/amplifier/blob/dev/ER%20Diagram.png).
 
-**Img-Posts**
-- [ ] Id
-- [ ] Image location
-- [ ] Author
+**users**
+1. id
+2. username
+3. email
+4. password
+5. first_name
+6. last_name
+7. character_id
+8. social_media_id
+9. join_date
+10. role_id
+11. active
 
-**Comments**
-- [ ] Id
-- [ ] Text
-- [ ] Author
-- [ ] Date
+**user_character**
+1. id
+2. character_realm
+3. character_name
+
+**user_roles**
+1. id
+2. role (Viewer/User/Admin)
+
+**user_social_media**
+1. id
+2. twitter_link
+3. facebook_link
+4. instagram_link
+
+**img_posts**
+1. id
+2. img_location
+3. author_id 
+
+**img_post_comments**
+1. id
+2. comment_text
+3. img_post_id
+4. author_id
+5. comment_date
+
 
 
 [Return to: _Table of Contents_](#table-of-contents)
@@ -264,10 +280,9 @@ _Issues_
 1. **Progress Check** 
     - Calvin:
         - [x] Apiary documentation
-        - [x] Set up Postman workspace
+        - [x] Set up Postman workspace - (will probs not be using it bc only 3-4 ppl can be added for free in a workspace) -> Julian and Patrick can potentially set up a new one, invite Calvin so he can duplicate it
         - [x] Project has been initialized
-        - [x] Postman has also been setup (will probs not be using it bc only 3-4 ppl can be added for free in a workspace) -> Julian and Patrick can potentially set up a new one, invite Calvin so he can duplicate it
-        -[x] Sent project proposal to Azhya
+        - [x] Sent project proposal to Azhya
     - Levi:
         - [x] Update/set up Sprints document
         - [x] Create Git branching guidelines document
@@ -286,12 +301,13 @@ _Issues_
     - [ ] Go over project initialization - Calvin
     - [ ] Set expectations for getting work completed & communication (open conversation, holding each other accountable)
         - Issues will be posted for the weekend. If you need help/get stuck/fall behind.... COMMUNICATE(**DISCORD**) :)
-        - Group project: Relying on each other and each other's work to move forward in the project. Don't let any issue you have just sit. Reach out. 
-        - Complete tasks
-        - Respect one another
+        - Calvin - Group project: Relying on each other and each other's work to move forward in the project. Don't let any issue you have just sit. Reach out via Discord, DM.
+            - Complete tasks
+            - Respect one another
         - Julian is very excited, is very optimistic, wants to see the project already running
-        - Joachim: Knowing what exactly is being asked of me.
-        - Levi: Get your $tuff organized af
+        - Joachim: "Knowing what exactly is being asked of me."
+        - Levi: Organization
+        - Patrick: Communication, commmunication, communication! 
     - [ ] Patrick, Calvin, Levi -> meeting for Git branching
         - Feel free to join!
  <br> </br>
