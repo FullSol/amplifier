@@ -25,7 +25,7 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Tables](#tables)
 3. [Daily Meeting Format](#daily-meeting-format)
     - [Sprint Meeting Template (for Levi)](#for-levi-sprint-meeting-template)
-4. Meeting Summaries
+4. Meeting (Stand-up) Summaries
     - [Setting things up: 5/19/22](#51922-setting-things-up)
     - [Scrum 1: 5/20/22](#spring-1-52022)
 
@@ -204,34 +204,50 @@ _Resources_
 
 ### Tables
 
-**User Roles:**
-- [ ] Viewers (can ony view; unregistered)
-- [ ] Users (special access - do stuff)
-- [ ] Admin
+##### *(as reflected in ER Diagram)*
 
-**User**
-- [ ] Id
-- [ ] Username
-- [ ] First name
-- [ ] Last Name
-- [ ] Email
-- [ ] RoleId
-- [ ] Social Media
-- [ ] Status: (account is Active/Inactive = True/False = boolean)
-- [ ] Join Date
-- [ ] Character realm
-- [ ] Character name
+To view ER Diagram, click [here](https://github.com/FullSol/amplifier/blob/dev/ER%20Diagram.png).
 
-**Img-Posts**
-- [ ] Id
-- [ ] Image location
-- [ ] Author
+**users**
+1. id
+2. username
+3. email
+4. password
+5. first_name
+6. last_name
+7. character_id
+8. social_media_id
+9. join_date
+10. role_id
+11. active
 
-**Comments**
-- [ ] Id
-- [ ] Text
-- [ ] Author
-- [ ] Date
+**user_character**
+1. id
+2. character_realm
+3. character_name
+
+**user_roles**
+1. id
+2. role (Viewer/User/Admin)
+
+**user_social_media**
+1. id
+2. twitter_link
+3. facebook_link
+4. instagram_link
+
+**img_posts**
+1. id
+2. img_location
+3. author_id 
+
+**img_post_comments**
+1. id
+2. comment_text
+3. img_post_id
+4. author_id
+5. comment_date
+
 
 
 [Return to: _Table of Contents_](#table-of-contents)
@@ -254,24 +270,27 @@ _Issues_
     - [ ] Set up Postman workspace
 - Levi
     - [ ] Update/set up Sprints document
-    - [ ] Create Git branching guidelines document 
+    - [ ] Create Git branching guidelines document
 
 [Return to: _Table of Contents_](#table-of-contents)
 <br>
 <hr>
 
-### Spring 1: 5/20/22
+### Sprint 1: 5/20/22
 1. **Progress Check** 
     - Calvin:
-        - [ ] Apiary documentation
-        - [x] Set up Postman workspace
+        - [x] Apiary documentation
+        - [x] Set up Postman workspace - (will probs not be using it bc only 3-4 ppl can be added for free in a workspace) -> Julian and Patrick can potentially set up a new one, invite Calvin so he can duplicate it
+        - [x] Project has been initialized
+        - [x] Sent project proposal to Azhya
     - Levi:
         - [x] Update/set up Sprints document
-        - [ ] Create Git branching guidelines document 
+        - [x] Create Git branching guidelines document
     <br> </br>
 
 2. **Any Issues?** 
-    - [ ] Make sure everyone is receiving GitHub notifications (keep Repo on "WATCH").
+    - [x] Make sure everyone is receiving GitHub notifications (keep Repo on "WATCH").
+    - [x] Go over Reviewing pull requests.
  <br> </br>
 
 3. **Agenda**
@@ -279,38 +298,51 @@ _Issues_
     - [ ] Review User Stories (19)
     - [ ] Review Project Tables
     - [ ] Go over Apirary documentation (work in progress) - Calvin
+    - [ ] Go over project initialization - Calvin
     - [ ] Set expectations for getting work completed & communication (open conversation, holding each other accountable)
         - Issues will be posted for the weekend. If you need help/get stuck/fall behind.... COMMUNICATE(**DISCORD**) :)
+        - Calvin - Group project: Relying on each other and each other's work to move forward in the project. Don't let any issue you have just sit. Reach out via Discord, DM.
+            - Complete tasks
+            - Respect one another
+        - Julian is very excited, is very optimistic, wants to see the project already running
+        - Joachim: "Knowing what exactly is being asked of me."
+        - Levi: Organization
+        - Patrick: Communication, commmunication, communication! 
     - [ ] Patrick, Calvin, Levi -> meeting for Git branching
-        - Feel free to join! 
+        - Feel free to join!
  <br> </br>
 
-4. **Team Milestones/Tasks** 
+4. **Team Milestones/Tasks**
 - _Milestones:_
     - [ ] [Review API Documentation](https://p2amplifier.docs.apiary.io/#)
-    - [ ] Git branching guildelines
+    - [ ] Git branching guidelines
+    - [ ] Complete issues by our next sprint
+    - [ ] Read/Practice examples of String Boot, Restful API, Sprint testing
+    - [ ] Familarize yourself with "user" stories & tables
  <br> </br>
 - _Issues_
-    - Joachim: 
-        - [ ] 
+    - Joachim:
+        - [ ] Pull your dev branch; Review the Branching doc
         - [ ]
-    - Patrick: 
-        - [ ] 
+    - Patrick:
+        - [ ] Pull your dev branch; Review the Branching doc
         - [ ]
-    - Julian: 
-        - [ ] 
-        - [ ] 
-    - Calvin: 
-        - [ ] 
-        - [ ] 
-    - Levi: 
-        - [ ] README.md
+    - Julian:
+        - [ ] Pull your dev branch; Review the Branching doc
+        - [ ]
+    - Calvin:
+        - [ ] Merge into the dev branch - Project initialization
+        - [ ] CI/CD pipelines will use AWS (CodePipeline, CodeBuild, Elastic Beanstalk, and S3)
+        - [ ]
+    - Levi:
+        - [ ] How to review pull requests (add to branching guidelines)
         - [ ] CI/CD pipelines will use AWS (CodePipeline, CodeBuild, Elastic Beanstalk, and S3)
         - [ ] Issues & Milestones
+        - [ ] Pull your dev branch
 - _Reminders: Topics to understand and implement:_
-    - [ ] 
-    - [ ] 
-    - [ ] 
+    - [ ] Study for your quiz!
+    - [ ] No QC next week!
+    - [ ]
  <br> </br>
 
 
