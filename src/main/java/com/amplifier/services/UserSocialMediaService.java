@@ -1,0 +1,5 @@
+package com.amplifier.services;
+
+public interface UserSocialMediaService {
+
+}
