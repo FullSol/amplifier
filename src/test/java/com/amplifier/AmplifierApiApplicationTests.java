@@ -1,4 +1,4 @@
-package com.amplifier.AmplifierAPI;
+package com.amplifier;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

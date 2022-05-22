@@ -13,10 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserRepositoryImpl implements UserRepository {
 
-   public create(User user){
-       
-   }
+    @Override
+    public boolean create(User user) {
+        return false;
+    }
 
+    @Override
     @Query(value = "SELECT * FROM users", nativeQuery = true)
     public List<User> findAll() {
         return new ArrayList<>();
