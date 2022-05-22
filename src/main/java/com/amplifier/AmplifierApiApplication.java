@@ -1,4 +1,4 @@
-package com.amplifier.AmplifierAPI;
+package com.amplifier;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
