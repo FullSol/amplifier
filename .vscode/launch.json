@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-Amplifier<Amplifier>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "com.amplifier.Amplifier",
+      "projectName": "Amplifier",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
