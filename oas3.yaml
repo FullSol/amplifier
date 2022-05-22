@@ -24,6 +24,8 @@ paths:
     description: User Resources
     get:
       description: Operation to fetch all users
+      tags:
+        - Users
       parameters:
         - name: bodyLimit
           in: query
@@ -60,6 +62,8 @@ paths:
     description: Endpoint to add new user
     post:
       description: Add a new User
+      tags:
+        - User
       requestBody:
         content:
           application/json:
@@ -68,10 +72,14 @@ paths:
       responses:
         '201':
           description: User Successfully Added!
+        default:
+          description: Unexpected error.
 
   /user/{id}:
     description: Get User based on Path Parameter
     get:
+      tags:
+        - User
       parameters:
         - in: path
           name: id
@@ -87,7 +95,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/user'
+        default:
+          description: Unexpected error.
     patch:
+      tags:
+        - User
       parameters:
         - in: path
           name: id
@@ -102,7 +114,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/user'
+        default:
+          description: Unexpected error.
     delete:
+      tags:
+        - User
       parameters:
         - in: path
           name: id
@@ -117,11 +133,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/user'
+        default:
+          description: Unexpected error.
 
   /img-posts:
     description: Get all image posts from the db
     # List all img-posts
     get:
+      tags:
+        - Posts
       description: Operation to fetch all users
       parameters:
         - name: bodyLimit
@@ -153,6 +173,8 @@ paths:
     description: Endpoint to create a new img-post
     # Create a new img-post
     post:
+      tags:
+        - Post
       description: Create a new img-post
       responses:
         '200':
@@ -162,6 +184,8 @@ paths:
     description: View img-post by given id
     # Clicked into a specific img-post to see comments
     get:
+      tags:
+        - Post
       description: Get img post by id (along with comments)
       parameters:
         - in: path
@@ -175,6 +199,8 @@ paths:
     # Owning user can edit their post
     patch:
       description: Update post by given id
+      tags:
+        - Post
       parameters:
         - in: path
           name: id
@@ -192,6 +218,8 @@ paths:
     # Owning user can delete their post
     delete:
       description: Delete post by given id
+      tags:
+        - Post
       parameters:
         - in: path
           name: id
@@ -207,6 +235,8 @@ paths:
     # A user is making a comment on an img-post
     post:
       description: Add a new Comment
+      tags:
+        - Comment
       parameters:
         - in: path
           name: id
@@ -227,6 +257,8 @@ paths:
     # A user is editing a comment on an img-post
     patch:
       description: Edit a Comment
+      tags:
+        - Comment
       parameters:
         - in: path
           name: post_id
@@ -246,11 +278,212 @@ paths:
       responses:
         '201':
           description: Comment Successfully Added!
+    delete:
+      description: Delete comment by given id
+      tags:
+        - Comment
+      parameters:
+        - in: path
+          name: post_id
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: comment_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          description: Successful deletion of post
+  /social-media:
+    description: Endpoint to add social media for user
+    post:
+      description: Add social media
+      tags:
+        - Social Media
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/social-media'
+      responses:
+        '201':
+          description: Social media successfully added!
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /social-media/{id}:
+    get:
+      description: Get social media by id
+      tags:
+        - Social Media
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 1
+      responses:
+        '200':
+          description: Sucessful Response with Path Param
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/social-media'
+    patch:
+      tags:
+        - Social Media
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 1
+      responses:
+        '200':
+          description: Sucessful Response with Path Param
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/social-media'
+    delete:
+      tags:
+        - Social Media
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 1
+      responses:
+        '200':
+          description: Sucessful Response with Path Param
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/social-media'
+  /roles:
+    description: Get all user roles from the db.
+    get:
+      tags:
+        - Roles
+      description: Operation to fetch all user roles
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/roles'
+        '400':
+          description: The specified role ID is invalid (not a number).
+        '404':
+          description: A role with the specified ID was not found.
+        default:
+          description: Unexpected error.
+
+  /role:
+    description: Endpoint to add user role
+    post:
+        description: Add new role
+        tags:
+          - Role
+        requestBody:
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/role'
+        responses:
+            '201':
+                description: User role successfully added!
+            default:
+                description: Unexpected error
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Error'
+  /role/{id}:
+    description: Get role based on Path Parameter
+    get:
+      tags:
+        - Role
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 1
+      responses:
+        '200':
+          description: Sucessful Response with Path Param
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/role'
+    patch:
+      tags:
+        - Role
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 1
+      responses:
+        '200':
+          description: Sucessful Response with Path Param
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/role'
+    delete:
+      tags:
+        - Role
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 1
+      responses:
+        '200':
+          description: Sucessful Response with Path Param
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/role'                          
 
 components:
   schemas:
     user:
       type: object
+      required:
+        - id
+        - username
+        - email
+        - password
+        - first_name
+        - last_name
+        - active
+        - roleId
       properties:
         id:
           type: string
@@ -259,36 +492,59 @@ components:
         username:
           type: string
           example: TheGamer007
+        email:
+          type: string
+          format: email
+          example: thegamer007@gmail.com
+        password:
+          type: string
+          example: password
         firstName:
           type: string
           example: James
         lastName:
           type: string
           example: Bond
-        email:
-          type: string
-          example: thegamer007@gmail.com
-        characterRealm:
-          type: string
-          example: Gilgamesh
-        characterName:
-          type: string
-          example: MrBadAzz
+        character:
+          $ref: '#/components/schemas/character'
         active:
           type: boolean
           example: true
-        roleId:
-          type: integer
-          example: 1
+        role:
+          $ref: '#/components/schemas/role'
+        joinDate:
+          type: string
+          format: date
+          example: "2022-05-22"
     users:
       type: array
       items:
         $ref: '#/components/schemas/user'
+    #http://www.amplifierapi.com/role/1
+    role:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1
+        name:
+          type: string
+          example: admin
+    #http://www.amplifierapi.com/roles
+    roles:
+      type: array
+      items:
+        $ref: '#/components/schemas/role'
     img-post:
       type: object
       properties:
         id:
           type: integer
+          format: int32
           example: 1
         imgLocation:
           type: string
@@ -297,6 +553,10 @@ components:
           $ref: '#/components/schemas/user'
         comments:
           $ref: '#/components/schemas/comments'
+      required:
+        - id
+        - imgLocation
+        - author
     img-posts:
       type: array
       items:
@@ -306,13 +566,71 @@ components:
       properties:
         id:
           type: integer
+          format: int32
           example: 1
         text:
           type: string
           example: Good shot bro!
         author:
           $ref: '#/components/schemas/user'
+      required:
+        - id
+        - text
+        - author
     comments:
       type: array
       items:
         $ref: '#/components/schemas/comment'
+    character:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1
+        realm:
+          type: string
+          example: Gilgamesh
+        name:
+          type: string
+          example: MrBadAzz
+      required:
+        - id
+        - realm
+        - name
+    social-media:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+          example: 1
+        twitter_handle:
+          type: string
+          example: "@samplehandle1"
+        facebook_link:
+          type: string
+          format: uri
+          example: https://www.facebook.com/sample.link
+        instagram_handle: 
+          type: string
+          example: "@sampleIgHandle"
+      required:
+        - id
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - BearerAuth: []
