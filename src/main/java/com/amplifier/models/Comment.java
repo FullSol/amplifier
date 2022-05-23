@@ -36,29 +36,27 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
-    @ApiModelProperty()
     private User author;
 
     @Column(name = "comment_date")
-    @ApiModelProperty()
-    private LocalDate comment_date;
+    @ApiModelProperty(name = "comment_date")
+    private LocalDate commentDate;
 
     public Comment() {
     }
 
-    public Comment(String commentText, int imgPostId, User author, LocalDate comment_date) {
+    public Comment(String commentText, int imgPostId, User author, LocalDate commentDate) {
         this.commentText = commentText;
         this.imgPostId = imgPostId;
         this.author = author;
-        this.comment_date = comment_date;
+        this.commentDate = commentDate;
     }
 
-    public Comment(int id, String commentText, int imgPostId, User author, LocalDate comment_date) {
+    public Comment(int id, String commentText, int imgPostId, User author, LocalDate commentDate) {
         this.id = id;
         this.commentText = commentText;
         this.imgPostId = imgPostId;
         this.author = author;
-        this.comment_date = comment_date;
+        this.commentDate = commentDate;
     }
-
 }
