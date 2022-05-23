@@ -27,7 +27,8 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Sprint Meeting Template (for Levi)](#for-levi-sprint-meeting-template)
 4. Meeting (Stand-up) Summaries
     - [Setting things up: 5/19/22](#51922-setting-things-up)
-    - [Scrum 1: 5/20/22](#spring-1-52022)
+    - [Meeting 1: 5/20/22](#sprint-1-52022)
+    - [Meeting 2: 5/23/22](#sprint-2-52322)
 
 
 <br>
@@ -42,16 +43,16 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
 | 5/20 | | |
 | 5/21| | |
 | 5/22| | |
-| 5/23| Sprint 2 | |
-| 5/24 | Sprint 3 | |
-| 5/25| Sprint 4 | |
-| 5/26| Sprint 5| |
-| 5/27| Sprint 6 | |
+| 5/23| Sprint 2 | TDD for Service and Controller layer |
+| 5/24 |  | |
+| 5/25|  | |
+| 5/26| Sprint 3 | Finish backend |
+| 5/27|  | |
 | 5/28 | | |
 | 5/29 | | |
-| 5/30 | Sprint 7      | |
-| 5/31 | Sprint 8 | _(**Ideally**) P2 Coding Finalized)_ |
-| 6/1| Sprint 9 |  |
+| 5/30 |      | |
+| 5/31 |  | _(**Ideally**) P2 Coding Finalized)_ |
+| 6/1|  |  |
 | 6/2| _Team Amplifier Presentation Practice_ | (_Idea: Talk about Apiary_) |
 | 6/3 | _(**D-DAY**) P2 DEADLINE-Presentation Day_  |  |
 
@@ -351,6 +352,85 @@ _Issues_
 <br>
 <hr>
 
+### Sprint 2: 5/23/22
+
+1. **Progress Check**
+
+- _Spring 1 Milestones:_ How do we feel about them? Did the check marks on the issues help?
+    - [ ] [Review API Documentation](https://p2amplifier.docs.apiary.io/#)
+    - [ ] Git branching guidelines
+    - [ ] Complete issues by our next sprint
+    - [ ] Read/Practice examples of String Boot, Restful API, Sprint testing
+    - [ ] Familarize yourself with "user" stories & tables
+    - Joachim:
+        - [ ]  
+        - [ ]  
+    - Patrick: 
+        - [ ]  
+        - [ ]  
+    - Julian:
+        - [ ]  
+        - [ ]  
+    - Calvin:
+        - [ ] Updated Postman/OpenAPI documentation
+        - [ ] User Controller -> created examples
+        - [ ] User Controller Test -> created examples
+        - [ ] CI/CD pipelines
+        - [ ] 
+        - [ ] 
+    - Levi:
+        - [ ] Update branching guidelines
+        - [ ] Update Sprints.md
+        - [ ] Postman/OpenAPI documentation
+        - [ ] CI/CD pipelines
+        - [ ] Updated issues
+        - [ ] 
+    <br> </br>
+
+2. **Issues/Team Discussions**
+    - [ ] Patrick and Julian - create postman to copy over openAPI
+    - [ ] Feedback on how issues are being assigned, etc. for Levi. Anything to improve on?
+    - [ ] How are we feeling?
+ <br> </br>
+
+3. **Agenda**
+    - [ ] Discuss Sprint 2 - TDD
+    - [ ] Discuss Sprint 3 - Finish all backend + assignments were randomly made to ensure everyone has experience with every layer.
+        -  Pleaes let Levi know if there are any issues.
+ <br> </br>
+
+4. **Team Milestones/Tasks**
+- _Milestones:_
+    - [ ]
+    - [ ]
+ <br> </br>
+- _Issues_
+    - Joachim: 
+        - [ ] 
+        - [ ]
+    - Patrick: 
+        - [ ] 
+        - [ ]
+    - Julian: 
+        - [ ] 
+        - [ ] 
+    - Calvin: 
+        - [ ] 
+        - [ ] 
+    - Levi: 
+        - [ ] 
+        - [ ] 
+- _Reminders: Topics to understand and implement:_
+    - [ ] 
+    - [ ] 
+    - [ ] 
+ <br> </br>
+
+
+[Return to: _Table of Contents_](#table-of-contents)
+
+<br>
+<hr>
 
 
 
