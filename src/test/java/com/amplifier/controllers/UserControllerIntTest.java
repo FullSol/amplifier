@@ -65,4 +65,18 @@ public class UserControllerIntTest {
                 mockMvc.perform(MockMvcRequestBuilders.get("/user/1"))
                                 .andExpect(status().is4xxClientError());
         }
+
+        @Test
+        @Order(4)
+        @DisplayName("3. Attempt to pull invalid user")
+        public void getUser_ShouldReturnUser() throws Exception {
+                mockMvc.perform(MockMvcRequestBuilders.get("/user/cf126b83-8663-46c0-8dcd-5915257ebf63"))
+                                .andExpect(status().isOk())
+                                .andExpect((ResultMatcher) jsonPath("id"))
+                                .andExpect((ResultMatcher) jsonPath("username"))
+                                .andExpect((ResultMatcher) jsonPath("password"))
+                                .andExpect((ResultMatcher) jsonPath("email"))
+                                .andExpect((ResultMatcher) jsonPath("firstName"))
+                                .andExpect((ResultMatcher) jsonPath("lastName"));
+        }
 }
