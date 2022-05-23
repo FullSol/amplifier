@@ -1,2 +1,0 @@
-# amplifire
-Diablo III
