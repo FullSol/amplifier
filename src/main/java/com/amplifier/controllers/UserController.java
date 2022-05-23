@@ -40,4 +40,10 @@ public class UserController {
     public @ResponseBody List<User> getAll() {
         return userService.getAllUsers();
     }
+
+    @PostMapping("/user")
+    @ApiOperation(value = "Create new user entity")
+    public @ResponseBody ClientMessage createUser(@RequestBody User user) {
+        return userService.createUser(user) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+    }
 }
