@@ -8,4 +8,6 @@ public interface UserService {
     public List<User> getAll();
 
     public boolean create(User user);
+
+    public Object createUser(User mockUserCreation);
 }

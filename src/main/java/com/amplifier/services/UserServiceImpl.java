@@ -25,4 +25,9 @@ public class UserServiceImpl implements UserService {
     public boolean create(User user) {
         return userRepository.create(user);
     }
+
+    @Override
+    public Object createUser(User mockUserCreation) {
+        return null;
+    }
 }
