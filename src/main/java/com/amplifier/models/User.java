@@ -19,7 +19,7 @@ import lombok.Data;
 @Entity
 @Table(name = "users")
 @Data
-@ApiModel(value = "User", description = "This model serves as the basic model for all candy entity API operations.")
+@ApiModel(value = "Users", description = "This model serves as the basic model for all user entity API operations.")
 public class User {
 
     @Id
