@@ -133,9 +133,9 @@ public class UserControllerIntTest {
                         MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
         @Test
-        @Order(4)
-        @DisplayName("3. Create a new user")
-        public void postUser_ShouldReturnTrue() throws Exception {
+        @Order(5)
+        @DisplayName("5. Create a new user")
+        public void postUser_ShouldReturnSuccess() throws Exception {
 
                 when(userService.createUser(mockUserCreation)).thenReturn(true);
 
@@ -148,4 +148,22 @@ public class UserControllerIntTest {
                 assertEquals(om.writeValueAsString(ClientMessageUtil.CREATION_SUCCESSFUL),
                                 result.getResponse().getContentAsString());
         }
+
+        @Test
+        @Order(6)
+        @DisplayName("6. Create a new user - failed")
+        public void postUser_ShouldReturnFailed() throws Exception {
+
+                when(userService.createUser(mockUserCreation)).thenReturn(true);
+
+                RequestBuilder request = MockMvcRequestBuilders.post("/api/v1/user")
+                                .accept(MediaType.APPLICATION_JSON_VALUE)
+                                .content(om.writeValueAsString(mockUserCreation))
+                                .contentType(MediaType.APPLICATION_JSON);
+
+                MvcResult result = mockMvc.perform(request).andReturn();
+                assertEquals(om.writeValueAsString(ClientMessageUtil.CREATION_FAILED),
+                                result.getResponse().getContentAsString());
+        }
+
 }
