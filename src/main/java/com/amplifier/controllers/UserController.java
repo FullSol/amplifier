@@ -46,4 +46,10 @@ public class UserController {
     public @ResponseBody ClientMessage createUser(@RequestBody User user) {
         return userService.createUser(user) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
+
+    @PutMapping("/user")
+    @ApiOperation(value = "Update user entity")
+    public @ResponseBody ClientMessage updateUser(@RequestBody User user) {
+        return userService.updateUser(user) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+    }
 }
