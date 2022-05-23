@@ -221,11 +221,11 @@ public class UserControllerIntTest {
 
         @Test
         @Order(9)
-        @DisplayName("9. Delete User - Happy Path Scenerio Test")
-        public void testDeleteCandy() throws Exception {
+        @DisplayName("9. Delete User")
+        public void testDeleteUser() throws Exception {
 
                 //
-                when(userService.deleteCandy(mockUserDeletion)).thenReturn(true);
+                when(userService.deleteUser(mockUserDeletion)).thenReturn(true);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
@@ -237,6 +237,27 @@ public class UserControllerIntTest {
 
                 //
                 assertEquals(om.writeValueAsString(ClientMessageUtil.DELETION_SUCCESSFUL),
+                                result.getResponse().getContentAsString());
+        }
+
+        @Test
+        @Order(10)
+        @DisplayName("10. Delete User - fail")
+        public void testDeleteUserFail() throws Exception {
+
+                //
+                when(userService.deleteUser(mockUserDeletion)).thenReturn(true);
+
+                //
+                RequestBuilder request = MockMvcRequestBuilders
+                                .delete("/api/v1/user?id=8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60")
+                                .accept(MediaType.APPLICATION_JSON_VALUE)
+                                .content(om.writeValueAsString(mockUserDeletion))
+                                .contentType(MediaType.APPLICATION_JSON);
+                MvcResult result = mockMvc.perform(request).andReturn();
+
+                //
+                assertEquals(om.writeValueAsString(ClientMessageUtil.DELETION_FAILED),
                                 result.getResponse().getContentAsString());
         }
 }

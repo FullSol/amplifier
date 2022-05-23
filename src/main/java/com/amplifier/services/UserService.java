@@ -18,4 +18,6 @@ public interface UserService {
     public boolean updateUser(User mockUserModification);
 
     public boolean deleteCandy(User mockUserDeletion);
+
+    public Object deleteUser(User mockUserDeletion);
 }
