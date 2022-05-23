@@ -52,4 +52,10 @@ public class UserController {
     public @ResponseBody ClientMessage updateUser(@RequestBody User user) {
         return userService.updateUser(user) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
+
+    @DeleteMapping("/user")
+    @ApiOperation(value = "Remove user entity")
+    public @ResponseBody ClientMessage deleteUser(@RequestBody User user) {
+        return userService.deleteUser(user) ? DELETION_SUCCESSFUL : DELETION_FAILED;
+    }
 }
