@@ -16,4 +16,6 @@ public interface UserService {
     public List<User> getAllUsers();
 
     public boolean updateUser(User mockUserModification);
+
+    public boolean deleteCandy(User mockUserDeletion);
 }

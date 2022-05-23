@@ -147,7 +147,8 @@ public class UserControllerIntTest {
                 when(userService.createUser(mockUserCreation)).thenReturn(true);
 
                 //
-                RequestBuilder request = MockMvcRequestBuilders.post("/api/v1/user")
+                RequestBuilder request = MockMvcRequestBuilders
+                                .post("/api/v1/user?id=8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60")
                                 .accept(MediaType.APPLICATION_JSON_VALUE)
                                 .content(om.writeValueAsString(mockUserCreation))
                                 .contentType(MediaType.APPLICATION_JSON);
@@ -166,7 +167,8 @@ public class UserControllerIntTest {
                 when(userService.createUser(mockUserCreation)).thenReturn(true);
 
                 //
-                RequestBuilder request = MockMvcRequestBuilders.post("/api/v1/user")
+                RequestBuilder request = MockMvcRequestBuilders
+                                .post("/api/v1/user?id=8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60")
                                 .accept(MediaType.APPLICATION_JSON_VALUE)
                                 .content(om.writeValueAsString(mockUserCreation))
                                 .contentType(MediaType.APPLICATION_JSON);
@@ -185,7 +187,8 @@ public class UserControllerIntTest {
                 when(userService.updateUser(mockUserModification)).thenReturn(true);
 
                 //
-                RequestBuilder request = MockMvcRequestBuilders.put("/api/v1/user")
+                RequestBuilder request = MockMvcRequestBuilders
+                                .put("/api/v1/user?id=8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60")
                                 .accept(MediaType.APPLICATION_JSON_VALUE)
                                 .content(om.writeValueAsString(mockUserModification))
                                 .contentType(MediaType.APPLICATION_JSON);
@@ -204,7 +207,8 @@ public class UserControllerIntTest {
                 when(userService.updateUser(mockUserModification)).thenReturn(true);
 
                 //
-                RequestBuilder request = MockMvcRequestBuilders.put("/api/v1/user")
+                RequestBuilder request = MockMvcRequestBuilders
+                                .put("/api/v1/user?id=8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60")
                                 .accept(MediaType.APPLICATION_JSON_VALUE)
                                 .content(om.writeValueAsString(mockUserModification))
                                 .contentType(MediaType.APPLICATION_JSON);
@@ -212,6 +216,21 @@ public class UserControllerIntTest {
 
                 //
                 assertEquals(om.writeValueAsString(ClientMessageUtil.UPDATE_FAILED),
+                                result.getResponse().getContentAsString());
+        }
+
+        @Test
+        @Order(9)
+        @DisplayName("9. Delete User - Happy Path Scenerio Test")
+        public void testDeleteCandy() throws Exception {
+                when(userService.deleteCandy(mockUserDeletion)).thenReturn(true);
+                RequestBuilder request = MockMvcRequestBuilders
+                                .delete("/api/v1/user?id=8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60")
+                                .accept(MediaType.APPLICATION_JSON_VALUE)
+                                .content(om.writeValueAsString(mockUserDeletion))
+                                .contentType(MediaType.APPLICATION_JSON);
+                MvcResult result = mockMvc.perform(request).andReturn();
+                assertEquals(om.writeValueAsString(ClientMessageUtil.DELETION_SUCCESSFUL),
                                 result.getResponse().getContentAsString());
         }
 }

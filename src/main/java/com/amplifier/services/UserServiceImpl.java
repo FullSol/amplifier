@@ -45,4 +45,9 @@ public class UserServiceImpl implements UserService {
     public boolean updateUser(User mockUserModification) {
         return false;
     }
+
+    @Override
+    public boolean deleteCandy(User mockUserDeletion) {
+        return false;
+    }
 }
