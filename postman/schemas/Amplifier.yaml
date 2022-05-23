@@ -72,6 +72,8 @@ paths:
       responses:
         '201':
           description: User Successfully Added!
+        '422':
+            description: Unable to process data provided.
         default:
           description: Unexpected error.
 
@@ -307,7 +309,31 @@ paths:
         '201':
           description: Successful deletion of post
 
-  /img-post/{id}/comment:
+  /img-posts/{post_id}/comments:
+    description: Get all comments posts for post_id from the db
+    # List all img-posts
+    get:
+      tags:
+        - Comments
+      description: Operation to fetch all comments
+      parameters:
+        - name: post_id
+          in: path
+          description: The post id
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Successful pull of img-posts
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/img-posts'
+
+  /img-post/{post_id}/comment:
     description: Create a new comment for given post id
     # A user is making a comment on an img-post
     post:
@@ -316,7 +342,7 @@ paths:
         - Comment
       parameters:
         - in: path
-          name: id
+          name: post_id
           required: true
           schema:
             type: integer
@@ -330,8 +356,26 @@ paths:
           description: Comment Successfully Added!
 
   /img-post/{post_id}/comment/{comment_id}:
-    description: Edit a comment for given post by id
+    description: Post Comments
     # A user is editing a comment on an img-post
+    get:
+      tags:
+        - Comment
+      description: Get img post by id (along with comments)
+      parameters:
+        - in: path
+          name: post_id
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: comment_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful pull of img-post by given id
     patch:
       description: Edit a Comment
       tags:
@@ -370,15 +414,26 @@ paths:
           required: true
           schema:
             type: integer
+            format: int32
+            example: 1
       responses:
         '201':
           description: Successful deletion of post
-  /social-media:
+
+  /user/{user_id}/social-media:
     description: Endpoint to add social media for user
     post:
       description: Add social media
       tags:
         - Social Media
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 1
       requestBody:
         content:
           application/json:
@@ -394,14 +449,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
   
-  /social-media/{id}:
+  /user/{user_id}/social-media/{media_id}:
     get:
       description: Get social media by id
       tags:
         - Social Media
       parameters:
         - in: path
-          name: id
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: path
+          name: media_id
           required: true
           schema:
             type: integer
@@ -419,7 +481,14 @@ paths:
         - Social Media
       parameters:
         - in: path
-          name: id
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: path
+          name: media_id
           required: true
           schema:
             type: integer
@@ -437,7 +506,14 @@ paths:
         - Social Media
       parameters:
         - in: path
-          name: id
+          name: user_id
+          required: true
+          schema:
+            type: integer
+            format: int32
+            example: 1
+        - in: path
+          name: media_id
           required: true
           schema:
             type: integer
