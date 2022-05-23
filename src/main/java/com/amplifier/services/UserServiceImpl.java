@@ -27,7 +27,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Object createUser(User mockUserCreation) {
+    public boolean createUser(User mockUserCreation) {
+        return false;
+    }
+
+    @Override
+    public User getUserById(int id) {
         return null;
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return null;
+    }
+
+    @Override
+    public boolean updateUser(User mockUserModification) {
+        return false;
     }
 }

@@ -9,5 +9,11 @@ public interface UserService {
 
     public boolean create(User user);
 
-    public Object createUser(User mockUserCreation);
+    public boolean createUser(User mockUserCreation);
+
+    public User getUserById(int id);
+
+    public List<User> getAllUsers();
+
+    public boolean updateUser(User mockUserModification);
 }
