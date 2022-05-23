@@ -233,9 +233,9 @@ To view ER Diagram, click [here](https://github.com/FullSol/amplifier/blob/dev/E
 
 **user_social_media**
 1. id
-2. twitter_link
+2. twitter_handle
 3. facebook_link
-4. instagram_link
+4. instagram_handle
 
 **img_posts**
 1. id
@@ -363,67 +363,51 @@ _Issues_
     - [ ] Read/Practice examples of String Boot, Restful API, Sprint testing
     - [ ] Familarize yourself with "user" stories & tables
     - Joachim:
-        - [ ]  
-        - [ ]  
-    - Patrick: 
-        - [ ]  
-        - [ ]  
+        - [x] Feels good!
+        - [ ] branching
+    - Patrick:
+        - [x] ImgPost test - 70% -issue with build
+        - [x] Good and bad~
     - Julian:
-        - [ ]  
-        - [ ]  
+        - [x] Reviewed everything; watched vids on Utube for integrating Angular framework
+        - [x] started testing
     - Calvin:
         - [ ] Updated Postman/OpenAPI documentation
         - [ ] User Controller -> created examples
-        - [ ] User Controller Test -> created examples
-        - [ ] CI/CD pipelines
-        - [ ] 
-        - [ ] 
+        - [ ] User Controller Test -> created examples 
+            - did lots of research on Integration test; added a video as a resource (and it is included in the issue)
+        - [ ] Reviewed CI/CD pipelines
+        - [ ] Comments Model
+        - [ ] Service, but not pushed until
+        - [ ] ER Diagram
     - Levi:
-        - [ ] Update branching guidelines
-        - [ ] Update Sprints.md
+        - [ ] Updated branching guidelines
+        - [ ] Updated Sprints.md
         - [ ] Postman/OpenAPI documentation
         - [ ] CI/CD pipelines
         - [ ] Updated issues
-        - [ ] 
     <br> </br>
 
 2. **Issues/Team Discussions**
     - [ ] Patrick and Julian - create postman to copy over openAPI
     - [ ] Feedback on how issues are being assigned, etc. for Levi. Anything to improve on?
-    - [ ] How are we feeling?
  <br> </br>
 
 3. **Agenda**
     - [ ] Discuss Sprint 2 - TDD
+        - we test, without writing what we're testing for (TDD) to make sure we're all getting experience in each of the layers
     - [ ] Discuss Sprint 3 - Finish all backend + assignments were randomly made to ensure everyone has experience with every layer.
         -  Pleaes let Levi know if there are any issues.
  <br> </br>
 
 4. **Team Milestones/Tasks**
-- _Milestones:_
-    - [ ]
-    - [ ]
+- _Milestones:_ 3
  <br> </br>
 - _Issues_
-    - Joachim: 
-        - [ ] 
-        - [ ]
-    - Patrick: 
-        - [ ] 
-        - [ ]
-    - Julian: 
-        - [ ] 
-        - [ ] 
-    - Calvin: 
-        - [ ] 
-        - [ ] 
-    - Levi: 
-        - [ ] 
-        - [ ] 
-- _Reminders: Topics to understand and implement:_
-    - [ ] 
-    - [ ] 
-    - [ ] 
+    - already assigned
+    - Levi:
+        - [ ] Update README.md
+
  <br> </br>
 
 
