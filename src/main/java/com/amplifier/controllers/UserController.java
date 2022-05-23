@@ -34,4 +34,10 @@ public class UserController {
         System.out.println("TEST: " + userService.getUserById(id));
         return userService.getUserById(id);
     }
+
+    @GetMapping("/users")
+    @ApiOperation(value = "Find all users")
+    public @ResponseBody List<User> getAll() {
+        return userService.getAllUsers();
+    }
 }
