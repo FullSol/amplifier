@@ -60,6 +60,7 @@ public class User {
     @ApiModelProperty(name = "username", notes = "A String value that served as the username for the user.", required = true)
     private LocalDate joinDate;
 
+    //Should this be another @OneToOne column join? -- userRole role ID -> Id in userRole model class
     @Column(name = "username", unique = true, nullable = false)
     @ApiModelProperty(name = "username", notes = "A String value that served as the username for the user.", required = true)
     private UserRole role;
