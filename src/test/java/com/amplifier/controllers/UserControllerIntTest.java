@@ -180,7 +180,7 @@ public class UserControllerIntTest {
         @Test
         @Order(7)
         @DisplayName("7. Update a user")
-        public void postUpdateUser_ShouldReturnFailed() throws Exception {
+        public void postUpdateUser_ShouldReturnTrue() throws Exception {
                 //
                 when(userService.updateUser(mockUserModification)).thenReturn(true);
 
@@ -193,6 +193,25 @@ public class UserControllerIntTest {
 
                 //
                 assertEquals(om.writeValueAsString(ClientMessageUtil.UPDATE_SUCCESSFUL),
+                                result.getResponse().getContentAsString());
+        }
+
+        @Test
+        @Order(8)
+        @DisplayName("7. Update a user - failed")
+        public void postUpdateUser_ShouldReturnFailed() throws Exception {
+                //
+                when(userService.updateUser(mockUserModification)).thenReturn(true);
+
+                //
+                RequestBuilder request = MockMvcRequestBuilders.put("/api/v1/user")
+                                .accept(MediaType.APPLICATION_JSON_VALUE)
+                                .content(om.writeValueAsString(mockUserModification))
+                                .contentType(MediaType.APPLICATION_JSON);
+                MvcResult result = mockMvc.perform(request).andReturn();
+
+                //
+                assertEquals(om.writeValueAsString(ClientMessageUtil.UPDATE_FAILED),
                                 result.getResponse().getContentAsString());
         }
 }
