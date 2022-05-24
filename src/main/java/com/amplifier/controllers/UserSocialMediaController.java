@@ -23,8 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-
-
 @RestController
 @RequestMapping("/api/v1")
 @Api(value = "UserSocialMediaRestController", description = "REST controller related to User social media Entities")
@@ -37,15 +35,8 @@ public class UserSocialMediaController {
     @ApiOperation(value = "Find User Social Media by id number", notes = "Provide an id to lookup a specific user social media from the API", response = UserSocialMedia.class)
     @GetMapping(path = "/user/user_id/social-media/media_id")
     public @ResponseBody UserSocialMedia getUserSocialMediaById(@RequestParam(value = "id", name = "media_id") int id) {
-        // System.out.println("TEST: " + userSocialMediaService.getUserSocialMediaById(id));
         return userSocialMediaService.getUserSocialMediaById(id);
     }
-
-    // @GetMapping("/users")
-    // @ApiOperation(value = "Find all users")
-    // public @ResponseBody List<User> getAll() {
-    //     return userService.getAllUsers();
-    // }
 
     @PostMapping("/user/user_id/social-media")
     @ApiOperation(value = "add new user social media entity")
