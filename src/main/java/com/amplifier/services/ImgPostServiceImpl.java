@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class ImgPostServiceImpl implements ImgPostService{
+public class ImgPostServiceImpl implements ImgPostService {
 
     @Autowired
     private ImgPostRepositoryImpl imgPostRepository;
@@ -24,7 +24,6 @@ public class ImgPostServiceImpl implements ImgPostService{
     @Override
     public boolean createImgPost(ImgPost imgPost) {
         return imgPostRepository.create(imgPost);
-
     }
 
     @Override
@@ -41,5 +40,5 @@ public class ImgPostServiceImpl implements ImgPostService{
     public boolean deleteImgPostById(int Id) {
         return imgPostRepository.deleteById(Id);
     }
-    
+
 }
