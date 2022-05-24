@@ -15,6 +15,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 
 @ExtendWith(MockitoExtension.class)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ImgPostServiceImplIntTest {
 
     @TestConfiguration
@@ -78,7 +80,7 @@ public class ImgPostServiceImplIntTest {
 
     @Test
     @Order(1)
-    @DisplayName("1. Get all img posts")
+    @DisplayName("2. Get all img posts")
     public void getImgPosts_ShouldReturnImgPosts() throws Exception {
 
         //

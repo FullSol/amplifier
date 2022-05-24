@@ -14,7 +14,7 @@ import jakarta.transaction.Transactional;
 public class ImgPostRepositoryImpl implements ImgPostRepository {
 
     @Autowired
-    private ImgPostRepository imgPostRepository;
+    private ImgPost imgPost;
 
     @Override
     public List<ImgPost> findAll() {

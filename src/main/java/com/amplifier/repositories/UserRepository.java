@@ -10,5 +10,4 @@ public interface UserRepository {
 
     public boolean create(User user);
 
-    
 }

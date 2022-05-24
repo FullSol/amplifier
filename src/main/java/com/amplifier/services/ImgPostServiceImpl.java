@@ -27,8 +27,8 @@ public class ImgPostServiceImpl implements ImgPostService {
     }
 
     @Override
-    public ImgPost getImgPostById(int Id) {
-        return imgPostRepository.findById(Id);
+    public ImgPost getImgPostById(int id) {
+        return imgPostRepository.findById(id);
     }
 
     @Override
@@ -37,8 +37,8 @@ public class ImgPostServiceImpl implements ImgPostService {
     }
 
     @Override
-    public boolean deleteImgPostById(int Id) {
-        return imgPostRepository.deleteById(Id);
+    public boolean deleteImgPostById(int id) {
+        return imgPostRepository.deleteById(id);
     }
 
 }
