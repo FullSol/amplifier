@@ -13,7 +13,7 @@ import lombok.Data;
 @Entity
 @Table(name = "user_character")
 @Data
-@ApiModel(value = "User", description = "This model serves as the basic model for all user characters entity API operations.")
+@ApiModel(value = "Character", description = "This model serves as the basic model for all user characters entity API operations.")
 public class Character {
 
   @Id
