@@ -6,6 +6,7 @@ import static org.mockito.Mockito.when;
 
 import java.nio.charset.Charset;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,8 +71,12 @@ public class UserControllerIntTest {
 
         @BeforeAll
         static void setUpBeforeClass() throws Exception {
+                LocalDate timestamp = LocalDate.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+                String joinDate = formatter.format(timestamp);
 
-                mockUser1 = new User("FullSol", "fullsol@gmail.com", "password", "Calvin", "Raines", LocalDate.now());
+                mockUser1 = new User("FullSol", "fullsol@gmail.com", "password", "Calvin", "Raines",
+                                LocalDate.now());
                 mockUser2 = new User("L3viathon", "L3viathon@gmail.com", "password", "Levi", "Choi", LocalDate.now());
 
                 mockUserCreation = new User("pyaeger", "pyaeger@gmail.com", "password", "Partrick", "Yaeger",
