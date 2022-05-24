@@ -29,17 +29,17 @@ public class ImgPostServiceImpl implements ImgPostService{
 
     @Override
     public ImgPost getImgPostById(int Id) {
-        return null;
+        return imgPostRepository.findById(Id);
     }
 
     @Override
-    public boolean updateImgPost(ImgPost mockImgPostModification) {
-        return false;
+    public boolean updateImgPost(ImgPost imgPost) {
+        return imgPostRepository.update(imgPost);
     }
 
     @Override
     public boolean deleteImgPostById(int Id) {
-        return false;
+        return imgPostRepository.deleteById(Id);
     }
     
 }
