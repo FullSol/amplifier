@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.nio.charset.Charset;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,10 +71,11 @@ public class UserControllerIntTest {
         @BeforeAll
         static void setUpBeforeClass() throws Exception {
 
-                mockUser1 = new User();
-                mockUser2 = new User();
+                mockUser1 = new User("FullSol", "fullsol@gmail.com", "password", "Calvin", "Raines", LocalDate.now());
+                mockUser2 = new User("L3viathon", "L3viathon@gmail.com", "password", "Levi", "Choi", LocalDate.now());
 
-                mockUserCreation = new User();
+                mockUserCreation = new User("pyaeger", "pyaeger@gmail.com", "password", "Partrick", "Yaeger",
+                                LocalDate.now());
 
                 mockUserModification = mockUserCreation;
                 mockUserModification.setFirstName("Johnny");
