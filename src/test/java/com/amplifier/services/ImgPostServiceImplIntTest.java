@@ -83,6 +83,5 @@ public class ImgPostServiceImplIntTest {
 
         //
         when(imgPostRepository.findAll());
-
     }
 }
