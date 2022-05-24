@@ -3,6 +3,7 @@ package com.amplifier.services;
 import java.util.List;
 
 import com.amplifier.models.User;
+import com.amplifier.repositories.UserRepository;
 import com.amplifier.repositories.UserRepositoryImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepositoryImpl userRepository;
+
+    public UserServiceImpl(UserRepository mockdao) {
+    } //for unit testing services -- for now
 
     @Override
     public List<User> getAll() {
