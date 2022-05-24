@@ -29,6 +29,7 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Setting things up: 5/19/22](#51922-setting-things-up)
     - [Meeting 1: 5/20/22](#sprint-1-52022)
     - [Meeting 2: 5/23/22](#sprint-2-52322)
+    - [Meeting 3: 5//24/22](#sprint-3-xxxxxxxx)
 
 
 <br>
@@ -416,6 +417,73 @@ _Issues_
 <br>
 <hr>
 
+### Sprint 3: 5/24/22
+
+**Summary for Calvin (UNFINISHED):**
+- The focus of our sprint was TDD, and we divided up tasks in team to write integration tests for the service and controller layers of each of our tables.
+- Our next milestone is to complete our backend (functionality) and add more to our tests so we can achieve the goal of 80% coverage.
+
+1. **Progress Check** 
+    - Joachim: 
+        - [ ] Social Media Controller Test
+        - [ ] User Service Test
+        - [ ] Character Service Test
+    - Patrick: 
+        - [ ] ImgPost Controller Test
+        - [ ] UserRole Service Test
+    - Julian:
+        - [ ] Character Controller Test
+        - [ ] Social Media Service Test
+    - Calvin:
+        - [ ] ImgPost Service Test
+        - [ ] UserController Test
+    - Levi:
+        - [ ] Comment Controller Test
+        - [ ] UserRole Controller Test
+        - [ ] Comment Service Test
+    <br> </br>
+
+2. **Any Issues?** 
+    - [ ] Patrick/Julian -Postman setup? 
+ <br> </br>
+
+3. **Agenda**
+    - [ ] Pull requests to show progress
+    - [ ]  
+ <br> </br>
+
+4. **Team Milestones/Tasks** 
+- _Milestones:_
+    - [ ] Functionality first, testing after
+    - [ ] 
+ <br> </br>
+- _Issues_
+    - Joachim: 
+        - [ ] 
+        - [ ]
+    - Patrick: 
+        - [ ] 
+        - [ ]
+    - Julian: 
+        - [ ] 
+        - [ ] 
+    - Calvin: 
+        - [ ] 
+        - [ ] 
+    - Levi: 
+        - [ ] 
+        - [ ] 
+- _Reminders: Topics to understand and implement:_
+    - [ ] 
+    - [ ] 
+    - [ ] 
+ <br> </br>
+
+
+[Return to: _Table of Contents_](#table-of-contents)
+
+<br>
+<hr>
 
 
 
