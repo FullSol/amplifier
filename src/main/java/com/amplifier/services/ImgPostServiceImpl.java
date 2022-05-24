@@ -4,24 +4,43 @@ import java.util.List;
 
 import com.amplifier.models.ImgPost;
 
-public class ImgPostServiceImpl implements ImgPostService {
+import com.amplifier.repositories.ImgPostRepositoryImpl;
 
-	@Override
-	public List<ImgPost> getAllImgPosts() {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-		return null;
-	}
+@Service
+@Transactional
+public class ImgPostServiceImpl implements ImgPostService{
 
-	@Override
-	public Object getImgPostById(int i) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Autowired
+    private ImgPostRepositoryImpl imgPostRepository;
 
-	@Override
-	public Object deleteImgPost(ImgPost mockImgPostDeletion) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public List<ImgPost> getAllImgPosts() {
+        return imgPostRepository.findAll();
+    }
 
+    @Override
+    public boolean createImgPost(ImgPost imgPost) {
+        return imgPostRepository.create(imgPost);
+
+    }
+
+    @Override
+    public ImgPost getImgPostById(int Id) {
+        return imgPostRepository.findById(Id);
+    }
+
+    @Override
+    public boolean updateImgPost(ImgPost imgPost) {
+        return imgPostRepository.update(imgPost);
+    }
+
+    @Override
+    public boolean deleteImgPostById(int Id) {
+        return imgPostRepository.deleteById(Id);
+    }
+    
 }
