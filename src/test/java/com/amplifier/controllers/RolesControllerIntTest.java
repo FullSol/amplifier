@@ -93,6 +93,14 @@ public class RolesControllerIntTest {
                 //
                 assertEquals(om.writeValueAsString(mockDb), result.getResponse().getContentAsString());
         }
+    //test for find user role by id - pass 
+    //test for find user role by id - fail
+    //test for creating new user role - pass
+    //test for creating new user role -fail
+    //test for updating user role - pass
+    //test for updating user role - fail
+    //test for delete user-pass
+    //test for delete user-fail
 
 
 }
