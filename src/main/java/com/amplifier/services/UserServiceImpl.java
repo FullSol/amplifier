@@ -47,11 +47,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean deleteCandy(User user) {
-        return false;
-    }
-
-    @Override
     public boolean deleteUser(User user) {
         return false;
     }
