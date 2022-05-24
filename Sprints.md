@@ -420,63 +420,66 @@ _Issues_
 ### Sprint 3: 5/24/22
 
 **Summary for Calvin (UNFINISHED):**
-- The focus of our sprint was TDD, and we divided up tasks in team to write integration tests for the service and controller layers of each of our tables.
-- Our next milestone is to complete our backend (functionality) and add more to our tests so we can achieve the goal of 80% coverage.
+- Our milestone for our most recent spring was TDD, and we divided up tests in our team to write integration tests for the service and controller layers of each of our tables. This is still in progress. We had some confusion involving writing the bare minimum of code needed (skeleton) for our tests but also not stepping on any other assigned tasks (for the backend). This was clarified in today's stand up meeting.
+- Our next milestone is to complete our backend (functionality). Issues to split up tasks have already been created and several members have alrady jumped the gun and finished their issues. Now that that we clarified any confusion, we will continue to do more more testing so we can achieve the goal of 80% coverage. We suspect that merging all of our branches together may lead to some conflict, but we will resolve those together as a team. 
+- Issue to bring up to Azhya: [Unmerging a merged pull request](https://github.com/FullSol/amplifier/pull/78)
 
 1. **Progress Check** 
     - Joachim: 
-        - [ ] Social Media Controller Test
-        - [ ] User Service Test
+        - [x] Social Media Controller Test
+        - [ ] User Service Test - in progress
         - [ ] Character Service Test
+        - [x] Character controller
+        - [x] ImgPost Service + Impl
+        - [x] Comments Repo + impl
     - Patrick: 
-        - [ ] ImgPost Controller Test
-        - [ ] UserRole Service Test
+        - [x] ImgPost Controller Test - in progress
+        - [ ] UserRole Service Test - in progress
+            - created draft pull request
     - Julian:
-        - [ ] Character Controller Test
-        - [ ] Social Media Service Test
+        - [ ] Character Controller Test - in progress
+        - [ ] Social Media Service Test - in progress
     - Calvin:
-        - [ ] ImgPost Service Test
-        - [ ] UserController Test
+        - [ ] ImgPost Service Test - in progress
+        - [x] UserController Test
+        - [ ] Reviewing code
+        - [x] ImgPost Model
+        - [x] User Model
     - Levi:
-        - [ ] Comment Controller Test
-        - [ ] UserRole Controller Test
-        - [ ] Comment Service Test
+        - [x] Comment Controller Test - in progress
+        - [x] UserRole Controller Test - in progress
+        - [ ] Comment Service Test - in progress
+        - [x] Updated README.md
+        - [x] Updated Calvin's pull request info in Branching doc.
+        - [x] Character repo
+
     <br> </br>
 
-2. **Any Issues?** 
-    - [ ] Patrick/Julian -Postman setup? 
+2. **Any Issues?**
+    - [ ] Patrick/Julian - Postman setup?
+        - create it, add Calvin, and Calvin will copy shtuffffff
  <br> </br>
 
 3. **Agenda**
     - [ ] Pull requests to show progress
-    - [ ]  
+    - [ ]
  <br> </br>
 
-4. **Team Milestones/Tasks** 
+4. **Team Milestones/Tasks**
 - _Milestones:_
-    - [ ] Functionality first, testing after
-    - [ ] 
+    - [ ] Functionality first, testing after.
+    - [ ]
  <br> </br>
 - _Issues_
-    - Joachim: 
-        - [ ] 
-        - [ ]
-    - Patrick: 
-        - [ ] 
-        - [ ]
-    - Julian: 
-        - [ ] 
-        - [ ] 
-    - Calvin: 
-        - [ ] 
-        - [ ] 
-    - Levi: 
-        - [ ] 
-        - [ ] 
+    - Calvin:
+        - [ ] URI Changes
+        - [ ] UserController LocalDate & JSON 
+    - Levi:
+        - [ ] implementing CI/CD pipeline
+
 - _Reminders: Topics to understand and implement:_
-    - [ ] 
-    - [ ] 
-    - [ ] 
+    - [ ] Hackerrank Greedy Florist
+
  <br> </br>
 
 
