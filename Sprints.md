@@ -47,13 +47,13 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
 | 5/23| Sprint 2 | TDD for Service and Controller layer |
 | 5/24 |  | |
 | 5/25|  | |
-| 5/26| Sprint 3 | Finish backend |
-| 5/27|  | |
+| 5/26| Sprint 3 | Finish backend + tests |
+| 5/27| | Fix buggers; Start frontend |
 | 5/28 | | |
-| 5/29 | | |
+| 5/29 | Sprint 4 | Bugs fixed |
 | 5/30 |      | |
 | 5/31 |  | _(**Ideally**) P2 Coding Finalized)_ |
-| 6/1|  |  |
+| 6/1| Sprint 5 | Front end finished |
 | 6/2| _Team Amplifier Presentation Practice_ | (_Idea: Talk about Apiary_) |
 | 6/3 | _(**D-DAY**) P2 DEADLINE-Presentation Day_  |  |
 
@@ -423,6 +423,7 @@ _Issues_
 - Levi updated README.md. ; Our milestone for our most recent spring was TDD, and we divided up tests in our team to write integration tests for the service and controller layers of each of our tables. This is still in progress. We had some confusion involving writing the bare minimum of code needed (skeleton) for our tests but also not stepping on any other assigned tasks (for the backend). This was clarified in today's stand up meeting.
 - Our next milestone is to complete our backend (functionality). Issues to split up tasks have already been created and several members have alrady jumped the gun and finished their issues. Now that that we clarified any confusion, we will continue to do more more testing so we can achieve the goal of 80% coverage. We suspect that merging all of our branches together may lead to some conflict, but we will resolve those together as a team. 
 - Issue to bring up to Azhya: [Unmerging a merged pull request](https://github.com/FullSol/amplifier/pull/78)
+    - service testing with annotations
 
 1. **Progress Check** 
     - Joachim: 
