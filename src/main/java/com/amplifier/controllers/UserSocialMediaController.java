@@ -2,6 +2,8 @@ package com.amplifier.controllers;
 
 import java.util.List;
 
+import static com.amplifier.util.ClientMessageUtil.*;
+
 import com.amplifier.models.ClientMessage;
 import com.amplifier.models.User;
 import com.amplifier.services.UserService;
@@ -28,7 +30,6 @@ import io.swagger.annotations.ApiOperation;
 @Api(value = "UserSocialMediaRestController", description = "REST controller related to User social media Entities")
 public class UserSocialMediaController {
 
-
     @Autowired
     private UserSocialMediaService userSocialMediaService;
 
@@ -41,19 +42,20 @@ public class UserSocialMediaController {
     @PostMapping("/user/user_id/social-media")
     @ApiOperation(value = "add new user social media entity")
     public @ResponseBody ClientMessage addUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
-        return userSocialMediaService.addUserSocialMedia(userSocialMedia) ? "CREATION_SUCCESSFUL" : "CREATION_FAILED";
+        return userSocialMediaService.addUserSocialMedia(userSocialMedia) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PutMapping("/user/user_id/social-media")
     @ApiOperation(value = "Update user social media entity")
     public @ResponseBody ClientMessage updateUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
-        return userSocialMediaService.updateUser(userSocialMedia) ? "UPDATE_SUCCESSFUL" : "UPDATE_FAILED";
+        return userSocialMediaService.updateUser(userSocialMedia) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/user/user_id/social-media")
     @ApiOperation(value = "Remove user social media entity")
     public @ResponseBody ClientMessage deleteUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
-        return userSocialMediaService.deleteUserSocialMedia(userSocialMedia) ? "DELETION_SUCCESSFUL" : "DELETION_FAILED";
+        return userSocialMediaService.deleteUserSocialMedia(userSocialMedia) ? DELETION_SUCCESSFUL
+                : DELETION_FAILED;
     }
 
 }
