@@ -1,64 +1,51 @@
 package com.amplifier.models;
 
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Builder;
 import lombok.Data;
 
 @Entity
-@Table(name = "img_posts")
+@Table(name = "users")
 @Data
-@ApiModel(value = "ImgPost", description = "This model serves as the basic model for all img post entity API operations.")
+@Builder
+@ApiModel(value = "Users", description = "This model serves as the basic model for all ImgPost entity API operations.")
 public class ImgPost {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	@ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any img post entity.", required = true, value = "1")
-	private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
-	@Column(name = "img_location", unique = true, nullable = false)
-	@ApiModelProperty(name = "img_location", notes = "A string value URL to the img post.", required = true)
-	private String img_location;
+    @Column(name = "img_location")
+    private String imgLocation;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "author_id", unique = true)
-	private User user;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User author;
 
-	public ImgPost() {
-	}
+    public ImgPost() {
+    }
 
-	public ImgPost(String img_location, int id, User user) {
-		super();
-		this.img_location = img_location;
-		this.id = id;
-		this.user = user;
-	}
+    public ImgPost(String imgLocation, User author) {
+        this.imgLocation = imgLocation;
+        this.author = author;
+    }
 
-	public ImgPost(String img_location, User user) {
-		super();
-		this.img_location = img_location;
-		this.user = user;
-	}
-
-	public ImgPost(int i, String string) {
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public String toString() {
-		return "ImgPost [id=" + id + ", img_location=" + img_location + ", author_id=" + user + "]";
-	}
-	
-	
-
+    public ImgPost(int id, String imgLocation, User author) {
+        this.id = id;
+        this.imgLocation = imgLocation;
+        this.author = author;
+    }
 
 }
