@@ -17,27 +17,27 @@ public class ImgPostServiceImpl implements ImgPostService {
     private ImgPostRepositoryImpl imgPostRepository;
 
     @Override
-    public List<ImgPost> getAllImgPosts() {
+    public List<ImgPost> findAll() {
         return imgPostRepository.findAll();
     }
 
     @Override
-    public boolean createImgPost(ImgPost imgPost) {
+    public boolean create(ImgPost imgPost) {
         return imgPostRepository.create(imgPost);
     }
 
     @Override
-    public ImgPost getImgPostById(int id) {
+    public ImgPost findById(int id) {
         return imgPostRepository.findById(id);
     }
 
     @Override
-    public boolean updateImgPost(ImgPost imgPost) {
+    public boolean update(ImgPost imgPost) {
         return imgPostRepository.update(imgPost);
     }
 
     @Override
-    public boolean deleteImgPostById(int id) {
+    public boolean deleteById(int id) {
         return imgPostRepository.deleteById(id);
     }
 
