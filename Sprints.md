@@ -29,7 +29,7 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Setting things up: 5/19/22](#51922-setting-things-up)
     - [Meeting 1: 5/20/22](#sprint-1-52022)
     - [Meeting 2: 5/23/22](#sprint-2-52322)
-    - [Meeting 3: 5//24/22](#sprint-3-xxxxxxxx)
+    - [Meeting 3: 5//24/22](#sprint-3-52422)
 
 
 <br>
@@ -420,7 +420,7 @@ _Issues_
 ### Sprint 3: 5/24/22
 
 **Summary for Calvin (UNFINISHED):**
-- Our milestone for our most recent spring was TDD, and we divided up tests in our team to write integration tests for the service and controller layers of each of our tables. This is still in progress. We had some confusion involving writing the bare minimum of code needed (skeleton) for our tests but also not stepping on any other assigned tasks (for the backend). This was clarified in today's stand up meeting.
+- Levi updated README.md. ; Our milestone for our most recent spring was TDD, and we divided up tests in our team to write integration tests for the service and controller layers of each of our tables. This is still in progress. We had some confusion involving writing the bare minimum of code needed (skeleton) for our tests but also not stepping on any other assigned tasks (for the backend). This was clarified in today's stand up meeting.
 - Our next milestone is to complete our backend (functionality). Issues to split up tasks have already been created and several members have alrady jumped the gun and finished their issues. Now that that we clarified any confusion, we will continue to do more more testing so we can achieve the goal of 80% coverage. We suspect that merging all of our branches together may lead to some conflict, but we will resolve those together as a team. 
 - Issue to bring up to Azhya: [Unmerging a merged pull request](https://github.com/FullSol/amplifier/pull/78)
 
