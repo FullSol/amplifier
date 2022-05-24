@@ -12,7 +12,7 @@ public interface ImgPostService {
 
     public ImgPost getImgPostById(int Id);
 
-    public boolean updateImgPost(ImgPost mockImgPostModification);
+    public boolean updateImgPost(ImgPost imgPost);
 
     public boolean deleteImgPostById(int Id);
 
