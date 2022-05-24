@@ -30,4 +30,19 @@ public class ImgPost {
     @ManyToOne
     @JoinColumn(name = "author_id")
     private User author;
+
+    public ImgPost() {
+    }
+
+    public ImgPost(String imgLocation, User author) {
+        this.imgLocation = imgLocation;
+        this.author = author;
+    }
+
+    public ImgPost(int id, String imgLocation, User author) {
+        this.id = id;
+        this.imgLocation = imgLocation;
+        this.author = author;
+    }
+
 }

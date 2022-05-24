@@ -1,5 +1,7 @@
 package com.amplifier.repositories;
 
-public interface ImgPostRepository {
+import com.amplifier.models.ImgPost;
 
+public interface ImgPostRepository {
+    public ImgPost findAll();
 }

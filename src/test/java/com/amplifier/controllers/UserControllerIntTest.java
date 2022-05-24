@@ -69,7 +69,7 @@ public class UserControllerIntTest {
 
         @BeforeAll
         static void setUpBeforeClass() throws Exception {
-                System.out.println("setUpBeforeClass() :: building test objects...");
+
                 mockUser1 = new User();
                 mockUser2 = new User();
 
