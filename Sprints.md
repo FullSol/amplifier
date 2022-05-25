@@ -511,12 +511,15 @@ _Issues_
     <br> </br>
 
 2. **Any Issues?** 
-    - [ ]  
+    - [ ]
  <br> </br>
 
 3. **Agenda**
-    - [ ] Going over backend logic -testing, order of layers, etc.
-    - [ ]  
+    - [ ] Bug - Repo:Service
+    - [ ] Bug - Only need Repo layer (not Repo AND RepoImpl). Your Repo = RepoImpl
+    - [ ] Front-end Design discussion
+        - connecting Blizzard rankings
+        - what pages? 
  <br> </br>
 
 4. **Team Milestones/Tasks** 
@@ -537,8 +540,8 @@ _Issues_
     - Calvin: 
         - [ ] 
         - [ ] 
-    - Levi: 
-        - [ ] 
+    - Levi:
+        - [ ] Can you go over your logic calvin?
         - [ ] 
 - _Reminders: Topics to understand and implement:_
     - [ ] 
