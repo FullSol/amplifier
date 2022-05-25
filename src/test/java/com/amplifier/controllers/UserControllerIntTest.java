@@ -98,6 +98,7 @@ public class UserControllerIntTest {
         @DisplayName("1. AppContext")
         public void contextLoads() {
                 assertThat(userController).isNotNull();
+                assertThat(userService).isNotNull();
         }
 
         @Test

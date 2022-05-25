@@ -11,8 +11,6 @@ public interface UserService {
 
     public User getById(int id);
 
-    public List<User> getAll();
-
     public boolean edit(User user);
 
     public boolean remove(User user);
