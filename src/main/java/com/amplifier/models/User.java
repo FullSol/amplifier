@@ -60,7 +60,8 @@ public class User {
     @ApiModelProperty(name = "username", notes = "A String value that served as the username for the user.", required = true)
     private LocalDate joinDate;
 
-    //Should this be another @OneToOne column join? -- userRole role ID -> Id in userRole model class
+    // Should this be another @OneToOne column join? -- userRole role ID -> Id in
+    // userRole model class
     @Column(name = "username", unique = true, nullable = false)
     @ApiModelProperty(name = "username", notes = "A String value that served as the username for the user.", required = true)
     private UserRole role;
@@ -72,7 +73,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String username, String email, String password, String firstName, String lastName,
+    public User(String username, String email, String password, String firstName, String lastName,
             LocalDate joinDate) {
         this.username = username;
         this.email = email;
@@ -127,14 +128,11 @@ public class User {
         this.active = active;
     }
 
-   
-
-    //for testing
     public User(int i, String string, String string2, String string3, String string4, String string5, String string6,
             int j) {
     }
 
     public User(int id, String firstName, String lastName, String email, String password, int roleCode) {
     }
-    
+
 }

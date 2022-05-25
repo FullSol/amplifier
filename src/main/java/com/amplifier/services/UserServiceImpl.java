@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean createUser(User mockUserCreation) {
+    public boolean createUser(User user) {
         return false;
     }
 
@@ -46,17 +46,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean updateUser(User mockUserModification) {
+    public boolean updateUser(User user) {
         return false;
     }
 
     @Override
-    public boolean deleteCandy(User mockUserDeletion) {
-        return false;
-    }
-
-    @Override
-    public boolean deleteUser(User mockUserDeletion) {
+    public boolean deleteUser(User user) {
         return false;
     }
 
