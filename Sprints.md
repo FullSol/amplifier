@@ -493,9 +493,9 @@ _Issues_
 
 ### Meeting #5: 5/25/22
 **Calvin's Summary**
-1. The goals of our current sprint is to finish our backend and testing by tomorrow. Our meeting's focus was checking in with the team to gauge where each of us were in terms of progress, and clarifying project naming conventions as well as any other misunderstandings or confusion (Ex: Service layer = Service + ServiceImpl; @Repostory annotaton takes care of RepoImpl for us)
-2. As a team yesterday, we set and agreed on a basic project timeline. Again, we want to have backend and testing finished by tomorrow, and we want to fix any backend merging conflicts or bugs by (ideally) the end of this week
-3. We also discussed the reqs for our front end... We will be collaborating on what we want it to look like tomorrow...
+- The goals of our current sprint is to finish our backend and testing by tomorrow. Our meeting's focus was checking in with the team to gauge where each of us were in terms of progress, and clarifying project naming conventions as well as any other misunderstandings or confusion (Ex: Service layer = Service + ServiceImpl; @Repostory annotaton takes care of RepoImpl for us)
+- As a team yesterday, we set and agreed on a basic project timeline. Again, we want to have backend and testing finished by tomorrow, and we want to fix any backend merging conflicts or bugs by (ideally) the end of this week
+- We also discussed the reqs for our front end... We will be collaborating on what we want it to look like tomorrow...
 
 1. **Progress Check**: Where are we in regards to completing our Milestone for tomorrow by tomorrow?
     - Joachim: "real good"
