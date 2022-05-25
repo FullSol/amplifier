@@ -30,6 +30,7 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Meeting 1: 5/20/22](#sprint-1-52022)
     - [Meeting 2: 5/23/22](#sprint-2-52322)
     - [Meeting 3: 5/24/22](#sprint-3-52422)
+    - [Meeting 4: 5/25/22](#meeting-5-52522)
 
 
 <br>
@@ -490,38 +491,60 @@ _Issues_
 <br>
 <hr>
 
-### Sprint #: XX/XX/XXXX
-
-1. **Progress Check** 
-    - Joachim: 
-        - [ ]  
-        - [ ]  
-    - Patrick: 
-        - [ ]  
-        - [ ]  
+### Meeting #5: 5/25/22
+1. **Progress Check**: Where are we in regards to completing our Milestone for tomorrow by tomorrow?
+    - Joachim: "real good"
+        - [ ] pushed up CharacterServiceTest
+    - Patrick:
+        - [ ] Comment Controller
+        - [ ] UserRoleService
+        - [ ] UserCharacter model - add flesh and bones to skeleton
+        - [ ] UserService - add business logic
     - Julian:
-        - [ ]  
-        - [ ]  
+        - [ ] UserCharacterTesting
+        - [ ] SocialMedia
     - Calvin:
-        - [ ]  
-        - [ ]  
+        - [ ] Confident
     - Levi:
-        - [ ]  
-        - [ ]  
+        - [ ] 
+        - [ ] 
     <br> </br>
 
 2. **Any Issues?** 
-    - [ ]  
+    - [ ] Issue Service = Service && ServiceImpl (Levi will update issues so there is not misunderstanding)
+    - [ ] UserSocialMedia
+        - paths:
+            - socialmedia.facebook.
+            - socialmedia.instagram.handle
+        - CREATE = Adding their social media information (add link)
+        - UPDATE = Editing a user's social media info
+        - we ourselves may not use all of the CRUD operations for the webiste, but others who use our API might! More will come in the future
+
  <br> </br>
 
 3. **Agenda**
-    - [ ] Going over backend logic -testing, order of layers, etc.
-    - [ ]  
+    - [x] Bug - Repo:Service
+    - [x] Bug - Only need Repo layer (not Repo AND RepoImpl). Your Repo = RepoImpl
+        - the annotation takes care of the implementation for you, so you don't need to create the implementation yourself
+    - [ ] Front-end Design discussion (ex: Reddit design?) >stick to
+        - connecting Blizzard rankings
+        - what pages?
+            - login page
+                - login form
+            - logout page
+            - rankings page
+            - user profile
+            - registration page
+                - registration form
+            - image posts page
+            - add comments form
+            - form to add character info
+
  <br> </br>
 
 4. **Team Milestones/Tasks** 
 - _Milestones:_
-    - [ ] 
+    - [ ] Consider Front-End Design to have a discussion by next meeting
     - [ ] 
  <br> </br>
 - _Issues_
@@ -537,9 +560,9 @@ _Issues_
     - Calvin: 
         - [ ] 
         - [ ] 
-    - Levi: 
-        - [ ] 
-        - [ ] 
+    - Levi:
+        - [ ] Can you go over your logic calvin?
+        - [ ] Compile all updates into one section for easy reference
 - _Reminders: Topics to understand and implement:_
     - [ ] 
     - [ ] 
@@ -552,3 +575,6 @@ _Issues_
 <br>
 <hr>
 
+
+### Rules and Updates
+1. 

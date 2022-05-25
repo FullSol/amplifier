@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class CharacterServiceImpl implements CharacterService {
+public class UserCharacterServiceImpl implements UserCharacterService {
 
     @Autowired
     private CharacterRepository characterRepository;
