@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.amplifier.models.ImgPost;
+import com.amplifier.models.User;
 import com.amplifier.services.ImgPostService;
 import com.amplifier.util.ClientMessageUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -67,8 +68,8 @@ public class ImgPostControllerIntTest {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		mockImgPost1 = new ImgPost(1, "ImageTest");
-
+//		mockAuthor = new User();
+		mockImgPost1 = new ImgPost();
 		mockDb = new ArrayList<>();
 		mockDb.add(mockImgPost1);
 
@@ -120,7 +121,7 @@ public class ImgPostControllerIntTest {
 
             //
             RequestBuilder request = MockMvcRequestBuilders
-                            .get("/api/imgpost?id=xxxxxxxxxxxxxxxxxxxxxxx");
+                            .get("/api/imgpost?id=1");
             MvcResult result = mockMvc.perform(request).andReturn();
 
             //
@@ -133,11 +134,11 @@ public class ImgPostControllerIntTest {
     public void testDeleteImgPost() throws Exception {
 
             //
-            when(imgPostService.deleteImgPost(mockImgPostDeletion)).thenReturn(true);
+            when(imgPostService.deleteImgPostById(mockImgPostDeletion)).thenReturn(true);
 
             //
             RequestBuilder request = MockMvcRequestBuilders
-                            .delete("/api/v1/imgpost?id=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            .delete("/api/v1/imgpost?id=1")
                             .accept(MediaType.APPLICATION_JSON_VALUE)
                             .content(om.writeValueAsString(mockImgPostDeletion))
                             .contentType(MediaType.APPLICATION_JSON);
@@ -154,11 +155,11 @@ public class ImgPostControllerIntTest {
     public void testDeleteImgPostFail() throws Exception {
 
             //
-            when(imgPostService.deleteImgPost(mockImgPostDeletion)).thenReturn(true);
+            when(imgPostService.deleteImgPostById(mockImgPostDeletion)).thenReturn(true);
 
             //
             RequestBuilder request = MockMvcRequestBuilders
-                            .delete("/api/v1/imgpost?id=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                            .delete("/api/v1/imgpost?id=1")
                             .accept(MediaType.APPLICATION_JSON_VALUE)
                             .content(om.writeValueAsString(mockImgPostDeletion))
                             .contentType(MediaType.APPLICATION_JSON);
