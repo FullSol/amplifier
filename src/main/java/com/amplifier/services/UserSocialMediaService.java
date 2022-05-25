@@ -8,7 +8,7 @@ public interface UserSocialMediaService {
 
     boolean updateUser(UserSocialMedia userSocialMedia);
 
-    UserSocialMedia getUserSocialMediaById(int id);
+    UserSocialMedia getUserSocialMediaById(int userId, int mediaId);
 
     boolean addUserSocialMedia(UserSocialMedia userSocialMedia);
 
