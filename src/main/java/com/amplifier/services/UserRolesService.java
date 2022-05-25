@@ -4,16 +4,17 @@ import java.util.List;
 
 import com.amplifier.models.UserRole;
 
-public interface UserRolesService {
 
+public interface UserRolesService {
+	
     public List<UserRole> getAll();
 
-    public boolean add(UserRole role);
+    public boolean add(UserRole userRole);
 
-    public UserRole getById(int id);
+    public UserRole getById(int Id);
 
-    public boolean edit(UserRole role);
+    public boolean edit(UserRole userRole);
 
-    public boolean remove(UserRole role);
+    public boolean remove(int Id);
 
 }
