@@ -22,12 +22,12 @@ public class CharacterServiceImpl implements CharacterService {
     };
 
     @Override
-    public Character findById(int id) {
+    public Character getById(int id) {
         return characterRepository.findById(id);
     };
 
     @Override
-    public List<Character> findAll() {
+    public List<Character> getAll() {
         return characterRepository.findAll();
     };
 

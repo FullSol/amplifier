@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 public interface CharacterService {
     public boolean create(Character character);
 
-    public Character findById(int id);
+    public Character getById(int id);
 
-    public List<Character> findAll();
+    public List<Character> getAll();
 
     public boolean update(Character character);
 
