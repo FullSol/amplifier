@@ -492,6 +492,11 @@ _Issues_
 <hr>
 
 ### Meeting #5: 5/25/22
+**Calvin's Summary**
+1. The goals of our current sprint is to finish our backend and testing by tomorrow. Our meeting's focus was checking in with the team to gauge where each of us were in terms of progress, and clarifying project naming conventions as well as any other misunderstandings or confusion (Ex: Service layer = Service + ServiceImpl; @Repostory annotaton takes care of RepoImpl for us)
+2. As a team yesterday, we set and agreed on a basic project timeline. Again, we want to have backend and testing finished by tomorrow, and we want to fix any backend merging conflicts or bugs by (ideally) the end of this week
+3. We also discussed the reqs for our front end... We will be collaborating on what we want it to look like tomorrow...
+
 1. **Progress Check**: Where are we in regards to completing our Milestone for tomorrow by tomorrow?
     - Joachim: "real good"
         - [ ] pushed up CharacterServiceTest
@@ -506,8 +511,7 @@ _Issues_
     - Calvin:
         - [ ] Confident
     - Levi:
-        - [ ] 
-        - [ ] 
+        - [ ] good~~
     <br> </br>
 
 2. **Any Issues?** 
@@ -542,31 +546,15 @@ _Issues_
 
  <br> </br>
 
-4. **Team Milestones/Tasks** 
+4. **Team Milestones/Tasks**
 - _Milestones:_
     - [ ] Consider Front-End Design to have a discussion by next meeting
-    - [ ] 
+    - [ ] Milestone 3
  <br> </br>
-- _Issues_
-    - Joachim: 
-        - [ ] 
-        - [ ]
-    - Patrick: 
-        - [ ] 
-        - [ ]
-    - Julian: 
-        - [ ] 
-        - [ ] 
-    - Calvin: 
-        - [ ] 
-        - [ ] 
+- _Issues_: already assigned
     - Levi:
-        - [ ] Can you go over your logic calvin?
         - [ ] Compile all updates into one section for easy reference
-- _Reminders: Topics to understand and implement:_
-    - [ ] 
-    - [ ] 
-    - [ ] 
+
  <br> </br>
 
 
