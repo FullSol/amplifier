@@ -2,21 +2,12 @@ package com.amplifier.services;
 
 import java.util.List;
 
-import com.amplifier.models.UserCharacter;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-@Service
-@Transactional
 public interface CharacterService {
-    public boolean create(UserCharacter character);
 
-    public UserCharacter getById(int id);
+  public boolean createCharacter(Character c);
+  public boolean editCharacter(Character c);
+  public List<Character> findAllCharacters();
+  public Character findCharacterById(int id);
+  public boolean deleteCharacter(Character c);
 
-    public List<UserCharacter> getAll();
-
-    public boolean update(UserCharacter character);
-
-    public boolean delete(int id);
 }

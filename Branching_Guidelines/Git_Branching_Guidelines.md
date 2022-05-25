@@ -92,18 +92,6 @@
 6. Add any comments you want to make.
 7. Click **Create pull request**
 8. When this has been reviewed and approved, Patrick will go ahead and merge this into the dev branch. Merging into the dev is most likely going to happen every day, if not several times a day as we get closer to the deadline, so no matter what, remember: `git pull` in your dev branch!
-<br>
-</br>
-
->**...but what if you aren't finished?**
-- Pull requests are made to show what you are working on. They should be made shortly after you open a new branch with a small commit to upload to GitHub.
- - This allows supervisors to quickly see what you are doing for the day and the progress you are making.
- - Once you are ready for review then a reviewer should be added to the pull request. The reviewer would get a notification via email.
-
-[Click here for more on Pull Requests](https://github.blog/2019-02-14-introducing-draft-pull-requests/)
-
- <br>
-<hr>
 
 ### Reviewing Pull Requests
 1. When a team member creates a pull request, and assigns you as a reviewer, you will
@@ -125,9 +113,6 @@
     - *Request changes* if changes need to be made.
 6. Remember to select "**Submit review**" to complete your review.
 
-<br>
-
-</br>
 <hr>
 
 ### Merging into the dev branch

@@ -19,7 +19,7 @@ import lombok.Data;
 @Entity
 @Table(name = "users")
 @Data
-@ApiModel(value = "Users", description = "This model serves as the basic model for all user entity API operations.")
+@ApiModel(value = "User", description = "This model serves as the basic model for all candy entity API operations.")
 public class User {
 
     @Id
@@ -60,8 +60,6 @@ public class User {
     @ApiModelProperty(name = "username", notes = "A String value that served as the username for the user.", required = true)
     private LocalDate joinDate;
 
-    // Should this be another @OneToOne column join? -- userRole role ID -> Id in
-    // userRole model class
     @Column(name = "username", unique = true, nullable = false)
     @ApiModelProperty(name = "username", notes = "A String value that served as the username for the user.", required = true)
     private UserRole role;
@@ -73,7 +71,7 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password, String firstName, String lastName,
+    public User(int id, String username, String email, String password, String firstName, String lastName,
             LocalDate joinDate) {
         this.username = username;
         this.email = email;
