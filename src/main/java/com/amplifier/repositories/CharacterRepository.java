@@ -15,13 +15,13 @@ public interface CharacterRepository extends JpaRepository<Character, Integer> {
     public List<Character> findAll();
 
     @Query(value = "INSERT INTO user_character (realm, name) VALUES (?1, ?2)", nativeQuery = true)
-    public boolean create(Character character);
+    public boolean create(String realm, String name);
 
     @Query(value = "SELECT * FROM user_character WHERE id=?1")
     public Character findById(int id);
 
     @Query(value = "UDPATE user_character SET realm=?1, name = ?2 WHERE id = ?3", nativeQuery = true)
-    public boolean update(Character character);
+    public boolean update(String realm, String name, int id);
 
     @Query(value = "DELETE * FROM user_character WHERE id=?1", nativeQuery = true)
     public boolean deleteById(int id);
