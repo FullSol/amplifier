@@ -16,8 +16,8 @@ import com.amplifier.services.UserRolesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,33 +36,33 @@ public class UserRolesController {
     private UserRolesService userRolesService;
 
     @GetMapping("/roles")
-    @ApiOperation(value = "Find all user roles.")
+    @ApiOperation(value = "Find all user roles.", notes = "Lookup all user roles from the API", response = UserRole.class)
     public @ResponseBody List<UserRole> getAll(){
-        return userRolesService.getAllUserRoles();
+        return userRolesService.getAll();
     }
 
     @ApiOperation(value = "Find user role by id number", notes = "Provide an id to lookup a specific user role from the API", response = UserRole.class)
     @GetMapping("/role?id={id}")
     public @ResponseBody UserRole getById(@RequestParam(value = "id")int id) {
-        System.out.println("TEST: " + userRolesService.getUserRoleById(id));
-        return userRolesService.getUserRoleById(id);
+        System.out.println("TEST: " + userRolesService.getById(id));
+        return userRolesService.getById(id);
     }
 
     @PostMapping("/role")
-    @ApiOperation(value = "Create new user role entity")
+    @ApiOperation(value = "Create new user role entity", notes = "Add a new user role in the API.")
     public @ResponseBody ClientMessage createUserRole(@RequestBody UserRole userRole) {
-        return userRolesService.addUserRole(userRole) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+        return userRolesService.add(userRole) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
-    @PutMapping("/role")
-    @ApiOperation(value = "Update user role entity by id.")
+    @PatchMapping("/role")
+    @ApiOperation(value = "Update user role entity by id.", notes = "Provide an id to update a specific user role from the API")
     public @ResponseBody ClientMessage updateUserRole(@RequestBody UserRole userRole) {
-        return userRolesService.editUserRole(userRole) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+        return userRolesService.edit(userRole) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/role")
-    @ApiOperation(value = "Remove user role entity.")
+    @ApiOperation(value = "Remove user role entity.", notes = "Provide an id to remove a specific user role from the API")
     public @ResponseBody ClientMessage deleteUserRole(@RequestBody UserRole userRole) {
-        return userRolesService.deleteUserRole(userRole) ? DELETION_SUCCESSFUL : DELETION_FAILED;
+        return userRolesService.remove(userRole) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 }
