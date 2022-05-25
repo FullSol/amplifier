@@ -16,5 +16,5 @@ public interface CharacterService {
 
     public boolean update(Character character);
 
-    public boolean delete(Character character);
+    public boolean delete(int id);
 }
