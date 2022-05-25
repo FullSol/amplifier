@@ -30,6 +30,7 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Meeting 1: 5/20/22](#sprint-1-52022)
     - [Meeting 2: 5/23/22](#sprint-2-52322)
     - [Meeting 3: 5/24/22](#sprint-3-52422)
+    - [Meeting 4: 5/25/22](#meeting-5-52522)
 
 
 <br>
@@ -490,9 +491,8 @@ _Issues_
 <br>
 <hr>
 
-### Sprint #: XX/XX/XXXX
-
-1. **Progress Check** 
+### Meeting #5: 5/25/22
+1. **Progress Check**: Where are we in regard to completing our Milestone by tomorrow?
     - Joachim: 
         - [ ]  
         - [ ]  
@@ -517,9 +517,20 @@ _Issues_
 3. **Agenda**
     - [ ] Bug - Repo:Service
     - [ ] Bug - Only need Repo layer (not Repo AND RepoImpl). Your Repo = RepoImpl
-    - [ ] Front-end Design discussion
+    - [ ] Front-end Design discussion (Reddit design?) >stick to 
         - connecting Blizzard rankings
         - what pages? 
+            - login page
+                - login form
+            - logout page
+            - rankings page
+            - user profile
+            - registration page
+                - registration form
+            - image posts page
+            - add comments form
+            - form to add character info
+
  <br> </br>
 
 4. **Team Milestones/Tasks** 
