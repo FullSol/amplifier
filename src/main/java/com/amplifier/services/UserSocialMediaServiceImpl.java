@@ -12,12 +12,13 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
         return false;
     };
 
-    public UserSocialMedia getUserSocialMediaById(int id) {
-        return null;
-    };
-
     public boolean addUserSocialMedia(UserSocialMedia userSocialMedia) {
         return false;
+    }
+
+    @Override
+    public UserSocialMedia getUserSocialMediaById(int userId, int mediaId) {
+        return null;
     };
 
 }
