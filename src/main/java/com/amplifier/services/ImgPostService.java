@@ -6,14 +6,14 @@ import com.amplifier.models.ImgPost;
 
 public interface ImgPostService {
 
-	public List<ImgPost> findAll();
+	public List<ImgPost> getAll();
 
-	public boolean create(ImgPost imgPost);
+	public boolean add(ImgPost imgPost);
 
-	public ImgPost findById(int Id);
+	public ImgPost getById(int Id);
 
-	public boolean update(ImgPost imgPost);
+	public boolean edit(ImgPost imgPost);
 
-	public boolean deleteById(int Id);
+	public boolean remove(int Id);
 
 }
