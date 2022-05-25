@@ -1,15 +1,15 @@
 package com.amplifier.controllers;
 
-import java.util.List;
-
-import static com.amplifier.util.ClientMessageUtil.*;
+import static com.amplifier.util.ClientMessageUtil.CREATION_FAILED;
+import static com.amplifier.util.ClientMessageUtil.CREATION_SUCCESSFUL;
+import static com.amplifier.util.ClientMessageUtil.DELETION_FAILED;
+import static com.amplifier.util.ClientMessageUtil.DELETION_SUCCESSFUL;
+import static com.amplifier.util.ClientMessageUtil.UPDATE_FAILED;
+import static com.amplifier.util.ClientMessageUtil.UPDATE_SUCCESSFUL;
 
 import com.amplifier.models.ClientMessage;
-import com.amplifier.models.User;
-import com.amplifier.services.UserService;
-
-import com.amplifier.services.UserSocialMediaService;
 import com.amplifier.models.UserSocialMedia;
+import com.amplifier.services.UserSocialMediaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
