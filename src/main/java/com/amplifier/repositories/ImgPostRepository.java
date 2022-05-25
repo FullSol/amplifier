@@ -24,7 +24,7 @@ public interface ImgPostRepository extends JpaRepository<ImgPost, Integer> {
     public ImgPost findById(int id);
 
     @Query(value = "UPDATE ImgPosts SET img_location=?1, author_id=?2 WHERE id=?3", nativeQuery = true)
-    public boolean update(String imgocation, int authorId, int id);
+    public boolean update(String imgLocation, int authorId, int id);
 
     @Query(value = "DELETE * FROM ImgPosts WHERE id=?1", nativeQuery = true)
     public boolean deleteById(int id);
