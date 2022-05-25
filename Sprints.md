@@ -490,5 +490,65 @@ _Issues_
 <br>
 <hr>
 
+### Sprint #: XX/XX/XXXX
 
+1. **Progress Check** 
+    - Joachim: 
+        - [ ]  
+        - [ ]  
+    - Patrick: 
+        - [ ]  
+        - [ ]  
+    - Julian:
+        - [ ]  
+        - [ ]  
+    - Calvin:
+        - [ ]  
+        - [ ]  
+    - Levi:
+        - [ ]  
+        - [ ]  
+    <br> </br>
+
+2. **Any Issues?** 
+    - [ ]  
+ <br> </br>
+
+3. **Agenda**
+    - [ ] Going over backend logic -testing, order of layers, etc.
+    - [ ]  
+ <br> </br>
+
+4. **Team Milestones/Tasks** 
+- _Milestones:_
+    - [ ] 
+    - [ ] 
+ <br> </br>
+- _Issues_
+    - Joachim: 
+        - [ ] 
+        - [ ]
+    - Patrick: 
+        - [ ] 
+        - [ ]
+    - Julian: 
+        - [ ] 
+        - [ ] 
+    - Calvin: 
+        - [ ] 
+        - [ ] 
+    - Levi: 
+        - [ ] 
+        - [ ] 
+- _Reminders: Topics to understand and implement:_
+    - [ ] 
+    - [ ] 
+    - [ ] 
+ <br> </br>
+
+
+[Return to: _Table of Contents_](#table-of-contents)
+
+<br>
+<hr>
 
