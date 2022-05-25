@@ -7,15 +7,15 @@ import com.amplifier.models.UserRole;
 
 public interface UserRolesService {
 	
-    public List<UserRole> getAllUserRoles();
+    public List<UserRole> getAll();
 
-    public boolean createUserRole(UserRole userRole);
+    public boolean add(UserRole userRole);
 
-    public UserRole getUserRoleById(int Id);
+    public UserRole getById(int Id);
 
-    public boolean updateUserRole(UserRole userRole);
+    public boolean edit(UserRole userRole);
 
-    public boolean deleteUserRoleById(int Id);
+    public boolean remove(int Id);
 	
 
 }
