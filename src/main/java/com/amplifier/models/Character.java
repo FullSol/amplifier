@@ -20,7 +20,7 @@ public class Character {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column
   @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any user entity.", required = true, value = "1")
-  private int id;
+  private int characterId;
 
   @Column(name = "character_name")
   @ApiModelProperty(name = "character_name", notes = "")
@@ -39,7 +39,7 @@ public class Character {
   }
 
   public Character(int id, String characterName, String characterRealm) {
-    this.id = id;
+    this.characterId = id;
     this.characterName = characterName;
     this.characterRealm = characterRealm;
   }
