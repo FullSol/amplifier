@@ -27,7 +27,9 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Sprint Meeting Template (for Levi)](#for-levi-sprint-meeting-template)
 4. Meeting (Stand-up) Summaries
     - [Setting things up: 5/19/22](#51922-setting-things-up)
-    - [Scrum 1: 5/20/22](#spring-1-52022)
+    - [Meeting 1: 5/20/22](#sprint-1-52022)
+    - [Meeting 2: 5/23/22](#sprint-2-52322)
+    - [Meeting 3: 5/24/22](#sprint-3-52422)
 
 
 <br>
@@ -42,16 +44,16 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
 | 5/20 | | |
 | 5/21| | |
 | 5/22| | |
-| 5/23| Sprint 2 | |
-| 5/24 | Sprint 3 | |
-| 5/25| Sprint 4 | |
-| 5/26| Sprint 5| |
-| 5/27| Sprint 6 | |
+| 5/23| Sprint 2 | TDD for Service and Controller layer |
+| 5/24 |  | |
+| 5/25|  | |
+| 5/26| Sprint 3 | Finish backend + tests |
+| 5/27| | Fix buggers; Start frontend |
 | 5/28 | | |
-| 5/29 | | |
-| 5/30 | Sprint 7      | |
-| 5/31 | Sprint 8 | _(**Ideally**) P2 Coding Finalized)_ |
-| 6/1| Sprint 9 |  |
+| 5/29 | Sprint 4 | Bugs fixed |
+| 5/30 |      | |
+| 5/31 |  | _(**Ideally**) P2 Coding Finalized)_ |
+| 6/1| Sprint 5 | Front end finished |
 | 6/2| _Team Amplifier Presentation Practice_ | (_Idea: Talk about Apiary_) |
 | 6/3 | _(**D-DAY**) P2 DEADLINE-Presentation Day_  |  |
 
@@ -232,9 +234,9 @@ To view ER Diagram, click [here](https://github.com/FullSol/amplifier/blob/dev/E
 
 **user_social_media**
 1. id
-2. twitter_link
+2. twitter_handle
 3. facebook_link
-4. instagram_link
+4. instagram_handle
 
 **img_posts**
 1. id
@@ -351,7 +353,202 @@ _Issues_
 <br>
 <hr>
 
+### Sprint 2: 5/23/22
+
+1. **Progress Check**
+
+- _Spring 1 Milestones:_ How do we feel about them? Did the check marks on the issues help?
+    - [ ] [Review API Documentation](https://p2amplifier.docs.apiary.io/#)
+    - [ ] Git branching guidelines
+    - [ ] Complete issues by our next sprint
+    - [ ] Read/Practice examples of String Boot, Restful API, Sprint testing
+    - [ ] Familarize yourself with "user" stories & tables
+    - Joachim:
+        - [x] Feels good!
+        - [ ] branching
+    - Patrick:
+        - [x] ImgPost test - 70% -issue with build
+        - [x] Good and bad~
+    - Julian:
+        - [x] Reviewed everything; watched vids on Utube for integrating Angular framework
+        - [x] started testing
+    - Calvin:
+        - [ ] Updated Postman/OpenAPI documentation
+        - [ ] User Controller -> created examples
+        - [ ] User Controller Test -> created examples 
+            - did lots of research on Integration test; added a video as a resource (and it is included in the issue)
+        - [ ] Reviewed CI/CD pipelines
+        - [ ] Comments Model
+        - [ ] Service, but not pushed until
+        - [ ] ER Diagram
+    - Levi:
+        - [ ] Updated branching guidelines
+        - [ ] Updated Sprints.md
+        - [ ] Postman/OpenAPI documentation
+        - [ ] CI/CD pipelines
+        - [ ] Updated issues
+    <br> </br>
+
+2. **Issues/Team Discussions**
+    - [ ] Patrick and Julian - create postman to copy over openAPI
+    - [ ] Feedback on how issues are being assigned, etc. for Levi. Anything to improve on?
+ <br> </br>
+
+3. **Agenda**
+    - [ ] Discuss Sprint 2 - TDD
+        - we test, without writing what we're testing for (TDD) to make sure we're all getting experience in each of the layers
+    - [ ] Discuss Sprint 3 - Finish all backend + assignments were randomly made to ensure everyone has experience with every layer.
+        -  Pleaes let Levi know if there are any issues.
+ <br> </br>
+
+4. **Team Milestones/Tasks**
+- _Milestones:_ 3
+ <br> </br>
+- _Issues_
+    - already assigned
+    - Levi:
+        - [ ] Update README.md
+
+ <br> </br>
 
 
+[Return to: _Table of Contents_](#table-of-contents)
 
+<br>
+<hr>
+
+### Sprint 3: 5/24/22
+
+**Summary for Calvin:**
+- Levi updated README.md. ; Our milestone for our most recent spring was TDD, and we divided up tests in our team to write integration tests for the service and controller layers of each of our tables. This is still in progress. We had some confusion involving writing the bare minimum of code needed (skeleton) for our tests but also not stepping on any other assigned tasks (for the backend). This was clarified in today's stand up meeting.
+- Our next milestone is to complete our backend (functionality). Issues to split up tasks have already been created and several members have alrady jumped the gun and finished their issues. Now that that we clarified any confusion, we will continue to do more more testing so we can achieve the goal of 80% coverage. We suspect that merging all of our branches together may lead to some conflict, but we will resolve those together as a team. 
+- Issue to bring up to Azhya: 
+    - [Issues being used for tracking current work](https://github.com/FullSol/amplifier/pull/78)
+    - Service testing with annotations
+
+1. **Progress Check** 
+    - Joachim: 
+        - [x] Social Media Controller Test
+        - [ ] User Service Test - in progress
+        - [ ] Character Service Test
+        - [x] Character controller
+        - [x] ImgPost Service + Impl
+        - [x] Comments Repo + impl
+    - Patrick: 
+        - [x] ImgPost Controller Test - in progress
+        - [ ] UserRole Service Test - in progress
+            - created draft pull request
+    - Julian:
+        - [ ] Character Controller Test - in progress
+        - [ ] Social Media Service Test - in progress
+    - Calvin:
+        - [ ] ImgPost Service Test - in progress
+        - [x] UserController Test
+        - [ ] Reviewing code
+        - [x] ImgPost Model
+        - [x] User Model
+    - Levi:
+        - [x] Comment Controller Test - in progress
+        - [x] UserRole Controller Test - in progress
+        - [ ] Comment Service Test - in progress
+        - [x] Updated README.md
+        - [x] Updated Calvin's pull request info in Branching doc.
+        - [x] Character repo
+
+    <br> </br>
+
+2. **Any Issues?**
+    - [ ] Patrick/Julian - Postman setup?
+        - create it, add Calvin, and Calvin will copy shtuffffff
+ <br> </br>
+
+3. **Agenda**
+    - [ ] Pull requests to show progress
+    - [ ]
+ <br> </br>
+
+4. **Team Milestones/Tasks**
+- _Milestones:_
+    - [ ] Functionality first, testing after.
+    - [ ]
+ <br> </br>
+- _Issues_
+    - Calvin:
+        - [ ] URI Changes
+        - [ ] UserController LocalDate & JSON 
+    - Levi:
+        - [ ] implementing CI/CD pipeline
+
+- _Reminders: Topics to understand and implement:_
+    - [ ] Hackerrank Greedy Florist
+
+ <br> </br>
+
+
+[Return to: _Table of Contents_](#table-of-contents)
+
+<br>
+<hr>
+
+### Sprint #: XX/XX/XXXX
+
+1. **Progress Check** 
+    - Joachim: 
+        - [ ]  
+        - [ ]  
+    - Patrick: 
+        - [ ]  
+        - [ ]  
+    - Julian:
+        - [ ]  
+        - [ ]  
+    - Calvin:
+        - [ ]  
+        - [ ]  
+    - Levi:
+        - [ ]  
+        - [ ]  
+    <br> </br>
+
+2. **Any Issues?** 
+    - [ ]  
+ <br> </br>
+
+3. **Agenda**
+    - [ ] Going over backend logic -testing, order of layers, etc.
+    - [ ]  
+ <br> </br>
+
+4. **Team Milestones/Tasks** 
+- _Milestones:_
+    - [ ] 
+    - [ ] 
+ <br> </br>
+- _Issues_
+    - Joachim: 
+        - [ ] 
+        - [ ]
+    - Patrick: 
+        - [ ] 
+        - [ ]
+    - Julian: 
+        - [ ] 
+        - [ ] 
+    - Calvin: 
+        - [ ] 
+        - [ ] 
+    - Levi: 
+        - [ ] 
+        - [ ] 
+- _Reminders: Topics to understand and implement:_
+    - [ ] 
+    - [ ] 
+    - [ ] 
+ <br> </br>
+
+
+[Return to: _Table of Contents_](#table-of-contents)
+
+<br>
+<hr>
 

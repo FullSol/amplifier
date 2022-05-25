@@ -25,4 +25,29 @@ public class UserServiceImpl implements UserService {
     public boolean create(User user) {
         return userRepository.create(user);
     }
+
+    @Override
+    public boolean createUser(User user) {
+        return false;
+    }
+
+    @Override
+    public User getUserById(int id) {
+        return null;
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return null;
+    }
+
+    @Override
+    public boolean updateUser(User user) {
+        return false;
+    }
+
+    @Override
+    public boolean deleteUser(User user) {
+        return false;
+    }
 }
