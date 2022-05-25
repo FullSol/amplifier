@@ -13,9 +13,8 @@ import lombok.Builder;
 import lombok.Data;
 
 @Entity
-@Table(name = "users")
+@Table(name = "img_posts")
 @Data
-@Builder
 @ApiModel(value = "Users", description = "This model serves as the basic model for all ImgPost entity API operations.")
 public class ImgPost {
 
