@@ -492,34 +492,43 @@ _Issues_
 <hr>
 
 ### Meeting #5: 5/25/22
-1. **Progress Check**: Where are we in regard to completing our Milestone by tomorrow?
-    - Joachim: 
-        - [ ]  
-        - [ ]  
-    - Patrick: 
-        - [ ]  
-        - [ ]  
+1. **Progress Check**: Where are we in regards to completing our Milestone for tomorrow by tomorrow?
+    - Joachim: "real good"
+        - [ ] pushed up CharacterServiceTest
+    - Patrick:
+        - [ ] Comment Controller
+        - [ ] UserRoleService
+        - [ ] UserCharacter model - add flesh and bones to skeleton
+        - [ ] UserService - add business logic
     - Julian:
-        - [ ]  
-        - [ ]  
+        - [ ] UserCharacterTesting
+        - [ ] SocialMedia
     - Calvin:
-        - [ ]  
-        - [ ]  
+        - [ ] Confident
     - Levi:
-        - [ ]  
-        - [ ]  
+        - [ ] 
+        - [ ] 
     <br> </br>
 
 2. **Any Issues?** 
-    - [ ]
+    - [ ] Issue Service = Service && ServiceImpl (Levi will update issues so there is not misunderstanding)
+    - [ ] UserSocialMedia
+        - paths:
+            - socialmedia.facebook.
+            - socialmedia.instagram.handle
+        - CREATE = Adding their social media information (add link)
+        - UPDATE = Editing a user's social media info
+        - we ourselves may not use all of the CRUD operations for the webiste, but others who use our API might! More will come in the future
+
  <br> </br>
 
 3. **Agenda**
-    - [ ] Bug - Repo:Service
-    - [ ] Bug - Only need Repo layer (not Repo AND RepoImpl). Your Repo = RepoImpl
-    - [ ] Front-end Design discussion (Reddit design?) >stick to 
+    - [x] Bug - Repo:Service
+    - [x] Bug - Only need Repo layer (not Repo AND RepoImpl). Your Repo = RepoImpl
+        - the annotation takes care of the implementation for you, so you don't need to create the implementation yourself
+    - [ ] Front-end Design discussion (ex: Reddit design?) >stick to
         - connecting Blizzard rankings
-        - what pages? 
+        - what pages?
             - login page
                 - login form
             - logout page
@@ -535,7 +544,7 @@ _Issues_
 
 4. **Team Milestones/Tasks** 
 - _Milestones:_
-    - [ ] 
+    - [ ] Consider Front-End Design to have a discussion by next meeting
     - [ ] 
  <br> </br>
 - _Issues_
@@ -553,7 +562,7 @@ _Issues_
         - [ ] 
     - Levi:
         - [ ] Can you go over your logic calvin?
-        - [ ] 
+        - [ ] Compile all updates into one section for easy reference
 - _Reminders: Topics to understand and implement:_
     - [ ] 
     - [ ] 
@@ -566,3 +575,6 @@ _Issues_
 <br>
 <hr>
 
+
+### Rules and Updates
+1. 
