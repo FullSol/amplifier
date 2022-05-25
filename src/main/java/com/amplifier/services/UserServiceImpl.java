@@ -59,4 +59,16 @@ public class UserServiceImpl implements UserService {
     public boolean deleteUser(User mockUserDeletion) {
         return false;
     }
+
+    @Override
+    public void deleteUserById(int id) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public Object login(String string, String string2) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

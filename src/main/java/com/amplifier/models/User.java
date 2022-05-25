@@ -126,5 +126,15 @@ public class User {
         this.role = role;
         this.active = active;
     }
+
+   
+
+    //for testing
+    public User(int i, String string, String string2, String string3, String string4, String string5, String string6,
+            int j) {
+    }
+
+    public User(int id, String firstName, String lastName, String email, String password, int roleCode) {
+    }
     
 }

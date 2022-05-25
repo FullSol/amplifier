@@ -20,4 +20,8 @@ public interface UserService {
     public boolean deleteCandy(User mockUserDeletion);
 
     public boolean deleteUser(User mockUserDeletion);
+
+    public void deleteUserById(int id);
+
+	public Object login(String username, String password);
 }
