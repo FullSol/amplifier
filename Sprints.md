@@ -30,7 +30,10 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Meeting 1: 5/20/22](#sprint-1-52022)
     - [Meeting 2: 5/23/22](#sprint-2-52322)
     - [Meeting 3: 5/24/22](#sprint-3-52422)
-    - [Meeting 4: 5/25/22](#meeting-5-52522)
+    - [Meeting 4: 5/25/22](#meeting-4-52522)
+    - [Meeting 5: 5/26/22](#meeting-5-052622)
+5. [Link to Front-End Draft](https://xd.adobe.com/view/443d6501-5900-4ff2-80ec-d06c965809e9-116e/
+)
 
 
 <br>
@@ -491,7 +494,7 @@ _Issues_
 <br>
 <hr>
 
-### Meeting #5: 5/25/22
+### Meeting #4: 5/25/22
 **Calvin's Summary**
 - The goals of our current sprint is to finish our backend and testing by tomorrow. Our meeting's focus was checking in with the team to gauge where each of us were in terms of progress, and clarifying project naming conventions as well as any other misunderstandings or confusion (Ex: Service layer = Service + ServiceImpl; @Repostory annotaton takes care of RepoImpl for us)
 - As a team yesterday, we set and agreed on a basic project timeline. Again, we want to have backend and testing finished by tomorrow, and we want to fix any backend merging conflicts or bugs by (ideally) the end of this week
@@ -563,6 +566,64 @@ _Issues_
 <br>
 <hr>
 
+### Meeting 5: 05/26/22
+Summary:
+Project milestone for finishing tests and backend roughly met. Patrick, Calvin and Levi are reviewing all pending pull requests and requesting changes as needed. Our gaol is to finish those changes by tomorrow. Calvin has started a rough design for front end. Starting from today, debugging the backend will start with Calvin and Levi. Julian will lead the front-end team and begin working with Patrick and Joachim to start the front-end process. Once Calvin and Levi are done debugging, they will start catching up to front-end. Tasks to divide up front-end will be assigned by tomorrow.
+
+
+1. **Progress Check**: What did we get done? What is still pending? (If some items are still pending) When do you think you can get it done?
+    - Joachim:
+        - [ ] All good to go
+    - Patrick:
+        - [ ] UserCharacterModel - will return to it!
+            - Julian may have created it and the branches may have been merged
+        - [ ] Items in the middle of review
+    - Julian:
+        - [ ] Worked on all tickets
+        - [ ] Still working on the ticket that was sent back
+    - Calvin:
+        - [ ] started some front end design
+        - [ ] bug fixes  + reviewing
+    - Levi:
+        - [ ] finished my tickets
+    <br> </br>
+
+2. **Any Issues?**
+    - [ ] ClassPath changes? - This is the difference between Mac and Windows users OR you have done something that required yoru class path to change. Pleae just ignore it and add it with the rest of your work when you commit.
+        - wouldn't the changes that you bring into dev automatically change the class path for other people on our end? Because the class path is changed by your IDE, whatever changes that occur in class path need to be pushed into dev.
+        - solution: `git add .`
+ <br> </br>
+
+3. **Agenda**
+    - [ ] on to debugging and front end...
+    - [ ] While reviewing, whomever is reviewing will make comments on your code and will either approve your code or request changes. You will receive an email if changes are requested.
+    - [ ] Website design
+        - Home page: list of all image posts 
+            - title field 
+            - count of the comments
+            - expanding the posts and comments via bootstrap and writing animation with css
+        - Forms: login form, registration form, profile form, social media form, character form
+        - Ranking page (Blizzard API)
+ <br> </br>
+
+4. **Team Milestones/Tasks**
+- _Milestones:_
+    - [ ] Make any requested changes from pull requests by tomorrow! 
+ <br> </br>
+- _Issues_
+    - Levi: 
+        - [ ] CI/CD implementation
+        - [ ] Google fonts for front-end development
+- _Reminders: Topics to understand and implement:_
+    - [ ] Portfolio due by tomorrow
+    - [ ] HackerRank Sorting
+ <br> </br>
+
+
+[Return to: _Table of Contents_](#table-of-contents)
+
+<br>
+<hr>
 
 ### Rules and Updates
 1. 

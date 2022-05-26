@@ -30,4 +30,7 @@ public interface UserRolesRepository extends JpaRepository<UserRole, Integer> {
   @Query(value = "DELETE * FROM user_roles WHERE id=?1", nativeQuery = true)
   public boolean deleteById(int id);
 
+	Object getUserRoleByRole(String role);
+
+
 }
