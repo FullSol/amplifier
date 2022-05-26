@@ -13,23 +13,23 @@ import jakarta.transaction.Transactional;
 @Repository
 @Transactional
 public interface UserSocialMediaRepository {
-	
-    @Query(value = "SELECT * FROM user_social_media", nativeQuery = true)
-    public List<SocialMedia> findAll();
 
-    @Modifying
-	@Query(value= "INSERT INTO user_social_media (twitter_link, facebook_link, instagram_link) VALUES (?1, ?2, ?3)", nativeQuery = true)
+	@Query(value = "SELECT * FROM user_social_media", nativeQuery = true)
+	public List<SocialMedia> findAll();
+
+	@Modifying
+	@Query(value = "INSERT INTO user_social_media (twitter_link, facebook_link, instagram_link) VALUES (?1, ?2, ?3)", nativeQuery = true)
 	public boolean create(String twitterLink, String facebookLink, String instagramLink);
 
 	@Query(value = "SELECT * FROM user_social_media WHERE id=?1", nativeQuery = true)
 	public SocialMedia findById(int id);
-	
+
 	@Modifying
 	@Query(value = "UPDATE user_social_media SET twitter_link=?1, facebook_link=?2, instagram_link=?3 WHERE id=?4", nativeQuery = true)
 	public boolean update(String twitterLink, String facebookLink, String instagramLink, int id);
-	    
+
 	@Modifying
 	@Query(value = "DELETE * FROM user_social_media WHERE id=?1", nativeQuery = true)
 	public boolean delete(int id);
-    
+
 }
