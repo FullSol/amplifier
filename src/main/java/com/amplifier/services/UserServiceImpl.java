@@ -3,6 +3,7 @@ package com.amplifier.services;
 import java.util.List;
 
 import com.amplifier.models.User;
+import com.amplifier.repositories.UserRepository;
 import com.amplifier.repositories.UserRepositoryImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,37 +23,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean create(User user) {
+    public boolean add(User user) {
         return userRepository.create(user);
     }
 
     @Override
-    public boolean createUser(User mockUserCreation) {
-        return false;
-    }
-
-    @Override
-    public User getUserById(int id) {
+    public User getById(int id) {
         return null;
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public boolean edit(User user) {
+        return false;
+    }
+
+    @Override
+    public boolean remove(int id) {
+        return false;
+    }
+
+    @Override
+    public User login(String username, String password) {
         return null;
-    }
-
-    @Override
-    public boolean updateUser(User mockUserModification) {
-        return false;
-    }
-
-    @Override
-    public boolean deleteCandy(User mockUserDeletion) {
-        return false;
-    }
-
-    @Override
-    public boolean deleteUser(User mockUserDeletion) {
-        return false;
     }
 }

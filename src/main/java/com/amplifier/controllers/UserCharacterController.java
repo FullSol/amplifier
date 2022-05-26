@@ -1,6 +1,6 @@
 package com.amplifier.controllers;
 
-import com.amplifier.services.ImgPostService;
+import com.amplifier.services.CharacterService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,10 +10,10 @@ import io.swagger.annotations.Api;
 
 @RestController
 @RequestMapping("/api/v1")
-@Api(value = "ImgPostRestController")
+@Api(value = "CharacterRestController", description = "REST controller related to Character Entities")
+public class CharacterController {
 
-public class ImgPostController {
-	
-
+    @Autowired
+    private CharacterService userService;
 
 }

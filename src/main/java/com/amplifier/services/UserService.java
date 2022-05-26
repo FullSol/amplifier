@@ -7,17 +7,13 @@ import com.amplifier.models.User;
 public interface UserService {
     public List<User> getAll();
 
-    public boolean create(User user);
+    public boolean add(User user);
 
-    public boolean createUser(User mockUserCreation);
+    public User getById(int id);
 
-    public User getUserById(int id);
+    public boolean edit(User user);
 
-    public List<User> getAllUsers();
+    public boolean remove(int id);
 
-    public boolean updateUser(User mockUserModification);
-
-    public boolean deleteCandy(User mockUserDeletion);
-
-    public boolean deleteUser(User mockUserDeletion);
+    public User login(String username, String password);
 }

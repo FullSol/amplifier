@@ -103,4 +103,5 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/ow2/asm/asm-analysis/9.2/asm-analysis-9.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/ow2/asm/asm-tree/9.2/asm-tree-9.2.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/jacoco/org.jacoco.report/0.8.8/org.jacoco.report-0.8.8.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>
