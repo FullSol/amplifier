@@ -1,7 +1,7 @@
 package com.amplifier.controllers;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
+import static org.junit.Assert.assertEquals;
 
 import java.nio.charset.Charset;
 import java.time.LocalDate;
@@ -11,6 +11,7 @@ import java.util.List;
 import com.amplifier.models.Comment;
 import com.amplifier.models.User;
 import com.amplifier.services.CommentService;
+import com.amplifier.util.ClientMessageUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -26,6 +27,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 /**
  * @author Levi Choi
@@ -54,7 +58,7 @@ public class CommentControllerIntTest {
         private MockMvc mockMvc;
 
     @MockBean
-        CommentService userRolesService;
+        CommentService commentService;
 
     @BeforeAll
     static void setUpBeforeClass() throws Exception {
@@ -63,27 +67,170 @@ public class CommentControllerIntTest {
 
         mockCommentCreation = new Comment(3, "This is yet another comment.", 6, user, LocalDate.now());
 
-        // mockRoleUpdation = mockRoleCreation;
-        //mockRoleUpdation.setRoleName("Johnny");
-        //mockRoleModification.setEmail("Johnny@gmail.com");
-        // mockRoleDeletion = new UserRole();
+        mockCommentUpdation = mockCommentCreation;
+        mockCommentUpdation.setCommentText("I am editing this comment");
+        mockCommentDeletion = new Comment();
         mockDb = new ArrayList<>();
         mockDb.add(mockComment1);
         mockDb.add(mockComment2);
-   }
-   @Test
-   @Order(1)
-   @DisplayName("1. AppContext")
-   public void contextLoads() {
-           assertThat(commentController).isNotNull();
-}
+    }
+    @Test
+    @Order(1)
+    @DisplayName("1. AppContext")
+    public void contextLoads() {
+            assertThat(commentController).isNotNull();
+    }
 
- //test for find comment by id - pass 
-    //test for find comment by id - fail
-    //test for creating new comment - pass
-    //test for creating new comment -fail
-    //test for updating comment - pass
-    //test for updating comment - fail
-    //test for delete comment-pass
-    //test for delete comment-fail
+    @Test
+    @Order(2)
+    @DisplayName("2. Attempt to pull all comments")
+    public void getAllComments_Success() throws Exception {
+            //CommentService method needs to be merged in.
+            when(commentService.getAll()).thenReturn(mockDb);
+
+            RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/comments");
+            MvcResult result = mockMvc.perform(request).andReturn();
+
+            assertEquals(om.writeValueAsString(mockDb), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @Order(3)
+    @DisplayName("3. Attempt to pull comment - failed.")
+    public void getCommentById_Fail() throws Exception {
+
+        //CommentService method needs to be merged in.
+        when(commentService.getById(1)).thenReturn(mockComment1);
+
+        RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/comment?id=1");
+        MvcResult result = mockMvc.perform(request).andReturn();
+
+        assertEquals(om.writeValueAsString(mockComment1), result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @Order(4)
+    @DisplayName("4. ttempt to pull comment - passed.")
+    public void getCommentById_Pass() throws Exception {
+            //CommentService method needs to be merged in.
+            when(commentService.getById(1)).thenReturn(mockComment1);
+
+            //
+            RequestBuilder request = MockMvcRequestBuilders
+                            .get("/api/v1/comment?id=1");
+            MvcResult result = mockMvc.perform(request).andReturn();
+
+            assertEquals(om.writeValueAsString(mockComment1), result.getResponse().getContentAsString());
+        }
+
+    @Test
+    @Order(5)
+    @DisplayName("5. Attempt to create a new comment - failed.")
+    public void postComment_Failed() throws Exception {
+            //CommentService method needs to be merged in.
+            when(commentService.create(mockCommentCreation)).thenReturn(true);
+
+            RequestBuilder request = MockMvcRequestBuilders
+                            .post("/api/v1/comment?id=3")
+                            .accept(MediaType.APPLICATION_JSON_VALUE)
+                            .content(om.writeValueAsString(mockCommentCreation))
+                            .contentType(MediaType.APPLICATION_JSON);
+
+            //
+            MvcResult result = mockMvc.perform(request).andReturn();
+            assertEquals(om.writeValueAsString(ClientMessageUtil.CREATION_SUCCESSFUL),
+                            result.getResponse().getContentAsString());
+        }
+
+    @Test
+    @Order(6)
+    @DisplayName("6. Attempt to create a new comment - passed.")
+    public void postComment_Pass() throws Exception {
+            //CommentService method needs to be merged in.
+            when(commentService.create(mockCommentCreation)).thenReturn(true);
+
+            RequestBuilder request = MockMvcRequestBuilders
+                            .post("/api/v1/comment?id=3")
+                            .accept(MediaType.APPLICATION_JSON_VALUE)
+                            .content(om.writeValueAsString(mockCommentCreation))
+                            .contentType(MediaType.APPLICATION_JSON);
+
+            MvcResult result = mockMvc.perform(request).andReturn();
+            assertEquals(om.writeValueAsString(ClientMessageUtil.CREATION_SUCCESSFUL),
+                            result.getResponse().getContentAsString());
+    }
+
+    @Test
+    @Order(7)
+    @DisplayName("7. Attempt to update comment - failed")
+    public void updateComment_Failed() throws Exception {
+            //CommentService method needs to be merged in.
+            when(commentService.update(mockCommentUpdation)).thenReturn(true);
+
+            RequestBuilder request = MockMvcRequestBuilders
+                            .put("/api/v1/comment?id=3")
+                            .accept(MediaType.APPLICATION_JSON_VALUE)
+                            .content(om.writeValueAsString(mockCommentUpdation))
+                            .contentType(MediaType.APPLICATION_JSON);
+            MvcResult result = mockMvc.perform(request).andReturn();
+
+            assertEquals(om.writeValueAsString(ClientMessageUtil.UPDATE_FAILED),
+                            result.getResponse().getContentAsString());
+        }
+
+    @Test
+    @Order(8)
+    @DisplayName("8. Attempt to update comment - passed")
+    public void updateComment_Passed() throws Exception {
+            //CommentService method needs to be merged in.
+            when(commentService.update(mockCommentUpdation)).thenReturn(true);
+
+            RequestBuilder request = MockMvcRequestBuilders
+                            .put("/api/v1/comment?id=3")
+                            .accept(MediaType.APPLICATION_JSON_VALUE)
+                            .content(om.writeValueAsString(mockCommentUpdation))
+                            .contentType(MediaType.APPLICATION_JSON);
+            MvcResult result = mockMvc.perform(request).andReturn();
+
+            assertEquals(om.writeValueAsString(ClientMessageUtil.UPDATE_FAILED),
+                            result.getResponse().getContentAsString());
+        }
+
+    @Test
+    @Order(9)
+    @DisplayName("9. Attempt to delete comment - failed")
+    public void deleteComment_Failed() throws Exception {
+
+        //CommentService method needs to be merged in.
+        when(commentService.delete(mockCommentDeletion)).thenReturn(true);
+
+        RequestBuilder request = MockMvcRequestBuilders
+                        .delete("/api/v1/comment?id=3")
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .content(om.writeValueAsString(mockCommentDeletion))
+                        .contentType(MediaType.APPLICATION_JSON);
+        MvcResult result = mockMvc.perform(request).andReturn();
+
+        assertEquals(om.writeValueAsString(ClientMessageUtil.DELETION_FAILED),
+                        result.getResponse().getContentAsString());
+        }
+
+        @Test
+        @Order(10)
+        @DisplayName("10. Attempt to delete comment - passed")
+        public void deleteComment_Passed() throws Exception {
+
+            //CommentService method needs to be merged in.
+            when(commentService.delete(mockCommentDeletion)).thenReturn(true);
+
+            RequestBuilder request = MockMvcRequestBuilders
+                            .delete("/api/v1/comment?id=3")
+                            .accept(MediaType.APPLICATION_JSON_VALUE)
+                            .content(om.writeValueAsString(mockCommentDeletion))
+                            .contentType(MediaType.APPLICATION_JSON);
+            MvcResult result = mockMvc.perform(request).andReturn();
+
+            assertEquals(om.writeValueAsString(ClientMessageUtil.DELETION_FAILED),
+                            result.getResponse().getContentAsString());
+            }
 }
