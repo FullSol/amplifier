@@ -30,13 +30,13 @@ import io.swagger.annotations.ApiOperation;
 @Api(value = "ImpPostController", description = "Controller for the Image Post")
 public class ImgPostController {
 
-  @Autowired
-  private ImgPostService imgPostService;
+    @Autowired
+    private ImgPostService imgPostService;
 
     @ApiOperation(value = "Find User Social Media by id number", notes = "Provide an id to lookup a specific user social media from the API", response = ImgPost.class)
     @GetMapping(path = "/user/img-post?id={id}")
     public @ResponseBody ImgPost getById(
-        @RequestParam(name = "id") int id) {
+            @RequestParam(name = "id") int id) {
         return imgPostService.getById(id);
     }
 

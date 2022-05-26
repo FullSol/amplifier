@@ -13,5 +13,7 @@ public interface UserService {
 
     public boolean edit(User user);
 
-    public boolean remove(User user);
+    public boolean remove(int id);
+
+    public User login(String username, String password);
 }

@@ -40,14 +40,10 @@ public class SocialMediaControllerTest {
 
   @BeforeAll
   public void setUp() {
-    sm1 = new SocialMedia("Twitter", "https://twitter.com/myprofile");
-    sm2 = new SocialMedia("Facebook", "https://facebook.com/myprofile");
-    sm3 = new SocialMedia("Twitter", "https://instagram.com/myprofile");
+    sm1 = new SocialMedia("https://twitter.com/myprofile", "https://facebook.com/myprofile", "https://instagram.com/myprofile");
 
     dummyDB = new ArrayList<SocialMedia>();
     dummyDB.add(sm1);
-    dummyDB.add(sm2);
-    dummyDB.add(sm3);
   }
 
   @Test
@@ -56,7 +52,7 @@ public class SocialMediaControllerTest {
   public void createSocialMedia() throws Exception {
     mockMvc.perform( MockMvcRequestBuilders
       .post("/socialmedia")
-      .content(asJsonString(new SocialMedia("Twitter", "https://twitter.com/myprofile")))
+      .content(asJsonString(new SocialMedia("https://twitter.com/myprofile", "https://facebook.com/myprofile", "https://instagram.com/myprofile")))
       .contentType(MediaType.APPLICATION_JSON)
       .accept(MediaType.APPLICATION_JSON))
       .andExpect(status().isCreated())
@@ -89,7 +85,7 @@ public class SocialMediaControllerTest {
   public void updateSocialMedia() throws Exception {
      mockMvc.perform( MockMvcRequestBuilders
       .put("/socialmedia/{id}", 2)
-      .content(asJsonString(new SocialMedia(2, "Facebook", "https://facebook.com/myprofile")))
+      .content(asJsonString(new SocialMedia(2, "https://facebook.com/myprofile", "https://facebook.com/myprofile", "https://instagram.com/myprofile")))
       .contentType(MediaType.APPLICATION_JSON)
       .accept(MediaType.APPLICATION_JSON))
       .andExpect(status().isOk())

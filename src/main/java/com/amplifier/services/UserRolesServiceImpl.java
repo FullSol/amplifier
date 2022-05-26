@@ -31,7 +31,7 @@ public class UserRolesServiceImpl implements UserRolesService {
     }
 
     @Override
-    public boolean remove(UserRole role) {
+    public boolean remove(int Id) {
         // TODO Auto-generated method stub
         return false;
     }
