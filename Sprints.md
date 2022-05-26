@@ -32,6 +32,8 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Meeting 3: 5/24/22](#sprint-3-52422)
     - [Meeting 4: 5/25/22](#meeting-4-52522)
     - [Meeting 5: 5/26/22](#meeting-5-052622)
+5. [Link to Front-End Draft](https://xd.adobe.com/view/443d6501-5900-4ff2-80ec-d06c965809e9-116e/
+)
 
 
 <br>
