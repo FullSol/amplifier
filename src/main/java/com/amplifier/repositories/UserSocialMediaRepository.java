@@ -6,7 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserSocialMediaRepository extends JpaRepository<UserSocialMedia, Integer>{
 
-    UserSocialMedia findById(int userId, int mediaId);
+    //UserSocialMedia findById(int userId, int mediaId);
+    UserSocialMedia findById(int id);
 
     boolean create(UserSocialMedia userSocialMedia);
 

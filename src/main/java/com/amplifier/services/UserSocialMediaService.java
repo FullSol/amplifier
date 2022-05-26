@@ -9,7 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface UserSocialMediaService {
 
-    UserSocialMedia getById(int userId, int mediaId);
+    //UserSocialMedia getById(int userId, int mediaId);
+    UserSocialMedia getById(int mediaId);
 
     boolean add(UserSocialMedia userSocialMedia);
 
