@@ -42,30 +42,30 @@ public class CharacterController {
     @PostMapping("/character")
     @ApiOperation(value = "Create new character entity")
     public @ResponseBody Character createCharacter(@RequestBody Character character) {
-        return characterService.createCharacter(character) ? "CREATION_SUCCESSFUL" : "CREATION_FAILED";
+        return characterService.createCharacter(character) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     //RUD by ID
 
     @ApiOperation(value = "Find character by id number", notes = "Provide an id to lookup a specific character from the API", response = Character.class)
-    @GetMapping(path = "/character/{id}")
+    @GetMapping(path = "/character?id={Id}")
     public @ResponseBody Character getCharacterById(@RequestParam(value = "id", name = "id") int id) {
         // System.out.println("TEST: " + characterService.getCharacterById(id));
         return characterService.getCharacterById(id);
     }
 
-    @PutMapping("/character/{Id}")
+    @PutMapping("/character?id={Id}")
     @ApiOperation(value = "Update character entity by character Id")
     public @ResponseBody Character updateCharacter(@RequestBody int Id) {
-        return characterService.updateCharacterById(Id) ? "UPDATE_SUCCESSFUL" : "UPDATE_FAILED";
+        return characterService.updateCharacterById(Id) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
    
 
-    @DeleteMapping("/character/{Id}")
+    @DeleteMapping("/character?id={Id}")
     @ApiOperation(value = "Delete character entity by character Id")
     public @ResponseBody Character deleteCharacter(@RequestBody int Id) {
-        return characterService.deleteCharacterById(Id) ? "DELETE_SUCCESSFUL" : "DELETE_FAILED";
+        return characterService.deleteCharacterById(Id) ? DELETE_SUCCESSFUL : DELETE_FAILED;
     }
 
    
