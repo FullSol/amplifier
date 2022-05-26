@@ -38,8 +38,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void remove(int id) {
-        // TODO Auto-generated method stub
+    public boolean remove(int id) {
+        return false;
     }
 
     @Override
