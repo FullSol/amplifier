@@ -17,23 +17,23 @@ public class ImgPostServiceImpl implements ImgPostService {
     private ImgPostRepository imgPostRepository;
 
     @Override
-    public List<ImgPost> getAllImgPosts() {
+    public List<ImgPost> getAll() {
         return imgPostRepository.findAll();
     }
 
     @Override
-    public boolean createImgPost(ImgPost imgPost) {
+    public boolean add(ImgPost imgPost) {
         int pk = imgPostRepository.save(imgPost).getId();
         return (pk > 0) ? true : false;
     }
 
     @Override
-    public ImgPost getImgPostById(int id) {
+    public ImgPost getById(int id) {
         return imgPostRepository.findById(id);
     }
 
     @Override
-    public boolean updateImgPost(ImgPost imgPost) {
+    public boolean edit(ImgPost imgPost) {
         ImgPost target = imgPostRepository.findById(imgPost.getId());
         target.setImgLocation(imgPost.getImgLocation());
         target.setAuthor(imgPost.getAuthor());
@@ -41,7 +41,7 @@ public class ImgPostServiceImpl implements ImgPostService {
     }
 
     @Override
-    public boolean deleteImgPostById(int id) {
+    public boolean remove(int id) {
         return imgPostRepository.deleteById(id);
     }
 
