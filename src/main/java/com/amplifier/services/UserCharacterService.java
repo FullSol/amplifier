@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public interface CharacterService {
+public interface UserCharacterService {
     public boolean create(UserCharacter character);
 
     public UserCharacter getById(int id);

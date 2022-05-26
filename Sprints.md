@@ -30,6 +30,7 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Meeting 1: 5/20/22](#sprint-1-52022)
     - [Meeting 2: 5/23/22](#sprint-2-52322)
     - [Meeting 3: 5/24/22](#sprint-3-52422)
+    - [Meeting 4: 5/25/22](#meeting-5-52522)
 
 
 <br>
@@ -490,60 +491,70 @@ _Issues_
 <br>
 <hr>
 
-### Sprint #: XX/XX/XXXX
+### Meeting #5: 5/25/22
+**Calvin's Summary**
+- The goals of our current sprint is to finish our backend and testing by tomorrow. Our meeting's focus was checking in with the team to gauge where each of us were in terms of progress, and clarifying project naming conventions as well as any other misunderstandings or confusion (Ex: Service layer = Service + ServiceImpl; @Repostory annotaton takes care of RepoImpl for us)
+- As a team yesterday, we set and agreed on a basic project timeline. Again, we want to have backend and testing finished by tomorrow, and we want to fix any backend merging conflicts or bugs by (ideally) the end of this week
+- We also discussed the reqs for our front end... We will be collaborating on what we want it to look like tomorrow...
 
-1. **Progress Check** 
-    - Joachim: 
-        - [ ]  
-        - [ ]  
-    - Patrick: 
-        - [ ]  
-        - [ ]  
+1. **Progress Check**: Where are we in regards to completing our Milestone for tomorrow by tomorrow?
+    - Joachim: "real good"
+        - [ ] pushed up CharacterServiceTest
+    - Patrick:
+        - [ ] Comment Controller
+        - [ ] UserRoleService
+        - [ ] UserCharacter model - add flesh and bones to skeleton
+        - [ ] UserService - add business logic
     - Julian:
-        - [ ]  
-        - [ ]  
+        - [ ] UserCharacterTesting
+        - [ ] SocialMedia
     - Calvin:
-        - [ ]  
-        - [ ]  
+        - [ ] Confident
     - Levi:
-        - [ ]  
-        - [ ]  
+        - [ ] good~~
     <br> </br>
 
 2. **Any Issues?** 
-    - [ ]  
+    - [ ] Issue Service = Service && ServiceImpl (Levi will update issues so there is not misunderstanding)
+    - [ ] UserSocialMedia
+        - paths:
+            - socialmedia.facebook.
+            - socialmedia.instagram.handle
+        - CREATE = Adding their social media information (add link)
+        - UPDATE = Editing a user's social media info
+        - we ourselves may not use all of the CRUD operations for the webiste, but others who use our API might! More will come in the future
+
  <br> </br>
 
 3. **Agenda**
-    - [ ] Going over backend logic -testing, order of layers, etc.
-    - [ ]  
+    - [x] Bug - Repo:Service
+    - [x] Bug - Only need Repo layer (not Repo AND RepoImpl). Your Repo = RepoImpl
+        - the annotation takes care of the implementation for you, so you don't need to create the implementation yourself
+    - [ ] Front-end Design discussion (ex: Reddit design?) >stick to
+        - connecting Blizzard rankings
+        - what pages?
+            - login page
+                - login form
+            - logout page
+            - rankings page
+            - user profile
+            - registration page
+                - registration form
+            - image posts page
+            - add comments form
+            - form to add character info
+
  <br> </br>
 
-4. **Team Milestones/Tasks** 
+4. **Team Milestones/Tasks**
 - _Milestones:_
-    - [ ] 
-    - [ ] 
+    - [ ] Consider Front-End Design to have a discussion by next meeting
+    - [ ] Milestone 3
  <br> </br>
-- _Issues_
-    - Joachim: 
-        - [ ] 
-        - [ ]
-    - Patrick: 
-        - [ ] 
-        - [ ]
-    - Julian: 
-        - [ ] 
-        - [ ] 
-    - Calvin: 
-        - [ ] 
-        - [ ] 
-    - Levi: 
-        - [ ] 
-        - [ ] 
-- _Reminders: Topics to understand and implement:_
-    - [ ] 
-    - [ ] 
-    - [ ] 
+- _Issues_: already assigned
+    - Levi:
+        - [ ] Compile all updates into one section for easy reference
+
  <br> </br>
 
 
@@ -552,3 +563,6 @@ _Issues_
 <br>
 <hr>
 
+
+### Rules and Updates
+1. 
