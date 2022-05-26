@@ -1,6 +1,5 @@
 package com.amplifier.controllers;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -45,12 +44,12 @@ public class RolesControllerIntTest {
     private static List<UserRole> mockDb;
 
     public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
-                        MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
-    
+            MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+
     ObjectMapper om = new ObjectMapper();
 
     @Autowired
-        UserRolesController userRolesController;
+    UserRolesController userRolesController;
 
     @Autowired
     private MockMvc mockMvc;
@@ -59,48 +58,49 @@ public class RolesControllerIntTest {
     UserRolesService userRolesService;
 
     @BeforeAll
-         static void setUpBeforeClass() throws Exception {
-            mockRole1 = new UserRole(1, "User");
-            mockRole2 = new UserRole(2, "Admin");
+    static void setUpBeforeClass() throws Exception {
+        mockRole1 = new UserRole(1, "User");
+        mockRole2 = new UserRole(2, "Admin");
 
-            mockRoleCreation = new UserRole(3, "Moderator");
+        mockRoleCreation = new UserRole(3, "Moderator");
 
-           // mockRoleUpdation = mockRoleCreation;
-            //mockRoleUpdation.setRoleName("Johnny");
-            //mockRoleModification.setEmail("Johnny@gmail.com");
-            // mockRoleDeletion = new UserRole();
-            mockDb = new ArrayList<>();
-            mockDb.add(mockRole1);
-            mockDb.add(mockRole2);
+        // mockRoleUpdation = mockRoleCreation;
+        // mockRoleUpdation.setRoleName("Johnny");
+        // mockRoleModification.setEmail("Johnny@gmail.com");
+        // mockRoleDeletion = new UserRole();
+        mockDb = new ArrayList<>();
+        mockDb.add(mockRole1);
+        mockDb.add(mockRole2);
     }
+
     @Test
-        @Order(1)
-        @DisplayName("1. AppContext")
-        public void contextLoads() {
-                assertThat(userRolesController).isNotNull();
-        }
+    @Order(1)
+    @DisplayName("1. AppContext")
+    public void contextLoads() {
+        assertThat(userRolesController).isNotNull();
+    }
+
     @Test
     @Order(2)
-        @DisplayName("2. Get all user roles.")
-        public void getUserRoless_ShouldReturnUserRoless() throws Exception {
-                //
-                when(userRolesService.getAllUserRoles()).thenReturn(mockDb);
+    @DisplayName("2. Get all user roles.")
+    public void getUserRoless_ShouldReturnUserRoless() throws Exception {
+        //
+        when(userRolesService.getAll()).thenReturn(mockDb);
 
-                //
-                RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/users");
-                MvcResult result = mockMvc.perform(request).andReturn();
+        //
+        RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/users");
+        MvcResult result = mockMvc.perform(request).andReturn();
 
-                //
-                assertEquals(om.writeValueAsString(mockDb), result.getResponse().getContentAsString());
-        }
-    //test for find user role by id - pass 
-    //test for find user role by id - fail
-    //test for creating new user role - pass
-    //test for creating new user role -fail
-    //test for updating user role - pass
-    //test for updating user role - fail
-    //test for delete user-pass
-    //test for delete user-fail
-
+        //
+        assertEquals(om.writeValueAsString(mockDb), result.getResponse().getContentAsString());
+    }
+    // test for find user role by id - pass
+    // test for find user role by id - fail
+    // test for creating new user role - pass
+    // test for creating new user role -fail
+    // test for updating user role - pass
+    // test for updating user role - fail
+    // test for delete user-pass
+    // test for delete user-fail
 
 }
