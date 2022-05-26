@@ -24,7 +24,7 @@ public class UserCharacter {
     }
 
     // Delete this at implementation
-    public String getReam() {
+    public String getRealm() {
         return this.realm;
     }
 }

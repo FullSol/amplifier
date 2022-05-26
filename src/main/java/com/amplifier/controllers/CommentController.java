@@ -43,7 +43,6 @@ public class CommentController {
         return commentService.getById(id);
     }
     
-    
     @GetMapping("/comments")
     @ApiOperation(value = "Find all comments", notes = "Pulling all comments from the API", response = Comment.class)
     public @ResponseBody List<Comment> getAll() {
@@ -67,8 +66,5 @@ public class CommentController {
     public @ResponseBody ClientMessage deleteComment(@RequestBody Comment comment) {
         return commentService.remove(comment) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }    
-    
-    
-    
 
 }
