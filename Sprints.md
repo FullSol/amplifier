@@ -30,7 +30,8 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Meeting 1: 5/20/22](#sprint-1-52022)
     - [Meeting 2: 5/23/22](#sprint-2-52322)
     - [Meeting 3: 5/24/22](#sprint-3-52422)
-    - [Meeting 4: 5/25/22](#meeting-5-52522)
+    - [Meeting 4: 5/25/22](#meeting-4-52522)
+    - [Meeting 5: 5/26/22](#meeting-5-052622)
 
 
 <br>
@@ -491,7 +492,7 @@ _Issues_
 <br>
 <hr>
 
-### Meeting #5: 5/25/22
+### Meeting #4: 5/25/22
 **Calvin's Summary**
 - The goals of our current sprint is to finish our backend and testing by tomorrow. Our meeting's focus was checking in with the team to gauge where each of us were in terms of progress, and clarifying project naming conventions as well as any other misunderstandings or confusion (Ex: Service layer = Service + ServiceImpl; @Repostory annotaton takes care of RepoImpl for us)
 - As a team yesterday, we set and agreed on a basic project timeline. Again, we want to have backend and testing finished by tomorrow, and we want to fix any backend merging conflicts or bugs by (ideally) the end of this week
@@ -563,6 +564,69 @@ _Issues_
 <br>
 <hr>
 
+### Meeting 5: 05/26/22
+
+1. **Progress Check**: What did we get done? What is still pending? When do you think you can get it done?
+    - Joachim: 
+        - [ ]  
+        - [ ]  
+    - Patrick: 
+        - [ ]  
+        - [ ]  
+    - Julian:
+        - [ ]  
+        - [ ]  
+    - Calvin:
+        - [ ]  
+        - [ ]  
+    - Levi:
+        - [ ]  
+        - [ ]  
+    <br> </br>
+
+2. **Any Issues?** 
+    - [ ]  
+ <br> </br>
+
+3. **Agenda**
+    - [ ] on to debugging and front end...
+    - [ ] Website design
+    - [ ] While reviewing, whomever is reviewing will make comments on your code and will either approve your code or request changes. You will receive an email if changes are requested. Will we all be able to make those changes by tomorrow?
+    - [ ] 
+ <br> </br>
+
+4. **Team Milestones/Tasks**
+- _Milestones:_
+    - [ ] 
+    - [ ] 
+ <br> </br>
+- _Issues_
+    - Joachim: 
+        - [ ] 
+        - [ ]
+    - Patrick: 
+        - [ ] 
+        - [ ]
+    - Julian: 
+        - [ ] 
+        - [ ] 
+    - Calvin: 
+        - [ ] 
+        - [ ] 
+    - Levi: 
+        - [ ] CI/CD implementation
+        - [ ] 
+- _Reminders: Topics to understand and implement:_
+    - [ ] Portfolio due by tomorrow
+    - [ ] HackerRank Sorting
+    - [ ] 
+ <br> </br>
+
+
+[Return to: _Table of Contents_](#table-of-contents)
+
+<br>
+<hr>
 
 ### Rules and Updates
 1. 
