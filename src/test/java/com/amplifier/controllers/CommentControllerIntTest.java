@@ -215,22 +215,22 @@ public class CommentControllerIntTest {
                         result.getResponse().getContentAsString());
         }
 
-        @Test
-        @Order(10)
-        @DisplayName("10. Attempt to delete comment - passed")
-        public void deleteComment_Passed() throws Exception {
+    @Test
+    @Order(10)
+    @DisplayName("10. Attempt to delete comment - passed")
+    public void deleteComment_Passed() throws Exception {
 
-            //CommentService method needs to be merged in.
-            when(commentService.delete(mockCommentDeletion)).thenReturn(true);
+        //CommentService method needs to be merged in.
+        when(commentService.delete(mockCommentDeletion)).thenReturn(true);
 
-            RequestBuilder request = MockMvcRequestBuilders
-                            .delete("/api/v1/comment?id=3")
-                            .accept(MediaType.APPLICATION_JSON_VALUE)
-                            .content(om.writeValueAsString(mockCommentDeletion))
-                            .contentType(MediaType.APPLICATION_JSON);
-            MvcResult result = mockMvc.perform(request).andReturn();
+        RequestBuilder request = MockMvcRequestBuilders
+                        .delete("/api/v1/comment?id=3")
+                        .accept(MediaType.APPLICATION_JSON_VALUE)
+                        .content(om.writeValueAsString(mockCommentDeletion))
+                        .contentType(MediaType.APPLICATION_JSON);
+        MvcResult result = mockMvc.perform(request).andReturn();
 
-            assertEquals(om.writeValueAsString(ClientMessageUtil.DELETION_FAILED),
-                            result.getResponse().getContentAsString());
-            }
+        assertEquals(om.writeValueAsString(ClientMessageUtil.DELETION_FAILED),
+                        result.getResponse().getContentAsString());
+        }
 }
