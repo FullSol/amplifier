@@ -5,6 +5,7 @@ import java.util.List;
 import com.amplifier.models.ImgPost;
 
 public interface ImgPostService {
+	public List<ImgPost> getAllImgPosts();
 
 	public List<ImgPost> getAll();
 
@@ -16,4 +17,5 @@ public interface ImgPostService {
 
 	public boolean remove(int Id);
 
+	public boolean deleteImgPostById(int id);
 }
