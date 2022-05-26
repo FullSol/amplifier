@@ -11,11 +11,11 @@ public interface ImgPostService {
 
 	public boolean add(ImgPost imgPost);
 
-	public ImgPost getById(int Id);
+	public ImgPost getById(int id);
 
 	public boolean edit(ImgPost imgPost);
 
-	public boolean remove(int Id);
+	public boolean remove(int id);
 
 	public boolean deleteImgPostById(int id);
 }

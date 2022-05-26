@@ -26,6 +26,6 @@ public interface CharacterRepository extends JpaRepository<UserCharacter, Intege
     public boolean update(String realm, String name, int id);
 
     @Query(value = "DELETE * FROM user_character WHERE id=?1", nativeQuery = true)
-    public boolean deleteById(int id);
+    public boolean delete(int id);
 
 }
