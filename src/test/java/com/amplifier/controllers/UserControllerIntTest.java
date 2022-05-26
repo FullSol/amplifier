@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.nio.charset.Charset;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,11 +71,16 @@ public class UserControllerIntTest {
 
         @BeforeAll
         static void setUpBeforeClass() throws Exception {
-                System.out.println("setUpBeforeClass() :: building test objects...");
-                mockUser1 = new User();
-                mockUser2 = new User();
+                LocalDate timestamp = LocalDate.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+                String joinDate = formatter.format(timestamp);
 
-                mockUserCreation = new User();
+                mockUser1 = new User("FullSol", "fullsol@gmail.com", "password", "Calvin", "Raines",
+                                LocalDate.now());
+                mockUser2 = new User("L3viathon", "L3viathon@gmail.com", "password", "Levi", "Choi", LocalDate.now());
+
+                mockUserCreation = new User("pyaeger", "pyaeger@gmail.com", "password", "Partrick", "Yaeger",
+                                LocalDate.now());
 
                 mockUserModification = mockUserCreation;
                 mockUserModification.setFirstName("Johnny");
@@ -91,6 +98,7 @@ public class UserControllerIntTest {
         @DisplayName("1. AppContext")
         public void contextLoads() {
                 assertThat(userController).isNotNull();
+                assertThat(userService).isNotNull();
         }
 
         @Test

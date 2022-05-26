@@ -12,12 +12,58 @@ info:
     url: http://where-ever-mit-has-its-licese.com
   version: 1.0.0
 servers:
-  - url: http://localhost:8080
-    description: Dev Server
-  - url: http://localhost:8081
-    description: Production Server
-
+  - url: /api/v1
+tags:
+  - name: Users
+    description: Everything about the registered Users
+    externalDocs:
+      description: Find out more
+      url: 'https://github.com/FullSol/amplifier'
+  - name: Characters
+    description: Access to User Characers
+    externalDocs:
+      description: Find out more
+      url: 'https://github.com/FullSol/amplifier'
+  - name: Img-Posts
+    description: Screenshots taken by the Users
+    externalDocs:
+      description: Find out more
+      url: 'https://github.com/FullSol/amplifier'
+  - name: Comments
+    description: The Comments Users share about Img-Posts
+    externalDocs:
+      description: Find out more
+      url: 'https://github.com/FullSol/amplifier'
+  - name: Social Media
+    description: Users Social Media profiles
+    externalDocs:
+      description: Find out more
+      url: 'https://github.com/FullSol/amplifier'
+  - name: UserRoles
+    description: Roles granted to the Users
+    externalDocs:
+      description: Find out more
+      url: 'https://github.com/FullSol/amplifier'
 paths:
+  /user:
+    description: Endpoint to add new user
+    post:
+      description: Add a new User
+      tags:
+        - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+      responses:
+        '201':
+          description: User Successfully Added!
+        '422':
+            description: Unable to process data provided.
+        default:
+          description: Unexpected error.
+
   #http://amplifier.com/users?bodyLimit=1&pageLimit=1
   /users:
     summary: Returns a list of users
@@ -58,22 +104,81 @@ paths:
         default:
           description: Unexpected error.
 
-  /user:
-    description: Endpoint to add new user
-    post:
-      description: Add a new User
+  /user/login:
+    summary: Returns a list of users
+    description: User Resources
+    get:
+      description: Operation to fetch all users
       tags:
-        - User
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/user'
+        - Users
+      parameters:
+        - name: bodyLimit
+          in: query
+          description: The amount of users returned
+          schema:
+            type: integer
+            minimum: 10
+            maximum: 100
+            example: 15
+        - name: pageLimit
+          in: query
+          description: The pages to return user info
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 10
+            example: 5
       responses:
-        '201':
-          description: User Successfully Added!
-        '422':
-            description: Unable to process data provided.
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/users'
+        '400':
+          description: The specified user ID is invalid (not a number).
+        '404':
+          description: A user with the specified ID was not found.
+        default:
+          description: Unexpected error.
+
+  /user/logout:
+    summary: Returns a list of users
+    description: User Resources
+    get:
+      description: Operation to fetch all users
+      tags:
+        - Users
+      parameters:
+        - name: bodyLimit
+          in: query
+          description: The amount of users returned
+          schema:
+            type: integer
+            minimum: 10
+            maximum: 100
+            example: 15
+        - name: pageLimit
+          in: query
+          description: The pages to return user info
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 10
+            example: 5
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/users'
+        '400':
+          description: The specified user ID is invalid (not a number).
+        '404':
+          description: A user with the specified ID was not found.
         default:
           description: Unexpected error.
 
@@ -81,7 +186,7 @@ paths:
     description: Get User based on Path Parameter
     get:
       tags:
-        - User
+        - Users
       parameters:
         - in: path
           name: id
@@ -101,7 +206,7 @@ paths:
           description: Unexpected error.
     patch:
       tags:
-        - User
+        - Users
       parameters:
         - in: path
           name: id
@@ -120,7 +225,7 @@ paths:
           description: Unexpected error.
     delete:
       tags:
-        - User
+        - Users
       parameters:
         - in: path
           name: id
@@ -143,7 +248,7 @@ paths:
     # List all characters
     get:
       tags:
-        - characters
+        - Characters
       description: Operation to fetch all users
       responses:
         '200':
@@ -159,7 +264,7 @@ paths:
     # Create a new character
     post:
       tags:
-        - Character
+        - Characters
       description: Create a new character
       responses:
         '200':
@@ -170,7 +275,7 @@ paths:
     # Clicked into a specific character to see comments
     get:
       tags:
-        - Character
+        - Characters
       description: Get img character by id (along with comments)
       parameters:
         - in: path
@@ -185,7 +290,7 @@ paths:
     patch:
       description: Update character by given id
       tags:
-        - Character
+        - Characters
       parameters:
         - in: path
           name: id
@@ -204,7 +309,7 @@ paths:
     delete:
       description: Delete character by given id
       tags:
-        - Character
+        - Characters
       parameters:
         - in: path
           name: id
@@ -220,7 +325,7 @@ paths:
     # List all img-posts
     get:
       tags:
-        - Posts
+        - Img-Posts
       description: Operation to fetch all users
       parameters:
         - name: bodyLimit
@@ -253,7 +358,7 @@ paths:
     # Create a new img-post
     post:
       tags:
-        - Post
+        - Img-Posts
       description: Create a new img-post
       responses:
         '200':
@@ -264,7 +369,7 @@ paths:
     # Clicked into a specific img-post to see comments
     get:
       tags:
-        - Post
+        - Img-Posts
       description: Get img post by id (along with comments)
       parameters:
         - in: path
@@ -279,7 +384,7 @@ paths:
     patch:
       description: Update post by given id
       tags:
-        - Post
+        - Img-Posts
       parameters:
         - in: path
           name: id
@@ -298,7 +403,7 @@ paths:
     delete:
       description: Delete post by given id
       tags:
-        - Post
+        - Img-Posts
       parameters:
         - in: path
           name: id
@@ -339,7 +444,7 @@ paths:
     post:
       description: Add a new Comment
       tags:
-        - Comment
+        - Comments
       parameters:
         - in: path
           name: post_id
@@ -360,7 +465,7 @@ paths:
     # A user is editing a comment on an img-post
     get:
       tags:
-        - Comment
+        - Comments
       description: Get img post by id (along with comments)
       parameters:
         - in: path
@@ -379,7 +484,7 @@ paths:
     patch:
       description: Edit a Comment
       tags:
-        - Comment
+        - Comments
       parameters:
         - in: path
           name: post_id
@@ -402,7 +507,7 @@ paths:
     delete:
       description: Delete comment by given id
       tags:
-        - Comment
+        - Comments
       parameters:
         - in: path
           name: post_id
@@ -420,14 +525,17 @@ paths:
         '201':
           description: Successful deletion of post
 
-  /user/{user_id}/social-media:
-    description: Endpoint to add social media for user
+
+
+  #/user/{user_id}/social-media{media_id}
+  /user/social-media:
+  # /user?id=669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4/social-media?id=1:
     post:
       description: Add social media
       tags:
         - Social Media
       parameters:
-        - in: path
+        - in: query
           name: user_id
           required: true
           schema:
@@ -448,21 +556,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  
-  /user/{user_id}/social-media/{media_id}:
     get:
       description: Get social media by id
       tags:
         - Social Media
       parameters:
-        - in: path
+        - in: query
           name: user_id
           required: true
           schema:
             type: integer
             format: int32
             example: 1
-        - in: path
+        - in: query
           name: media_id
           required: true
           schema:
@@ -480,14 +586,14 @@ paths:
       tags:
         - Social Media
       parameters:
-        - in: path
+        - in: query
           name: user_id
           required: true
           schema:
             type: integer
             format: int32
             example: 1
-        - in: path
+        - in: query
           name: media_id
           required: true
           schema:
@@ -505,14 +611,14 @@ paths:
       tags:
         - Social Media
       parameters:
-        - in: path
+        - in: query
           name: user_id
           required: true
           schema:
             type: integer
             format: int32
             example: 1
-        - in: path
+        - in: query
           name: media_id
           required: true
           schema:
@@ -526,11 +632,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/social-media'
+  
   /roles:
     description: Get all user roles from the db.
     get:
       tags:
-        - Roles
+        - UserRoles
       description: Operation to fetch all user roles
       responses:
         '200':
@@ -552,7 +659,7 @@ paths:
     post:
         description: Add new role
         tags:
-          - Role
+          - UserRoles
         requestBody:
             content:
                 application/json:
@@ -571,7 +678,7 @@ paths:
     description: Get role based on Path Parameter
     get:
       tags:
-        - Role
+        - UserRoles
       parameters:
         - in: path
           name: id
@@ -589,7 +696,7 @@ paths:
                 $ref: '#/components/schemas/role'
     patch:
       tags:
-        - Role
+        - UserRoles
       parameters:
         - in: path
           name: id
@@ -607,7 +714,7 @@ paths:
                 $ref: '#/components/schemas/role'
     delete:
       tags:
-        - Role
+        - UserRoles
       parameters:
         - in: path
           name: id
