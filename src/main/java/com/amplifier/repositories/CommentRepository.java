@@ -1,15 +1,15 @@
 package com.amplifier.repositories;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.amplifier.models.Comment;
 
 public interface CommentRepository {
 
-    public ArrayList<Comment> findAllComments();
+    public ArrayList<Comment> findAll();
 
-    public boolean createComment(Comment comment);
+    public boolean create(Comment comment);
 
     public Comment findCommentById(int Id);
 
@@ -19,14 +19,12 @@ public interface CommentRepository {
 
     public Comment findCommentByImagePostId(int img_post_id);
 
-    public Comment findCommentByCreationDate(Date comment_date);
+    public Comment findCommentByCreationDate(LocalDate comment_date);
 
-    public ArrayList<Comment> listAllCommentsByCreationDate(Date comment_date);
+    public ArrayList<Comment> listAllCommentsByCreationDate(LocalDate comment_date);
 
-    public boolean deleteCommentById(int Id);
+    public boolean deleteCommentById(int id);
 
-    public boolean updateCommentById(int Id);
-
-
+    public boolean updateCommentById(int id);
 
 }
