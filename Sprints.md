@@ -29,7 +29,8 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Setting things up: 5/19/22](#51922-setting-things-up)
     - [Meeting 1: 5/20/22](#sprint-1-52022)
     - [Meeting 2: 5/23/22](#sprint-2-52322)
-    - [Meeting 3: 5//24/22](#sprint-3-xxxxxxxx)
+    - [Meeting 3: 5/24/22](#sprint-3-52422)
+    - [Meeting 4: 5/25/22](#meeting-5-52522)
 
 
 <br>
@@ -47,13 +48,13 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
 | 5/23| Sprint 2 | TDD for Service and Controller layer |
 | 5/24 |  | |
 | 5/25|  | |
-| 5/26| Sprint 3 | Finish backend |
-| 5/27|  | |
+| 5/26| Sprint 3 | Finish backend + tests |
+| 5/27| | Fix buggers; Start frontend |
 | 5/28 | | |
-| 5/29 | | |
+| 5/29 | Sprint 4 | Bugs fixed |
 | 5/30 |      | |
 | 5/31 |  | _(**Ideally**) P2 Coding Finalized)_ |
-| 6/1|  |  |
+| 6/1| Sprint 5 | Front end finished |
 | 6/2| _Team Amplifier Presentation Practice_ | (_Idea: Talk about Apiary_) |
 | 6/3 | _(**D-DAY**) P2 DEADLINE-Presentation Day_  |  |
 
@@ -419,64 +420,141 @@ _Issues_
 
 ### Sprint 3: 5/24/22
 
-**Summary for Calvin (UNFINISHED):**
-- The focus of our sprint was TDD, and we divided up tasks in team to write integration tests for the service and controller layers of each of our tables.
-- Our next milestone is to complete our backend (functionality) and add more to our tests so we can achieve the goal of 80% coverage.
+**Summary for Calvin:**
+- Levi updated README.md. ; Our milestone for our most recent spring was TDD, and we divided up tests in our team to write integration tests for the service and controller layers of each of our tables. This is still in progress. We had some confusion involving writing the bare minimum of code needed (skeleton) for our tests but also not stepping on any other assigned tasks (for the backend). This was clarified in today's stand up meeting.
+- Our next milestone is to complete our backend (functionality). Issues to split up tasks have already been created and several members have alrady jumped the gun and finished their issues. Now that that we clarified any confusion, we will continue to do more more testing so we can achieve the goal of 80% coverage. We suspect that merging all of our branches together may lead to some conflict, but we will resolve those together as a team. 
+- Issue to bring up to Azhya: 
+    - [Issues being used for tracking current work](https://github.com/FullSol/amplifier/pull/78)
+    - Service testing with annotations
 
 1. **Progress Check** 
     - Joachim: 
-        - [ ] Social Media Controller Test
-        - [ ] User Service Test
+        - [x] Social Media Controller Test
+        - [ ] User Service Test - in progress
         - [ ] Character Service Test
+        - [x] Character controller
+        - [x] ImgPost Service + Impl
+        - [x] Comments Repo + impl
     - Patrick: 
-        - [ ] ImgPost Controller Test
-        - [ ] UserRole Service Test
+        - [x] ImgPost Controller Test - in progress
+        - [ ] UserRole Service Test - in progress
+            - created draft pull request
     - Julian:
-        - [ ] Character Controller Test
-        - [ ] Social Media Service Test
+        - [ ] Character Controller Test - in progress
+        - [ ] Social Media Service Test - in progress
     - Calvin:
-        - [ ] ImgPost Service Test
-        - [ ] UserController Test
+        - [ ] ImgPost Service Test - in progress
+        - [x] UserController Test
+        - [ ] Reviewing code
+        - [x] ImgPost Model
+        - [x] User Model
     - Levi:
-        - [ ] Comment Controller Test
-        - [ ] UserRole Controller Test
-        - [ ] Comment Service Test
+        - [x] Comment Controller Test - in progress
+        - [x] UserRole Controller Test - in progress
+        - [ ] Comment Service Test - in progress
+        - [x] Updated README.md
+        - [x] Updated Calvin's pull request info in Branching doc.
+        - [x] Character repo
+
     <br> </br>
 
-2. **Any Issues?** 
-    - [ ] Patrick/Julian -Postman setup? 
+2. **Any Issues?**
+    - [ ] Patrick/Julian - Postman setup?
+        - create it, add Calvin, and Calvin will copy shtuffffff
  <br> </br>
 
 3. **Agenda**
     - [ ] Pull requests to show progress
-    - [ ]  
+    - [ ]
  <br> </br>
 
-4. **Team Milestones/Tasks** 
+4. **Team Milestones/Tasks**
 - _Milestones:_
-    - [ ] Functionality first, testing after
-    - [ ] 
+    - [ ] Functionality first, testing after.
+    - [ ]
  <br> </br>
 - _Issues_
-    - Joachim: 
-        - [ ] 
-        - [ ]
-    - Patrick: 
-        - [ ] 
-        - [ ]
-    - Julian: 
-        - [ ] 
-        - [ ] 
-    - Calvin: 
-        - [ ] 
-        - [ ] 
-    - Levi: 
-        - [ ] 
-        - [ ] 
+    - Calvin:
+        - [ ] URI Changes
+        - [ ] UserController LocalDate & JSON 
+    - Levi:
+        - [ ] implementing CI/CD pipeline
+
 - _Reminders: Topics to understand and implement:_
-    - [ ] 
-    - [ ] 
-    - [ ] 
+    - [ ] Hackerrank Greedy Florist
+
+ <br> </br>
+
+
+[Return to: _Table of Contents_](#table-of-contents)
+
+<br>
+<hr>
+
+### Meeting #5: 5/25/22
+**Calvin's Summary**
+- The goals of our current sprint is to finish our backend and testing by tomorrow. Our meeting's focus was checking in with the team to gauge where each of us were in terms of progress, and clarifying project naming conventions as well as any other misunderstandings or confusion (Ex: Service layer = Service + ServiceImpl; @Repostory annotaton takes care of RepoImpl for us)
+- As a team yesterday, we set and agreed on a basic project timeline. Again, we want to have backend and testing finished by tomorrow, and we want to fix any backend merging conflicts or bugs by (ideally) the end of this week
+- We also discussed the reqs for our front end... We will be collaborating on what we want it to look like tomorrow...
+
+1. **Progress Check**: Where are we in regards to completing our Milestone for tomorrow by tomorrow?
+    - Joachim: "real good"
+        - [ ] pushed up CharacterServiceTest
+    - Patrick:
+        - [ ] Comment Controller
+        - [ ] UserRoleService
+        - [ ] UserCharacter model - add flesh and bones to skeleton
+        - [ ] UserService - add business logic
+    - Julian:
+        - [ ] UserCharacterTesting
+        - [ ] SocialMedia
+    - Calvin:
+        - [ ] Confident
+    - Levi:
+        - [ ] good~~
+    <br> </br>
+
+2. **Any Issues?** 
+    - [ ] Issue Service = Service && ServiceImpl (Levi will update issues so there is not misunderstanding)
+    - [ ] UserSocialMedia
+        - paths:
+            - socialmedia.facebook.
+            - socialmedia.instagram.handle
+        - CREATE = Adding their social media information (add link)
+        - UPDATE = Editing a user's social media info
+        - we ourselves may not use all of the CRUD operations for the webiste, but others who use our API might! More will come in the future
+
+ <br> </br>
+
+3. **Agenda**
+    - [x] Bug - Repo:Service
+    - [x] Bug - Only need Repo layer (not Repo AND RepoImpl). Your Repo = RepoImpl
+        - the annotation takes care of the implementation for you, so you don't need to create the implementation yourself
+    - [ ] Front-end Design discussion (ex: Reddit design?) >stick to
+        - connecting Blizzard rankings
+        - what pages?
+            - login page
+                - login form
+            - logout page
+            - rankings page
+            - user profile
+            - registration page
+                - registration form
+            - image posts page
+            - add comments form
+            - form to add character info
+
+ <br> </br>
+
+4. **Team Milestones/Tasks**
+- _Milestones:_
+    - [ ] Consider Front-End Design to have a discussion by next meeting
+    - [ ] Milestone 3
+ <br> </br>
+- _Issues_: already assigned
+    - Levi:
+        - [ ] Compile all updates into one section for easy reference
+
  <br> </br>
 
 
@@ -486,4 +564,5 @@ _Issues_
 <hr>
 
 
-
+### Rules and Updates
+1. 

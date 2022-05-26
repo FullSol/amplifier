@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "31f1f45e-6d2e-4ac2-bcba-db677fbedcdd",
+		"_postman_id": "66525d25-14a0-4fad-ad56-df356445c26f",
 		"name": "Amplifier API",
 		"description": "An API that allows users to view characters, ranks, and screenshots of fellow Diablo III players as well as post screenshots and comments.\n\nContact Support:\n Name: Amplifier\n Email: calvin391@revature.net",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -10,8 +10,177 @@
 			"name": "Users",
 			"item": [
 				{
+					"name": "/user",
+					"id": "150264ab-e40f-4daa-a2f5-4af29525755e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4\",\n  \"username\": \"TheGamer007\",\n  \"email\": \"thegamer007@gmail.com\",\n  \"password\": \"password\",\n  \"active\": true,\n  \"firstName\": \"James\",\n  \"lastName\": \"Bond\",\n  \"character\": {\n    \"id\": 1,\n    \"realm\": \"Gilgamesh\",\n    \"name\": \"MrBadAzz\"\n  },\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"admin\"\n  },\n  \"joinDate\": \"2022-05-22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "Add a new User"
+					},
+					"response": [
+						{
+							"id": "6d01a46d-681c-410c-b96d-fbdb17549f3e",
+							"name": "User Successfully Added!",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4\",\n  \"username\": \"TheGamer007\",\n  \"email\": \"thegamer007@gmail.com\",\n  \"password\": \"password\",\n  \"active\": true,\n  \"firstName\": \"James\",\n  \"lastName\": \"Bond\",\n  \"character\": {\n    \"id\": 1,\n    \"realm\": \"Gilgamesh\",\n    \"name\": \"MrBadAzz\"\n  },\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"admin\"\n  },\n  \"joinDate\": \"2022-05-22\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "f409eb82-706b-4e85-9450-e6e5032f271a",
+							"name": "Unable to process data provided.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4\",\n  \"username\": \"TheGamer007\",\n  \"email\": \"thegamer007@gmail.com\",\n  \"password\": \"password\",\n  \"active\": true,\n  \"firstName\": \"James\",\n  \"lastName\": \"Bond\",\n  \"character\": {\n    \"id\": 1,\n    \"realm\": \"Gilgamesh\",\n    \"name\": \"MrBadAzz\"\n  },\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"admin\"\n  },\n  \"joinDate\": \"2022-05-22\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "f9b66dc3-30a7-498f-b3c7-f0c93e6acf75",
+							"name": "Unexpected error.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4\",\n  \"username\": \"TheGamer007\",\n  \"email\": \"thegamer007@gmail.com\",\n  \"password\": \"password\",\n  \"active\": true,\n  \"firstName\": \"James\",\n  \"lastName\": \"Bond\",\n  \"character\": {\n    \"id\": 1,\n    \"realm\": \"Gilgamesh\",\n    \"name\": \"MrBadAzz\"\n  },\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"admin\"\n  },\n  \"joinDate\": \"2022-05-22\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": ""
+						}
+					]
+				},
+				{
 					"name": "/users",
-					"id": "7213e7be-96bd-4573-bd77-10570fd7af78",
+					"id": "76d6a675-4274-4451-83fd-b25f38c5e8ce",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -45,7 +214,7 @@
 					},
 					"response": [
 						{
-							"id": "c192b28a-6b79-4cfa-bbc4-c28258d48cfa",
+							"id": "f78147b2-9cae-4d5c-af98-e2412262cc63",
 							"name": "Success.",
 							"originalRequest": {
 								"method": "GET",
@@ -90,7 +259,7 @@
 							"body": "{}"
 						},
 						{
-							"id": "627759ba-8ff0-44a7-b55c-ce71ddf6b4c4",
+							"id": "6395fb86-a698-4bbb-adcb-34e681d6a4e2",
 							"name": "The specified user ID is invalid (not a number).",
 							"originalRequest": {
 								"method": "GET",
@@ -135,7 +304,7 @@
 							"body": ""
 						},
 						{
-							"id": "3a6f7437-9abc-4daf-8d5c-faac3b0db337",
+							"id": "e62cf963-c21b-465c-9a49-817439230c76",
 							"name": "A user with the specified ID was not found.",
 							"originalRequest": {
 								"method": "GET",
@@ -180,7 +349,7 @@
 							"body": ""
 						},
 						{
-							"id": "affd2d52-88f5-4b9e-90ba-fa856aea1a74",
+							"id": "4b32b065-8d5b-4203-bca7-a55f845ea6c3",
 							"name": "Unexpected error.",
 							"originalRequest": {
 								"method": "GET",
@@ -225,53 +394,48 @@
 							"body": ""
 						}
 					]
-				}
-			],
-			"id": "30b497e4-4c23-4bc1-b41f-114219dff4bd"
-		},
-		{
-			"name": "User",
-			"item": [
+				},
 				{
-					"name": "/user",
-					"id": "6a00fb15-249b-4de2-94ee-05b2b80ffe7c",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
+					"name": "/user/login",
+					"id": "8537ddcc-b967-4b09-ace8-2306910700d7",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
-								"key": "Content-Type",
+								"key": "Accept",
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"id\": \"669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4\",\n  \"username\": \"TheGamer007\",\n  \"email\": \"thegamer007@gmail.com\",\n  \"password\": \"password\",\n  \"active\": true,\n  \"firstName\": \"James\",\n  \"lastName\": \"Bond\",\n  \"character\": {\n    \"id\": 1,\n    \"realm\": \"Gilgamesh\",\n    \"name\": \"MrBadAzz\"\n  },\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"admin\"\n  },\n  \"joinDate\": \"2022-05-22\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "{{baseUrl}}/user",
+							"raw": "{{baseUrl}}/user/login?bodyLimit=15&pageLimit=5",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
-								"user"
+								"user",
+								"login"
+							],
+							"query": [
+								{
+									"key": "bodyLimit",
+									"value": "15",
+									"description": "The amount of users returned"
+								},
+								{
+									"key": "pageLimit",
+									"value": "5",
+									"description": "The pages to return user info"
+								}
 							]
 						},
-						"description": "Add a new User"
+						"description": "Operation to fetch all users"
 					},
 					"response": [
 						{
-							"id": "eafc3935-a77b-4ed5-9c98-d4994e9eb2d6",
-							"name": "User Successfully Added!",
+							"id": "a74be7d8-79db-4366-8d5d-2a8e4c0d70cf",
+							"name": "Success.",
 							"originalRequest": {
-								"method": "POST",
+								"method": "GET",
 								"header": [
 									{
 										"description": "Added as a part of security scheme: bearer",
@@ -279,27 +443,75 @@
 										"value": "Bearer <token>"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"id\": \"669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4\",\n  \"username\": \"TheGamer007\",\n  \"email\": \"thegamer007@gmail.com\",\n  \"password\": \"password\",\n  \"active\": true,\n  \"firstName\": \"James\",\n  \"lastName\": \"Bond\",\n  \"character\": {\n    \"id\": 1,\n    \"realm\": \"Gilgamesh\",\n    \"name\": \"MrBadAzz\"\n  },\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"admin\"\n  },\n  \"joinDate\": \"2022-05-22\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
-									"raw": "{{baseUrl}}/user",
+									"raw": "{{baseUrl}}/user/login?bodyLimit=15&pageLimit=5",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"user"
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "bodyLimit",
+											"value": "15"
+										},
+										{
+											"key": "pageLimit",
+											"value": "5"
+										}
 									]
 								}
 							},
-							"status": "Created",
-							"code": 201,
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{}"
+						},
+						{
+							"id": "a4f74d6b-52dd-41ea-9358-d1c037a86fa1",
+							"name": "The specified user ID is invalid (not a number).",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/login?bodyLimit=15&pageLimit=5",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "bodyLimit",
+											"value": "15"
+										},
+										{
+											"key": "pageLimit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
 							"_postman_previewlanguage": "text",
 							"header": [
 								{
@@ -312,10 +524,10 @@
 							"body": ""
 						},
 						{
-							"id": "2a0c0645-714d-42bf-a4b8-9e59a6dfc366",
-							"name": "Unable to process data provided.",
+							"id": "99fffeff-cd94-486f-9761-c4e5be27f42d",
+							"name": "A user with the specified ID was not found.",
 							"originalRequest": {
-								"method": "POST",
+								"method": "GET",
 								"header": [
 									{
 										"description": "Added as a part of security scheme: bearer",
@@ -323,27 +535,29 @@
 										"value": "Bearer <token>"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"id\": \"669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4\",\n  \"username\": \"TheGamer007\",\n  \"email\": \"thegamer007@gmail.com\",\n  \"password\": \"password\",\n  \"active\": true,\n  \"firstName\": \"James\",\n  \"lastName\": \"Bond\",\n  \"character\": {\n    \"id\": 1,\n    \"realm\": \"Gilgamesh\",\n    \"name\": \"MrBadAzz\"\n  },\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"admin\"\n  },\n  \"joinDate\": \"2022-05-22\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
-									"raw": "{{baseUrl}}/user",
+									"raw": "{{baseUrl}}/user/login?bodyLimit=15&pageLimit=5",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"user"
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "bodyLimit",
+											"value": "15"
+										},
+										{
+											"key": "pageLimit",
+											"value": "5"
+										}
 									]
 								}
 							},
-							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-							"code": 422,
+							"status": "Not Found",
+							"code": 404,
 							"_postman_previewlanguage": "text",
 							"header": [
 								{
@@ -356,10 +570,10 @@
 							"body": ""
 						},
 						{
-							"id": "3a582fdd-5083-468e-b0bf-78826f17b483",
+							"id": "7c2a177a-80bc-4e99-91bb-bed53ce72784",
 							"name": "Unexpected error.",
 							"originalRequest": {
-								"method": "POST",
+								"method": "GET",
 								"header": [
 									{
 										"description": "Added as a part of security scheme: bearer",
@@ -367,22 +581,246 @@
 										"value": "Bearer <token>"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"id\": \"669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4\",\n  \"username\": \"TheGamer007\",\n  \"email\": \"thegamer007@gmail.com\",\n  \"password\": \"password\",\n  \"active\": true,\n  \"firstName\": \"James\",\n  \"lastName\": \"Bond\",\n  \"character\": {\n    \"id\": 1,\n    \"realm\": \"Gilgamesh\",\n    \"name\": \"MrBadAzz\"\n  },\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"admin\"\n  },\n  \"joinDate\": \"2022-05-22\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
-									"raw": "{{baseUrl}}/user",
+									"raw": "{{baseUrl}}/user/login?bodyLimit=15&pageLimit=5",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
-										"user"
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "bodyLimit",
+											"value": "15"
+										},
+										{
+											"key": "pageLimit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/user/logout",
+					"id": "31774950-c12c-42cb-b50f-38ae37592b02",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/user/logout?bodyLimit=15&pageLimit=5",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							],
+							"query": [
+								{
+									"key": "bodyLimit",
+									"value": "15",
+									"description": "The amount of users returned"
+								},
+								{
+									"key": "pageLimit",
+									"value": "5",
+									"description": "The pages to return user info"
+								}
+							]
+						},
+						"description": "Operation to fetch all users"
+					},
+					"response": [
+						{
+							"id": "e5fbdb09-65f4-4e57-9711-3b7d72ebe582",
+							"name": "Success.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/logout?bodyLimit=15&pageLimit=5",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"logout"
+									],
+									"query": [
+										{
+											"key": "bodyLimit",
+											"value": "15"
+										},
+										{
+											"key": "pageLimit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{}"
+						},
+						{
+							"id": "39074917-cfc9-485e-a3d2-51c6108a32b7",
+							"name": "The specified user ID is invalid (not a number).",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/logout?bodyLimit=15&pageLimit=5",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"logout"
+									],
+									"query": [
+										{
+											"key": "bodyLimit",
+											"value": "15"
+										},
+										{
+											"key": "pageLimit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "821bc6f4-d1ec-4fae-b90b-6a0dd3769b97",
+							"name": "A user with the specified ID was not found.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/logout?bodyLimit=15&pageLimit=5",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"logout"
+									],
+									"query": [
+										{
+											"key": "bodyLimit",
+											"value": "15"
+										},
+										{
+											"key": "pageLimit",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "b5227ff5-3ead-4142-aa14-75787399a9a8",
+							"name": "Unexpected error.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/logout?bodyLimit=15&pageLimit=5",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"logout"
+									],
+									"query": [
+										{
+											"key": "bodyLimit",
+											"value": "15"
+										},
+										{
+											"key": "pageLimit",
+											"value": "5"
+										}
 									]
 								}
 							},
@@ -403,7 +841,7 @@
 				},
 				{
 					"name": "/user/:id",
-					"id": "c804f4b8-d7c1-46a7-9b67-bea65d427709",
+					"id": "721538e0-ddab-4e37-a3a4-87caa8311438",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -423,7 +861,7 @@
 							],
 							"variable": [
 								{
-									"id": "7afe173f-0b0f-4022-8574-feb853a39239",
+									"id": "ab6ce71f-3049-48d5-8cc8-9677737859f6",
 									"key": "id",
 									"value": "669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4",
 									"description": "(Required) "
@@ -433,7 +871,7 @@
 					},
 					"response": [
 						{
-							"id": "49c37734-3f3b-46b2-a21c-2b5c99ae7900",
+							"id": "b5a543fb-d489-4c29-9a18-6f31add8423b",
 							"name": "Sucessful Response with Path Param",
 							"originalRequest": {
 								"method": "GET",
@@ -476,7 +914,7 @@
 							"body": "{\n  \"id\": \"669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4\",\n  \"username\": \"TheGamer007\",\n  \"email\": \"thegamer007@gmail.com\",\n  \"password\": \"password\",\n  \"active\": true,\n  \"firstName\": \"James\",\n  \"lastName\": \"Bond\",\n  \"character\": {\n    \"id\": 1,\n    \"realm\": \"Gilgamesh\",\n    \"name\": \"MrBadAzz\"\n  },\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"admin\"\n  },\n  \"joinDate\": \"2022-05-22\"\n}"
 						},
 						{
-							"id": "90f63e29-5565-464a-a52c-1d7b2f1118cc",
+							"id": "59f19a06-1175-4eb0-8db9-37d25bcef0b4",
 							"name": "Unexpected error.",
 							"originalRequest": {
 								"method": "GET",
@@ -522,7 +960,7 @@
 				},
 				{
 					"name": "/user/:id",
-					"id": "00191881-a3eb-49bd-9119-642f1ba158b6",
+					"id": "d5b1c85b-1091-4763-b1e6-a1d7693c7755",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -542,7 +980,7 @@
 							],
 							"variable": [
 								{
-									"id": "273e1694-d0fd-4907-886c-d2a6984e5e78",
+									"id": "2c2afe9c-2fd2-4588-81d7-3c9a7d44cc79",
 									"key": "id",
 									"value": "669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4",
 									"description": "(Required) "
@@ -552,7 +990,7 @@
 					},
 					"response": [
 						{
-							"id": "7115ba09-d45a-4c11-a7f3-c41d18bad5ff",
+							"id": "d15c0e8a-714d-4714-a84e-3b39edc83651",
 							"name": "Sucessful Response with Path Param",
 							"originalRequest": {
 								"method": "PATCH",
@@ -595,7 +1033,7 @@
 							"body": "{\n  \"id\": \"669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4\",\n  \"username\": \"TheGamer007\",\n  \"email\": \"thegamer007@gmail.com\",\n  \"password\": \"password\",\n  \"active\": true,\n  \"firstName\": \"James\",\n  \"lastName\": \"Bond\",\n  \"character\": {\n    \"id\": 1,\n    \"realm\": \"Gilgamesh\",\n    \"name\": \"MrBadAzz\"\n  },\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"admin\"\n  },\n  \"joinDate\": \"2022-05-22\"\n}"
 						},
 						{
-							"id": "c95422e6-33a8-4cfd-9f57-6429ff769ffc",
+							"id": "4d1fbb75-034f-49ae-9171-20e17a72cb3d",
 							"name": "Unexpected error.",
 							"originalRequest": {
 								"method": "PATCH",
@@ -641,7 +1079,7 @@
 				},
 				{
 					"name": "/user/:id",
-					"id": "e5a573cc-1170-468a-a5b5-d47b5b8ecf41",
+					"id": "6142cc08-ed62-4453-8067-5c71442d44b4",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -661,7 +1099,7 @@
 							],
 							"variable": [
 								{
-									"id": "0ca0db63-3b6b-4f40-951e-e096593be948",
+									"id": "0680f08c-6661-4bd9-85db-f443cb76e7de",
 									"key": "id",
 									"value": "669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4",
 									"description": "(Required) "
@@ -671,7 +1109,7 @@
 					},
 					"response": [
 						{
-							"id": "6c9177a4-cca3-44ed-8a71-4f0b70731c48",
+							"id": "7aea123a-e8e9-477a-abe4-ffa3e1077993",
 							"name": "Sucessful Response with Path Param",
 							"originalRequest": {
 								"method": "DELETE",
@@ -714,7 +1152,7 @@
 							"body": "{\n  \"id\": \"669f461f-7b3d-4b68-8fbb-edbc6ee0b0b4\",\n  \"username\": \"TheGamer007\",\n  \"email\": \"thegamer007@gmail.com\",\n  \"password\": \"password\",\n  \"active\": true,\n  \"firstName\": \"James\",\n  \"lastName\": \"Bond\",\n  \"character\": {\n    \"id\": 1,\n    \"realm\": \"Gilgamesh\",\n    \"name\": \"MrBadAzz\"\n  },\n  \"role\": {\n    \"id\": 1,\n    \"name\": \"admin\"\n  },\n  \"joinDate\": \"2022-05-22\"\n}"
 						},
 						{
-							"id": "54b9275e-f2b4-416f-9221-d8764cde6cd0",
+							"id": "3da33fd0-f650-417a-bf97-c5af38837451",
 							"name": "Unexpected error.",
 							"originalRequest": {
 								"method": "DELETE",
@@ -759,14 +1197,15 @@
 					]
 				}
 			],
-			"id": "25e217a4-d243-4f1c-a541-f51cf6403598"
+			"id": "98ca0406-2f9d-4d19-97d8-aca8eb9ac621",
+			"description": "Everything about the registered Users"
 		},
 		{
-			"name": "characters",
+			"name": "Characters",
 			"item": [
 				{
 					"name": "/characters",
-					"id": "b055c8ed-3b09-49c7-8280-6245f1abab23",
+					"id": "e3aff8ac-ee99-4192-96e3-63b30bac2e8e",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -788,7 +1227,7 @@
 					},
 					"response": [
 						{
-							"id": "6a8e9612-940a-4f5c-bcbf-a767d420ad1e",
+							"id": "88b97ba0-1239-42d4-978a-4d36958653a7",
 							"name": "Successful pull of characters",
 							"originalRequest": {
 								"method": "GET",
@@ -823,16 +1262,10 @@
 							"body": "{}"
 						}
 					]
-				}
-			],
-			"id": "6723a8a6-b9d8-4408-8b4b-6a46ed8d0cda"
-		},
-		{
-			"name": "Character",
-			"item": [
+				},
 				{
 					"name": "/character",
-					"id": "dd114a25-a7f2-48ce-8846-1c2f1f292666",
+					"id": "c5dfc463-c212-48a6-a98a-406063afe12a",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -849,7 +1282,7 @@
 					},
 					"response": [
 						{
-							"id": "b9edbde2-c18a-4760-ad61-70ab66847692",
+							"id": "32c2875a-2d6f-43ea-9b2c-af22a860cbb3",
 							"name": "Successful creation of user character",
 							"originalRequest": {
 								"method": "POST",
@@ -887,7 +1320,7 @@
 				},
 				{
 					"name": "/character/:id",
-					"id": "5d8a34d3-41ad-4ec1-8648-eb0b33d20f9f",
+					"id": "2fc60dd1-55df-430a-9cd4-cdfc08581cf8",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -902,9 +1335,9 @@
 							],
 							"variable": [
 								{
-									"id": "65925cf3-f9f3-4129-b50f-f638c9d5fd47",
+									"id": "142cd37a-4150-4295-b557-5605aac86b87",
 									"key": "id",
-									"value": "-26503357",
+									"value": "-80027459",
 									"description": "(Required) "
 								}
 							]
@@ -913,7 +1346,7 @@
 					},
 					"response": [
 						{
-							"id": "3c47d419-6889-4331-ae34-21e9b81549b0",
+							"id": "a0db9789-7be8-4e83-b479-f093312f5e5d",
 							"name": "Successful pull of character by given id",
 							"originalRequest": {
 								"method": "GET",
@@ -936,7 +1369,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "-26503357",
+											"value": "-80027459",
 											"description": "(Required) "
 										}
 									]
@@ -959,7 +1392,7 @@
 				},
 				{
 					"name": "/character/:id",
-					"id": "6d4b7045-390b-41c5-b0ed-76ae9274e4df",
+					"id": "b658ff67-7e76-48f3-bbb7-3495230ba6c2",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -991,9 +1424,9 @@
 							],
 							"variable": [
 								{
-									"id": "74697746-3ed7-43bc-b3ab-77c6ed114f41",
+									"id": "01f3d11c-f737-4fd5-b357-47b1a6d89db9",
 									"key": "id",
-									"value": "-26503357",
+									"value": "-80027459",
 									"description": "(Required) "
 								}
 							]
@@ -1002,7 +1435,7 @@
 					},
 					"response": [
 						{
-							"id": "0b7bd6b7-e97c-4281-b153-a2ba61bcbc94",
+							"id": "b5b9e3e7-79bf-4cca-98e6-4aaa2aceec03",
 							"name": "Successfully updated the character.",
 							"originalRequest": {
 								"method": "PATCH",
@@ -1034,7 +1467,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "-26503357",
+											"value": "-80027459",
 											"description": "(Required) "
 										}
 									]
@@ -1057,7 +1490,7 @@
 				},
 				{
 					"name": "/character/:id",
-					"id": "ead485b1-07ce-4355-80af-f81880639308",
+					"id": "4ab37998-94df-4592-a9bb-30fd39be445b",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1072,9 +1505,9 @@
 							],
 							"variable": [
 								{
-									"id": "d565505e-ffd8-442a-8580-00901b1a04c6",
+									"id": "439c6edb-3f0f-44d0-b319-5dd7e8d6fc71",
 									"key": "id",
-									"value": "-26503357",
+									"value": "-80027459",
 									"description": "(Required) "
 								}
 							]
@@ -1083,7 +1516,7 @@
 					},
 					"response": [
 						{
-							"id": "793265f6-5674-41c9-bdb7-47d69001c296",
+							"id": "0085d969-f0dd-4b79-afa5-a410439713c2",
 							"name": "Successful deletion of character",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1106,7 +1539,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "-26503357",
+											"value": "-80027459",
 											"description": "(Required) "
 										}
 									]
@@ -1128,14 +1561,15 @@
 					]
 				}
 			],
-			"id": "eaff7020-08c1-46a7-aa26-b06f5a8363e1"
+			"id": "a83a20f3-6583-4da3-b178-5e856a26c901",
+			"description": "Access to User Characers"
 		},
 		{
-			"name": "Posts",
+			"name": "Img-Posts",
 			"item": [
 				{
 					"name": "/img-posts",
-					"id": "0afa1f9f-f69a-4693-9dbf-aa80852ce907",
+					"id": "4caa3374-f1b2-40f9-9b0b-13b66d4c7514",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1169,7 +1603,7 @@
 					},
 					"response": [
 						{
-							"id": "19bc43ee-6eca-47a4-89dc-104e03003662",
+							"id": "9ac6b07c-02ed-4409-b721-c5acf0811029",
 							"name": "Successful pull of img-posts",
 							"originalRequest": {
 								"method": "GET",
@@ -1214,16 +1648,10 @@
 							"body": "{}"
 						}
 					]
-				}
-			],
-			"id": "635b24ee-4b3d-4cda-92e4-99e6776c6e55"
-		},
-		{
-			"name": "Post",
-			"item": [
+				},
 				{
 					"name": "/img-post",
-					"id": "e994623f-c15f-47b6-ba16-b9fbf98a335b",
+					"id": "41ba94a9-04cc-41eb-8116-33fba8b4da71",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -1240,7 +1668,7 @@
 					},
 					"response": [
 						{
-							"id": "afeebc93-6284-420a-9e03-c55bd674046c",
+							"id": "4b2dea14-1f74-46fa-99e5-fcc80334e1e4",
 							"name": "Successful creation of user post",
 							"originalRequest": {
 								"method": "POST",
@@ -1278,7 +1706,7 @@
 				},
 				{
 					"name": "/img-post/:id",
-					"id": "b9569fe2-af8d-45d8-9d1e-0fa605414831",
+					"id": "65f2950e-4205-4c5c-97c7-133f9953ea7e",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1293,9 +1721,9 @@
 							],
 							"variable": [
 								{
-									"id": "8bca013c-f81e-4ee3-b8fe-9a1236b445f6",
+									"id": "9ae840d7-9af1-4800-9c62-5b69d425a15f",
 									"key": "id",
-									"value": "-26503357",
+									"value": "-80027459",
 									"description": "(Required) "
 								}
 							]
@@ -1304,7 +1732,7 @@
 					},
 					"response": [
 						{
-							"id": "97ffca01-5ed0-4cbf-9309-af376658b0fd",
+							"id": "99af5ad7-5c4c-4390-8a9a-c00aa70e7219",
 							"name": "Successful pull of img-post by given id",
 							"originalRequest": {
 								"method": "GET",
@@ -1327,7 +1755,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "-26503357",
+											"value": "-80027459",
 											"description": "(Required) "
 										}
 									]
@@ -1350,7 +1778,7 @@
 				},
 				{
 					"name": "/img-post/:id",
-					"id": "91a131bf-8189-4eb1-b119-0e0fa20e3a7f",
+					"id": "5b0b88ac-6a43-4c72-9336-bec064233907",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1382,9 +1810,9 @@
 							],
 							"variable": [
 								{
-									"id": "ad2ce182-4cf4-4aa3-a3d8-33a87145fb69",
+									"id": "17242ace-c7e0-4aee-8748-8fc4d51a971f",
 									"key": "id",
-									"value": "-26503357",
+									"value": "-80027459",
 									"description": "(Required) "
 								}
 							]
@@ -1393,7 +1821,7 @@
 					},
 					"response": [
 						{
-							"id": "ef5e4fd9-8003-4263-9453-39e8f19625d5",
+							"id": "bb02f3a7-c47d-4a1b-b4fe-8191d1056775",
 							"name": "Successfully updated the post.",
 							"originalRequest": {
 								"method": "PATCH",
@@ -1425,7 +1853,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "-26503357",
+											"value": "-80027459",
 											"description": "(Required) "
 										}
 									]
@@ -1448,7 +1876,7 @@
 				},
 				{
 					"name": "/img-post/:id",
-					"id": "1c61efe4-ea8b-456e-8d42-5dd4ae72dbff",
+					"id": "4061dc0a-d436-4e70-898b-a15184aed04a",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1463,9 +1891,9 @@
 							],
 							"variable": [
 								{
-									"id": "0a0f75d0-3440-460e-87df-0951e92b35ee",
+									"id": "6a8a06eb-f488-411e-b30c-a543cc7ca2d3",
 									"key": "id",
-									"value": "-26503357",
+									"value": "-80027459",
 									"description": "(Required) "
 								}
 							]
@@ -1474,7 +1902,7 @@
 					},
 					"response": [
 						{
-							"id": "a48e728f-491f-454d-87ce-910d22f0fd77",
+							"id": "0a461a6a-ffc6-4586-9164-0570350a31cf",
 							"name": "Successful deletion of post",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1497,7 +1925,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "-26503357",
+											"value": "-80027459",
 											"description": "(Required) "
 										}
 									]
@@ -1519,14 +1947,15 @@
 					]
 				}
 			],
-			"id": "d46a3c2f-2549-43ca-a2b2-f87663f914bf"
+			"id": "56c2ed1c-2684-499b-bdb6-3b33f6776556",
+			"description": "Screenshots taken by the Users"
 		},
 		{
 			"name": "Comments",
 			"item": [
 				{
 					"name": "/img-posts/:post_id/comments",
-					"id": "b2e13c5e-6cb6-48e3-bcfd-bc1c185ec82b",
+					"id": "9e112f0e-6c7f-4a8b-8301-d3331ad349ba",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1547,7 +1976,7 @@
 							],
 							"variable": [
 								{
-									"id": "2302ba9a-59b8-44bc-93d0-0413a5467b29",
+									"id": "d69e79ac-1475-49d3-8475-1d9a899dec95",
 									"key": "post_id",
 									"value": "1",
 									"description": "(Required) The post id"
@@ -1558,7 +1987,7 @@
 					},
 					"response": [
 						{
-							"id": "99ab9e68-9318-494c-9a00-55bb2879fbe0",
+							"id": "23cecf0b-eef9-4b60-ba3e-b61ddf0ad04f",
 							"name": "Successful pull of img-posts",
 							"originalRequest": {
 								"method": "GET",
@@ -1602,16 +2031,10 @@
 							"body": "{}"
 						}
 					]
-				}
-			],
-			"id": "756df8f8-9d8b-4dd5-926e-cc554e97f895"
-		},
-		{
-			"name": "Comment",
-			"item": [
+				},
 				{
 					"name": "/img-post/:post_id/comment",
-					"id": "cc510514-ba93-4c8c-a46d-d398819963e7",
+					"id": "f9fb99cf-8dac-4b27-813a-49ffdd97e83f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1644,9 +2067,9 @@
 							],
 							"variable": [
 								{
-									"id": "3d0d9807-7520-48d0-ad98-41e307305bf3",
+									"id": "29f438cc-21c2-42fa-bf94-8018419c7777",
 									"key": "post_id",
-									"value": "-26503357",
+									"value": "-80027459",
 									"description": "(Required) "
 								}
 							]
@@ -1655,7 +2078,7 @@
 					},
 					"response": [
 						{
-							"id": "d3bf5ef1-873b-4393-8bae-3895a6f21a20",
+							"id": "6427234a-cb1c-47f9-8336-988b9a84232f",
 							"name": "Comment Successfully Added!",
 							"originalRequest": {
 								"method": "POST",
@@ -1688,7 +2111,7 @@
 									"variable": [
 										{
 											"key": "post_id",
-											"value": "-26503357",
+											"value": "-80027459",
 											"description": "(Required) "
 										}
 									]
@@ -1711,7 +2134,7 @@
 				},
 				{
 					"name": "/img-post/:post_id/comment/:comment_id",
-					"id": "a4922f97-7ba8-4d6b-987a-91e6aae556d6",
+					"id": "bd44da39-9ed4-4df8-8f42-7bb7a140fd9b",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1728,15 +2151,15 @@
 							],
 							"variable": [
 								{
-									"id": "2cdf57fd-f9f9-4dd2-997f-e36c9e11f9a7",
+									"id": "df8b0871-7e2c-4e47-8dd0-8e2f7c16d487",
 									"key": "post_id",
-									"value": "-26503357",
+									"value": "-80027459",
 									"description": "(Required) "
 								},
 								{
-									"id": "2d3ab9f8-8bf6-4952-beb2-41b4b6010beb",
+									"id": "cd448671-91a5-4547-bfb2-07a985029300",
 									"key": "comment_id",
-									"value": "-26503357",
+									"value": "-80027459",
 									"description": "(Required) "
 								}
 							]
@@ -1745,7 +2168,7 @@
 					},
 					"response": [
 						{
-							"id": "1f46adbf-09b9-4c27-a30a-dc4f2ec50e34",
+							"id": "acea3c73-3dad-4ae6-9aa5-261073b01e44",
 							"name": "Successful pull of img-post by given id",
 							"originalRequest": {
 								"method": "GET",
@@ -1770,12 +2193,12 @@
 									"variable": [
 										{
 											"key": "post_id",
-											"value": "-26503357",
+											"value": "-80027459",
 											"description": "(Required) "
 										},
 										{
 											"key": "comment_id",
-											"value": "-26503357",
+											"value": "-80027459",
 											"description": "(Required) "
 										}
 									]
@@ -1798,7 +2221,7 @@
 				},
 				{
 					"name": "/img-post/:post_id/comment/:comment_id",
-					"id": "c67d92a4-fda0-4448-b5c2-0537b9341a5f",
+					"id": "6c196db8-d82d-4cb7-942a-3cf29b517a4e",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1832,15 +2255,15 @@
 							],
 							"variable": [
 								{
-									"id": "696029ed-acfc-4c86-9323-3f3b0f0440b2",
+									"id": "f93f75d6-caa1-4022-b947-0dcdc66ddf1c",
 									"key": "post_id",
-									"value": "-26503357",
+									"value": "-80027459",
 									"description": "(Required) "
 								},
 								{
-									"id": "c178b9de-4223-4ab4-8294-b95df33382ef",
+									"id": "ba2a18d3-c035-41ff-a39d-96384047e10a",
 									"key": "comment_id",
-									"value": "-26503357",
+									"value": "-80027459",
 									"description": "(Required) "
 								}
 							]
@@ -1849,7 +2272,7 @@
 					},
 					"response": [
 						{
-							"id": "2c7d453a-a700-4953-b6a6-bf29627e51a1",
+							"id": "deeecf49-3036-4cb6-8643-6a6861b9d6d4",
 							"name": "Comment Successfully Added!",
 							"originalRequest": {
 								"method": "PATCH",
@@ -1883,12 +2306,12 @@
 									"variable": [
 										{
 											"key": "post_id",
-											"value": "-26503357",
+											"value": "-80027459",
 											"description": "(Required) "
 										},
 										{
 											"key": "comment_id",
-											"value": "-26503357",
+											"value": "-80027459",
 											"description": "(Required) "
 										}
 									]
@@ -1911,7 +2334,7 @@
 				},
 				{
 					"name": "/img-post/:post_id/comment/:comment_id",
-					"id": "a97fc958-5683-4f40-8102-5d2f9f75b024",
+					"id": "fc80abec-46a0-4767-8450-6fcb5b5b4bac",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1928,13 +2351,13 @@
 							],
 							"variable": [
 								{
-									"id": "a4100066-399d-411b-82f8-bfa9ac3f7da7",
+									"id": "5d425fd9-28f4-4f4b-abb0-927f93345abf",
 									"key": "post_id",
-									"value": "-26503357",
+									"value": "-80027459",
 									"description": "(Required) "
 								},
 								{
-									"id": "c83de6dc-e1f0-486b-afd7-15a27657f2a2",
+									"id": "ba7246aa-1376-414e-9c23-1c7c623d7067",
 									"key": "comment_id",
 									"value": "1",
 									"description": "(Required) "
@@ -1945,7 +2368,7 @@
 					},
 					"response": [
 						{
-							"id": "f2221a0e-e2e2-4440-9fbb-4039eb14ee99",
+							"id": "59580a0e-9f52-429b-bd4c-a0f9242a5953",
 							"name": "Successful deletion of post",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1970,7 +2393,7 @@
 									"variable": [
 										{
 											"key": "post_id",
-											"value": "-26503357",
+											"value": "-80027459",
 											"description": "(Required) "
 										},
 										{
@@ -1997,14 +2420,15 @@
 					]
 				}
 			],
-			"id": "b5900d8b-c386-487e-a054-0f0eb243093b"
+			"id": "2d871f21-791a-4401-ad04-ffe834e76df6",
+			"description": "The Comments Users share about Img-Posts"
 		},
 		{
 			"name": "Social Media",
 			"item": [
 				{
-					"name": "/user/:user_id/social-media",
-					"id": "a9a9b591-4ebf-4aaa-af3f-8aa1b46286cb",
+					"name": "/user/social-media",
+					"id": "0e2c22f0-aed8-4c7a-8e05-bdd45db18030",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2030,18 +2454,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/user/:user_id/social-media",
+							"raw": "{{baseUrl}}/user/social-media?user_id=1",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"user",
-								":user_id",
 								"social-media"
 							],
-							"variable": [
+							"query": [
 								{
-									"id": "86d12b70-2480-4362-88c3-27805db37106",
 									"key": "user_id",
 									"value": "1",
 									"description": "(Required) "
@@ -2052,7 +2474,7 @@
 					},
 					"response": [
 						{
-							"id": "82ee7bc7-b3cb-42b1-9d19-3b46a98613ee",
+							"id": "ce1a2202-a5da-4d4b-870c-f065ad3e811b",
 							"name": "Social media successfully added!",
 							"originalRequest": {
 								"method": "POST",
@@ -2073,20 +2495,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/user/:user_id/social-media",
+									"raw": "{{baseUrl}}/user/social-media?user_id=1",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"user",
-										":user_id",
 										"social-media"
 									],
-									"variable": [
+									"query": [
 										{
 											"key": "user_id",
-											"value": "1",
-											"description": "(Required) "
+											"value": "1"
 										}
 									]
 								}
@@ -2105,7 +2525,7 @@
 							"body": ""
 						},
 						{
-							"id": "bd1381fa-3a7e-47bf-b930-90b2b0cb1493",
+							"id": "28f1b925-82d2-47ad-b62c-bb284994d3e2",
 							"name": "Unexpected error",
 							"originalRequest": {
 								"method": "POST",
@@ -2126,20 +2546,18 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/user/:user_id/social-media",
+									"raw": "{{baseUrl}}/user/social-media?user_id=1",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"user",
-										":user_id",
 										"social-media"
 									],
-									"variable": [
+									"query": [
 										{
 											"key": "user_id",
-											"value": "1",
-											"description": "(Required) "
+											"value": "1"
 										}
 									]
 								}
@@ -2155,13 +2573,13 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n  \"code\": -76192633,\n  \"message\": \"aliquip nisi officia enim\"\n}"
+							"body": "{\n  \"code\": 71164735,\n  \"message\": \"do pariatur esse\"\n}"
 						}
 					]
 				},
 				{
-					"name": "/user/:user_id/social-media/:media_id",
-					"id": "6aaa6272-a4a2-4714-9a85-bdbeecaf9c21",
+					"name": "/user/social-media",
+					"id": "b29829ea-ba1f-4660-9a0d-5284f7f100cd",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2171,25 +2589,21 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/user/:user_id/social-media/:media_id",
+							"raw": "{{baseUrl}}/user/social-media?user_id=1&media_id=1",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"user",
-								":user_id",
-								"social-media",
-								":media_id"
+								"social-media"
 							],
-							"variable": [
+							"query": [
 								{
-									"id": "3da142dc-8236-434c-a089-d8ffe316f9df",
 									"key": "user_id",
 									"value": "1",
 									"description": "(Required) "
 								},
 								{
-									"id": "8200f470-5e82-48b4-8ba2-4b8f731eaa8a",
 									"key": "media_id",
 									"value": "1",
 									"description": "(Required) "
@@ -2200,7 +2614,7 @@
 					},
 					"response": [
 						{
-							"id": "1e189ae7-674d-4374-b7cc-0d7e56d16ec8",
+							"id": "483516a9-cf1c-45be-9b36-5c1e53cf8fad",
 							"name": "Sucessful Response with Path Param",
 							"originalRequest": {
 								"method": "GET",
@@ -2212,26 +2626,22 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/user/:user_id/social-media/:media_id",
+									"raw": "{{baseUrl}}/user/social-media?user_id=1&media_id=1",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"user",
-										":user_id",
-										"social-media",
-										":media_id"
+										"social-media"
 									],
-									"variable": [
+									"query": [
 										{
 											"key": "user_id",
-											"value": "1",
-											"description": "(Required) "
+											"value": "1"
 										},
 										{
 											"key": "media_id",
-											"value": "1",
-											"description": "(Required) "
+											"value": "1"
 										}
 									]
 								}
@@ -2252,8 +2662,8 @@
 					]
 				},
 				{
-					"name": "/user/:user_id/social-media/:media_id",
-					"id": "b0f1f4ac-948a-4450-8289-d2646bb1b32b",
+					"name": "/user/social-media",
+					"id": "6334b6ce-b798-4bb4-8c55-f2e5d0d4843a",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -2263,25 +2673,21 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/user/:user_id/social-media/:media_id",
+							"raw": "{{baseUrl}}/user/social-media?user_id=1&media_id=1",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"user",
-								":user_id",
-								"social-media",
-								":media_id"
+								"social-media"
 							],
-							"variable": [
+							"query": [
 								{
-									"id": "6192bf5e-cfaf-4536-95a3-6218836a540f",
 									"key": "user_id",
 									"value": "1",
 									"description": "(Required) "
 								},
 								{
-									"id": "f35fbe81-d050-444e-8811-28963e3d9bf3",
 									"key": "media_id",
 									"value": "1",
 									"description": "(Required) "
@@ -2291,7 +2697,7 @@
 					},
 					"response": [
 						{
-							"id": "feb94a44-6e95-480e-aed2-01c5ccb4003b",
+							"id": "446efedc-6da2-48c9-9c76-7d22ca1769a6",
 							"name": "Sucessful Response with Path Param",
 							"originalRequest": {
 								"method": "PATCH",
@@ -2303,26 +2709,22 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/user/:user_id/social-media/:media_id",
+									"raw": "{{baseUrl}}/user/social-media?user_id=1&media_id=1",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"user",
-										":user_id",
-										"social-media",
-										":media_id"
+										"social-media"
 									],
-									"variable": [
+									"query": [
 										{
 											"key": "user_id",
-											"value": "1",
-											"description": "(Required) "
+											"value": "1"
 										},
 										{
 											"key": "media_id",
-											"value": "1",
-											"description": "(Required) "
+											"value": "1"
 										}
 									]
 								}
@@ -2343,8 +2745,8 @@
 					]
 				},
 				{
-					"name": "/user/:user_id/social-media/:media_id",
-					"id": "5ecb2c79-f032-4b7b-86b1-cde587f41499",
+					"name": "/user/social-media",
+					"id": "589002c3-af2f-489a-92af-0d38ebafa9e2",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2354,25 +2756,21 @@
 							}
 						],
 						"url": {
-							"raw": "{{baseUrl}}/user/:user_id/social-media/:media_id",
+							"raw": "{{baseUrl}}/user/social-media?user_id=1&media_id=1",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"user",
-								":user_id",
-								"social-media",
-								":media_id"
+								"social-media"
 							],
-							"variable": [
+							"query": [
 								{
-									"id": "7d3fea39-309c-4d09-bbc4-26580d48c585",
 									"key": "user_id",
 									"value": "1",
 									"description": "(Required) "
 								},
 								{
-									"id": "594c1bfc-95fe-460c-b927-296b405c528b",
 									"key": "media_id",
 									"value": "1",
 									"description": "(Required) "
@@ -2382,7 +2780,7 @@
 					},
 					"response": [
 						{
-							"id": "4db925ec-9349-49a9-8cf7-5aa50fc7d3d1",
+							"id": "9ee26db6-36f4-4764-830b-e31f4110e744",
 							"name": "Sucessful Response with Path Param",
 							"originalRequest": {
 								"method": "DELETE",
@@ -2394,26 +2792,22 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/user/:user_id/social-media/:media_id",
+									"raw": "{{baseUrl}}/user/social-media?user_id=1&media_id=1",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"user",
-										":user_id",
-										"social-media",
-										":media_id"
+										"social-media"
 									],
-									"variable": [
+									"query": [
 										{
 											"key": "user_id",
-											"value": "1",
-											"description": "(Required) "
+											"value": "1"
 										},
 										{
 											"key": "media_id",
-											"value": "1",
-											"description": "(Required) "
+											"value": "1"
 										}
 									]
 								}
@@ -2434,14 +2828,15 @@
 					]
 				}
 			],
-			"id": "a88d14e6-a8aa-4bcd-aef7-848e290669a0"
+			"id": "c0b3c4fc-e284-4a1b-9f95-458d2abad698",
+			"description": "Users Social Media profiles"
 		},
 		{
-			"name": "Roles",
+			"name": "UserRoles",
 			"item": [
 				{
 					"name": "/roles",
-					"id": "f634e0bc-7a1f-4824-870f-abaff15f17c7",
+					"id": "2810c395-3736-4279-8366-b693a9311329",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2463,7 +2858,7 @@
 					},
 					"response": [
 						{
-							"id": "f275e287-b398-47ba-84c3-e3c72af19499",
+							"id": "a86aad59-7814-4348-aaa0-cf6b88ffcea1",
 							"name": "Success.",
 							"originalRequest": {
 								"method": "GET",
@@ -2498,7 +2893,7 @@
 							"body": "{}"
 						},
 						{
-							"id": "affec329-805c-4620-aeda-d343bb639b3a",
+							"id": "31bf158d-9829-4196-a2b0-2b2d4db643ad",
 							"name": "The specified role ID is invalid (not a number).",
 							"originalRequest": {
 								"method": "GET",
@@ -2533,7 +2928,7 @@
 							"body": ""
 						},
 						{
-							"id": "c3d8b738-d2a9-4f43-be23-24720ccca274",
+							"id": "7e947993-840e-4164-8cf6-38e8df63f64e",
 							"name": "A role with the specified ID was not found.",
 							"originalRequest": {
 								"method": "GET",
@@ -2568,7 +2963,7 @@
 							"body": ""
 						},
 						{
-							"id": "4c62c790-b3a3-4c18-8a79-c95dbea1669c",
+							"id": "973abfc6-aa88-4544-b66c-897d8a518204",
 							"name": "Unexpected error.",
 							"originalRequest": {
 								"method": "GET",
@@ -2603,16 +2998,10 @@
 							"body": ""
 						}
 					]
-				}
-			],
-			"id": "9de7239d-6c23-47cf-a03f-b333f4c69df9"
-		},
-		{
-			"name": "Role",
-			"item": [
+				},
 				{
 					"name": "/role",
-					"id": "3e8f5c67-1868-4e65-a8e1-a0f8ab5b8a58",
+					"id": "71e4fe70-e6be-4be1-98be-7a7a6fab676f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2650,7 +3039,7 @@
 					},
 					"response": [
 						{
-							"id": "bf32ff17-ab83-40c1-9d5e-7382149b5c4f",
+							"id": "a693873c-0a9d-4043-b07e-ea31a7806ea9",
 							"name": "User role successfully added!",
 							"originalRequest": {
 								"method": "POST",
@@ -2694,7 +3083,7 @@
 							"body": ""
 						},
 						{
-							"id": "88337bbd-aff5-4d42-b517-87c82a3bfefb",
+							"id": "5a8796eb-351b-448a-a41a-92c2bda46713",
 							"name": "Unexpected error",
 							"originalRequest": {
 								"method": "POST",
@@ -2735,13 +3124,13 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n  \"code\": -76192633,\n  \"message\": \"aliquip nisi officia enim\"\n}"
+							"body": "{\n  \"code\": 71164735,\n  \"message\": \"do pariatur esse\"\n}"
 						}
 					]
 				},
 				{
 					"name": "/role/:id",
-					"id": "a886abf6-274a-49d2-86b4-015c72ba0abf",
+					"id": "bdacd40a-fc36-44b1-aaea-60298de39605",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2761,7 +3150,7 @@
 							],
 							"variable": [
 								{
-									"id": "479dd84e-f4af-40e9-a619-278e8f9fe5a4",
+									"id": "112e2f59-6ab5-4fd0-816c-a44f2f2e48c1",
 									"key": "id",
 									"value": "1",
 									"description": "(Required) "
@@ -2771,7 +3160,7 @@
 					},
 					"response": [
 						{
-							"id": "0bdff802-6506-4459-99ed-1e312cd2379d",
+							"id": "c9236fb3-01f6-48c3-918e-ab4bbc20312a",
 							"name": "Sucessful Response with Path Param",
 							"originalRequest": {
 								"method": "GET",
@@ -2817,7 +3206,7 @@
 				},
 				{
 					"name": "/role/:id",
-					"id": "c78116b0-405e-464a-9ce4-5287e3613a24",
+					"id": "a1ff6d39-8075-447e-a8de-bfcfb43fdc06",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -2837,7 +3226,7 @@
 							],
 							"variable": [
 								{
-									"id": "23605027-70a6-44f8-958a-c6d00c661641",
+									"id": "53c0df28-8bc9-42a7-b74e-1ad3610382d7",
 									"key": "id",
 									"value": "1",
 									"description": "(Required) "
@@ -2847,7 +3236,7 @@
 					},
 					"response": [
 						{
-							"id": "bb229415-dc32-4b95-ae6b-f68f72c1ec2f",
+							"id": "d9510dde-5718-4b34-965d-9c01246a6e95",
 							"name": "Sucessful Response with Path Param",
 							"originalRequest": {
 								"method": "PATCH",
@@ -2893,7 +3282,7 @@
 				},
 				{
 					"name": "/role/:id",
-					"id": "62f40f9b-1e3f-4b40-a7c5-a56885295d83",
+					"id": "c63152a6-580e-4c53-a44f-293bea3b8d62",
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -2913,7 +3302,7 @@
 							],
 							"variable": [
 								{
-									"id": "1fcc5ec1-08b2-49f9-8d47-4191b8b72aa6",
+									"id": "8ffb742e-b5fd-4067-8b78-947e88b0beb1",
 									"key": "id",
 									"value": "1",
 									"description": "(Required) "
@@ -2923,7 +3312,7 @@
 					},
 					"response": [
 						{
-							"id": "b96f078e-287a-4da0-8409-75f450d53ff2",
+							"id": "6a5e4250-ffc2-4e67-8955-28fa52a7eef6",
 							"name": "Sucessful Response with Path Param",
 							"originalRequest": {
 								"method": "DELETE",
@@ -2968,7 +3357,8 @@
 					]
 				}
 			],
-			"id": "d1a23fb1-b5ac-4e7d-a313-59e391915145"
+			"id": "182439ed-cfaa-465e-b97f-2e486e610748",
+			"description": "Roles granted to the Users"
 		}
 	],
 	"auth": {
@@ -2983,9 +3373,9 @@
 	},
 	"variable": [
 		{
-			"id": "1b82c2c1-8ef8-4928-a89a-6fa27854a43c",
+			"id": "f70c547b-b19c-4361-b5fb-702b890ce929",
 			"key": "baseUrl",
-			"value": "http://localhost:8080",
+			"value": "/api/v1",
 			"type": "string"
 		}
 	]

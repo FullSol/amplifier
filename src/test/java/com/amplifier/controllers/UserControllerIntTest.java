@@ -98,6 +98,7 @@ public class UserControllerIntTest {
         @DisplayName("1. AppContext")
         public void contextLoads() {
                 assertThat(userController).isNotNull();
+                assertThat(userService).isNotNull();
         }
 
         @Test
@@ -105,7 +106,7 @@ public class UserControllerIntTest {
         @DisplayName("2. Get all users")
         public void getUsers_ShouldReturnUsers() throws Exception {
                 //
-                when(userService.getAllUsers()).thenReturn(dummyDb);
+                when(userService.getAll()).thenReturn(dummyDb);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/users");
@@ -120,7 +121,7 @@ public class UserControllerIntTest {
         @DisplayName("3. Attempt to pull invalid user")
         public void getUser_ShouldReturnInvalid() throws Exception {
                 //
-                when(userService.getUserById(1)).thenReturn(mockUser1);
+                when(userService.getById(1)).thenReturn(mockUser1);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/user?id=1");
@@ -135,7 +136,7 @@ public class UserControllerIntTest {
         @DisplayName("4. Attempt to pull valid user")
         public void getUser_ShouldReturnUser() throws Exception {
                 //
-                when(userService.getUserById(1)).thenReturn(mockUser1);
+                when(userService.getById(1)).thenReturn(mockUser1);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
@@ -151,7 +152,7 @@ public class UserControllerIntTest {
         @DisplayName("5. Create a new user")
         public void postUser_ShouldReturnSuccess() throws Exception {
                 //
-                when(userService.createUser(mockUserCreation)).thenReturn(true);
+                when(userService.add(mockUserCreation)).thenReturn(true);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
@@ -171,7 +172,7 @@ public class UserControllerIntTest {
         @DisplayName("6. Create a new user - failed")
         public void postUser_ShouldReturnFailed() throws Exception {
                 //
-                when(userService.createUser(mockUserCreation)).thenReturn(true);
+                when(userService.add(mockUserCreation)).thenReturn(true);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
@@ -191,7 +192,7 @@ public class UserControllerIntTest {
         @DisplayName("7. Update a user")
         public void postUpdateUser_ShouldReturnTrue() throws Exception {
                 //
-                when(userService.updateUser(mockUserModification)).thenReturn(true);
+                when(userService.edit(mockUserModification)).thenReturn(true);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
@@ -211,7 +212,7 @@ public class UserControllerIntTest {
         @DisplayName("7. Update a user - failed")
         public void postUpdateUser_ShouldReturnFailed() throws Exception {
                 //
-                when(userService.updateUser(mockUserModification)).thenReturn(true);
+                when(userService.edit(mockUserModification)).thenReturn(true);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
@@ -232,7 +233,7 @@ public class UserControllerIntTest {
         public void testDeleteUser() throws Exception {
 
                 //
-                when(userService.deleteUser(mockUserDeletion)).thenReturn(true);
+                when(userService.remove(mockUserDeletion)).thenReturn(true);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
@@ -253,7 +254,7 @@ public class UserControllerIntTest {
         public void testDeleteUserFail() throws Exception {
 
                 //
-                when(userService.deleteUser(mockUserDeletion)).thenReturn(true);
+                when(userService.remove(mockUserDeletion)).thenReturn(true);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
