@@ -32,7 +32,7 @@ public class CharacterController {
     //Get all characters
 
     @GetMapping("/characters")
-    @ApiOperation(value = "Find all characters")
+    @ApiOperation(value = "Find all characters", notes = "Provides a list of all characters from the API", response = Character.class)
     public @ResponseBody List<Character> getAllCharacters() {
         return characterService.getAllCharacters();
     }
@@ -40,7 +40,7 @@ public class CharacterController {
     //Create character
 
     @PostMapping("/character")
-    @ApiOperation(value = "Create new character entity")
+    @ApiOperation(value = "Create a new character", notes = "Posts new characters to the API", response = Character.class)
     public @ResponseBody Character createCharacter(@RequestBody Character character) {
         return characterService.createCharacter(character) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
@@ -55,7 +55,7 @@ public class CharacterController {
     }
 
     @PutMapping("/character?id={Id}")
-    @ApiOperation(value = "Update character entity by character Id")
+    @ApiOperation(value = "Update a character by ID", notes = "Updates a character based on Id from the API", response = Character.class)
     public @ResponseBody Character updateCharacter(@RequestBody int Id) {
         return characterService.updateCharacterById(Id) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
@@ -63,7 +63,7 @@ public class CharacterController {
    
 
     @DeleteMapping("/character?id={Id}")
-    @ApiOperation(value = "Delete character entity by character Id")
+    @ApiOperation(value = "Delete a character by ID", notes = "Deletes a character based on Id from the API", response = Character.class)
     public @ResponseBody Character deleteCharacter(@RequestBody int Id) {
         return characterService.deleteCharacterById(Id) ? DELETE_SUCCESSFUL : DELETE_FAILED;
     }
