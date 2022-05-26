@@ -110,7 +110,7 @@ public class CommentControllerIntTest {
 
     @Test
     @Order(4)
-    @DisplayName("4. ttempt to pull comment - passed.")
+    @DisplayName("4. Attempt to pull comment - passed.")
     public void getCommentById_Pass() throws Exception {
             //CommentService method needs to be merged in.
             when(commentService.getById(1)).thenReturn(mockComment1);
