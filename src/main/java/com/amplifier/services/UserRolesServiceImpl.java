@@ -13,7 +13,7 @@ public class UserRolesServiceImpl implements UserRolesService {
     }
 
     @Override
-    public boolean add(UserRole role) {
+    public boolean add(UserRole userRole) {
         // TODO Auto-generated method stub
         return false;
     }
@@ -25,15 +25,21 @@ public class UserRolesServiceImpl implements UserRolesService {
     }
 
     @Override
-    public boolean edit(UserRole role) {
+    public boolean edit(UserRole userRole) {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    public boolean remove(int Id) {
+    public boolean remove(int id) {
         // TODO Auto-generated method stub
         return false;
+    }
+
+    @Override
+    public UserRole delete(int id) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
