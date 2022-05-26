@@ -565,61 +565,56 @@ _Issues_
 <hr>
 
 ### Meeting 5: 05/26/22
+Summary:
+Project milestone for finishing tests and backend roughly met. Patrick, Calvin and Levi are reviewing all pending pull requests and requesting changes as needed. Our gaol is to finish those changes by tomorrow. Calvin has started a rough design for front end. Starting from today, debugging the backend will start with Calvin and Levi. Julian will lead the front-end team and begin working with Patrick and Joachim to start the front-end process. Once Calvin and Levi are done debugging, they will start catching up to front-end. Tasks to divide up front-end will be assigned by tomorrow.
 
-1. **Progress Check**: What did we get done? What is still pending? When do you think you can get it done?
-    - Joachim: 
-        - [ ]  
-        - [ ]  
-    - Patrick: 
-        - [ ]  
-        - [ ]  
+
+1. **Progress Check**: What did we get done? What is still pending? (If some items are still pending) When do you think you can get it done?
+    - Joachim:
+        - [ ] All good to go
+    - Patrick:
+        - [ ] UserCharacterModel - will return to it!
+            - Julian may have created it and the branches may have been merged
+        - [ ] Items in the middle of review
     - Julian:
-        - [ ]  
-        - [ ]  
+        - [ ] Worked on all tickets
+        - [ ] Still working on the ticket that was sent back
     - Calvin:
-        - [ ]  
-        - [ ]  
+        - [ ] started some front end design
+        - [ ] bug fixes  + reviewing
     - Levi:
-        - [ ]  
-        - [ ]  
+        - [ ] finished my tickets
     <br> </br>
 
-2. **Any Issues?** 
-    - [ ]  
+2. **Any Issues?**
+    - [ ] ClassPath changes? - This is the difference between Mac and Windows users OR you have done something that required yoru class path to change. Pleae just ignore it and add it with the rest of your work when you commit.
+        - wouldn't the changes that you bring into dev automatically change the class path for other people on our end? Because the class path is changed by your IDE, whatever changes that occur in class path need to be pushed into dev.
+        - solution: `git add .`
  <br> </br>
 
 3. **Agenda**
     - [ ] on to debugging and front end...
+    - [ ] While reviewing, whomever is reviewing will make comments on your code and will either approve your code or request changes. You will receive an email if changes are requested.
     - [ ] Website design
-    - [ ] While reviewing, whomever is reviewing will make comments on your code and will either approve your code or request changes. You will receive an email if changes are requested. Will we all be able to make those changes by tomorrow?
-    - [ ] 
+        - Home page: list of all image posts 
+            - title field 
+            - count of the comments
+            - expanding the posts and comments via bootstrap and writing animation with css
+        - Forms: login form, registration form, profile form, social media form, character form
+        - Ranking page (Blizzard API)
  <br> </br>
 
 4. **Team Milestones/Tasks**
 - _Milestones:_
-    - [ ] 
-    - [ ] 
+    - [ ] Make any requested changes from pull requests by tomorrow! 
  <br> </br>
 - _Issues_
-    - Joachim: 
-        - [ ] 
-        - [ ]
-    - Patrick: 
-        - [ ] 
-        - [ ]
-    - Julian: 
-        - [ ] 
-        - [ ] 
-    - Calvin: 
-        - [ ] 
-        - [ ] 
     - Levi: 
         - [ ] CI/CD implementation
-        - [ ] 
+        - [ ] Google fonts for front-end development
 - _Reminders: Topics to understand and implement:_
     - [ ] Portfolio due by tomorrow
     - [ ] HackerRank Sorting
-    - [ ] 
  <br> </br>
 
 
