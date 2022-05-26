@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "user_social_media")
+@Table(name = "users_social_media")
 public class UserSocialMedia {
 
     private int id;
