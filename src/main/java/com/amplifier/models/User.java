@@ -49,11 +49,11 @@ public class User {
     private String lastName;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "character_id", unique = false)
+    @JoinColumn(name = "character_id", unique = true)
     private Character character;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "social_id", unique = false)
+    @JoinColumn(name = "social_id", unique = true)
     private UserSocialMedia socialMedia;
 
     @Column(name = "join_date", nullable = false)
