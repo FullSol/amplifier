@@ -23,7 +23,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean add(User user) {
-        return repository.create(user);
+        int pk = repository.save(user).getId();
+        return (pk > 0) ? true : false;
     }
 
     @Override
@@ -33,7 +34,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean edit(User user) {
-        return repository.update(user);
+        User target = repository.findById(user.getId());
+
+        target.setUsername(user.getUsername());
+        target.setEmail(user.getUsername());
+        target.setPassword(user.getUsername());
+        target.setFirstName(user.getUsername());
+        target.setLastName(user.getUsername());
+        target.setCharacter(user.getCharacter());
+        target.setSocialMedia(user.getSocialMedia());
+        target.setJoinDate(user.getJoinDate());
+        target.setRole(user.getRole());
+        target.setActive(user.isActive());
+
+        return (repository.save(target) != null) ? true : false;
     }
 
     @Override
