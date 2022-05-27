@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.amplifier.models.User;
 import com.amplifier.repositories.UserRepository;
-import com.amplifier.repositories.UserRepositoryImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,35 +14,35 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserRepositoryImpl userRepository;
+    private UserRepository repository;
 
     @Override
     public List<User> getAll() {
-        return userRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
     public boolean add(User user) {
-        return userRepository.create(user);
+        return repository.create(user);
     }
 
     @Override
     public User getById(int id) {
-        return null;
+        return repository.findById(id);
     }
 
     @Override
     public boolean edit(User user) {
-        return false;
+        return repository.update(user);
     }
 
     @Override
     public boolean remove(int id) {
-        return false;
+        return repository.delete(id);
     }
 
     @Override
     public User login(String username, String password) {
-        return null;
+        return repository.login(username, password);
     }
 }
