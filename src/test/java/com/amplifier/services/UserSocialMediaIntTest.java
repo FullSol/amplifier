@@ -64,8 +64,8 @@ public class UserSocialMediaIntTest {
 
     @Test
     @Order(2)
-    @DisplayName("2. Create Candy Happy Path Test")
-    void testCreateCandy() {
+    @DisplayName("2. Create UserSocialMedia Happy Path Test")
+    void testCreateUserSocialMedia() {
 
         // Arrange
         UserSocialMedia social3 = new UserSocialMedia(1, "http://wwww.twitter.com/third",
@@ -82,8 +82,8 @@ public class UserSocialMediaIntTest {
 
     @Test
     @Order(3)
-    @DisplayName("3. Get Candy by Id Happy Path Test")
-    void testGetCandyById() {
+    @DisplayName("3. Get UserSocialMedia by Id Happy Path Test")
+    void testGetUserSocialMediaById() {
         // Arranged in @Before
 
         // Behavior Setup
@@ -95,8 +95,8 @@ public class UserSocialMediaIntTest {
 
     @Test
     @Order(4)
-    @DisplayName("4. Get all Candies Happy Path Test")
-    void testGetAllCandies() {
+    @DisplayName("4. Get all UserSocialMedia Happy Path Test")
+    void testGetAllUserSocialMedia() {
         // arrange step already done in setup
         // here we will tell mockito what type of behavior to expect from calling
         // certain methods from our dao
@@ -108,8 +108,8 @@ public class UserSocialMediaIntTest {
 
     @Test
     @Order(5)
-    @DisplayName("5. Update Candy Happy Path Test")
-    void testUpdateCandy() {
+    @DisplayName("5. Update UserSocialMedia Happy Path Test")
+    void testUpdateUserSocialMedia() {
         social2.setTwitterLink("http://wwww.twitter.com/fourth");
         social2.setFacebookLink("http://wwww.facebook.com/fourth");
 
@@ -121,8 +121,8 @@ public class UserSocialMediaIntTest {
 
     @Test
     @Order(6)
-    @DisplayName("6. Delete Candy Happy Path Test")
-    void testDeleteCandy() {
+    @DisplayName("6. Delete UserSocialMedia Happy Path Test")
+    void testDeleteUserSocialMedia() {
         doNothing().when(repository).delete(social2);
         // act + assert step
         assertEquals(true, service.remove(social2.getId()));
