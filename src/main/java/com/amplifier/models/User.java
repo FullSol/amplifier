@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -48,9 +48,9 @@ public class User {
     @ApiModelProperty(name = "last_name", notes = "A String value that serves as the last_name for the user.", required = true)
     private String lastName;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "character_id", unique = true)
-    private Character character;
+    @OneToMany
+    @JoinColumn(name = "blizzard_account_id", unique = true)
+    private UserBlizzardAccount blizzardAccount;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "social_id", unique = true)
