@@ -16,6 +16,11 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
     @Autowired
     private UserSocialMediaRepository repository;
 
+    @Autowired
+    public UserSocialMediaServiceImpl(UserSocialMediaRepository repository) {
+        this.repository = repository;
+    }
+
     @Override
     public List<UserSocialMedia> getAll() {
         return repository.findAll();
@@ -45,8 +50,5 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
     public boolean remove(int id) {
         return repository.delete(id);
     }
-
-
-
 
 }

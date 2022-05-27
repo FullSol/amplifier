@@ -11,27 +11,27 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "user_social_media")
-@ApiModel(value = "user_social_media", description = "All the user social media can be found here")
+@Table(name = "users_social_media")
+@ApiModel(value = "users_social_media", description = "All the user social media can be found here")
 @Data
 public class UserSocialMedia {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "id")
-  @ApiModelProperty(name = "socialMediaId", notes="")
-  private int socialMediaId;
+  @ApiModelProperty(name = "socialMediaId", notes = "")
+  private int id;
 
-  @Column(name="twitterLink")
-  @ApiModelProperty(name = "twitterLink", notes ="")
+  @Column(name = "twitterLink")
+  @ApiModelProperty(name = "twitterLink", notes = "")
   private String twitterLink;
 
-  @Column(name="facebookLink")
-  @ApiModelProperty(name = "facebookLink", notes ="")
+  @Column(name = "facebookLink")
+  @ApiModelProperty(name = "facebookLink", notes = "")
   private String facebookLink;
 
-  @Column(name="instagramLink")
-  @ApiModelProperty(name = "instagramLink", notes ="")
+  @Column(name = "instagramLink")
+  @ApiModelProperty(name = "instagramLink", notes = "")
   private String instagramLink;
 
   public UserSocialMedia() {
