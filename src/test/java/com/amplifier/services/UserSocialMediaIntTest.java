@@ -84,13 +84,13 @@ public class UserSocialMediaIntTest {
     @Order(3)
     @DisplayName("3. Get Candy by Id Happy Path Test")
     void testGetCandyById() {
-        // arrange step already done in setup
-        // here we will tell mockito what type of behavior to expect from calling
-        // certain methods from our dao
-        when(cserv.getCandyById(1)).thenReturn(c1);
+        // Arranged in @Before
+
+        // Behavior Setup
+        when(service.getById(1)).thenReturn(social1);
 
         // act + assert step
-        assertEquals(c1, cserv.getCandyById(1));
+        assertEquals(social1, service.getById(1));
     }
 
     @Test
@@ -100,10 +100,10 @@ public class UserSocialMediaIntTest {
         // arrange step already done in setup
         // here we will tell mockito what type of behavior to expect from calling
         // certain methods from our dao
-        when(cserv.getAllCandies()).thenReturn(dummyDb);
+        when(service.getAll()).thenReturn(dummyDb);
 
         // act + assert step
-        assertEquals(dummyDb, cserv.getAllCandies());
+        assertEquals(dummyDb, service.getAll());
     }
 
     @Test
