@@ -1,15 +1,25 @@
 package com.amplifier.services;
 
-import com.amplifier.models.UserSocialMedia;
+import java.util.List;
 
+import com.amplifier.models.SocialMedia;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@Transactional
 public interface UserSocialMediaService {
 
-    boolean deleteUserSocialMedia(UserSocialMedia userSocialMedia);
+    List<SocialMedia> getAll();
 
-    boolean updateUser(UserSocialMedia userSocialMedia);
+    SocialMedia getById(int id);
 
-    UserSocialMedia getUserSocialMediaById(int userId, int mediaId);
+    boolean add(SocialMedia userSocialMedia);
 
-    boolean addUserSocialMedia(UserSocialMedia userSocialMedia);
+    boolean edit(SocialMedia userSocialMedia);
+
+    boolean remove(int id);
+
 
 }
