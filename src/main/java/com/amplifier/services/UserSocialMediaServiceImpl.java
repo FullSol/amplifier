@@ -2,7 +2,7 @@ package com.amplifier.services;
 
 import java.util.List;
 
-import com.amplifier.models.SocialMedia;
+import com.amplifier.models.UserSocialMedia;
 import com.amplifier.repositories.UserSocialMediaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,24 +17,24 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
     private UserSocialMediaRepository repository;
 
     @Override
-    public List<SocialMedia> getAll() {
+    public List<UserSocialMedia> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public SocialMedia getById(int id) {
+    public UserSocialMedia getById(int id) {
         return repository.findById(id);
     }
 
     @Override
-    public boolean add(SocialMedia userSocialMedia) {
+    public boolean add(UserSocialMedia userSocialMedia) {
         int pk = repository.save(userSocialMedia).getSocialMediaId();
         return (pk > 0) ? true : false;
     }
 
     @Override
-    public boolean edit(SocialMedia userSocialMedia) {
-        SocialMedia target = repository.findById(userSocialMedia.getSocialMediaId());
+    public boolean edit(UserSocialMedia userSocialMedia) {
+        UserSocialMedia target = repository.findById(userSocialMedia.getSocialMediaId());
         target.setTwitterLink(userSocialMedia.getTwitterLink());
         target.setFacebookLink(userSocialMedia.getFacebookLink());
         target.setInstagramLink(userSocialMedia.getInstagramLink());

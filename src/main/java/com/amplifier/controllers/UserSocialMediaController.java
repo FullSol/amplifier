@@ -35,29 +35,26 @@ public class UserSocialMediaController {
 
     @ApiOperation(value = "Find User Social Media by id number", notes = "Provide an id to lookup a specific user social media from the API", response = UserSocialMedia.class)
     @GetMapping(path = "/user/social-media?user_id={userId}&media_id={mediaId}")
-    public @ResponseBody UserSocialMedia getUserSocialMediaById(
-            @RequestParam(name = "user_id") int userId,
-            @RequestParam(name = "media_id") int mediaId) {
-        return userSocialMediaService.getUserSocialMediaById(userId, mediaId);
+    public @ResponseBody UserSocialMedia getUserSocialMediaById(@RequestParam(name = "media_id") int mediaId) {
+        return userSocialMediaService.getById(mediaId);
     }
 
     @PostMapping("/user/social-media")
     @ApiOperation(value = "add new user social media entity")
     public @ResponseBody ClientMessage addUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
-        return userSocialMediaService.addUserSocialMedia(userSocialMedia) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+        return userSocialMediaService.add(userSocialMedia) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PutMapping("/user/social-media")
     @ApiOperation(value = "Update user social media entity")
     public @ResponseBody ClientMessage updateUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
-        return userSocialMediaService.updateUser(userSocialMedia) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+        return userSocialMediaService.edit(userSocialMedia) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/user/social-media")
     @ApiOperation(value = "Remove user social media entity")
-    public @ResponseBody ClientMessage deleteUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
-        return userSocialMediaService.deleteUserSocialMedia(userSocialMedia) ? DELETION_SUCCESSFUL
-                : DELETION_FAILED;
+    public @ResponseBody ClientMessage deleteUserSocialMedia(@RequestBody int id) {
+        return userSocialMediaService.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 
 }

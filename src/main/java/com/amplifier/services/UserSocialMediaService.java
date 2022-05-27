@@ -2,7 +2,7 @@ package com.amplifier.services;
 
 import java.util.List;
 
-import com.amplifier.models.SocialMedia;
+import com.amplifier.models.UserSocialMedia;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,13 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface UserSocialMediaService {
 
-    List<SocialMedia> getAll();
+    List<UserSocialMedia> getAll();
 
-    SocialMedia getById(int id);
+    UserSocialMedia getById(int id);
 
-    boolean add(SocialMedia userSocialMedia);
+    boolean add(UserSocialMedia userSocialMedia);
 
-    boolean edit(SocialMedia userSocialMedia);
+    boolean edit(UserSocialMedia userSocialMedia);
 
     boolean remove(int id);
 

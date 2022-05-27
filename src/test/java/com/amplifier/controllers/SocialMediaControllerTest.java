@@ -3,7 +3,7 @@ package com.amplifier.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.amplifier.models.SocialMedia;
+import com.amplifier.models.UserSocialMedia;
 import com.amplifier.services.SocialMediaService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -29,8 +29,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(SocialMediaController.class)
 public class SocialMediaControllerTest {
 
-  private SocialMedia sm1, sm2, sm3;
-  List<SocialMedia> dummyDB;
+  private UserSocialMedia sm1, sm2, sm3;
+  List<UserSocialMedia> dummyDB;
 
   @Autowired
   private MockMvc mockMvc;
@@ -40,9 +40,9 @@ public class SocialMediaControllerTest {
 
   @BeforeAll
   public void setUp() {
-    sm1 = new SocialMedia("https://twitter.com/myprofile", "https://facebook.com/myprofile", "https://instagram.com/myprofile");
+    sm1 = new UserSocialMedia("https://twitter.com/myprofile", "https://facebook.com/myprofile", "https://instagram.com/myprofile");
 
-    dummyDB = new ArrayList<SocialMedia>();
+    dummyDB = new ArrayList<UserSocialMedia>();
     dummyDB.add(sm1);
   }
 
@@ -52,7 +52,7 @@ public class SocialMediaControllerTest {
   public void createSocialMedia() throws Exception {
     mockMvc.perform( MockMvcRequestBuilders
       .post("/socialmedia")
-      .content(asJsonString(new SocialMedia("https://twitter.com/myprofile", "https://facebook.com/myprofile", "https://instagram.com/myprofile")))
+      .content(asJsonString(new UserSocialMedia("https://twitter.com/myprofile", "https://facebook.com/myprofile", "https://instagram.com/myprofile")))
       .contentType(MediaType.APPLICATION_JSON)
       .accept(MediaType.APPLICATION_JSON))
       .andExpect(status().isCreated())
@@ -85,7 +85,7 @@ public class SocialMediaControllerTest {
   public void updateSocialMedia() throws Exception {
      mockMvc.perform( MockMvcRequestBuilders
       .put("/socialmedia/{id}", 2)
-      .content(asJsonString(new SocialMedia(2, "https://facebook.com/myprofile", "https://facebook.com/myprofile", "https://instagram.com/myprofile")))
+      .content(asJsonString(new UserSocialMedia(2, "https://facebook.com/myprofile", "https://facebook.com/myprofile", "https://instagram.com/myprofile")))
       .contentType(MediaType.APPLICATION_JSON)
       .accept(MediaType.APPLICATION_JSON))
       .andExpect(status().isOk())
