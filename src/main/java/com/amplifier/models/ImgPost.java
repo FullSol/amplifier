@@ -26,6 +26,10 @@ public class ImgPost {
     @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any image post entity.", required = true, value = "1")
     private int id;
 
+    @Column(name = "img_caption", nullable = false)
+    @ApiModelProperty(name = "caption", value = "A string value describing the location of an image post entity.", required = true)
+    private String imgCaption;
+
     @Column(name = "img_location", nullable = false)
     @ApiModelProperty(name = "imageLocation", value = "A string value describing the location of an image post entity.", required = true)
     private String imgLocation;
