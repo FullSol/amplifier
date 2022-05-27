@@ -32,6 +32,7 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Meeting 3: 5/24/22](#sprint-3-52422)
     - [Meeting 4: 5/25/22](#meeting-4-52522)
     - [Meeting 5: 5/26/22](#meeting-5-052622)
+    - [Meeting 6:5/27/22](#meeting-6-52722-frontend)
 5. [Link to Front-End Draft](https://xd.adobe.com/view/443d6501-5900-4ff2-80ec-d06c965809e9-116e/
 )
 
@@ -625,5 +626,59 @@ Project milestone for finishing tests and backend roughly met. Patrick, Calvin a
 <br>
 <hr>
 
-### Rules and Updates
-1. 
+### Meeting 6 (5/27/22) FrontEnd:
+> *Discussed plans for front-end. Went through all of the different pages and forms and specified which fields are needed in each. Team members have been assigned to each page/form. Julian will create a template for everyone to follow. A new repo for front-end has been created and issues will be be assigned according to today's decisions.*
+
+- **Decisions: Plain (HTML, CSS, JS) and Bootstrap**
+- **Style Guide** = [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+- division of work: one person per page
+- Should we have a honeypot (A tricky way to capture spam)? YES~
+    - adds a hidden field inside a form
+    - the pot will read the input
+- Julian will create a template for everyone (HTML, CSS, JS) + folders
+     - img location (from API) will be a folder
+- Team:
+    - Watch bootstrap tutorials; Familiarize yourself with the different components
+        - [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+    - [Take a look at this](https://www.bezkoder.com/angular-spring-boot-postgresql/)
+    - clone the FrontEnd Repo into your computer [FrontEndRepo](https://github.com/FullSol/diablofansite)
+
+Assignments:
+1. Home page - Julian
+2. Blizzard rankings (page) -Julian
+3. UserProfile (page) - Levi
+    - Character
+    - User information
+    - Social Media (form)
+        - twitterLink
+        - facebookLink
+        - instagramLink
+4. Character modal (page) - Calvin
+5. Login (form) -Levi
+    - Username
+    - Password
+6. Register (form): -Calvin
+    - Username
+    - Password
+    - Email
+    - First Name
+    - Last Name
+    - JoinDate (hidden)
+    - RoleId (hidden)
+    - Active = true (hidden)
+7. Character (form) -Joachim
+    - API for pulling characters is by account:Use account name
+        - use cards to display characters; can pull a stock image to add it in -Joachim
+            - all characters are a hyperlink (the request URL)
+    -  Calvin: Refactor the UserCharacter to just accountName
+8. Image Post (form) - Patrick
+    - Calvin: (refactor) add caption
+    - Caption
+    - Image location
+    - (author is automatically in)
+9. Comment (form) - Patrick
+    - commentText
+    - (author is automatically in)
+
+
+*For future reference* Julian's proposal- Retrospective Idea: Everyone plays DiabloIII Immortal(?) 
