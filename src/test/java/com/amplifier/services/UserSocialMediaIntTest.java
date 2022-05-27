@@ -12,7 +12,6 @@ import com.amplifier.models.UserSocialMedia;
 import com.amplifier.repositories.UserSocialMediaRepository;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -89,7 +88,7 @@ public class UserSocialMediaIntTest {
         // Behavior Setup
         when(service.getById(1)).thenReturn(social1);
 
-        // act + assert step
+        // Action & Assert
         assertEquals(social1, service.getById(1));
     }
 
@@ -97,12 +96,12 @@ public class UserSocialMediaIntTest {
     @Order(4)
     @DisplayName("4. Get all UserSocialMedia Happy Path Test")
     void testGetAllUserSocialMedia() {
-        // arrange step already done in setup
-        // here we will tell mockito what type of behavior to expect from calling
-        // certain methods from our dao
+        // Arranged in @Before
+
+        // Behavior
         when(service.getAll()).thenReturn(dummyDb);
 
-        // act + assert step
+        // Action & Assert
         assertEquals(dummyDb, service.getAll());
     }
 
@@ -110,12 +109,15 @@ public class UserSocialMediaIntTest {
     @Order(5)
     @DisplayName("5. Update UserSocialMedia Happy Path Test")
     void testUpdateUserSocialMedia() {
+        // Arrange
         social2.setTwitterLink("http://wwww.twitter.com/fourth");
         social2.setFacebookLink("http://wwww.facebook.com/fourth");
 
+        // Behavior
         when(service.getById(2)).thenReturn(social2);
         when(repository.save(social2)).thenReturn(social2);
 
+        // Action & Assert
         assertEquals(true, service.edit(social2));
     }
 
@@ -123,8 +125,11 @@ public class UserSocialMediaIntTest {
     @Order(6)
     @DisplayName("6. Delete UserSocialMedia Happy Path Test")
     void testDeleteUserSocialMedia() {
+
+        // Behavior
         doNothing().when(repository).delete(social2);
-        // act + assert step
+
+        // Action & Assert
         assertEquals(true, service.remove(social2.getId()));
     }
 
