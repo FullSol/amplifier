@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.amplifier.models.SocialMedia;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,7 @@ import jakarta.transaction.Transactional;
 
 @Repository
 @Transactional
-public interface UserSocialMediaRepository {
+public interface UserSocialMediaRepository extends JpaRepository<SocialMedia, Integer>{
 
 	@Query(value = "SELECT * FROM users_social_media", nativeQuery = true)
 	public List<SocialMedia> findAll();
