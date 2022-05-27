@@ -29,23 +29,23 @@ public class User {
     private int id;
 
     @Column(name = "username", unique = true, nullable = false)
-    @ApiModelProperty(name = "username", notes = "A String value that served as the username for the user.", required = true)
+    @ApiModelProperty(name = "username", notes = "A String value that serves as the username for the user.", required = true)
     private String username;
 
     @Column(name = "email", unique = true, nullable = false)
-    @ApiModelProperty(name = "email", notes = "A String value that served as the email for the user.", required = true)
+    @ApiModelProperty(name = "email", notes = "A String value that serves as the email for the user.", required = true)
     private String email;
 
     @Column(name = "password", nullable = false)
-    @ApiModelProperty(name = "password", notes = "A String value that served as the password for the user.", required = true)
+    @ApiModelProperty(name = "password", notes = "A String value that serves as the password for the user.", required = true)
     private String password;
 
     @Column(name = "first_name", nullable = false)
-    @ApiModelProperty(name = "first_name", notes = "A String value that served as the first_name for the user.", required = true)
+    @ApiModelProperty(name = "first_name", notes = "A String value that serves as the first_name for the user.", required = true)
     private String firstName;
 
     @Column(name = "last_name", nullable = false)
-    @ApiModelProperty(name = "last_name", notes = "A String value that served as the last_name for the user.", required = true)
+    @ApiModelProperty(name = "last_name", notes = "A String value that serves as the last_name for the user.", required = true)
     private String lastName;
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -56,18 +56,18 @@ public class User {
     @JoinColumn(name = "social_id", unique = true)
     private UserSocialMedia socialMedia;
 
-    @Column(name = "username", nullable = false)
-    @ApiModelProperty(name = "username", notes = "A String value that served as the username for the user.", required = true)
+    @Column(name = "join_date", nullable = false)
+    @ApiModelProperty(name = "join_date", notes = "A date value that serves as the joined date for the user.", required = true)
     private LocalDate joinDate;
 
     // Should this be another @OneToOne column join? -- userRole role ID -> Id in
     // userRole model class
-    @Column(name = "username", unique = true, nullable = false)
-    @ApiModelProperty(name = "username", notes = "A String value that served as the username for the user.", required = true)
+    @Column(name = "role_id", unique = true, nullable = false)
+    @ApiModelProperty(name = "role_id", notes = "A integer value that serves as the role id for the user.", required = true)
     private UserRole role;
 
-    @Column(name = "username", unique = true, nullable = false)
-    @ApiModelProperty(name = "username", notes = "A String value that served as the username for the user.", required = true)
+    @Column(name = "active", unique = true, nullable = false)
+    @ApiModelProperty(name = "active", notes = "A boolean value that serves as the user's active status indication.", required = true)
     private boolean active;
 
     public User() {
