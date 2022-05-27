@@ -43,8 +43,8 @@ public class UserSocialMedia {
     this.instagramLink = instagramLink;
   }
 
-  public UserSocialMedia(int socialMediaId, String twitterLink, String facebookLink, String instagramLink) {
-    this.socialMediaId = socialMediaId;
+  public UserSocialMedia(int id, String twitterLink, String facebookLink, String instagramLink) {
+    this.id = id;
     this.twitterLink = twitterLink;
     this.facebookLink = facebookLink;
     this.instagramLink = instagramLink;
