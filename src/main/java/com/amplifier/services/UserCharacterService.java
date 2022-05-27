@@ -10,13 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public interface UserCharacterService {
-    public boolean create(UserCharacter character);
+    public boolean add(UserCharacter character);
 
     public UserCharacter getById(int id);
 
     public List<UserCharacter> getAll();
 
-    public boolean update(UserCharacter character);
+    public boolean edit(UserCharacter character);
 
-    public boolean delete(int id);
+    public boolean remove(int id);
 }

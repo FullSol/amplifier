@@ -14,35 +14,35 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserCharacterServiceImpl implements UserCharacterService {
 
     @Autowired
-    private CharacterRepository characterRepository;
+    private CharacterRepository repository;
 
     @Override
-    public boolean create(UserCharacter character) {
-        int pk = characterRepository.save(character).getId();
+    public boolean add(UserCharacter character) {
+        int pk = repository.save(character).getId();
         return (pk > 0) ? true : false;
     };
 
     @Override
     public UserCharacter getById(int id) {
-        return characterRepository.findById(id);
+        return repository.findById(id);
     };
 
     @Override
     public List<UserCharacter> getAll() {
-        return characterRepository.findAll();
+        return repository.findAll();
     };
 
     @Override
-    public boolean update(UserCharacter character) {
-        UserCharacter target = characterRepository.findById(character.getId());
+    public boolean edit(UserCharacter character) {
+        UserCharacter target = repository.findById(character.getId());
         target.setName(character.getName());
         target.setRealm(character.getRealm());
-        return (characterRepository.save(target) != null) ? true : false;
+        return (repository.save(target) != null) ? true : false;
     };
 
     @Override
-    public boolean delete(int id) {
-        return characterRepository.deleteById(id);
+    public boolean remove(int id) {
+        return repository.delete(id);
     }
 
 }
