@@ -110,13 +110,13 @@ public class UserSocialMediaIntTest {
     @Order(5)
     @DisplayName("5. Update Candy Happy Path Test")
     void testUpdateCandy() {
-        c2.setName("Lollipop");
-        c2.setPrice(0.79);
+        social2.setTwitterLink("http://wwww.twitter.com/fourth");
+        social2.setFacebookLink("http://wwww.facebook.com/fourth");
 
-        when(cserv.getCandyById(2)).thenReturn(c2);
-        when(mockdao.save(c2)).thenReturn(c2);
+        when(service.getById(2)).thenReturn(social2);
+        when(repository.save(social2)).thenReturn(social2);
 
-        assertEquals(true, cserv.updateCandy(c2));
+        assertEquals(true, service.edit(social2));
     }
 
     @Test
