@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
-public interface CharacterRepository extends JpaRepository<UserCharacter, Integer> {
+public interface UserCharacterRepository extends JpaRepository<UserCharacter, Integer> {
 
     @Query(value = "SELECT * FROM user_character", nativeQuery = true)
     public List<UserCharacter> findAll();
