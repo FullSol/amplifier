@@ -3,7 +3,7 @@ package com.amplifier.services;
 import java.util.List;
 
 import com.amplifier.models.UserCharacter;
-import com.amplifier.repositories.CharacterRepository;
+import com.amplifier.repositories.UserCharacterRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserCharacterServiceImpl implements UserCharacterService {
 
     @Autowired
-    private CharacterRepository repository;
+    private UserCharacterRepository repository;
 
     @Override
     public boolean add(UserCharacter character) {
@@ -35,8 +35,10 @@ public class UserCharacterServiceImpl implements UserCharacterService {
     @Override
     public boolean edit(UserCharacter character) {
         UserCharacter target = repository.findById(character.getId());
+
         target.setName(character.getName());
         target.setRealm(character.getRealm());
+
         return (repository.save(target) != null) ? true : false;
     };
 
