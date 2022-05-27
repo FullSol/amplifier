@@ -5,8 +5,8 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.amplifier.repositories.CharacterRepository;
-import com.amplifier.repositories.CharacterRepositoryImpl;
+import com.amplifier.repositories.UserCharacterRepository;
+import com.amplifier.repositories.UserCharacterRepository;
 import com.amplifier.models.Character;
 import com.amplifier.services.CharacterService;
 import com.amplifier.services.CharacterServiceImpl;
@@ -19,7 +19,7 @@ import junit.framework.TestCase;
 
 public class CharacterServiceTests extends TestCase {
 
-	private CharacterRepository mockdao;
+	private UserCharacterRepository mockdao;
 	private CharacterService cserv;
 
 	List<Character> dummyDb;

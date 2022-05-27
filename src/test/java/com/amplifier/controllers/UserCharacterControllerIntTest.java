@@ -2,7 +2,7 @@ package com.amplifier.controllers;
 
 import java.util.ArrayList;
 
-import com.amplifier.repositories.CharacterRepository;
+import com.amplifier.repositories.UserCharacterRepository;
 import com.amplifier.services.CharacterService;
 import com.amplifier.models.UserCharacters;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -50,18 +50,17 @@ public class UserCharacterControllerIntTest {
   UserCharacters crusader = new UserCharacters(4, "crusName", "crusRealm");
   UserCharacters monk = new UserCharacters(5, "monkName", "monkRealm");
 
-
   @Test
   @Order(1)
   @DisplayName("1. Add New Character")
   public void addNewCharacter() throws Exception {
     mockMvc.perform(MockMvcRequestBuilders
-    .post("/character")
-    .content(asJsonString(new UserCharacters(6, "Witch Doctor", "doctorRealm")))
-    .contentType(MediaType.APPLICATION_JSON)
-    .accept(MediaType.APPLICATION_JSON))
-    .andExpect(status().isCreated())
-    .andExpect(MockMvcResultMatchers.jsonPath("$.characterId").exists());
+        .post("/character")
+        .content(asJsonString(new UserCharacters(6, "Witch Doctor", "doctorRealm")))
+        .contentType(MediaType.APPLICATION_JSON)
+        .accept(MediaType.APPLICATION_JSON))
+        .andExpect(status().isCreated())
+        .andExpect(MockMvcResultMatchers.jsonPath("$.characterId").exists());
   }
 
   @Test
@@ -69,13 +68,13 @@ public class UserCharacterControllerIntTest {
   @DisplayName("2. Update Character")
   public void updateCharacter() throws Exception {
     mockMvc.perform(MockMvcRequestBuilders
-    .put("/character/{id}", 3)
-    .content(asJsonString(necromancer))
-    .contentType(MediaType.APPLICATION_JSON)
-    .accept(MediaType.APPLICATION_JSON))
-    .andExpect(status().isOk())
-    .andExpect(MockMvcResultMatchers.jsonPath("#.characterName").value("necroName"))
-    .andExpect(MockMvcResultMatchers.jsonPath("$.characterRealm").value("necroRealm"));
+        .put("/character/{id}", 3)
+        .content(asJsonString(necromancer))
+        .contentType(MediaType.APPLICATION_JSON)
+        .accept(MediaType.APPLICATION_JSON))
+        .andExpect(status().isOk())
+        .andExpect(MockMvcResultMatchers.jsonPath("#.characterName").value("necroName"))
+        .andExpect(MockMvcResultMatchers.jsonPath("$.characterRealm").value("necroRealm"));
   }
 
   @Test
@@ -83,20 +82,20 @@ public class UserCharacterControllerIntTest {
   @DisplayName("3. Delete Character")
   public void deleteCharacter() throws Exception {
     mockMvc.perform(MockMvcRequestBuilders
-    .delete("/character/{id}", 1))
-    .andExpect(status().isAccepted());
+        .delete("/character/{id}", 1))
+        .andExpect(status().isAccepted());
   }
 
   @Test
   @Order(4)
   @DisplayName("4. Get Character by Id")
   public void getCharacterById() {
-     mockMvc.perform(MockMvcRequestBuilders
-      .get("/character/{id}", 1)
-      .accept(MediaType.APPLICATION_JSON))
-      .andDo(print())
-      .andExpect(status().isOk())
-      .andExpect(MockMvcResultMatchers.jsonPath("$.characterId").value(1));
+    mockMvc.perform(MockMvcRequestBuilders
+        .get("/character/{id}", 1)
+        .accept(MediaType.APPLICATION_JSON))
+        .andDo(print())
+        .andExpect(status().isOk())
+        .andExpect(MockMvcResultMatchers.jsonPath("$.characterId").value(1));
   }
 
   @Test
@@ -104,12 +103,12 @@ public class UserCharacterControllerIntTest {
   @DisplayName("5. Get All Characters")
   public void getAllCharacters() {
     mockMvc.perform(MockMvcRequestBuilders
-      .get("/characters")
-      .accept(MediaType.APPLICATION_JSON))
-      .andDo(print())
-      .andExpect(status().isOk())
-      .andExpect(MockMvcResultMatchers.jsonPath("$.characters").exists())
-      .adnExpect(MockMvcResultMatchers.jsonPath("$.characters[*].characterId").isNotEmpty());
+        .get("/characters")
+        .accept(MediaType.APPLICATION_JSON))
+        .andDo(print())
+        .andExpect(status().isOk())
+        .andExpect(MockMvcResultMatchers.jsonPath("$.characters").exists())
+        .adnExpect(MockMvcResultMatchers.jsonPath("$.characters[*].characterId").isNotEmpty());
   }
 
   public static String asJsonString(final Object obj) {

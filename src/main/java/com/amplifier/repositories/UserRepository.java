@@ -20,7 +20,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     public List<User> findAll();
 
     @Modifying
-    @Query(value = "UPDATE user SET username=?1, email=?2, password=?3, first_name=?4, last_name=?5, character_id=?6, social_media_id=?7, join_date=?8, role=?9, active=?10 WHERE id=?11", nativeQuery = true)
+    @Query(value = "UPDATE user SET username=?1, email=?2, password=?3, first_name=?4, last_name=?5, blizzard_account_id=?6, social_media_id=?7, join_date=?8, role=?9, active=?10 WHERE id=?11", nativeQuery = true)
     public boolean update(String username, String email, String password, String first_name, String last_name,
             int character_id, int id, LocalDate joinDate, int role_id, boolean active);
 
