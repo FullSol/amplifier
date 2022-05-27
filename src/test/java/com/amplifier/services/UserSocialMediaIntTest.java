@@ -123,17 +123,9 @@ public class UserSocialMediaIntTest {
     @Order(6)
     @DisplayName("6. Delete Candy Happy Path Test")
     void testDeleteCandy() {
-        doNothing().when(mockdao).delete(c2);
+        doNothing().when(repository).delete(social2);
         // act + assert step
-        assertEquals(true, cserv.deleteCandy(c2));
+        assertEquals(true, service.remove(social2.getId()));
     }
 
-    @Test
-    @Order(7)
-    @DisplayName("7. Unneccessay/Unused Test")
-    @Disabled("Disabled until CreateCandyTest is up!")
-    // @Disabled will allow you to ignore this test while debugging other tests
-    public void unusedTest() {
-        return;
-    }
 }
