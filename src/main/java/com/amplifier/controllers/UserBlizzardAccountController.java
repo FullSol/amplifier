@@ -1,13 +1,13 @@
 package com.amplifier.controllers;
 
-import java.util.List;
-
 import static com.amplifier.util.ClientMessageUtil.CREATION_FAILED;
 import static com.amplifier.util.ClientMessageUtil.CREATION_SUCCESSFUL;
 import static com.amplifier.util.ClientMessageUtil.DELETION_FAILED;
 import static com.amplifier.util.ClientMessageUtil.DELETION_SUCCESSFUL;
 import static com.amplifier.util.ClientMessageUtil.UPDATE_FAILED;
 import static com.amplifier.util.ClientMessageUtil.UPDATE_SUCCESSFUL;
+
+import java.util.List;
 
 import com.amplifier.models.ClientMessage;
 import com.amplifier.models.User;
@@ -17,8 +17,8 @@ import com.amplifier.services.UserBlizzardAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,7 +52,7 @@ public class UserBlizzardAccountController {
         return service.add(account) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
-    @PutMapping("/blizzard-account")
+    @PatchMapping("/blizzard-account")
     @ApiOperation(value = "Update user's blizzard account entity")
     public @ResponseBody ClientMessage updateAccount(@RequestBody UserBlizzardAccount account) {
         return service.edit(account) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
