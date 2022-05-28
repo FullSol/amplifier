@@ -16,6 +16,4 @@ public interface UserRolesService {
 
     public boolean remove(int id);
 
-    public UserRole delete(int id);
-
 }

@@ -41,13 +41,7 @@ public class UserRolesServiceImpl implements UserRolesService {
 
     @Override
     public boolean remove(int id) {
-        return repository.deleteById(id);
-    }
-
-    @Override
-    public UserRole delete(int id) {
-        // TODO Auto-generated method stub
-        return null;
+        return repository.delete(id);
     }
 
 }
