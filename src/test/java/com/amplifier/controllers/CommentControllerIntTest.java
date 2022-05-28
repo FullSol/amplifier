@@ -9,9 +9,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.amplifier.models.ImgPost;
 import com.amplifier.models.ImgPostComment;
 import com.amplifier.models.User;
-import com.amplifier.services.CommentService;
+import com.amplifier.services.ImgPostCommentService;
 import com.amplifier.util.ClientMessageUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -59,14 +60,15 @@ public class CommentControllerIntTest {
         private MockMvc mockMvc;
 
         @MockBean
-        CommentService commentService;
+        ImgPostCommentService commentService;
 
         @BeforeAll
         static void setUpBeforeClass() throws Exception {
-                mockComment1 = new ImgPostComment(1, "This is a comment.", 3, user, LocalDate.now());
-                mockComment2 = new ImgPostComment(2, "This is another comment.", 6, user, LocalDate.now());
+                mockComment1 = new ImgPostComment(1, "This is a comment.", new ImgPost(), user, LocalDate.now());
+                mockComment2 = new ImgPostComment(2, "This is another comment.", new ImgPost(), user, LocalDate.now());
 
-                mockCommentCreation = new ImgPostComment(3, "This is yet another comment.", 6, user, LocalDate.now());
+                mockCommentCreation = new ImgPostComment(3, "This is yet another comment.", new ImgPost(), user,
+                                LocalDate.now());
 
                 mockCommentUpdation = mockCommentCreation;
                 mockCommentUpdation.setCommentText("I am editing this comment");

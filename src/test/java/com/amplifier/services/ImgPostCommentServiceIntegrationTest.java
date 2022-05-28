@@ -10,13 +10,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.amplifier.models.ImgPostComment;
 import com.amplifier.models.ImgPost;
+import com.amplifier.models.ImgPostComment;
 import com.amplifier.models.User;
 import com.amplifier.models.UserBlizzardAccount;
 import com.amplifier.models.UserRole;
 import com.amplifier.models.UserSocialMedia;
-import com.amplifier.repositories.ImgPostRepository;
+import com.amplifier.repositories.ImgPostCommentRepository;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -32,23 +32,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class ImgPostServiceIntegrationTest {
+public class ImgPostCommentServiceIntegrationTest {
 
     @Autowired
-    private static ImgPostRepository repository;
+    private static ImgPostCommentRepository commentRepository;
 
     @InjectMocks
-    private static ImgPostServiceImpl service;
+    private static ImgPostCommentServiceImpl commentService; // needs be merged in...
 
     private static User user1, user2, user3;
     private static UserSocialMedia socialMedia1, socialMedia2, socialMedia3;
     private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
+    private static ImgPostComment comment1, comment2, comment3;
     private static UserRole mockRole1, mockRole2;
     private static ImgPost imgPost1, imgPost2, imgPost3;
-    private static List<ImgPost> dummyDb;
+    private static List<ImgPostComment> mockDb;
 
     @BeforeAll
-    static void setUpBeforeClass() throws Exception {
+    static void setUp() throws Exception {
         LocalDate timestamp = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
         String joinDate = formatter.format(timestamp);
@@ -88,102 +89,96 @@ public class ImgPostServiceIntegrationTest {
                 LocalDate.now(), mockRole2, true);
 
         /**
-         * ImgPost Mocks
+         * ImgPostComment Mocks
          */
-        imgPost1 = new ImgPost("http://localhost:8080", user1);
-        imgPost2 = new ImgPost("http://localhost:8081", user2);
+        imgPost1 = new ImgPost();
+        imgPost2 = new ImgPost();
+        imgPost3 = new ImgPost();
 
-        dummyDb = new ArrayList<ImgPost>();
-        dummyDb.add(imgPost1);
-        dummyDb.add(imgPost2);
+        /**
+         * Comment Mocks
+         */
+        comment1 = new ImgPostComment(1, "This is a comment", imgPost1, user1, LocalDate.now());
+
+        comment2 = new ImgPostComment(2, "This is another comment", imgPost2, user2, LocalDate.now());
+
+        mockDb = new ArrayList<>();
+        mockDb.add(comment1);
+        mockDb.add(comment2);
     }
 
     @Test
     @Order(1)
     @DisplayName("1. Mock Validation Test")
     public void checkMockInjection() {
-        assertThat(repository).isNotNull();
-        assertThat(service).isNotNull();
-    }
-
-    @Test
-    @Order(2)
-    @DisplayName("2. Create ImgPost Test")
-    public void createImgPostTest_success() {
-        // Arrange
-        imgPost3 = imgPost2;
-        imgPost3.setImgLocation("http://localhost:8083");
-
-        // Action
-        when(repository.save(imgPost3)).thenReturn(imgPost3);
-
-        // Assert
-        assertEquals(true, service.add(imgPost3));
+        assertThat(commentRepository).isNotNull();
+        assertThat(commentService).isNotNull();
     }
 
     @Test
     @Order(3)
-    @DisplayName("3. Failed Creation ImgPost Test")
-    public void createImgPostTest_fail() {
-        // Arrange
-        imgPost3 = imgPost2;
-        imgPost3.setImgLocation("http://localhost:8083");
+    @DisplayName("3. Attempt to create comment - fail")
+    public void createComment_fail() {
 
-        // Action
-        when(repository.save(imgPost3)).thenReturn(imgPost3);
+        comment3 = new ImgPostComment(3, "This is a whole new comment", imgPost3, user3, LocalDate.now());
+
+        when(commentRepository.save(comment3)).thenReturn(comment3); // save method won't work until commentRepo
+                                                                     // merged.
 
         // Assert
-        assertEquals(false, service.add(imgPost3));
+        assertEquals(false, commentService.add(comment3));
     }
 
     @Test
     @Order(4)
-    @DisplayName("4. Get ImgPost based on ID Test")
-    public void getByIdTest_success() {
+    @DisplayName("4. Attempt to retrieve comment by Id - pass")
+    public void getCommentById_pass() {
 
-        // Arrange
-        Integer imgPostId = 1;
+        Integer commentId = 1;
 
-        // Action
-        OngoingStubbing<ImgPost> found = when(service.getById(imgPostId)).thenReturn(imgPost1);
+        OngoingStubbing<ImgPostComment> found = when(commentService.getById(commentId)).thenReturn(comment1);
 
-        // Assert
-        assertEquals(imgPost1, found);
+        assertEquals(comment1, found);
     }
 
     @Test
     @Order(5)
-    @DisplayName("5. Get all ImgPosts Test")
-    void getAllTest_success() {
+    @DisplayName("5. Attempt to retrieve all comments - pass.")
+    void getAllComments_pass() {
 
         // Arrange - already completed
 
-        // Action
-        when(service.getAll()).thenReturn(dummyDb);
+        // Behavior
+        when(commentService.getAll()).thenReturn(mockDb);
 
-        // Assert
-        assertEquals(dummyDb, service.getAll());
+        // Action & Assert
+        assertEquals(mockDb, commentService.getAll());
     }
 
     @Test
     @Order(6)
-    @DisplayName("6. Update ImgPost Test")
-    void updateTest_success() {
-        imgPost2.setImgLocation("http://localhost:8090");
+    @DisplayName("6. Attempt to update comment - pass")
+    void updateComment_pass() {
+        comment2.setCommentText("This is an updated comment.");
 
-        when(service.getById(2)).thenReturn(imgPost2);
-        when(repository.save(imgPost2)).thenReturn(imgPost2);
+        when(commentService.getById(2)).thenReturn(comment2);
+        when(commentRepository.save(comment2)).thenReturn(comment2);
 
-        assertEquals(true, service.edit(imgPost2));
+        assertEquals(true, commentService.edit(comment2));
     }
+
+    // update Comment fail?
 
     @Test
     @Order(8)
-    @DisplayName("8. Delete ImgPost Test")
-    void deleteTest_success() {
-        doNothing().when(repository).delete(imgPost2);
-        // act + assert step
-        assertEquals(true, service.remove(imgPost2.getId()));
+    @DisplayName("8. Attempt to delete comment - pass.")
+    void deleteComment_pass() {
+        doNothing().when(commentRepository).delete(comment2); // delete method needs to be updated in
+                                                              // commentRepository
+
+        assertEquals(true, commentService.remove(comment2.getId()));
     }
+
+    // delete comment fail?
 
 }
