@@ -17,9 +17,6 @@ public interface UserRolesRepository extends JpaRepository<UserRole, Integer> {
   @Query(value = "SELECT * FROM user_roles", nativeQuery = true)
   public List<UserRole> findAll();
 
-  @Query(value = "INSERT INTO user_roles (role) VALUES (?1)", nativeQuery = true)
-  public boolean create(String role);
-
   @Query(value = "SELECT * FROM user_roles WHERE id=?1")
   public UserRole findById(int id);
 
@@ -28,7 +25,5 @@ public interface UserRolesRepository extends JpaRepository<UserRole, Integer> {
 
   @Query(value = "DELETE * FROM user_roles WHERE id=?1", nativeQuery = true)
   public boolean delete(int id);
-
-  Object getUserRoleByRole(String role);
 
 }
