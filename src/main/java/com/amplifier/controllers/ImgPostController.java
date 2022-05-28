@@ -7,6 +7,8 @@ import static com.amplifier.util.ClientMessageUtil.DELETION_SUCCESSFUL;
 import static com.amplifier.util.ClientMessageUtil.UPDATE_FAILED;
 import static com.amplifier.util.ClientMessageUtil.UPDATE_SUCCESSFUL;
 
+import java.util.List;
+
 import com.amplifier.models.ClientMessage;
 import com.amplifier.models.ImgPost;
 import com.amplifier.services.ImgPostService;
@@ -33,8 +35,14 @@ public class ImgPostController {
     @Autowired
     private ImgPostService imgPostService;
 
-    @ApiOperation(value = "Find User Social Media by id number", notes = "Provide an id to lookup a specific user social media from the API", response = ImgPost.class)
+    @GetMapping("/img-posts")
+    @ApiOperation(value = "Find all image posts", notes = "Provides a list of all iamge posts from the API", response = ImgPost.class)
+    public @ResponseBody List<ImgPost> getAllImgPosts() {
+        return imgPostService.getAll();
+    }
+
     @GetMapping(path = "/img-post?id={id}")
+    @ApiOperation(value = "Find User Social Media by id number", notes = "Provide an id to lookup a specific user social media from the API", response = ImgPost.class)
     public @ResponseBody ImgPost getById(
             @RequestParam(name = "id") int id) {
         return imgPostService.getById(id);

@@ -30,41 +30,39 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/api/v1")
 @Api(value = "CommentRestController", description = "REST controller related to Comment Entities")
-
 public class CommentController {
 
     @Autowired
-    private CommentService commentService;
+    private CommentService service;
 
     @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = Comment.class)
-    @GetMapping(path = "/comment")
+    @GetMapping(path = "/comment?id={id}")
     public @ResponseBody Comment getById(@RequestParam(name = "id") int id) {
-        System.out.println("TEST: " + commentService.getById(id));
-        return commentService.getById(id);
+        return service.getById(id);
     }
 
     @GetMapping("/comments")
     @ApiOperation(value = "Find all comments", notes = "Pulling all comments from the API", response = Comment.class)
     public @ResponseBody List<Comment> getAll() {
-        return commentService.getAll();
+        return service.getAll();
     }
 
     @PostMapping("/comment")
     @ApiOperation(value = "Create new comment entity", notes = "Adding a new comment through the API")
-    public @ResponseBody ClientMessage createComment(@RequestBody Comment comment) {
-        return commentService.add(comment) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+    public @ResponseBody ClientMessage add(@RequestBody Comment comment) {
+        return service.add(comment) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PatchMapping("/comment")
     @ApiOperation(value = "Update comment entity", notes = "Editing a comment through the API")
-    public @ResponseBody ClientMessage updateComment(@RequestBody Comment comment) {
-        return commentService.edit(comment) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+    public @ResponseBody ClientMessage edi(@RequestBody Comment comment) {
+        return service.edit(comment) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
-    @DeleteMapping("/comment")
+    @DeleteMapping("/comment?id={id}")
     @ApiOperation(value = "Remove user entity", notes = "Deleting a comment through the API")
-    public @ResponseBody ClientMessage deleteComment(@RequestBody Comment comment) {
-        return commentService.remove(comment) ? DELETION_SUCCESSFUL : DELETION_FAILED;
+    public @ResponseBody ClientMessage delete(@RequestParam(value = "id") int id) {
+        return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 
 }
