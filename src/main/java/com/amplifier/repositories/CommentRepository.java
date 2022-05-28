@@ -29,6 +29,6 @@ public interface CommentRepository extends JpaRepository<Comment, Integer>{
     public boolean update(String commentText);
 
     @Query(value = "DELETE * FROM img_post_comments WHERE id = ?1", nativeQuery = true)
-    public boolean deleteById(int id);
+    public boolean delete(int id);
 
 }

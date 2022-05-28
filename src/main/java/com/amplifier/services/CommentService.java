@@ -12,24 +12,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface CommentService {
 
-  public boolean add(Comment c);
-  
+  public List<Comment> getAll();
+
   public Comment getById(int id);
 
-  public Comment getByAuthorId(int id);
+  public Comment getByAuthorId(int authorId);
 
-  public Comment getByImageId(int id);
+  public Comment getByImagePostId(int imageId);
 
-  public Comment getByDate(LocalDate d);
+  public boolean add(Comment comment);
 
-  public Comment getByText(String comment_text);
-  
-  public boolean edit(int id);
-  
+  public boolean edit(Comment comment);
+
   public boolean remove(int id);
-  
-  public List<Comment> getAll();
-  
-  public List<Comment> getAllByDate(LocalDate d);
-  
+
 }
