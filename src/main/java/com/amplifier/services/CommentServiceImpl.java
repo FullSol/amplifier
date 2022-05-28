@@ -46,6 +46,7 @@ public class CommentServiceImpl implements CommentService {
   @Override
   public boolean edit(Comment comment) {
     Comment target = repository.findById(comment.getId());
+    
     target.setCommentText(comment.getCommentText());
     target.setImgPostId(comment.getImgPostId());
     target.setAuthor(comment.getAuthor());
