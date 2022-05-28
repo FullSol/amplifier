@@ -29,40 +29,39 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/v1")
-@Api (value = "UserRolesRestController", description = "REST controller related to UserRole Entities")
+@Api(value = "UserRolesRestController", description = "REST controller related to UserRole Entities")
 public class UserRolesController {
 
     @Autowired
-    private UserRolesService userRolesService;
+    private UserRolesService service;
 
     @GetMapping("/roles")
     @ApiOperation(value = "Find all user roles.", notes = "Lookup all user roles from the API", response = UserRole.class)
-    public @ResponseBody List<UserRole> getAll(){
-        return userRolesService.getAll();
+    public @ResponseBody List<UserRole> getAll() {
+        return service.getAll();
     }
 
     @ApiOperation(value = "Find user role by id number", notes = "Provide an id to lookup a specific user role from the API", response = UserRole.class)
     @GetMapping("/role?id={id}")
-    public @ResponseBody UserRole getById(@RequestParam(value = "id")int id) {
-        System.out.println("TEST: " + userRolesService.getById(id));
-        return userRolesService.getById(id);
+    public @ResponseBody UserRole getById(@RequestParam(value = "id") int id) {
+        return service.getById(id);
     }
 
     @PostMapping("/role")
     @ApiOperation(value = "Create new user role entity", notes = "Add a new user role in the API.")
     public @ResponseBody ClientMessage createUserRole(@RequestBody UserRole userRole) {
-        return userRolesService.add(userRole) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+        return service.add(userRole) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PatchMapping("/role")
     @ApiOperation(value = "Update user role entity by id.", notes = "Provide an id to update a specific user role from the API")
     public @ResponseBody ClientMessage updateUserRole(@RequestBody UserRole userRole) {
-        return userRolesService.edit(userRole) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+        return service.edit(userRole) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/role")
     @ApiOperation(value = "Remove user role entity.", notes = "Provide an id to remove a specific user role from the API")
     public @ResponseBody ClientMessage deleteUserRole(@RequestBody UserRole userRole) {
-        return userRolesService.remove(userRole) ? DELETION_SUCCESSFUL : DELETION_FAILED;
+        return service.remove(userRole.getId()) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 }
