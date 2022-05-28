@@ -14,17 +14,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface UserBlizzardAccountRepository extends JpaRepository<UserBlizzardAccount, Integer> {
 
-    @Query("SELECT * FROM user_blizzard_accounts")
+    @Query(value = "SELECT * FROM user_blizzard_accounts", nativeQuery = true)
     public List<UserBlizzardAccount> findAll();
 
-    @Query("SELECT u from user_blizzard_accounts u where u.id = ?1")
+    @Query(value = "SELECT u from user_blizzard_accounts u WHERE u.id = ?1", nativeQuery = true)
     public UserBlizzardAccount findById(int id);
 
     @Modifying
-    @Query("UPDATE user_blizzard_accounts u set u.account_name = ?1 where id = ?2")
+    @Query(value = "UPDATE user_blizzard_accounts u SET u.account_name = ?1 where id = ?2", nativeQuery = true)
     public boolean update(String accountName, int id);
 
-    @Query("DELETE * FROM user_blizzard_accounts where id=?1")
+    @Query(value = "DELETE * FROM user_blizzard_accounts WHERE id=?1", nativeQuery = true)
     public boolean delete(int id);
 
 }
