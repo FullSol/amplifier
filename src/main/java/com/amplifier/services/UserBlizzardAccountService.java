@@ -15,7 +15,7 @@ public interface UserBlizzardAccountService {
 
     public List<UserBlizzardAccount> getAll();
 
-    public UserBlizzardAccount getbyId(int id);
+    public UserBlizzardAccount getById(int id);
 
     public boolean edit(UserBlizzardAccount account);
 
