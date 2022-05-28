@@ -199,7 +199,7 @@ public class RolesControllerIntTest {
     @DisplayName("9. Attempt to delete a user role - failed")
     public void deleteRole_Failed() throws Exception {
 
-        when(userRolesService.remove(mockRoleDeletion)).thenReturn(true);
+        when(userRolesService.remove(mockRoleDeletion.getId())).thenReturn(true);
 
         RequestBuilder request = MockMvcRequestBuilders
                         .delete("/api/v1/role?id=3")
@@ -217,7 +217,7 @@ public class RolesControllerIntTest {
     @DisplayName("10. Attempt to delete a user role - passed")
     public void deleteRole_Passed() throws Exception {
 
-        when(userRolesService.remove(mockRoleDeletion)).thenReturn(true);
+        when(userRolesService.remove(mockRoleDeletion.getId())).thenReturn(true);
 
         RequestBuilder request = MockMvcRequestBuilders
                         .delete("/api/v1/role?id=3")

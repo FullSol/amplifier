@@ -87,7 +87,7 @@ public class ImgPostControllerIntTest {
 	@DisplayName("2. Get all Img Posts.")
 	public void getImgPosts_ShouldReturnImgPosts() throws Exception {
 		//
-		when(imgPostService.getAllImgPosts()).thenReturn(mockDb);
+		when(imgPostService.getAll()).thenReturn(mockDb);
 
 		//
 		RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/imgposts");
@@ -102,7 +102,7 @@ public class ImgPostControllerIntTest {
     @DisplayName("3. Attempt to pull invalid Img Post")
     public void getImgPost_ShouldReturnInvalid() throws Exception {
             //
-            when(imgPostService.getImgPostById(1)).thenReturn(mockImgPost1);
+            when(imgPostService.getById(1)).thenReturn(mockImgPost1);
 
             //
             RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/user?id=1");
@@ -117,7 +117,7 @@ public class ImgPostControllerIntTest {
     @DisplayName("4. Attempt to pull valid Img Post")
     public void getUser_ShouldReturnUser() throws Exception {
             //
-            when(imgPostService.getImgPostById(1)).thenReturn(mockImgPost1);
+            when(imgPostService.getById(1)).thenReturn(mockImgPost1);
 
             //
             RequestBuilder request = MockMvcRequestBuilders
@@ -134,7 +134,7 @@ public class ImgPostControllerIntTest {
     public void testDeleteImgPost() throws Exception {
 
             //
-            when(imgPostService.deleteImgPostById(mockImgPostDeletion)).thenReturn(true);
+            when(imgPostService.remove(mockImgPostDeletion.getId())).thenReturn(true);
 
             //
             RequestBuilder request = MockMvcRequestBuilders
@@ -155,7 +155,7 @@ public class ImgPostControllerIntTest {
     public void testDeleteImgPostFail() throws Exception {
 
             //
-            when(imgPostService.deleteImgPostById(mockImgPostDeletion)).thenReturn(true);
+            when(imgPostService.remove(mockImgPostDeletion.getId())).thenReturn(true);
 
             //
             RequestBuilder request = MockMvcRequestBuilders

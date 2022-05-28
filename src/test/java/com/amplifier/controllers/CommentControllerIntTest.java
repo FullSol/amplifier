@@ -2,6 +2,7 @@ package com.amplifier.controllers;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 import java.nio.charset.Charset;
 import java.time.LocalDate;
@@ -69,7 +70,7 @@ public class CommentControllerIntTest {
 
         mockCommentUpdation = mockCommentCreation;
         mockCommentUpdation.setCommentText("I am editing this comment");
-        mockCommentDeletion = new Comment();
+        //mockCommentDeletion = new Comment();
         mockDb = new ArrayList<>();
         mockDb.add(mockComment1);
         mockDb.add(mockComment2);
@@ -128,7 +129,7 @@ public class CommentControllerIntTest {
     @DisplayName("5. Attempt to create a new comment - failed.")
     public void postComment_Failed() throws Exception {
             //CommentService method needs to be merged in.
-            when(commentService.create(mockCommentCreation)).thenReturn(true);
+            when(commentService.add(mockCommentCreation)).thenReturn(true);
 
             RequestBuilder request = MockMvcRequestBuilders
                             .post("/api/v1/comment?id=3")
@@ -147,7 +148,7 @@ public class CommentControllerIntTest {
     @DisplayName("6. Attempt to create a new comment - passed.")
     public void postComment_Pass() throws Exception {
             //CommentService method needs to be merged in.
-            when(commentService.create(mockCommentCreation)).thenReturn(true);
+            when(commentService.add(mockCommentCreation)).thenReturn(true);
 
             RequestBuilder request = MockMvcRequestBuilders
                             .post("/api/v1/comment?id=3")
@@ -165,7 +166,7 @@ public class CommentControllerIntTest {
     @DisplayName("7. Attempt to update comment - failed")
     public void updateComment_Failed() throws Exception {
             //CommentService method needs to be merged in.
-            when(commentService.update(mockCommentUpdation)).thenReturn(true);
+            when(commentService.edit(mockCommentUpdation)).thenReturn(true);
 
             RequestBuilder request = MockMvcRequestBuilders
                             .put("/api/v1/comment?id=3")
@@ -183,7 +184,7 @@ public class CommentControllerIntTest {
     @DisplayName("8. Attempt to update comment - passed")
     public void updateComment_Passed() throws Exception {
             //CommentService method needs to be merged in.
-            when(commentService.update(mockCommentUpdation)).thenReturn(true);
+            when(commentService.edit(mockCommentUpdation)).thenReturn(true);
 
             RequestBuilder request = MockMvcRequestBuilders
                             .put("/api/v1/comment?id=3")
@@ -202,7 +203,7 @@ public class CommentControllerIntTest {
     public void deleteComment_Failed() throws Exception {
 
         //CommentService method needs to be merged in.
-        when(commentService.delete(mockCommentDeletion)).thenReturn(true);
+        when(commentService.remove(mockComment1.getId())).thenReturn(true);
 
         RequestBuilder request = MockMvcRequestBuilders
                         .delete("/api/v1/comment?id=3")
@@ -221,7 +222,7 @@ public class CommentControllerIntTest {
     public void deleteComment_Passed() throws Exception {
 
         //CommentService method needs to be merged in.
-        when(commentService.delete(mockCommentDeletion)).thenReturn(true);
+        when(commentService.remove(mockComment1.getId())).thenReturn(true);
 
         RequestBuilder request = MockMvcRequestBuilders
                         .delete("/api/v1/comment?id=3")

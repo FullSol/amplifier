@@ -14,11 +14,11 @@ public interface UserService {
 
     public boolean add(User user);
 
-    public User getById(int id);
+    public User getById(String id);
 
     public boolean edit(User user);
 
-    public boolean remove(int id);
+    public boolean remove(String id);
 
     public User login(String username, String password);
 }
