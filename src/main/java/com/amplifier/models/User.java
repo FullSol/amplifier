@@ -11,7 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -48,7 +48,7 @@ public class User {
     @ApiModelProperty(name = "last_name", notes = "A String value that serves as the last_name for the user.", required = true)
     private String lastName;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "blizzard_account_id", unique = true)
     private UserBlizzardAccount blizzardAccount;
 
@@ -60,6 +60,7 @@ public class User {
     @ApiModelProperty(name = "join_date", notes = "A date value that serves as the joined date for the user.", required = true)
     private LocalDate joinDate;
 
+    @ManyToOne
     @Column(name = "role_id", unique = true, nullable = false)
     @ApiModelProperty(name = "role_id", notes = "A integer value that serves as the role id for the user.", required = true)
     private UserRole role;

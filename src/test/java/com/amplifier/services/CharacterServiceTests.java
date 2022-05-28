@@ -5,40 +5,43 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.amplifier.models.UserCharacter;
 import com.amplifier.repositories.UserCharacterRepository;
-import com.amplifier.repositories.UserCharacterRepository;
-import com.amplifier.models.Character;
-import com.amplifier.services.CharacterService;
-import com.amplifier.services.CharacterServiceImpl;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import junit.framework.TestCase;
 
 public class CharacterServiceTests extends TestCase {
 
-	private UserCharacterRepository mockdao;
-	private CharacterService cserv;
+	@Mock
+	private static UserCharacterRepository repository;
 
-	List<Character> dummyDb;
+	@InjectMocks
+	private static UserCharacterServiceImpl service;
+
+	private static UserCharacter character1, character2, character3;
+	private static List<UserCharacter> dummyDb;
 
 	@Before
 	public void setUp() {
 
-		mockdao = Mockito.mock(CharacterRepositoryImpl.class);
+		repository = Mockito.mock(UserCharacterRepository.class);
 
-		cserv = new CharacterServiceImpl();
+		service = new UserCharacterServiceImpl();
 
-		Character c1 = new Character(1, "regret", "karfage");
-		Character c2 = new Character(2, "discord", "multiplus");
-		Character c3 = new Character(3, "terror", "frindle");
+		character1 = new UserCharacter(1, "regret", "karfage");
+		character2 = new UserCharacter(2, "discord", "multiplus");
+		character3 = new UserCharacter(3, "terror", "frindle");
 
-		List<Character> dummyDb = new ArrayList<Character>();
-		dummyDb.add(c1);
-		dummyDb.add(c2);
-		dummyDb.add(c3);
+		List<UserCharacter> dummyDb = new ArrayList<UserCharacter>();
+		dummyDb.add(character1);
+		dummyDb.add(character2);
+		dummyDb.add(character3);
 
 	}
 
