@@ -23,12 +23,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean add(User user) {
-        int pk = repository.save(user).getId();
-        return (pk > 0) ? true : false;
+        String pk = repository.save(user).getId();
+        return (pk != null) ? true : false;
     }
 
     @Override
-    public User getById(int id) {
+    public User getById(String id) {
         return repository.findById(id);
     }
 
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean remove(int id) {
+    public boolean remove(String id) {
         return repository.delete(id);
     }
 

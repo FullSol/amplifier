@@ -25,10 +25,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             int character_id, int id, LocalDate joinDate, int role_id, boolean active);
 
     @Query(value = "SELECT * FROM user where id=?1", nativeQuery = true)
-    public User findById(int id);
+    public User findById(String id);
 
     @Query(value = "DELETE FROM user WHERE id=?1 LIMIT 1", nativeQuery = true)
-    public boolean delete(int id);
+    public boolean delete(String id);
 
     public boolean update(User user);
 

@@ -30,6 +30,13 @@ public class UserRole {
     public UserRole() {
     }
 
+    /**
+     * @param userRole
+     */
+    public UserRole(String userRole) {
+        this.userRole = userRole;
+    }
+
     public UserRole(int id, String userRole) {
         this.id = id;
         this.userRole = userRole;

@@ -26,7 +26,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any user entity.", required = true, value = "1")
-    private int id;
+    private String id;
 
     @Column(name = "username", unique = true, nullable = false)
     @ApiModelProperty(name = "username", notes = "A String value that serves as the username for the user.", required = true)
@@ -113,7 +113,7 @@ public class User {
      * @param role
      * @param active
      */
-    public User(int id, String username, String email, String password, String firstName, String lastName,
+    public User(String id, String username, String email, String password, String firstName, String lastName,
             UserBlizzardAccount blizzardAccount, UserSocialMedia socialMedia, LocalDate joinDate, UserRole role,
             boolean active) {
         super();
