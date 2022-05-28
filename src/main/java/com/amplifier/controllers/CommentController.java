@@ -36,7 +36,7 @@ public class CommentController {
     private CommentService service;
 
     @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = Comment.class)
-    @GetMapping(path = "/comment")
+    @GetMapping(path = "/comment?id={id}")
     public @ResponseBody Comment getById(@RequestParam(name = "id") int id) {
         return service.getById(id);
     }
@@ -59,7 +59,7 @@ public class CommentController {
         return service.edit(comment) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
-    @DeleteMapping("/comment")
+    @DeleteMapping("/comment?id={id}")
     @ApiOperation(value = "Remove user entity", notes = "Deleting a comment through the API")
     public @ResponseBody ClientMessage delete(@RequestParam(value = "id") int id) {
         return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
