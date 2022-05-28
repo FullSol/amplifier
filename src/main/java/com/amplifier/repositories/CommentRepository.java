@@ -22,13 +22,13 @@ public interface CommentRepository extends JpaRepository<Comment, Integer>{
     @Query(value = "SELECT * FROM img_post_comments WHERE author_id = ?1", nativeQuery = true)
     public Comment findByAuthorId(int authorId);
 
-    @Query(value = "SELECT * FROM img_post_comments WHERE img_post_id=?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM img_post_comments WHERE img_post_id = ?1", nativeQuery = true)
     public Comment findImagePostId(int imgPostId);
 
-    @Query(value = "UPDATE img_post_comments SET comment_text, comment_text=?1", nativeQuery= true)
+    @Query(value = "UPDATE img_post_comments SET comment_text, comment_text = ?1", nativeQuery= true)
     public boolean update(String commentText);
 
-    @Query(value = "DELETE * FROM img_post_comments WHERE id'?1", nativeQuery = true)
+    @Query(value = "DELETE * FROM img_post_comments WHERE id = ?1", nativeQuery = true)
     public boolean deleteById(int id);
 
 }
