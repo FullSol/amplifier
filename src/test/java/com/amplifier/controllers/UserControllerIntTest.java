@@ -45,16 +45,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserControllerIntTest {
 
-        private static User mockUser1;
-        private static User mockUser2;
-        private static UserSocialMedia mockSocialMedia1;
-        private static UserSocialMedia mockSocialMedia2;
-        private static UserSocialMedia mockSocialMedia3;
-        private static UserBlizzardAccount mockAccount1;
-        private static UserBlizzardAccount mockAccount2;
-        private static UserBlizzardAccount mockAccount3;
-        private static UserRole mockRole1;
-        private static UserRole mockRole2;
+        private static User mockUser1, mockUser2;
+        private static UserSocialMedia mockSocialMedia1, mockSocialMedia2, mockSocialMedia3;
+        private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
+        private static UserRole mockRole1, mockRole2;
         private static User mockUserCreation;
         private static User mockUserModification;
         private static User mockUserDeletion;

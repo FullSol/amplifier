@@ -3,6 +3,7 @@ package com.amplifier.services;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,6 +12,9 @@ import java.util.List;
 
 import com.amplifier.models.Comment;
 import com.amplifier.models.User;
+import com.amplifier.models.UserBlizzardAccount;
+import com.amplifier.models.UserRole;
+import com.amplifier.models.UserSocialMedia;
 import com.amplifier.repositories.CommentRepository;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -33,10 +37,13 @@ public class CommentServiceIntegrationTest {
     private static CommentRepository commentRepository;
 
     @InjectMocks
-    private static CommentServiceImpl commentService;  //needs be merged in...
+    private static CommentServiceImpl commentService; // needs be merged in...
 
-    private static User mockUser1, mockUser2, mockUser3;
-    private static Comment mockComment1, mockComment2, mockComment3;
+    private static User user1, user2, user3;
+    private static UserSocialMedia socialMedia1, socialMedia2, socialMedia3;
+    private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
+    private static Comment comment1, comment2, comment3;
+    private static UserRole mockRole1, mockRole2;
     private static List<Comment> mockDb;
 
     @BeforeAll
@@ -45,15 +52,50 @@ public class CommentServiceIntegrationTest {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
         String joinDate = formatter.format(timestamp);
 
-        mockUser1 = new User("L3viathon", "levi@gmail.com", "password", "Levi", "Choi", LocalDate.now());
-        mockUser2 = new User("MisterCalvin", "mistercalvin@gmail.com", "password", "Mister", "Calvin", LocalDate.now());
-        mockUser3 = new User("jmercado", "jmercado@gmail.com", "password", "Julian", "Mercado", LocalDate.now());
-        mockComment1 = new Comment(1,"This is a comment", 1, mockUser1, LocalDate.now());
-        mockComment2 = new Comment(2,"This is another comment", 2, mockUser2, LocalDate.now());
+        /**
+         * Social Media Mocks
+         */
+        socialMedia1 = new UserSocialMedia("www.solsphere.twitter.com", "www.solsphere.facebook.com",
+                "www.solsphere.instagram.com");
+
+        socialMedia2 = new UserSocialMedia("www.patrickometry.twitter.com", "www.patrickometry.facebook.com",
+                "www.patrickometry.instagram.com");
+
+        socialMedia3 = new UserSocialMedia("www.julian.twitter.com", "www.juian.facebook.com",
+                "www.julian.instagram.com");
+
+        /**
+         * User Roles Mocks
+         */
+        mockRole1 = new UserRole("User");
+
+        mockRole2 = new UserRole("Admin");
+
+        /**
+         * User Mocks
+         */
+        user1 = new User("8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60", "FullSol", "fullsol@gmail.com", "password", "Calvin",
+                "Raines", mockAccount1, socialMedia1,
+                LocalDate.now(), mockRole1, true);
+
+        user2 = new User("Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2,
+                socialMedia2,
+                LocalDate.now(), mockRole2, true);
+
+        user3 = new User("JulianMercado", "julianmercado@gmail.com", "password", "Julian", "Mercado", mockAccount3,
+                socialMedia3,
+                LocalDate.now(), mockRole2, true);
+
+        /**
+         * Comment Mocks
+         */
+        comment1 = new Comment(1, "This is a comment", 1, user1, LocalDate.now());
+
+        comment2 = new Comment(2, "This is another comment", 2, user2, LocalDate.now());
 
         mockDb = new ArrayList<>();
-        mockDb.add(mockComment1);
-        mockDb.add(mockComment2);
+        mockDb.add(comment1);
+        mockDb.add(comment2);
     }
 
     @Test
@@ -61,24 +103,24 @@ public class CommentServiceIntegrationTest {
     @DisplayName("1. Mock Validation Test")
     public void checkMockInjection() {
         assertThat(commentRepository).isNotNull();
-        assertThat(commentService).isNotNull();     //error, commentService needs to be merged in.
+        assertThat(commentService).isNotNull(); // error, commentService needs to be merged in.
     }
-
 
     @Test
     @Order(3)
     @DisplayName("3. Attempt to create comment - fail")
     public void createComment_fail() {
 
-        mockComment3 = new Comment(3,"This is a whole new comment", 3, mockUser3, LocalDate.now());
+        comment3 = new Comment(3, "This is a whole new comment", 3, user3, LocalDate.now());
 
-        when(commentRepository.save(mockComment3)).thenReturn(mockComment3); //save method won't work until commentRepo merged.
+        when(commentRepository.save(comment3)).thenReturn(comment3); // save method won't work until commentRepo
+                                                                     // merged.
 
         // Assert
-        assertEquals(false, commentService.add(mockComment3));
+        assertEquals(false, commentService.add(comment3));
     }
 
-    //Test for creating - pass?
+    // Test for creating - pass?
 
     @Test
     @Order(4)
@@ -87,12 +129,12 @@ public class CommentServiceIntegrationTest {
 
         Integer commentId = 1;
 
-        OngoingStubbing<Comment> found = when(commentService.getById(commentId)).thenReturn(mockComment1);
+        OngoingStubbing<Comment> found = when(commentService.getById(commentId)).thenReturn(comment1);
 
-        assertEquals(mockComment1, found);
+        assertEquals(comment1, found);
     }
 
-    //getById fail?
+    // getById fail?
 
     @Test
     @Order(5)
@@ -101,8 +143,10 @@ public class CommentServiceIntegrationTest {
 
         // Arrange - already completed
 
+        // Behavior
         when(commentService.getAll()).thenReturn(mockDb);
 
+        // Action & Assert
         assertEquals(mockDb, commentService.getAll());
     }
 
@@ -110,25 +154,26 @@ public class CommentServiceIntegrationTest {
     @Order(6)
     @DisplayName("6. Attempt to update comment - pass")
     void updateComment_pass() {
-        mockComment2.setCommentText("This is an updated comment.");
+        comment2.setCommentText("This is an updated comment.");
 
-        when(commentService.getById(2)).thenReturn(mockComment2);
-        when(commentRepository.save(mockComment2)).thenReturn(mockComment2);
+        when(commentService.getById(2)).thenReturn(comment2);
+        when(commentRepository.save(comment2)).thenReturn(comment2);
 
-        assertEquals(true, commentService.edit(mockComment2));
+        assertEquals(true, commentService.edit(comment2));
     }
 
-    //update Comment fail?
+    // update Comment fail?
 
     @Test
     @Order(8)
     @DisplayName("8. Attempt to delete comment - pass.")
     void deleteComment_pass() {
-        doNothing().when(commentRepository).delete(mockComment2); //delete method needs to be updated in commentRepository
+        doNothing().when(commentRepository).delete(comment2); // delete method needs to be updated in
+                                                              // commentRepository
 
-        assertEquals(true, commentService.remove(mockComment2.getId()));
+        assertEquals(true, commentService.remove(comment2.getId()));
     }
 
-    //delete comment fail?
+    // delete comment fail?
 
 }
