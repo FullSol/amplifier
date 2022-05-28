@@ -15,57 +15,49 @@ import org.springframework.transaction.annotation.Transactional;
 public class CommentServiceImpl implements CommentService {
 
   @Autowired
-  private CommentRepository commentRepository;
+  private CommentRepository repository;
 
   @Override
   public List<Comment> getAll() {
-    return commentRepository.findAll();
-  }
-
-  @Override
-  public boolean add(Comment c) {
-    int pk = commentRepository.save(c).getId();
-    return (pk > 0) ? true : false;
+    return repository.findAll();
   }
 
   @Override
   public Comment getById(int id) {
-    return commentRepository.findCommentById(id);
-  }
-  
-  @Override
-  public Comment getByText(String s) {
-    return commentRepository.findCommentByText(s);
+    return repository.findById(id);
   }
 
   @Override
-  public Comment getByAuthorId(int id) {
-    return commentRepository.findCommentByAuthorId(id);
+  public Comment getByAuthorId(int authorId) {
+    return repository.findByAuthorId(authorId);
   }
 
   @Override
-  public Comment getByImageId(int id) {
-    return commentRepository.findCommentByImagePostId(id);
+  public Comment getByImagePostId(int imageId) {
+    return repository.findImagePostId(imageId);
   }
 
   @Override
-  public Comment getByDate(LocalDate d) {
-    return commentRepository.findCommentByCreationDate(d);
+  public boolean add(Comment comment) {
+    int pk = repository.save(comment).getId();
+    return (pk > 0) ? true : false;
   }
-  
+
   @Override
-  public List<Comment> getAllByDate(LocalDate d) {
-    return commentRepository.listAllCommentsByCreationDate(d);
+  public boolean edit(Comment comment) {
+    Comment target = repository.findById(comment.getId());
+    
+    target.setCommentText(comment.getCommentText());
+    target.setImgPostId(comment.getImgPostId());
+    target.setAuthor(comment.getAuthor());
+    target.setCommentDate(comment.getCommentDate());
+
+    return (repository.save(target) != null) ? true : false;
   }
-  
+
   @Override
   public boolean remove(int id) {
-    return commentRepository.deleteCommentById(id);
-  }
-  
-  @Override
-  public boolean edit(int id) {
-    return commentRepository.updateCommentById(id);
+    return repository.delete(id);
   }
 
 }
