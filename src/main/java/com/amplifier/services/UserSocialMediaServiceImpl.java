@@ -33,16 +33,18 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
 
     @Override
     public boolean add(UserSocialMedia userSocialMedia) {
-        int pk = repository.save(userSocialMedia).getSocialMediaId();
+        int pk = repository.save(userSocialMedia).getId();
         return (pk > 0) ? true : false;
     }
 
     @Override
     public boolean edit(UserSocialMedia userSocialMedia) {
-        UserSocialMedia target = repository.findById(userSocialMedia.getSocialMediaId());
+        UserSocialMedia target = repository.findById(userSocialMedia.getId());
+
         target.setTwitterLink(userSocialMedia.getTwitterLink());
         target.setFacebookLink(userSocialMedia.getFacebookLink());
         target.setInstagramLink(userSocialMedia.getInstagramLink());
+
         return (repository.save(target) != null) ? true : false;
     }
 
