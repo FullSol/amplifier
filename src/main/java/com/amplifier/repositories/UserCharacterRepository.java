@@ -16,10 +16,7 @@ public interface UserCharacterRepository extends JpaRepository<UserCharacter, In
     @Query(value = "SELECT * FROM user_character", nativeQuery = true)
     public List<UserCharacter> findAll();
 
-    @Query(value = "INSERT INTO user_character (realm, name) VALUES (?1, ?2)", nativeQuery = true)
-    public boolean create(String realm, String name);
-
-    @Query(value = "SELECT * FROM user_character WHERE id=?1")
+    @Query(value = "SELECT * FROM user_character WHERE id=?1", nativeQuery = true)
     public UserCharacter findById(int id);
 
     @Query(value = "UDPATE user_character SET realm=?1, name = ?2 WHERE id = ?3", nativeQuery = true)
