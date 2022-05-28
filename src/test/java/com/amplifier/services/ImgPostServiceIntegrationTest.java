@@ -10,8 +10,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.amplifier.models.Comment;
 import com.amplifier.models.ImgPost;
 import com.amplifier.models.User;
+import com.amplifier.models.UserBlizzardAccount;
+import com.amplifier.models.UserRole;
+import com.amplifier.models.UserSocialMedia;
 import com.amplifier.repositories.ImgPostRepository;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -36,7 +40,10 @@ public class ImgPostServiceIntegrationTest {
     @InjectMocks
     private static ImgPostServiceImpl service;
 
-    private static User mockUser1, mockUser2;
+    private static User user1, user2, user3;
+    private static UserSocialMedia socialMedia1, socialMedia2, socialMedia3;
+    private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
+    private static UserRole mockRole1, mockRole2;
     private static ImgPost mockImgPost1, mockImgPost2, mockImgPost3;
     private static List<ImgPost> dummyDb;
 
@@ -46,12 +53,42 @@ public class ImgPostServiceIntegrationTest {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
         String joinDate = formatter.format(timestamp);
 
-        mockUser1 = new User("FullSol", "fullsol@gmail.com", "password", "Calvin", "Raines",
-                LocalDate.now());
-        mockUser2 = new User("L3viathon", "L3viathon@gmail.com", "password", "Levi", "Choi", LocalDate.now());
+        /**
+         * Social Media Mocks
+         */
+        socialMedia1 = new UserSocialMedia("www.solsphere.twitter.com", "www.solsphere.facebook.com",
+                "www.solsphere.instagram.com");
 
-        mockImgPost1 = new ImgPost("http://localhost:8080", mockUser1);
-        mockImgPost2 = new ImgPost("http://localhost:8081", mockUser2);
+        socialMedia2 = new UserSocialMedia("www.patrickometry.twitter.com", "www.patrickometry.facebook.com",
+                "www.patrickometry.instagram.com");
+
+        socialMedia3 = new UserSocialMedia("www.julian.twitter.com", "www.juian.facebook.com",
+                "www.julian.instagram.com");
+
+        /**
+         * User Roles Mocks
+         */
+        mockRole1 = new UserRole("User");
+
+        mockRole2 = new UserRole("Admin");
+
+        /**
+         * User Mocks
+         */
+        user1 = new User("8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60", "FullSol", "fullsol@gmail.com", "password", "Calvin",
+                "Raines", mockAccount1, socialMedia1,
+                LocalDate.now(), mockRole1, true);
+
+        user2 = new User("Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2,
+                socialMedia2,
+                LocalDate.now(), mockRole2, true);
+
+        user3 = new User("JulianMercado", "julianmercado@gmail.com", "password", "Julian", "Mercado", mockAccount3,
+                socialMedia3,
+                LocalDate.now(), mockRole2, true);
+
+        mockImgPost1 = new ImgPost("http://localhost:8080", user1);
+        mockImgPost2 = new ImgPost("http://localhost:8081", user2);
 
         dummyDb = new ArrayList<ImgPost>();
         dummyDb.add(mockImgPost1);
@@ -147,4 +184,3 @@ public class ImgPostServiceIntegrationTest {
     }
 
 }
- 
