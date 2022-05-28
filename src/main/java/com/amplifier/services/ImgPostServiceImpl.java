@@ -36,14 +36,16 @@ public class ImgPostServiceImpl implements ImgPostService {
     @Override
     public boolean edit(ImgPost imgPost) {
         ImgPost target = imgPostRepository.findById(imgPost.getId());
+
         target.setImgLocation(imgPost.getImgLocation());
         target.setAuthor(imgPost.getAuthor());
+
         return (imgPostRepository.save(target) != null) ? true : false;
     }
 
     @Override
     public boolean remove(int id) {
-        return imgPostRepository.deleteById(id);
+        return imgPostRepository.delete(id);
     }
 
 }
