@@ -61,7 +61,7 @@ public class User {
     private LocalDate joinDate;
 
     @ManyToOne
-    @Column(name = "role_id", unique = true, nullable = false)
+    @JoinColumn(name = "role_id", unique = true, nullable = false)
     @ApiModelProperty(name = "role_id", notes = "A integer value that serves as the role id for the user.", required = true)
     private UserRole role;
 
