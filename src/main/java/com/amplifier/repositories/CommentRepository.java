@@ -5,13 +5,22 @@ import java.util.ArrayList;
 
 import com.amplifier.models.Comment;
 
-public interface CommentRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+@Repository
+@Transactional
+public interface CommentRepository extends JpaRepository<Comment, Integer>{
+
+    @Query (value = "SELECT * FROM img_post_comments", nativeQuery = true)
     public ArrayList<Comment> findAll();
 
-    public boolean create(Comment comment);
+    public ArrayList<Comment> listAllCommentsByCreationDate(LocalDate comment_date);
 
-    public Comment findCommentById(int Id);
+    @Query(value = "SELECT * FROM img_post_comments WHERE id = ?1", nativeQuery = true)
+    public Comment findById(int Id);
 
     public Comment findCommentByText(String comment_text); //implementation to find comment by .contains filter based on string input
 
@@ -21,10 +30,11 @@ public interface CommentRepository {
 
     public Comment findCommentByCreationDate(LocalDate comment_date);
 
-    public ArrayList<Comment> listAllCommentsByCreationDate(LocalDate comment_date);
-
-    public boolean deleteCommentById(int id);
+    public boolean create(Comment comment);
 
     public boolean updateCommentById(int id);
+
+    @Query(value = "DELETE * FROM img_post_comments WHERE id'?1", nativeQuery = true)
+    public boolean deleteById(int id);
 
 }

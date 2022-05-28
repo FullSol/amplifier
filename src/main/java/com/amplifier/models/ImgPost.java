@@ -39,6 +39,8 @@ public class ImgPost {
     @ApiModelProperty(name = "author", value = "User value specifiying the author of the image post entity.", required = true)
     private User author;
 
+    //image post date
+
     public ImgPost() {
     }
 

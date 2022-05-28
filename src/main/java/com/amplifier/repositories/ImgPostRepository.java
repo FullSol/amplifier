@@ -20,7 +20,7 @@ public interface ImgPostRepository extends JpaRepository<ImgPost, Integer> {
     @Query(value = "INSERT INTO ImgPosts (img_caption, img_location, author_id) VALUES(?1, ?2, ?3)", nativeQuery = true)
     public boolean create(String imgCaption, String imgLocation, int authorId);
 
-    @Query(value = "SELECT * FROM ImgPosts WHERE id=?1")
+    @Query(value = "SELECT * FROM ImgPosts WHERE id=?1", nativeQuery = true)
     public ImgPost findById(int id);
 
     @Query(value = "UPDATE ImgPosts SET img_caption, img_caption=?1, img_location=?2, author_id=?3 WHERE id=?3", nativeQuery = true)
