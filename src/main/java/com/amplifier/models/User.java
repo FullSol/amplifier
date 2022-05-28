@@ -60,8 +60,6 @@ public class User {
     @ApiModelProperty(name = "join_date", notes = "A date value that serves as the joined date for the user.", required = true)
     private LocalDate joinDate;
 
-    // Should this be another @OneToOne column join? -- userRole role ID -> Id in
-    // userRole model class
     @Column(name = "role_id", unique = true, nullable = false)
     @ApiModelProperty(name = "role_id", notes = "A integer value that serves as the role id for the user.", required = true)
     private UserRole role;
@@ -71,68 +69,65 @@ public class User {
     private boolean active;
 
     public User() {
+        super();
     }
 
+    /**
+     * @param username
+     * @param email
+     * @param password
+     * @param firstName
+     * @param lastName
+     * @param blizzardAccount
+     * @param socialMedia
+     * @param joinDate
+     * @param role
+     * @param active
+     */
     public User(String username, String email, String password, String firstName, String lastName,
-            LocalDate joinDate) {
+            UserBlizzardAccount blizzardAccount, UserSocialMedia socialMedia, LocalDate joinDate, UserRole role,
+            boolean active) {
+        super();
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.joinDate = joinDate;
-    }
-
-    public User(String username, String email, String password, String firstName, String lastName, Character character,
-            UserSocialMedia socialMedia,
-            LocalDate joinDate, UserRole role) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.character = character;
-        this.socialMedia = socialMedia;
-        this.joinDate = joinDate;
-        this.role = role;
-    }
-
-    public User(String username, String email, String password, String firstName, String lastName, Character character,
-            UserSocialMedia socialMedia,
-            LocalDate joinDate, UserRole role, boolean active) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.character = character;
+        this.blizzardAccount = blizzardAccount;
         this.socialMedia = socialMedia;
         this.joinDate = joinDate;
         this.role = role;
         this.active = active;
     }
 
+    /**
+     * @param id
+     * @param username
+     * @param email
+     * @param password
+     * @param firstName
+     * @param lastName
+     * @param blizzardAccount
+     * @param socialMedia
+     * @param joinDate
+     * @param role
+     * @param active
+     */
     public User(int id, String username, String email, String password, String firstName, String lastName,
-            Character character,
-            UserSocialMedia socialMedia, LocalDate joinDate, UserRole role, boolean active) {
+            UserBlizzardAccount blizzardAccount, UserSocialMedia socialMedia, LocalDate joinDate, UserRole role,
+            boolean active) {
+        super();
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.character = character;
+        this.blizzardAccount = blizzardAccount;
         this.socialMedia = socialMedia;
         this.joinDate = joinDate;
         this.role = role;
         this.active = active;
-    }
-
-    public User(int i, String string, String string2, String string3, String string4, String string5, String string6,
-            int j) {
-    }
-
-    public User(int id, String firstName, String lastName, String email, String password, int roleCode) {
     }
 
 }
