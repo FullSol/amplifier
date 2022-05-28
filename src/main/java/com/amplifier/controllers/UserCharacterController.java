@@ -2,18 +2,22 @@ package com.amplifier.controllers;
 
 import static com.amplifier.util.ClientMessageUtil.CREATION_FAILED;
 import static com.amplifier.util.ClientMessageUtil.CREATION_SUCCESSFUL;
+import static com.amplifier.util.ClientMessageUtil.DELETION_FAILED;
+import static com.amplifier.util.ClientMessageUtil.DELETION_SUCCESSFUL;
 import static com.amplifier.util.ClientMessageUtil.UPDATE_FAILED;
 import static com.amplifier.util.ClientMessageUtil.UPDATE_SUCCESSFUL;
 
 import java.util.List;
 
+import com.amplifier.models.ClientMessage;
+import com.amplifier.models.UserCharacter;
 import com.amplifier.services.UserCharacterService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,41 +35,34 @@ public class UserCharacterController {
     @Autowired
     private UserCharacterService service;
 
-    // Get all characters
-
     @GetMapping("/characters")
-    @ApiOperation(value = "Find all characters", notes = "Provides a list of all characters from the API", response = Character.class)
-    public @ResponseBody List<Character> getAllCharacters() {
-        return characterService.getAllCharacters();
+    @ApiOperation(value = "Find all characters", notes = "Provides a list of all characters from the API", response = UserCharacter.class)
+    public @ResponseBody List<UserCharacter> getAllCharacters() {
+        return service.getAll();
     }
-
-    // Create character
 
     @PostMapping("/character")
-    @ApiOperation(value = "Create a new character", notes = "Posts new characters to the API", response = Character.class)
-    public @ResponseBody Character createCharacter(@RequestBody Character character) {
-        return characterService.createCharacter(character) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+    @ApiOperation(value = "Create a new character", notes = "Posts new characters to the API", response = UserCharacter.class)
+    public @ResponseBody ClientMessage createCharacter(@RequestBody UserCharacter character) {
+        return service.add(character) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
-    // RUD by ID
-
-    @ApiOperation(value = "Find character by id number", notes = "Provide an id to lookup a specific character from the API", response = Character.class)
-    @GetMapping(path = "/character?id={Id}")
-    public @ResponseBody Character getCharacterById(@RequestParam(value = "id", name = "id") int id) {
-        // System.out.println("TEST: " + characterService.getCharacterById(id));
-        return characterService.getCharacterById(id);
+    @ApiOperation(value = "Find character by id number", notes = "Provide an id to lookup a specific character from the API", response = UserCharacter.class)
+    @GetMapping(path = "/character?id={id}")
+    public @ResponseBody UserCharacter getCharacterById(@RequestParam(value = "id", name = "id") int id) {
+        return service.getById(id);
     }
 
-    @PutMapping("/character?id={Id}")
-    @ApiOperation(value = "Update a character by ID", notes = "Updates a character based on Id from the API", response = Character.class)
-    public @ResponseBody Character updateCharacter(@RequestBody int Id) {
-        return characterService.updateCharacterById(Id) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+    @PatchMapping("/character?id={id}")
+    @ApiOperation(value = "Update a character by ID", notes = "Updates a character based on Id from the API", response = UserCharacter.class)
+    public @ResponseBody ClientMessage updateCharacter(@RequestBody UserCharacter character) {
+        return service.edit(character) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
-    @DeleteMapping("/character?id={Id}")
-    @ApiOperation(value = "Delete a character by ID", notes = "Deletes a character based on Id from the API", response = Character.class)
-    public @ResponseBody Character deleteCharacter(@RequestBody int Id) {
-        return characterService.deleteCharacterById(Id) ? DELETE_SUCCESSFUL : DELETE_FAILED;
+    @DeleteMapping("/character?id={id}")
+    @ApiOperation(value = "Delete a character by ID", notes = "Deletes a character based on Id from the API", response = UserCharacter.class)
+    public @ResponseBody ClientMessage deleteCharacter(@RequestBody int id) {
+        return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 
 }
