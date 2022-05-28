@@ -25,7 +25,7 @@ public class UserBlizzardAccountServiceImpl implements UserBlizzardAccountServic
         return repository.findAll();
     };
 
-    public UserBlizzardAccount getbyId(int id) {
+    public UserBlizzardAccount getById(int id) {
         return repository.findById(id);
     };
 
