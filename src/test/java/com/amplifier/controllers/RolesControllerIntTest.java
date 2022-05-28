@@ -37,7 +37,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 @WebMvcTest(UserRolesController.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class RolesControllerIntTest {
-    
+
     private static UserRole mockRole1;
     private static UserRole mockRole2;
     private static UserRole mockRoleCreation;
