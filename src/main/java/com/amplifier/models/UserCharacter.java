@@ -22,9 +22,9 @@ public class UserCharacter {
     @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any user entity.", required = true, value = "1")
     private int id;
 
-    @Column(name = "account_name")
-    @ApiModelProperty(name = "account_name", notes = "")
-    private String accountName;
+    @Column(name = "name")
+    @ApiModelProperty(name = "name", notes = "")
+    private String name;
 
     public UserCharacter() {
         super();
