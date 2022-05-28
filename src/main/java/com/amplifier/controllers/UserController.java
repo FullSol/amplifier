@@ -37,7 +37,7 @@ public class UserController {
 
     @ApiOperation(value = "Find user by id number", notes = "Provide an id to lookup a specific user from the API", response = User.class)
     @GetMapping(path = "/user?id={id}")
-    public @ResponseBody User getById(@RequestParam(value = "id") int id) {
+    public @ResponseBody User getById(@RequestParam(value = "id") String id) {
         return service.getById(id);
     }
 
@@ -61,7 +61,7 @@ public class UserController {
 
     @DeleteMapping("/user?id={id}")
     @ApiOperation(value = "Remove user entity")
-    public @ResponseBody ClientMessage deleteUser(@RequestBody int id) {
+    public @ResponseBody ClientMessage deleteUser(@RequestBody String id) {
         return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 }
