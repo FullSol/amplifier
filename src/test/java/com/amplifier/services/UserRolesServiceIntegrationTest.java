@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.amplifier.models.User;
+import com.amplifier.models.UserBlizzardAccount;
 import com.amplifier.models.UserRole;
+import com.amplifier.models.UserSocialMedia;
 import com.amplifier.repositories.UserRolesRepository;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -38,7 +40,9 @@ public class UserRolesServiceIntegrationTest {
     private static UserRolesServiceImpl service;
 
     private static User mockUser1, mockUser2;
-    private static UserRole mockUserRole1, mockUserRole2, mockUserRole3;
+    private static UserSocialMedia mockSocialMedia1, mockSocialMedia2, mockSocialMedia3;
+    private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
+    private static UserRole mockRole1, mockRole2, mockRole3;
     private static List<UserRole> dummyDb;
 
     @BeforeAll
@@ -47,15 +51,23 @@ public class UserRolesServiceIntegrationTest {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
         String joinDate = formatter.format(timestamp);
 
-        mockUser1 = new User("Patrickster", "patrickster@gmail.com", "password", "Patrick", "Trickster", LocalDate.now());
-        mockUser2 = new User("Levitate", "levitate@gmail.com", "password", "Lee", "Tate", LocalDate.now());
+        mockAccount1 = new UserBlizzardAccount("Solsphere#1100");
+        mockAccount2 = new UserBlizzardAccount("Patrickometry#1100");
+        mockAccount3 = new UserBlizzardAccount("JMercado#1100");
+        mockSocialMedia1 = new UserSocialMedia("www.solsphere.twitter.com", "www.solsphere.facebook.com", "www.solsphere.instagram.com");
+        mockSocialMedia2 = new UserSocialMedia("www.patrickometry.twitter.com", "www.patrickometry.facebook.com", "www.patrickometry.instagram.com");
+        mockSocialMedia3 = new UserSocialMedia("www.julian.twitter.com", "www.juian.facebook.com", "www.julian.instagram.com");
+        mockRole1 = new UserRole("User");
+        mockRole2 =  new UserRole("Admin");
 
-        mockUserRole1 = new UserRole(1, mockUser1);
-        mockUserRole2 = new UserRole(2, mockUser2);
+        mockUser1 = new User("8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60", "FullSol", "fullsol@gmail.com", "password", "Calvin", "Raines", mockAccount1, mockSocialMedia1,
+                        LocalDate.now(), mockRole1, true);
+        mockUser2 = new User("Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2, mockSocialMedia2,
+        LocalDate.now(), mockRole2, true);
 
         dummyDb = new ArrayList<UserRole>();
-        dummyDb.add(mockUserRole1);
-        dummyDb.add(mockUserRole2);
+        dummyDb.add(mockRole1);
+        dummyDb.add(mockRole2);
     }
 	
 
@@ -73,14 +85,14 @@ public class UserRolesServiceIntegrationTest {
     @DisplayName("2. Create UserRole Test")
     public void createUserRoleTest_success() {
         // Arrange
-        mockUserRole3 = mockUserRole2;
-        mockUserRole3.setId(3);
+        mockRole3 = mockRole2;
+        mockRole3.setId(3);
 
         // Action
-        when(repository.save(mockUserRole3)).thenReturn(mockUserRole3);
+        when(repository.save(mockRole3)).thenReturn(mockRole3);
 
         // Assert
-        assertEquals(true, service.add(mockUserRole3));
+        assertEquals(true, service.add(mockRole3));
     }
 
 
@@ -89,14 +101,14 @@ public class UserRolesServiceIntegrationTest {
     @DisplayName("3. Failed Creation UserRole Test")
     public void createUserRoleTest_fail() {
         // Arrange
-        mockUserRole3 = mockUserRole2;
-        mockUserRole3.setId(3);
+        mockRole3 = new UserRole("Moderator");
+        mockRole3.setId(3);
 
         // Action
-        when(repository.save(mockUserRole3)).thenReturn(mockUserRole3);
+        when(repository.save(mockRole3)).thenReturn(mockRole3);
 
         // Assert
-        assertEquals(false, service.add(mockUserRole3));
+        assertEquals(false, service.add(mockRole3));
     }
 
 
@@ -109,10 +121,10 @@ public class UserRolesServiceIntegrationTest {
         Integer userRoleId = 1;
 
         // Action
-        OngoingStubbing<UserRole> found = when(service.getById(userRoleId)).thenReturn(mockUserRole1);
+        OngoingStubbing<UserRole> found = when(service.getById(userRoleId)).thenReturn(mockRole1);
 
         // Assert
-        assertEquals(mockUserRole1, found);
+        assertEquals(mockRole1, found);
     }
     
 
@@ -135,21 +147,21 @@ public class UserRolesServiceIntegrationTest {
     @Order(6)
     @DisplayName("6. Update UserRole Test")
     void updateTest_success() {
-        mockUserRole2.setUserRole("Member");
+        mockRole2.setUserRole("Member");
 
-        when(service.getById(2)).thenReturn(mockUserRole2);
-        when(repository.save(mockUserRole2)).thenReturn(mockUserRole2);
+        when(service.getById(2)).thenReturn(mockRole2);
+        when(repository.save(mockRole2)).thenReturn(mockRole2);
 
-        assertEquals(true, service.edit(mockUserRole2));
+        assertEquals(true, service.edit(mockRole2));
     }    
     
     @Test
     @Order(7)
     @DisplayName("7. Delete UserRole Test")
     void deleteTest_success() {
-        doNothing().when(repository).delete(mockUserRole2);
+        doNothing().when(repository).delete(mockRole2);
         // act + assert step
-        assertEquals(true, service.remove(mockUserRole2.getId()));
+        assertEquals(true, service.remove(mockRole2.getId()));
     }    
 
 
