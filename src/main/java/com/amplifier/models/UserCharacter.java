@@ -26,8 +26,32 @@ public class UserCharacter {
     @ApiModelProperty(name = "name", notes = "")
     private String name;
 
+    @Column(name = "realm")
+    @ApiModelProperty(name = "realm", notes = "")
+    private String realm;
+
     public UserCharacter() {
         super();
+    }
+
+    /**
+     * @param name
+     * @param realm
+     */
+    public UserCharacter(String name, String realm) {
+        this.name = name;
+        this.realm = realm;
+    }
+
+    /**
+     * @param id
+     * @param name
+     * @param realm
+     */
+    public UserCharacter(int id, String name, String realm) {
+        this.id = id;
+        this.name = name;
+        this.realm = realm;
     }
 
 }
