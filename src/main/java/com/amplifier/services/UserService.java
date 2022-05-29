@@ -20,5 +20,4 @@ public interface UserService {
 
     public boolean remove(String id);
 
-    public User login(String username, String password);
 }
