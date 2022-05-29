@@ -22,8 +22,8 @@ public class UserBlizzardAccount {
     @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any user bliizard account entity.", required = true, value = "1")
     private int id;
 
-    @Column(name = "account_name")
-    private String accountName;
+    @Column(name = "battle_tag")
+    private String battleTag;
 
     public UserBlizzardAccount() {
         super();
@@ -32,17 +32,17 @@ public class UserBlizzardAccount {
     /**
      * @param accountName
      */
-    public UserBlizzardAccount(String accountName) {
-        this.accountName = accountName;
+    public UserBlizzardAccount(String battleTag) {
+        this.battleTag = battleTag;
     }
 
     /**
      * @param id
      * @param accountName
      */
-    public UserBlizzardAccount(int id, String accountName) {
+    public UserBlizzardAccount(int id, String battleTag) {
         this.id = id;
-        this.accountName = accountName;
+        this.battleTag = battleTag;
     }
 
 }

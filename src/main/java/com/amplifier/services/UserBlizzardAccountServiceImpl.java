@@ -32,7 +32,7 @@ public class UserBlizzardAccountServiceImpl implements UserBlizzardAccountServic
     public boolean edit(UserBlizzardAccount account) {
         UserBlizzardAccount target = repository.findById(account.getId());
 
-        target.setAccountName(account.getAccountName());
+        target.setBattleTag(account.getBattleTag());
 
         return (repository.save(target) != null) ? true : false;
     };
