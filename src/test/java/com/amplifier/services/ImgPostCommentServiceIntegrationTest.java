@@ -10,12 +10,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.amplifier.models.Comment;
+import com.amplifier.models.ImgPost;
+import com.amplifier.models.ImgPostComment;
 import com.amplifier.models.User;
 import com.amplifier.models.UserBlizzardAccount;
 import com.amplifier.models.UserRole;
 import com.amplifier.models.UserSocialMedia;
-import com.amplifier.repositories.CommentRepository;
+import com.amplifier.repositories.ImgPostCommentRepository;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -31,20 +32,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class CommentServiceIntegrationTest {
+public class ImgPostCommentServiceIntegrationTest {
 
     @Autowired
-    private static CommentRepository commentRepository;
+    private static ImgPostCommentRepository commentRepository;
 
     @InjectMocks
-    private static CommentServiceImpl commentService; // needs be merged in...
+    private static ImgPostCommentServiceImpl commentService; // needs be merged in...
 
     private static User user1, user2, user3;
     private static UserSocialMedia socialMedia1, socialMedia2, socialMedia3;
     private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
-    private static Comment comment1, comment2, comment3;
+    private static ImgPostComment comment1, comment2, comment3;
     private static UserRole mockRole1, mockRole2;
-    private static List<Comment> mockDb;
+    private static ImgPost imgPost1, imgPost2, imgPost3;
+    private static List<ImgPostComment> mockDb;
 
     @BeforeAll
     static void setUp() throws Exception {
@@ -87,11 +89,18 @@ public class CommentServiceIntegrationTest {
                 LocalDate.now(), mockRole2, true);
 
         /**
+         * ImgPostComment Mocks
+         */
+        imgPost1 = new ImgPost();
+        imgPost2 = new ImgPost();
+        imgPost3 = new ImgPost();
+
+        /**
          * Comment Mocks
          */
-        comment1 = new Comment(1, "This is a comment", 1, user1, LocalDate.now());
+        comment1 = new ImgPostComment(1, "This is a comment", imgPost1, user1, LocalDate.now());
 
-        comment2 = new Comment(2, "This is another comment", 2, user2, LocalDate.now());
+        comment2 = new ImgPostComment(2, "This is another comment", imgPost2, user2, LocalDate.now());
 
         mockDb = new ArrayList<>();
         mockDb.add(comment1);
@@ -103,7 +112,7 @@ public class CommentServiceIntegrationTest {
     @DisplayName("1. Mock Validation Test")
     public void checkMockInjection() {
         assertThat(commentRepository).isNotNull();
-        assertThat(commentService).isNotNull(); // error, commentService needs to be merged in.
+        assertThat(commentService).isNotNull();
     }
 
     @Test
@@ -111,7 +120,7 @@ public class CommentServiceIntegrationTest {
     @DisplayName("3. Attempt to create comment - fail")
     public void createComment_fail() {
 
-        comment3 = new Comment(3, "This is a whole new comment", 3, user3, LocalDate.now());
+        comment3 = new ImgPostComment(3, "This is a whole new comment", imgPost3, user3, LocalDate.now());
 
         when(commentRepository.save(comment3)).thenReturn(comment3); // save method won't work until commentRepo
                                                                      // merged.
@@ -120,8 +129,6 @@ public class CommentServiceIntegrationTest {
         assertEquals(false, commentService.add(comment3));
     }
 
-    // Test for creating - pass?
-
     @Test
     @Order(4)
     @DisplayName("4. Attempt to retrieve comment by Id - pass")
@@ -129,12 +136,10 @@ public class CommentServiceIntegrationTest {
 
         Integer commentId = 1;
 
-        OngoingStubbing<Comment> found = when(commentService.getById(commentId)).thenReturn(comment1);
+        OngoingStubbing<ImgPostComment> found = when(commentService.getById(commentId)).thenReturn(comment1);
 
         assertEquals(comment1, found);
     }
-
-    // getById fail?
 
     @Test
     @Order(5)

@@ -1,16 +1,19 @@
 package com.amplifier.models;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -39,7 +42,11 @@ public class ImgPost {
     @ApiModelProperty(name = "author", value = "User value specifiying the author of the image post entity.", required = true)
     private User author;
 
-    //image post date
+    @Column(name = "img_date", nullable = false)
+    private LocalDate postDate;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<ImgPostComment> imgPostComments;
 
     public ImgPost() {
     }

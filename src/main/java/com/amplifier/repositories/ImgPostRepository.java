@@ -14,15 +14,15 @@ import jakarta.transaction.Transactional;
 @Transactional
 public interface ImgPostRepository extends JpaRepository<ImgPost, Integer> {
 
-    @Query(value = "SELECT * FROM ImgPosts", nativeQuery = true)
+    @Query(value = "SELECT * FROM img_posts", nativeQuery = true)
     public List<ImgPost> findAll();
 
-    @Query(value = "SELECT * FROM ImgPosts WHERE id=?1")
+    @Query(value = "SELECT * FROM img_posts WHERE id=?1", nativeQuery = true)
     public ImgPost findById(int id);
 
-    @Query(value = "UPDATE ImgPosts SET img_caption=?1, img_location=?2 WHERE id=?3", nativeQuery = true)
+    @Query(value = "UPDATE img_posts SET img_caption=?1, img_location=?2 WHERE id=?3", nativeQuery = true)
     public boolean update(String imgCaption, String imgLocation, int id);
 
-    @Query(value = "DELETE * FROM ImgPosts WHERE id=?1", nativeQuery = true)
+    @Query(value = "DELETE * FROM img_posts WHERE id=?1", nativeQuery = true)
     public boolean delete(int id);
 }

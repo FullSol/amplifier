@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,7 +19,7 @@ import lombok.Data;
 @Table(name = "img_post_comments")
 @Data
 @ApiModel(value = "Comments", description = "This model serves as the basic model for all comment entity API operations.")
-public class Comment {
+public class ImgPostComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,11 +31,12 @@ public class Comment {
     @ApiModelProperty()
     private String commentText;
 
-    @Column(name = "img_post_id")
+    @JoinColumn(name = "img_post_id")
+    @ManyToOne(fetch = FetchType.LAZY)
     @ApiModelProperty()
-    private int imgPostId;
+    private ImgPost imgPost;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", nullable = false)
     private User author;
 
@@ -42,21 +44,35 @@ public class Comment {
     @ApiModelProperty(name = "comment_date")
     private LocalDate commentDate;
 
-    public Comment() {
+    public ImgPostComment() {
     }
 
-    public Comment(String commentText, int imgPostId, User author, LocalDate commentDate) {
+    /**
+     * @param commentText
+     * @param imgPost
+     * @param author
+     * @param commentDate
+     */
+    public ImgPostComment(String commentText, ImgPost imgPost, User author, LocalDate commentDate) {
         this.commentText = commentText;
-        this.imgPostId = imgPostId;
+        this.imgPost = imgPost;
         this.author = author;
         this.commentDate = commentDate;
     }
 
-    public Comment(int id, String commentText, int imgPostId, User author, LocalDate commentDate) {
+    /**
+     * @param id
+     * @param commentText
+     * @param imgPost
+     * @param author
+     * @param commentDate
+     */
+    public ImgPostComment(int id, String commentText, ImgPost imgPost, User author, LocalDate commentDate) {
         this.id = id;
         this.commentText = commentText;
-        this.imgPostId = imgPostId;
+        this.imgPost = imgPost;
         this.author = author;
         this.commentDate = commentDate;
     }
+
 }
