@@ -1,7 +1,10 @@
 package com.amplifier.models;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -9,10 +12,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -24,8 +27,9 @@ import lombok.Data;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue(generator = "uuid4")
+    @GenericGenerator(name = "uuid4", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(name = "id", columnDefinition = "VARCHAR(255)")
     @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any user entity.", required = true, value = "1")
     private UUID id;
 
@@ -56,6 +60,9 @@ public class User {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "social_id", unique = true)
     private UserSocialMedia socialMedia;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
+    private List<ImgPost> imgPosts;
 
     @Column(name = "join_date", nullable = false)
     @ApiModelProperty(name = "join_date", notes = "A date value that serves as the joined date for the user.", required = true)

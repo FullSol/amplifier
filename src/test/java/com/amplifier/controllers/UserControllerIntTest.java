@@ -49,6 +49,7 @@ public class UserControllerIntTest {
         private static User mockUser1, mockUser2;
         private static UserSocialMedia mockSocialMedia1, mockSocialMedia2, mockSocialMedia3;
         private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
+        private static UUID mockUUID1, mockUUID2, mockUUID3;
         private static UserRole mockRole1, mockRole2;
         private static User mockUserCreation;
         private static User mockUserModification;
@@ -162,7 +163,7 @@ public class UserControllerIntTest {
         @DisplayName("3. Attempt to pull invalid user")
         public void getUser_ShouldReturnInvalid() throws Exception {
                 //
-                when(userService.getById("8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60")).thenReturn(mockUser1);
+                when(userService.getById(mockUUID1)).thenReturn(mockUser1);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/user?id=1");
@@ -177,11 +178,11 @@ public class UserControllerIntTest {
         @DisplayName("4. Attempt to pull valid user")
         public void getUser_ShouldReturnUser() throws Exception {
                 //
-                when(userService.getById("8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60")).thenReturn(mockUser1);
+                when(userService.getById(mockUUID1)).thenReturn(mockUser1);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
-                                .get("/api/user?id=8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60");
+                                .get("/api/user?id=" + mockUUID1);
                 MvcResult result = mockMvc.perform(request).andReturn();
 
                 //

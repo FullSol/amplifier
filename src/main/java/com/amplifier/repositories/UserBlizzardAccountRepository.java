@@ -21,8 +21,8 @@ public interface UserBlizzardAccountRepository extends JpaRepository<UserBlizzar
     public UserBlizzardAccount findById(int id);
 
     @Modifying
-    @Query(value = "UPDATE user_blizzard_accounts u SET u.account_name = ?1 where id = ?2", nativeQuery = true)
-    public boolean update(String accountName, int id);
+    @Query(value = "UPDATE user_blizzard_accounts u SET u.battle_tag = ?1 where id = ?2", nativeQuery = true)
+    public boolean update(String battleTag, int id);
 
     @Query(value = "DELETE * FROM user_blizzard_accounts WHERE id=?1", nativeQuery = true)
     public boolean delete(int id);

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.amplifier.models.ImgPost;
-import com.amplifier.models.User;
 import com.amplifier.services.ImgPostService;
 import com.amplifier.util.ClientMessageUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
