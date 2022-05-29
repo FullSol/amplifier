@@ -42,132 +42,132 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 public class ImgPostControllerIntTest {
 
-	private static ImgPost mockImgPost1;
-//	private static ImgPost mockImgPostCreation;
-//	private static ImgPost mockImgPostModification;
-	private static ImgPost mockImgPostDeletion;
-	private static List<ImgPost> mockDb;
+        private static ImgPost mockImgPost1;
+        // private static ImgPost mockImgPostCreation;
+        // private static ImgPost mockImgPostModification;
+        private static ImgPost mockImgPostDeletion;
+        private static List<ImgPost> mockDb;
 
-	public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
-			MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+        public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
+                        MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
-	// User this is you do not have a LocalDate
-	// ObjectMapper om = new ObjectMapper();
+        // User this is you do not have a LocalDate
+        // ObjectMapper om = new ObjectMapper();
 
-	// Use this if you get an error about package not being default in jax
-	private static ObjectMapper om = JsonMapper.builder().addModule(new JavaTimeModule()).build();
+        // Use this if you get an error about package not being default in jax
+        private static ObjectMapper om = JsonMapper.builder().addModule(new JavaTimeModule()).build();
 
-	@Autowired
-	ImgPostController imgPostController;
+        @Autowired
+        ImgPostController imgPostController;
 
-	@Autowired
-	private MockMvc mockMvc;
+        @Autowired
+        private MockMvc mockMvc;
 
-	@MockBean
-	ImgPostService imgPostService;
+        @MockBean
+        ImgPostService imgPostService;
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-//		mockAuthor = new User();
-		mockImgPost1 = new ImgPost();
-		mockDb = new ArrayList<>();
-		mockDb.add(mockImgPost1);
+        @BeforeAll
+        static void setUpBeforeClass() throws Exception {
+                // mockAuthor = new User();
+                mockImgPost1 = new ImgPost();
+                mockDb = new ArrayList<>();
+                mockDb.add(mockImgPost1);
 
-	}
+        }
 
-	@Test
-	@Order(1)
-	@DisplayName("1. AppContext")
-	public void contextLoads() {
-		assertThat(imgPostController).isNotNull();
-	}
+        @Test
+        @Order(1)
+        @DisplayName("1. AppContext")
+        public void contextLoads() {
+                assertThat(imgPostController).isNotNull();
+        }
 
-	@Test
-	@Order(2)
-	@DisplayName("2. Get all Img Posts.")
-	public void getImgPosts_ShouldReturnImgPosts() throws Exception {
-		//
-		when(imgPostService.getAll()).thenReturn(mockDb);
+        @Test
+        @Order(2)
+        @DisplayName("2. Get all Img Posts.")
+        public void getImgPosts_ShouldReturnImgPosts() throws Exception {
+                //
+                when(imgPostService.getAll()).thenReturn(mockDb);
 
-		//
-		RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/imgposts");
-		MvcResult result = mockMvc.perform(request).andReturn();
+                //
+                RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/imgposts");
+                MvcResult result = mockMvc.perform(request).andReturn();
 
-		//
-		assertEquals(om.writeValueAsString(mockDb), result.getResponse().getContentAsString());
-	}
-	
-    @Test
-    @Order(3)
-    @DisplayName("3. Attempt to pull invalid Img Post")
-    public void getImgPost_ShouldReturnInvalid() throws Exception {
-            //
-            when(imgPostService.getById(1)).thenReturn(mockImgPost1);
+                //
+                assertEquals(om.writeValueAsString(mockDb), result.getResponse().getContentAsString());
+        }
 
-            //
-            RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/user?id=1");
-            MvcResult result = mockMvc.perform(request).andReturn();
+        @Test
+        @Order(3)
+        @DisplayName("3. Attempt to pull invalid Img Post")
+        public void getImgPost_ShouldReturnInvalid() throws Exception {
+                //
+                when(imgPostService.getById(1)).thenReturn(mockImgPost1);
 
-            //
-            assertEquals(om.writeValueAsString(mockImgPost1), result.getResponse().getContentAsString());
-    }
+                //
+                RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/user?id=1");
+                MvcResult result = mockMvc.perform(request).andReturn();
 
-    @Test
-    @Order(4)
-    @DisplayName("4. Attempt to pull valid Img Post")
-    public void getUser_ShouldReturnUser() throws Exception {
-            //
-            when(imgPostService.getById(1)).thenReturn(mockImgPost1);
+                //
+                assertEquals(om.writeValueAsString(mockImgPost1), result.getResponse().getContentAsString());
+        }
 
-            //
-            RequestBuilder request = MockMvcRequestBuilders
-                            .get("/api/imgpost?id=1");
-            MvcResult result = mockMvc.perform(request).andReturn();
+        @Test
+        @Order(4)
+        @DisplayName("4. Attempt to pull valid Img Post")
+        public void getUser_ShouldReturnUser() throws Exception {
+                //
+                when(imgPostService.getById(1)).thenReturn(mockImgPost1);
 
-            //
-            assertEquals(om.writeValueAsString(mockImgPost1), result.getResponse().getContentAsString());
-    }	
-    
-    @Test
-    @Order(5)
-    @DisplayName("5. Delete Img Post")
-    public void testDeleteImgPost() throws Exception {
+                //
+                RequestBuilder request = MockMvcRequestBuilders
+                                .get("/api/imgpost?id=1");
+                MvcResult result = mockMvc.perform(request).andReturn();
 
-            //
-            when(imgPostService.remove(mockImgPostDeletion.getId())).thenReturn(true);
+                //
+                assertEquals(om.writeValueAsString(mockImgPost1), result.getResponse().getContentAsString());
+        }
 
-            //
-            RequestBuilder request = MockMvcRequestBuilders
-                            .delete("/api/v1/imgpost?id=1")
-                            .accept(MediaType.APPLICATION_JSON_VALUE)
-                            .content(om.writeValueAsString(mockImgPostDeletion))
-                            .contentType(MediaType.APPLICATION_JSON);
-            MvcResult result = mockMvc.perform(request).andReturn();
+        @Test
+        @Order(5)
+        @DisplayName("5. Delete Img Post")
+        public void testDeleteImgPost() throws Exception {
 
-            //
-            assertEquals(om.writeValueAsString(ClientMessageUtil.DELETION_SUCCESSFUL),
-                            result.getResponse().getContentAsString());
-    }
+                //
+                when(imgPostService.remove(mockImgPostDeletion.getId())).thenReturn(true);
 
-    @Test
-    @Order(6)
-    @DisplayName("6. Delete Img Post - fail")
-    public void testDeleteImgPostFail() throws Exception {
+                //
+                RequestBuilder request = MockMvcRequestBuilders
+                                .delete("/api/v1/imgpost?id=1")
+                                .accept(MediaType.APPLICATION_JSON_VALUE)
+                                .content(om.writeValueAsString(mockImgPostDeletion))
+                                .contentType(MediaType.APPLICATION_JSON);
+                MvcResult result = mockMvc.perform(request).andReturn();
 
-            //
-            when(imgPostService.remove(mockImgPostDeletion.getId())).thenReturn(true);
+                //
+                assertEquals(om.writeValueAsString(ClientMessageUtil.DELETION_SUCCESSFUL),
+                                result.getResponse().getContentAsString());
+        }
 
-            //
-            RequestBuilder request = MockMvcRequestBuilders
-                            .delete("/api/v1/imgpost?id=1")
-                            .accept(MediaType.APPLICATION_JSON_VALUE)
-                            .content(om.writeValueAsString(mockImgPostDeletion))
-                            .contentType(MediaType.APPLICATION_JSON);
-            MvcResult result = mockMvc.perform(request).andReturn();
+        @Test
+        @Order(6)
+        @DisplayName("6. Delete Img Post - fail")
+        public void testDeleteImgPostFail() throws Exception {
 
-            //
-            assertEquals(om.writeValueAsString(ClientMessageUtil.DELETION_FAILED),
-                            result.getResponse().getContentAsString());
-    }
+                //
+                when(imgPostService.remove(mockImgPostDeletion.getId())).thenReturn(true);
+
+                //
+                RequestBuilder request = MockMvcRequestBuilders
+                                .delete("/api/v1/imgpost?id=1")
+                                .accept(MediaType.APPLICATION_JSON_VALUE)
+                                .content(om.writeValueAsString(mockImgPostDeletion))
+                                .contentType(MediaType.APPLICATION_JSON);
+                MvcResult result = mockMvc.perform(request).andReturn();
+
+                //
+                assertEquals(om.writeValueAsString(ClientMessageUtil.DELETION_FAILED),
+                                result.getResponse().getContentAsString());
+        }
 
 }

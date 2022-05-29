@@ -20,10 +20,8 @@ public class UserCharacterControllerIntTest {
   @MockBean
   private UserCharacterService characterService;
 
-UserCharacter wizard = new UserCharacter(1, "wiz", "wizRealm");
-UserCharacter barbarian = new UserCharacter(2, "barb", "barbRealm");
-UserCharacter necromancer = new UserCharacter(3, "necro", "necroRealm");
-UserCharacter crusader = new UserCharacter(4, "crusName", "crusRealm");
-UserCharacter monk = new UserCharacter(5, "monkName", "monkRealm");
+  UserCharacter wizard = new UserCharacter(1, "wiz", "wizard", "female", 101, 2000, 260, false, true, false);
+  UserCharacter barbarian = new UserCharacter(2, "barb", "barbarian", "male", 102, 5000, 300, true, true, false);
+  UserCharacter necromancer = new UserCharacter(3, "necro", "necromancer", "male", 1, 0, 350, true, true, true);
 
 }

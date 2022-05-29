@@ -2,6 +2,7 @@ package com.amplifier.repositories;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 import com.amplifier.models.User;
 import com.amplifier.models.UserBlizzardAccount;
@@ -29,10 +30,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             boolean active, int id);
 
     @Query(value = "SELECT * FROM users where id=?1", nativeQuery = true)
-    public User findById(String id);
+    public User findById(UUID id);
 
     @Query(value = "DELETE FROM users WHERE id=?1 LIMIT 1", nativeQuery = true)
-    public boolean delete(String id);
+    public boolean delete(UUID id);
 
     // public User login(String username, String password);
 
