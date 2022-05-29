@@ -17,7 +17,7 @@ public interface UserRolesRepository extends JpaRepository<UserRole, Integer> {
   @Query(value = "SELECT * FROM user_roles", nativeQuery = true)
   public List<UserRole> findAll();
 
-  @Query(value = "SELECT * FROM user_roles WHERE id=?1")
+  @Query(value = "SELECT * FROM user_roles WHERE id=?1", nativeQuery = true)
   public UserRole findById(int id);
 
   @Query(value = "UDPATE user_roles SET role=?1 WHERE id = ?2", nativeQuery = true)
