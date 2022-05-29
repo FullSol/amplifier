@@ -9,8 +9,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-import com.amplifier.models.ImgPostComment;
 import com.amplifier.models.ImgPost;
 import com.amplifier.models.User;
 import com.amplifier.models.UserBlizzardAccount;
@@ -40,6 +40,7 @@ public class ImgPostServiceIntegrationTest {
     @InjectMocks
     private static ImgPostServiceImpl service;
 
+    private static UUID mockUUID1, mockUUID2, mockUUID3;
     private static User user1, user2, user3;
     private static UserSocialMedia socialMedia1, socialMedia2, socialMedia3;
     private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
@@ -73,17 +74,25 @@ public class ImgPostServiceIntegrationTest {
         mockRole2 = new UserRole("Admin");
 
         /**
+         * UUID Mocks
+         */
+        mockUUID1 = UUID.randomUUID();
+        mockUUID2 = UUID.randomUUID();
+        mockUUID3 = UUID.randomUUID();
+
+        /**
          * User Mocks
          */
-        user1 = new User("8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60", "FullSol", "fullsol@gmail.com", "password", "Calvin",
+        user1 = new User(mockUUID1, "FullSol", "fullsol@gmail.com", "password", "Calvin",
                 "Raines", mockAccount1, socialMedia1,
                 LocalDate.now(), mockRole1, true);
 
-        user2 = new User("Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2,
+        user2 = new User(mockUUID2, "Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2,
                 socialMedia2,
                 LocalDate.now(), mockRole2, true);
 
-        user3 = new User("JulianMercado", "julianmercado@gmail.com", "password", "Julian", "Mercado", mockAccount3,
+        user3 = new User(mockUUID3, "JulianMercado", "julianmercado@gmail.com", "password", "Julian", "Mercado",
+                mockAccount3,
                 socialMedia3,
                 LocalDate.now(), mockRole2, true);
 

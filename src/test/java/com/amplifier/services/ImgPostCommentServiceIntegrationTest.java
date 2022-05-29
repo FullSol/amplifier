@@ -85,15 +85,16 @@ public class ImgPostCommentServiceIntegrationTest {
         /**
          * User Mocks
          */
-        user1 = new User("8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60", "FullSol", "fullsol@gmail.com", "password", "Calvin",
+        user1 = new User(mockUUID1, "FullSol", "fullsol@gmail.com", "password", "Calvin",
                 "Raines", mockAccount1, socialMedia1,
                 LocalDate.now(), mockRole1, true);
 
-        user2 = new User("Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2,
+        user2 = new User(mockUUID2, "Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2,
                 socialMedia2,
                 LocalDate.now(), mockRole2, true);
 
-        user3 = new User("JulianMercado", "julianmercado@gmail.com", "password", "Julian", "Mercado", mockAccount3,
+        user3 = new User(mockUUID3, "JulianMercado", "julianmercado@gmail.com", "password", "Julian", "Mercado",
+                mockAccount3,
                 socialMedia3,
                 LocalDate.now(), mockRole2, true);
 
