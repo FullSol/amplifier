@@ -1,6 +1,7 @@
 package com.amplifier.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.amplifier.models.User;
 
@@ -14,10 +15,10 @@ public interface UserService {
 
     public boolean add(User user);
 
-    public User getById(String id);
+    public User getById(UUID id);
 
     public boolean edit(User user);
 
-    public boolean remove(String id);
+    public boolean remove(UUID id);
 
 }

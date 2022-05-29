@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.amplifier.models.User;
 import com.amplifier.models.UserBlizzardAccount;
@@ -48,6 +49,7 @@ public class UserControllerIntTest {
         private static User mockUser1, mockUser2;
         private static UserSocialMedia mockSocialMedia1, mockSocialMedia2, mockSocialMedia3;
         private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
+        private static UUID mockUUID1, mockUUID2, mockUUID3;
         private static UserRole mockRole1, mockRole2;
         private static User mockUserCreation;
         private static User mockUserModification;
@@ -83,25 +85,36 @@ public class UserControllerIntTest {
                 mockAccount1 = new UserBlizzardAccount("Solsphere#1100");
                 mockAccount2 = new UserBlizzardAccount("Patrickometry#1100");
                 mockAccount3 = new UserBlizzardAccount("JMercado#1100");
-                mockSocialMedia1 = new UserSocialMedia("www.solsphere.twitter.com", "www.solsphere.facebook.com", "www.solsphere.instagram.com");
-                mockSocialMedia2 = new UserSocialMedia("www.patrickometry.twitter.com", "www.patrickometry.facebook.com", "www.patrickometry.instagram.com");
-                mockSocialMedia3 = new UserSocialMedia("www.julian.twitter.com", "www.juian.facebook.com", "www.julian.instagram.com");
+                mockSocialMedia1 = new UserSocialMedia("www.solsphere.twitter.com", "www.solsphere.facebook.com",
+                                "www.solsphere.instagram.com");
+                mockSocialMedia2 = new UserSocialMedia("www.patrickometry.twitter.com",
+                                "www.patrickometry.facebook.com", "www.patrickometry.instagram.com");
+                mockSocialMedia3 = new UserSocialMedia("www.julian.twitter.com", "www.juian.facebook.com",
+                                "www.julian.instagram.com");
                 mockRole1 = new UserRole("User");
-                mockRole2 =  new UserRole("Admin");
+                mockRole2 = new UserRole("Admin");
 
-                mockUser1 = new User("8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60", "FullSol", "fullsol@gmail.com", "password", "Calvin", "Raines", mockAccount1, mockSocialMedia1,
+                mockUUID1 = UUID.randomUUID();
+                mockUUID2 = UUID.randomUUID();
+                mockUUID3 = UUID.randomUUID();
+
+                mockUser1 = new User(mockUUID1, "FullSol", "fullsol@gmail.com", "password", "Calvin", "Raines",
+                                mockAccount1, mockSocialMedia1,
                                 LocalDate.now(), mockRole1, true);
-                mockUser2 = new User("Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2, mockSocialMedia2,
-                LocalDate.now(), mockRole2, true);
+                mockUser2 = new User(mockUUID2, "Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar",
+                                mockAccount2, mockSocialMedia2,
+                                LocalDate.now(), mockRole2, true);
 
-                mockUserCreation = new User("JulianMercado", "julianmercado@gmail.com", "password", "Julian", "Mercado", mockAccount3, mockSocialMedia3,
-                LocalDate.now(), mockRole2, true);
+                mockUserCreation = new User(mockUUID3, "JulianMercado", "julianmercado@gmail.com", "password", "Julian",
+                                "Mercado",
+                                mockAccount3, mockSocialMedia3,
+                                LocalDate.now(), mockRole2, true);
 
                 mockUserModification = mockUserCreation;
                 mockUserModification.setFirstName("Johnny");
                 mockUserModification.setEmail("Johnny@gmail.com");
 
-                //mockUserDeletion = new User();
+                // mockUserDeletion = new User();
 
                 dummyDb = new ArrayList<>();
                 dummyDb.add(mockUser1);
@@ -136,7 +149,7 @@ public class UserControllerIntTest {
         @DisplayName("3. Attempt to pull invalid user")
         public void getUser_ShouldReturnInvalid() throws Exception {
                 //
-                when(userService.getById("8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60")).thenReturn(mockUser1);
+                when(userService.getById(mockUUID1)).thenReturn(mockUser1);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/user?id=1");
@@ -151,11 +164,11 @@ public class UserControllerIntTest {
         @DisplayName("4. Attempt to pull valid user")
         public void getUser_ShouldReturnUser() throws Exception {
                 //
-                when(userService.getById("8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60")).thenReturn(mockUser1);
+                when(userService.getById(mockUUID1)).thenReturn(mockUser1);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
-                                .get("/api/user?id=8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60");
+                                .get("/api/user?id=" + mockUUID1);
                 MvcResult result = mockMvc.perform(request).andReturn();
 
                 //

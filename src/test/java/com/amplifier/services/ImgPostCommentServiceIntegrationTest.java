@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.amplifier.models.ImgPost;
 import com.amplifier.models.ImgPostComment;
@@ -40,6 +41,7 @@ public class ImgPostCommentServiceIntegrationTest {
     @InjectMocks
     private static ImgPostCommentServiceImpl commentService; // needs be merged in...
 
+    private static UUID mockUUID1, mockUUID2, mockUUID3;
     private static User user1, user2, user3;
     private static UserSocialMedia socialMedia1, socialMedia2, socialMedia3;
     private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
@@ -72,6 +74,13 @@ public class ImgPostCommentServiceIntegrationTest {
         mockRole1 = new UserRole("User");
 
         mockRole2 = new UserRole("Admin");
+
+        /**
+         * UUID Mocks
+         */
+        mockUUID1 = UUID.randomUUID();
+        mockUUID2 = UUID.randomUUID();
+        mockUUID3 = UUID.randomUUID();
 
         /**
          * User Mocks

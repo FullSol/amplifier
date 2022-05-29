@@ -8,6 +8,7 @@ import static com.amplifier.util.ClientMessageUtil.UPDATE_FAILED;
 import static com.amplifier.util.ClientMessageUtil.UPDATE_SUCCESSFUL;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.amplifier.models.ClientMessage;
 import com.amplifier.models.User;
@@ -37,7 +38,7 @@ public class UserController {
 
     @ApiOperation(value = "Find user by id number", notes = "Provide an id to lookup a specific user from the API", response = User.class)
     @GetMapping(path = "/user?id={id}")
-    public @ResponseBody User getById(@RequestParam(value = "id") String id) {
+    public @ResponseBody User getById(@RequestParam(value = "id") UUID id) {
         return service.getById(id);
     }
 
@@ -61,7 +62,7 @@ public class UserController {
 
     @DeleteMapping("/user?id={id}")
     @ApiOperation(value = "Remove user entity")
-    public @ResponseBody ClientMessage deleteUser(@RequestBody String id) {
+    public @ResponseBody ClientMessage deleteUser(@RequestBody UUID id) {
         return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 }
