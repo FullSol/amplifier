@@ -39,7 +39,7 @@ public class UserRolesServiceIntegrationTest {
     @InjectMocks
     private static UserRolesServiceImpl service;
 
-    private static UUID mockUUID1, mockUUID2;
+    private static UUID uuid1, uuid2, uuid3;
     private static User mockUser1, mockUser2;
     private static UserSocialMedia mockSocialMedia1, mockSocialMedia2, mockSocialMedia3;
     private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
@@ -52,32 +52,49 @@ public class UserRolesServiceIntegrationTest {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
         String joinDate = formatter.format(timestamp);
 
+        /**
+         * Blizzard Account Mocks
+         */
         mockAccount1 = new UserBlizzardAccount("Solsphere#1100");
         mockAccount2 = new UserBlizzardAccount("Patrickometry#1100");
         mockAccount3 = new UserBlizzardAccount("JMercado#1100");
+
+        /**
+         * Social Media Mocks
+         */
         mockSocialMedia1 = new UserSocialMedia("www.solsphere.twitter.com", "www.solsphere.facebook.com",
                 "www.solsphere.instagram.com");
         mockSocialMedia2 = new UserSocialMedia("www.patrickometry.twitter.com", "www.patrickometry.facebook.com",
                 "www.patrickometry.instagram.com");
         mockSocialMedia3 = new UserSocialMedia("www.julian.twitter.com", "www.juian.facebook.com",
                 "www.julian.instagram.com");
+
+        /**
+         * User Role Mocks
+         */
         mockRole1 = new UserRole("User");
         mockRole2 = new UserRole("Admin");
 
         /**
-         * UUID Mocks
+         * UUIDs
          */
-        mockUUID1 = UUID.randomUUID();
-        mockUUID2 = UUID.randomUUID();
+        uuid1 = UUID.randomUUID();
+        uuid2 = UUID.randomUUID();
+        uuid3 = UUID.randomUUID();
 
-        mockUser1 = new User(mockUUID1, "FullSol", "fullsol@gmail.com", "password",
+        /**
+         * Users
+         */
+        mockUser1 = new User(uuid1, "FullSol", "fullsol@gmail.com", "password",
                 "Calvin", "Raines", mockAccount1, mockSocialMedia1,
                 LocalDate.now(), mockRole1, true);
-        mockUser2 = new User(mockUUID2, "Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar",
-                mockAccount2,
+        mockUser2 = new User(uuid2, "Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2,
                 mockSocialMedia2,
                 LocalDate.now(), mockRole2, true);
 
+        /**
+         * MockDB
+         */
         dummyDb = new ArrayList<UserRole>();
         dummyDb.add(mockRole1);
         dummyDb.add(mockRole2);

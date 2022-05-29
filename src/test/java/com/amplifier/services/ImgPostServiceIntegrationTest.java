@@ -40,7 +40,7 @@ public class ImgPostServiceIntegrationTest {
     @InjectMocks
     private static ImgPostServiceImpl service;
 
-    private static UUID mockUUID1, mockUUID2, mockUUID3;
+    private static UUID uuid1, uuid2, uuid3;
     private static User user1, user2, user3;
     private static UserSocialMedia socialMedia1, socialMedia2, socialMedia3;
     private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
@@ -74,24 +74,24 @@ public class ImgPostServiceIntegrationTest {
         mockRole2 = new UserRole("Admin");
 
         /**
-         * UUID Mocks
+         * UUIDs
          */
-        mockUUID1 = UUID.randomUUID();
-        mockUUID2 = UUID.randomUUID();
-        mockUUID3 = UUID.randomUUID();
+        uuid1 = UUID.randomUUID();
+        uuid2 = UUID.randomUUID();
+        uuid3 = UUID.randomUUID();
 
         /**
          * User Mocks
          */
-        user1 = new User(mockUUID1, "FullSol", "fullsol@gmail.com", "password", "Calvin",
+        user1 = new User(uuid1, "FullSol", "fullsol@gmail.com", "password", "Calvin",
                 "Raines", mockAccount1, socialMedia1,
                 LocalDate.now(), mockRole1, true);
 
-        user2 = new User(mockUUID2, "Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2,
+        user2 = new User(uuid2, "Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2,
                 socialMedia2,
                 LocalDate.now(), mockRole2, true);
 
-        user3 = new User(mockUUID3, "JulianMercado", "julianmercado@gmail.com", "password", "Julian", "Mercado",
+        user3 = new User(uuid3, "JulianMercado", "julianmercado@gmail.com", "password", "Julian", "Mercado",
                 mockAccount3,
                 socialMedia3,
                 LocalDate.now(), mockRole2, true);

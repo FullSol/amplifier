@@ -29,8 +29,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getById(UUID id) {
-        return repository.findById(id);
+    public User getById(String id) {
+        UUID idAsUUID = UUID.fromString(id);
+        return repository.findById(idAsUUID);
     }
 
     @Override
@@ -52,8 +53,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean remove(UUID id) {
-        return repository.delete(id);
+    public boolean remove(String id) {
+        UUID idAsUUID = UUID.fromString(id);
+        return repository.delete(idAsUUID);
     }
 
     // @Override

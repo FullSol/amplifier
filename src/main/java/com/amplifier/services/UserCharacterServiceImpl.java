@@ -36,8 +36,16 @@ public class UserCharacterServiceImpl implements UserCharacterService {
     public boolean edit(UserCharacter character) {
         UserCharacter target = repository.findById(character.getId());
 
+        target.setId(character.getId());
         target.setName(character.getName());
-        target.setRealm(character.getRealm());
+        target.set_class(character.get_class());
+        target.setGender(character.getGender());
+        target.setLevel(character.getLevel());
+        target.setKillsElites(character.getKillsElites());
+        target.setParagonLevel(character.getParagonLevel());
+        target.setHardcore(character.isHardcore());
+        target.setSeasonal(character.isSeasonal());
+        target.setDead(character.isDead());
 
         return (repository.save(target) != null) ? true : false;
     };
