@@ -37,9 +37,9 @@ public class UserCharacterServiceIntTests extends TestCase {
 
 		service = new UserCharacterServiceImpl();
 
-		character1 = new UserCharacter(1, "regret", "karfage");
-		character2 = new UserCharacter(2, "discord", "multiplus");
-		character3 = new UserCharacter(3, "terror", "frindle");
+		character1 = new UserCharacter(1, "wiz", "wizard", "female", 101, 2000, 260, false, true, false);
+		character2 = new UserCharacter(2, "barb", "barbarian", "male", 102, 5000, 300, true, true, false);
+		character3 = new UserCharacter(3, "necro", "necromancer", "male", 1, 0, 350, true, true, true);
 
 		List<UserCharacter> dummyDb = new ArrayList<UserCharacter>();
 		dummyDb.add(character1);

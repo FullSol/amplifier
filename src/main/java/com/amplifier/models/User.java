@@ -1,6 +1,7 @@
 package com.amplifier.models;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -26,7 +27,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any user entity.", required = true, value = "1")
-    private String id;
+    private UUID id;
 
     @Column(name = "username", unique = true, nullable = false)
     @ApiModelProperty(name = "username", notes = "A String value that serves as the username for the user.", required = true)
@@ -114,7 +115,7 @@ public class User {
      * @param role
      * @param active
      */
-    public User(String id, String username, String email, String password, String firstName, String lastName,
+    public User(UUID id, String username, String email, String password, String firstName, String lastName,
             UserBlizzardAccount blizzardAccount, UserSocialMedia socialMedia, LocalDate joinDate, UserRole role,
             boolean active) {
         super();

@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.amplifier.models.User;
 import com.amplifier.models.UserBlizzardAccount;
@@ -52,6 +53,7 @@ public class UserControllerIntTest {
         private static User mockUserCreation;
         private static User mockUserModification;
         private static User mockUserDeletion;
+        private static UUID uuid1, uuid2, uuid3;
         private static List<User> dummyDb;
 
         public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
@@ -80,28 +82,52 @@ public class UserControllerIntTest {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
                 String joinDate = formatter.format(timestamp);
 
+                /**
+                 * Blizzard Accounts
+                 */
                 mockAccount1 = new UserBlizzardAccount("Solsphere#1100");
                 mockAccount2 = new UserBlizzardAccount("Patrickometry#1100");
                 mockAccount3 = new UserBlizzardAccount("JMercado#1100");
-                mockSocialMedia1 = new UserSocialMedia("www.solsphere.twitter.com", "www.solsphere.facebook.com", "www.solsphere.instagram.com");
-                mockSocialMedia2 = new UserSocialMedia("www.patrickometry.twitter.com", "www.patrickometry.facebook.com", "www.patrickometry.instagram.com");
-                mockSocialMedia3 = new UserSocialMedia("www.julian.twitter.com", "www.juian.facebook.com", "www.julian.instagram.com");
+
+                /**
+                 * Social Media
+                 */
+                mockSocialMedia1 = new UserSocialMedia("www.solsphere.twitter.com", "www.solsphere.facebook.com",
+                                "www.solsphere.instagram.com");
+                mockSocialMedia2 = new UserSocialMedia("www.patrickometry.twitter.com",
+                                "www.patrickometry.facebook.com", "www.patrickometry.instagram.com");
+                mockSocialMedia3 = new UserSocialMedia("www.julian.twitter.com", "www.juian.facebook.com",
+                                "www.julian.instagram.com");
                 mockRole1 = new UserRole("User");
-                mockRole2 =  new UserRole("Admin");
+                mockRole2 = new UserRole("Admin");
 
-                mockUser1 = new User("8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60", "FullSol", "fullsol@gmail.com", "password", "Calvin", "Raines", mockAccount1, mockSocialMedia1,
+                /**
+                 * UUIDs
+                 */
+                uuid1 = UUID.randomUUID();
+                uuid2 = UUID.randomUUID();
+                uuid3 = UUID.randomUUID();
+
+                /**
+                 * Users
+                 */
+                mockUser1 = new User(uuid1, "FullSol", "fullsol@gmail.com", "password",
+                                "Calvin", "Raines", mockAccount1, mockSocialMedia1,
                                 LocalDate.now(), mockRole1, true);
-                mockUser2 = new User("Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2, mockSocialMedia2,
-                LocalDate.now(), mockRole2, true);
+                mockUser2 = new User(uuid2, "Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar",
+                                mockAccount2, mockSocialMedia2,
+                                LocalDate.now(), mockRole2, true);
 
-                mockUserCreation = new User("JulianMercado", "julianmercado@gmail.com", "password", "Julian", "Mercado", mockAccount3, mockSocialMedia3,
-                LocalDate.now(), mockRole2, true);
+                mockUserCreation = new User(uuid3, "JulianMercado", "julianmercado@gmail.com", "password", "Julian",
+                                "Mercado",
+                                mockAccount3, mockSocialMedia3,
+                                LocalDate.now(), mockRole2, true);
 
                 mockUserModification = mockUserCreation;
                 mockUserModification.setFirstName("Johnny");
                 mockUserModification.setEmail("Johnny@gmail.com");
 
-                //mockUserDeletion = new User();
+                // mockUserDeletion = new User();
 
                 dummyDb = new ArrayList<>();
                 dummyDb.add(mockUser1);
@@ -248,7 +274,7 @@ public class UserControllerIntTest {
         public void testDeleteUser() throws Exception {
 
                 //
-                when(userService.remove(mockUser1.getId())).thenReturn(true);
+                when(userService.remove(mockUser1.getId().toString())).thenReturn(true);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
@@ -269,7 +295,7 @@ public class UserControllerIntTest {
         public void testDeleteUserFail() throws Exception {
 
                 //
-                when(userService.remove(mockUser1.getId())).thenReturn(true);
+                when(userService.remove(mockUser1.getId().toString())).thenReturn(true);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders

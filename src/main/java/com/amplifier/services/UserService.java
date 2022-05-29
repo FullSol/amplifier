@@ -1,6 +1,7 @@
 package com.amplifier.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.amplifier.models.User;
 
@@ -20,5 +21,4 @@ public interface UserService {
 
     public boolean remove(String id);
 
-    public User login(String username, String password);
 }

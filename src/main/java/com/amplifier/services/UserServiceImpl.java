@@ -1,6 +1,7 @@
 package com.amplifier.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.amplifier.models.User;
 import com.amplifier.repositories.UserRepository;
@@ -23,13 +24,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean add(User user) {
-        String pk = repository.save(user).getId();
+        UUID pk = repository.save(user).getId();
         return (pk != null) ? true : false;
     }
 
     @Override
     public User getById(String id) {
-        return repository.findById(id);
+        UUID idAsUUID = UUID.fromString(id);
+        return repository.findById(idAsUUID);
     }
 
     @Override
@@ -52,11 +54,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean remove(String id) {
-        return repository.delete(id);
+        UUID idAsUUID = UUID.fromString(id);
+        return repository.delete(idAsUUID);
     }
 
-    @Override
-    public User login(String username, String password) {
-        return repository.login(username, password);
-    }
+    // @Override
+    // public User login(String username, String password) {
+    // return repository.login(username, password);
+    // }
 }

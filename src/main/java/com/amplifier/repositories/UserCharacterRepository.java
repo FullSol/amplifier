@@ -19,7 +19,7 @@ public interface UserCharacterRepository extends JpaRepository<UserCharacter, In
     @Query(value = "SELECT * FROM user_character WHERE id=?1", nativeQuery = true)
     public UserCharacter findById(int id);
 
-    @Query(value = "UDPATE user_character SET realm=?1, name = ?2 WHERE id = ?3", nativeQuery = true)
+    @Query(value = "UDPATE user_character SET id=?1, name = ?2, class = ?3, gender = ?4, level = ?5, kills_elites = ?6, paragon_level = ?7, hardcore = ?8, seasonal = ?9, dead = ?10  WHERE id = ?3", nativeQuery = true)
     public boolean update(String realm, String name, int id);
 
     @Query(value = "DELETE * FROM user_character WHERE id=?1", nativeQuery = true)

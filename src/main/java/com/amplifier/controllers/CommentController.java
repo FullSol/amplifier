@@ -10,8 +10,8 @@ import static com.amplifier.util.ClientMessageUtil.UPDATE_SUCCESSFUL;
 import java.util.List;
 
 import com.amplifier.models.ClientMessage;
-import com.amplifier.models.Comment;
-import com.amplifier.services.CommentService;
+import com.amplifier.models.ImgPostComment;
+import com.amplifier.services.ImgPostCommentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,29 +33,29 @@ import io.swagger.annotations.ApiOperation;
 public class CommentController {
 
     @Autowired
-    private CommentService service;
+    private ImgPostCommentService service;
 
-    @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = Comment.class)
+    @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = ImgPostComment.class)
     @GetMapping(path = "/comment?id={id}")
-    public @ResponseBody Comment getById(@RequestParam(name = "id") int id) {
+    public @ResponseBody ImgPostComment getById(@RequestParam(name = "id") int id) {
         return service.getById(id);
     }
 
     @GetMapping("/comments")
-    @ApiOperation(value = "Find all comments", notes = "Pulling all comments from the API", response = Comment.class)
-    public @ResponseBody List<Comment> getAll() {
+    @ApiOperation(value = "Find all comments", notes = "Pulling all comments from the API", response = ImgPostComment.class)
+    public @ResponseBody List<ImgPostComment> getAll() {
         return service.getAll();
     }
 
     @PostMapping("/comment")
     @ApiOperation(value = "Create new comment entity", notes = "Adding a new comment through the API")
-    public @ResponseBody ClientMessage add(@RequestBody Comment comment) {
+    public @ResponseBody ClientMessage add(@RequestBody ImgPostComment comment) {
         return service.add(comment) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PatchMapping("/comment")
     @ApiOperation(value = "Update comment entity", notes = "Editing a comment through the API")
-    public @ResponseBody ClientMessage edi(@RequestBody Comment comment) {
+    public @ResponseBody ClientMessage edi(@RequestBody ImgPostComment comment) {
         return service.edit(comment) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 

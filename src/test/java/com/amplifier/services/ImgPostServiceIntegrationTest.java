@@ -9,8 +9,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-import com.amplifier.models.Comment;
 import com.amplifier.models.ImgPost;
 import com.amplifier.models.User;
 import com.amplifier.models.UserBlizzardAccount;
@@ -40,11 +40,12 @@ public class ImgPostServiceIntegrationTest {
     @InjectMocks
     private static ImgPostServiceImpl service;
 
+    private static UUID uuid1, uuid2, uuid3;
     private static User user1, user2, user3;
     private static UserSocialMedia socialMedia1, socialMedia2, socialMedia3;
     private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
     private static UserRole mockRole1, mockRole2;
-    private static ImgPost mockImgPost1, mockImgPost2, mockImgPost3;
+    private static ImgPost imgPost1, imgPost2, imgPost3;
     private static List<ImgPost> dummyDb;
 
     @BeforeAll
@@ -73,26 +74,37 @@ public class ImgPostServiceIntegrationTest {
         mockRole2 = new UserRole("Admin");
 
         /**
+         * UUIDs
+         */
+        uuid1 = UUID.randomUUID();
+        uuid2 = UUID.randomUUID();
+        uuid3 = UUID.randomUUID();
+
+        /**
          * User Mocks
          */
-        user1 = new User("8e4ac3a8-ae4a-4ea1-85a8-9d9d1bff8f60", "FullSol", "fullsol@gmail.com", "password", "Calvin",
+        user1 = new User(uuid1, "FullSol", "fullsol@gmail.com", "password", "Calvin",
                 "Raines", mockAccount1, socialMedia1,
                 LocalDate.now(), mockRole1, true);
 
-        user2 = new User("Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2,
+        user2 = new User(uuid2, "Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2,
                 socialMedia2,
                 LocalDate.now(), mockRole2, true);
 
-        user3 = new User("JulianMercado", "julianmercado@gmail.com", "password", "Julian", "Mercado", mockAccount3,
+        user3 = new User(uuid3, "JulianMercado", "julianmercado@gmail.com", "password", "Julian", "Mercado",
+                mockAccount3,
                 socialMedia3,
                 LocalDate.now(), mockRole2, true);
 
-        mockImgPost1 = new ImgPost("http://localhost:8080", user1);
-        mockImgPost2 = new ImgPost("http://localhost:8081", user2);
+        /**
+         * ImgPost Mocks
+         */
+        imgPost1 = new ImgPost("http://localhost:8080", user1);
+        imgPost2 = new ImgPost("http://localhost:8081", user2);
 
         dummyDb = new ArrayList<ImgPost>();
-        dummyDb.add(mockImgPost1);
-        dummyDb.add(mockImgPost1);
+        dummyDb.add(imgPost1);
+        dummyDb.add(imgPost2);
     }
 
     @Test
@@ -108,14 +120,14 @@ public class ImgPostServiceIntegrationTest {
     @DisplayName("2. Create ImgPost Test")
     public void createImgPostTest_success() {
         // Arrange
-        mockImgPost3 = mockImgPost2;
-        mockImgPost3.setImgLocation("http://localhost:8083");
+        imgPost3 = imgPost2;
+        imgPost3.setImgLocation("http://localhost:8083");
 
         // Action
-        when(repository.save(mockImgPost3)).thenReturn(mockImgPost3);
+        when(repository.save(imgPost3)).thenReturn(imgPost3);
 
         // Assert
-        assertEquals(true, service.add(mockImgPost3));
+        assertEquals(true, service.add(imgPost3));
     }
 
     @Test
@@ -123,14 +135,14 @@ public class ImgPostServiceIntegrationTest {
     @DisplayName("3. Failed Creation ImgPost Test")
     public void createImgPostTest_fail() {
         // Arrange
-        mockImgPost3 = mockImgPost2;
-        mockImgPost3.setImgLocation("http://localhost:8083");
+        imgPost3 = imgPost2;
+        imgPost3.setImgLocation("http://localhost:8083");
 
         // Action
-        when(repository.save(mockImgPost3)).thenReturn(mockImgPost3);
+        when(repository.save(imgPost3)).thenReturn(imgPost3);
 
         // Assert
-        assertEquals(false, service.add(mockImgPost3));
+        assertEquals(false, service.add(imgPost3));
     }
 
     @Test
@@ -142,10 +154,10 @@ public class ImgPostServiceIntegrationTest {
         Integer imgPostId = 1;
 
         // Action
-        OngoingStubbing<ImgPost> found = when(service.getById(imgPostId)).thenReturn(mockImgPost1);
+        OngoingStubbing<ImgPost> found = when(service.getById(imgPostId)).thenReturn(imgPost1);
 
         // Assert
-        assertEquals(mockImgPost1, found);
+        assertEquals(imgPost1, found);
     }
 
     @Test
@@ -166,21 +178,21 @@ public class ImgPostServiceIntegrationTest {
     @Order(6)
     @DisplayName("6. Update ImgPost Test")
     void updateTest_success() {
-        mockImgPost2.setImgLocation("http://localhost:8090");
+        imgPost2.setImgLocation("http://localhost:8090");
 
-        when(service.getById(2)).thenReturn(mockImgPost2);
-        when(repository.save(mockImgPost2)).thenReturn(mockImgPost2);
+        when(service.getById(2)).thenReturn(imgPost2);
+        when(repository.save(imgPost2)).thenReturn(imgPost2);
 
-        assertEquals(true, service.edit(mockImgPost2));
+        assertEquals(true, service.edit(imgPost2));
     }
 
     @Test
     @Order(8)
     @DisplayName("8. Delete ImgPost Test")
     void deleteTest_success() {
-        doNothing().when(repository).delete(mockImgPost2);
+        doNothing().when(repository).delete(imgPost2);
         // act + assert step
-        assertEquals(true, service.remove(mockImgPost2.getId()));
+        assertEquals(true, service.remove(imgPost2.getId()));
     }
 
 }
