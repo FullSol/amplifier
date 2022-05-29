@@ -163,7 +163,7 @@ public class UserControllerIntTest {
         @DisplayName("3. Attempt to pull invalid user")
         public void getUser_ShouldReturnInvalid() throws Exception {
                 //
-                when(userService.getById(mockUUID1)).thenReturn(mockUser1);
+                when(userService.getById(mockUUID1.toString())).thenReturn(mockUser1);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/user?id=1");
@@ -178,7 +178,7 @@ public class UserControllerIntTest {
         @DisplayName("4. Attempt to pull valid user")
         public void getUser_ShouldReturnUser() throws Exception {
                 //
-                when(userService.getById(mockUUID1)).thenReturn(mockUser1);
+                when(userService.getById(mockUUID1.toString())).thenReturn(mockUser1);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
