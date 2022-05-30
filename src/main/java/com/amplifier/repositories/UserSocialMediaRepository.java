@@ -2,6 +2,8 @@ package com.amplifier.repositories;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import com.amplifier.models.UserSocialMedia;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,11 +11,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import jakarta.transaction.Transactional;
-
 @Repository
 @Transactional
-public interface UserSocialMediaRepository extends JpaRepository<UserSocialMedia, Integer>{
+public interface UserSocialMediaRepository extends JpaRepository<UserSocialMedia, Integer> {
 
 	@Query(value = "SELECT * FROM users_social_media", nativeQuery = true)
 	public List<UserSocialMedia> findAll();

@@ -2,13 +2,13 @@ package com.amplifier.services;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import com.amplifier.models.ImgPost;
 import com.amplifier.repositories.ImgPostRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import jakarta.transaction.Transactional;
 
 @Service
 @Transactional

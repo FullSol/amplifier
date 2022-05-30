@@ -33,6 +33,7 @@ public class LoggingAspect {
     @Around(value = "execution(* com.amplifier.services.*.*(..))")
     public Object logDuring(ProceedingJoinPoint joinPoint) throws Throwable {
         // 1. get the arguments returned from the dao layer
+
         log.info("Around advice for: [" + joinPoint.getTarget().getClass() + ":" + joinPoint.getSignature().getName()
                 + "]");
 
