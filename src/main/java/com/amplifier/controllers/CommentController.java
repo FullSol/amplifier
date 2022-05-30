@@ -59,7 +59,7 @@ public class CommentController {
         return service.edit(comment) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
-    @DeleteMapping("/comment?id={id}")
+    @DeleteMapping("/comment")
     @ApiOperation(value = "Remove user entity by ID", notes = "Provide an id to delete a specific comment in the API.")
     public @ResponseBody ClientMessage delete(@RequestParam(value = "id") int id) {
         return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;

@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Transactional
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, UUID> {
 
     @Query(value = "SELECT * FROM users", nativeQuery = true)
     public List<User> findAll();
@@ -30,10 +30,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             boolean active, UUID id);
 
     @Query(value = "SELECT * FROM users WHERE id=?1", nativeQuery = true)
-    public User findById(UUID id);
+    public User findById(String id);
 
     @Query(value = "DELETE FROM users WHERE id=?1 LIMIT 1", nativeQuery = true)
-    public boolean delete(UUID id);
+    public boolean delete(String id);
 
     // public User login(String username, String password);
 

@@ -31,12 +31,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getById(String id) {
         UUID idAsUUID = UUID.fromString(id);
-        return repository.findById(idAsUUID);
+        return repository.findById(id);
     }
 
     @Override
     public boolean edit(User user) {
-        User target = repository.findById(user.getId());
+        User target = repository.findById(user.getId().toString());
 
         target.setUsername(user.getUsername());
         target.setEmail(user.getUsername());
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean remove(String id) {
         UUID idAsUUID = UUID.fromString(id);
-        return repository.delete(idAsUUID);
+        return repository.delete(id);
     }
 
     // @Override

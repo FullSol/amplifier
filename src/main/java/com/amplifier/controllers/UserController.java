@@ -8,7 +8,6 @@ import static com.amplifier.util.ClientMessageUtil.UPDATE_FAILED;
 import static com.amplifier.util.ClientMessageUtil.UPDATE_SUCCESSFUL;
 
 import java.util.List;
-import java.util.UUID;
 
 import com.amplifier.models.ClientMessage;
 import com.amplifier.models.User;
@@ -36,8 +35,8 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @GetMapping(path = "/user")
     @ApiOperation(value = "Find user by id number", notes = "Provide an id to lookup a specific user from the API", response = User.class)
-    @GetMapping(path = "/user?id={id}")
     public @ResponseBody User getById(@RequestParam(value = "id") String id) {
         return service.getById(id);
     }
@@ -54,13 +53,13 @@ public class UserController {
         return service.add(user) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
-    @PatchMapping("/user?id={id}")
+    @PatchMapping("/user")
     @ApiOperation(value = "Update user entity by ID.", notes = "Provide an id to update a specific user profile in the API.")
     public @ResponseBody ClientMessage updateUser(@RequestBody User user) {
         return service.edit(user) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
-    @DeleteMapping("/user?id={id}")
+    @DeleteMapping("/user")
     @ApiOperation(value = "Remove user entity by ID.", notes = "Provide an id to delete a specific user from the API")
     public @ResponseBody ClientMessage deleteUser(@RequestBody String id) {
         return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;

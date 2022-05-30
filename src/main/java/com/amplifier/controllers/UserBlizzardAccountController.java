@@ -37,12 +37,12 @@ public class UserBlizzardAccountController {
     private UserBlizzardAccountService service;
 
     @ApiOperation(value = "Find blizzard account by id number", notes = "Provide an id to lookup a specific blizzard account from the API", response = UserBlizzardAccount.class)
-    @GetMapping(path = "/blizzard-account?id={id}")
+    @GetMapping(path = "/blizzard-account")
     public @ResponseBody UserBlizzardAccount getById(@RequestParam(name = "id") int id) {
         return service.getById(id);
     }
 
-    @GetMapping("/blizzard-account")
+    @GetMapping("/blizzard-accounts")
     @ApiOperation(value = "Find all users' blizzard accounts", notes = "Provides a list of all user blizzard accounts from the API", response = UserBlizzardAccount.class)
     public @ResponseBody List<UserBlizzardAccount> getAll() {
         return service.getAll();
