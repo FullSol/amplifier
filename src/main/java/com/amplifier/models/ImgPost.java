@@ -26,11 +26,11 @@ public class ImgPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any image post entity.", required = true, value = "1")
+    @ApiModelProperty(name = "id", value = "An integer value that serves as the unique identifier for any image post entity.", required = true)
     private int id;
 
     @Column(name = "img_caption", nullable = false)
-    @ApiModelProperty(name = "caption", value = "A string value describing the location of an image post entity.", required = true)
+    @ApiModelProperty(name = "caption", value = "A string value denoting the caption of an image post entity.", required = true)
     private String imgCaption;
 
     @Column(name = "img_location", nullable = false)
@@ -43,6 +43,7 @@ public class ImgPost {
     private User author;
 
     @Column(name = "img_date", nullable = false)
+    @ApiModelProperty(name = "img_date", value = "Date value specifiying the post date of an image post entity.", required = true)
     private LocalDate postDate;
 
     @OneToMany(fetch = FetchType.LAZY)
