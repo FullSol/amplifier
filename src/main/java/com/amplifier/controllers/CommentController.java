@@ -42,25 +42,25 @@ public class CommentController {
     }
 
     @GetMapping("/comments")
-    @ApiOperation(value = "Find all comments", notes = "Pulling all comments from the API", response = ImgPostComment.class)
+    @ApiOperation(value = "Find all comments", notes = "Provides a list of all comments from the API", response = ImgPostComment.class)
     public @ResponseBody List<ImgPostComment> getAll() {
         return service.getAll();
     }
 
     @PostMapping("/comment")
-    @ApiOperation(value = "Create new comment entity", notes = "Adding a new comment through the API")
+    @ApiOperation(value = "Create new comment entity", notes = "Adding a new comment to the API.")
     public @ResponseBody ClientMessage add(@RequestBody ImgPostComment comment) {
         return service.add(comment) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PatchMapping("/comment")
-    @ApiOperation(value = "Update comment entity", notes = "Editing a comment through the API")
+    @ApiOperation(value = "Update comment entity by ID", notes = "Provide an id to editing a specific comment through the API.")
     public @ResponseBody ClientMessage edi(@RequestBody ImgPostComment comment) {
         return service.edit(comment) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/comment?id={id}")
-    @ApiOperation(value = "Remove user entity", notes = "Deleting a comment through the API")
+    @ApiOperation(value = "Remove user entity by ID", notes = "Provide an id to delete a specific comment in the API.")
     public @ResponseBody ClientMessage delete(@RequestParam(value = "id") int id) {
         return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }

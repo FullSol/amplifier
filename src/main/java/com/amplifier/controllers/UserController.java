@@ -43,25 +43,25 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    @ApiOperation(value = "Find all users")
+    @ApiOperation(value = "Find all users", notes = "Provides a list of all users from the API.", response = User.class)
     public @ResponseBody List<User> getAll() {
         return service.getAll();
     }
 
     @PostMapping("/user")
-    @ApiOperation(value = "Create new user entity")
+    @ApiOperation(value = "Create new user entity.", notes = "Adding a new user to the API.")
     public @ResponseBody ClientMessage createUser(@RequestBody User user) {
         return service.add(user) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PatchMapping("/user?id={id}")
-    @ApiOperation(value = "Update user entity")
+    @ApiOperation(value = "Update user entity by ID.", notes = "Provide an id to update a specific user profile in the API.")
     public @ResponseBody ClientMessage updateUser(@RequestBody User user) {
         return service.edit(user) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/user?id={id}")
-    @ApiOperation(value = "Remove user entity")
+    @ApiOperation(value = "Remove user entity by ID.", notes = "Provide an id to delete a specific user from the API")
     public @ResponseBody ClientMessage deleteUser(@RequestBody String id) {
         return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }

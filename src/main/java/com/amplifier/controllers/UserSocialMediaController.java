@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/v1")
-@Api(value = "UserSocialMediaRestController", description = "REST controller related to User social media Entities")
+@Api(value = "UserSocialMediaRestController", description = "REST controller related to user social media entities")
 public class UserSocialMediaController {
 
     @Autowired
@@ -40,19 +40,19 @@ public class UserSocialMediaController {
     }
 
     @PostMapping("/user/social-media")
-    @ApiOperation(value = "add new user social media entity")
+    @ApiOperation(value = "Create new user's social media entity", notes = "Add a new user's social media information in the API.")
     public @ResponseBody ClientMessage addUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
         return userSocialMediaService.add(userSocialMedia) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PatchMapping("/user/social-media")
-    @ApiOperation(value = "Update user social media entity")
+    @ApiOperation(value = "Update user social media entity", notes = "Provide an id to update a specific user's social media information in the API.")
     public @ResponseBody ClientMessage updateUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
         return userSocialMediaService.edit(userSocialMedia) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/user/social-media")
-    @ApiOperation(value = "Remove user social media entity")
+    @ApiOperation(value = "Remove user social media entity", notes = "Provide an id to delete a user's social media information from the API")
     public @ResponseBody ClientMessage deleteUserSocialMedia(@RequestBody int id) {
         return userSocialMediaService.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }

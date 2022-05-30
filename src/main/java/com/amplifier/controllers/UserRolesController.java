@@ -36,7 +36,7 @@ public class UserRolesController {
     private UserRolesService service;
 
     @GetMapping("/roles")
-    @ApiOperation(value = "Find all user roles.", notes = "Lookup all user roles from the API", response = UserRole.class)
+    @ApiOperation(value = "Find all user roles.", notes = "Provides a list of all user roles from the API", response = UserRole.class)
     public @ResponseBody List<UserRole> getAll() {
         return service.getAll();
     }
@@ -48,13 +48,13 @@ public class UserRolesController {
     }
 
     @PostMapping("/role")
-    @ApiOperation(value = "Create new user role entity", notes = "Add a new user role in the API.")
+    @ApiOperation(value = "Create new user role entity", notes = "Add a new user role to the API.")
     public @ResponseBody ClientMessage createUserRole(@RequestBody UserRole userRole) {
         return service.add(userRole) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PatchMapping("/role")
-    @ApiOperation(value = "Update user role entity by id.", notes = "Provide an id to update a specific user role from the API")
+    @ApiOperation(value = "Update user role entity by id.", notes = "Provide an id to update a specific user role in the API.")
     public @ResponseBody ClientMessage updateUserRole(@RequestBody UserRole userRole) {
         return service.edit(userRole) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
