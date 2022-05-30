@@ -14,6 +14,7 @@ import com.amplifier.models.UserRole;
 import com.amplifier.services.UserRolesService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -47,9 +48,9 @@ public class UserRolesController {
         return service.getById(id);
     }
 
-    @PostMapping("/role")
-    @ApiOperation(value = "Create new user role entity", notes = "Add a new user role to the API.")
-    public @ResponseBody ClientMessage createUserRole(@RequestBody UserRole userRole) {
+    @PostMapping(path = "/role", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
+    @ApiOperation(value = "Create new user role entity", notes = "Add a new user role in the API.")
+    public @ResponseBody ClientMessage createUserRole(UserRole userRole) throws Exception {
         return service.add(userRole) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
