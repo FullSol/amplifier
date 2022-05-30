@@ -19,47 +19,48 @@ public class UserCharacter {
 
     @Id
     @Column(name = "id")
-    @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any user entity.", required = true, value = "1")
+    @ApiModelProperty(name = "id", value = "An integer value that serves as the unique identifier for any chracter entity.", required = true)
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_blizzard_account_id")
+    @ApiModelProperty(name = "blizzard_account_id", value = "An integer value that serves as the blizzard account id for a character", required = true)
     private UserBlizzardAccount userBlizzardAccount;
 
     @Column(name = "name")
-    @ApiModelProperty(name = "name", notes = "")
+    @ApiModelProperty(name = "name", value = "A String value that serves as the name for the character", required = true)
     private String name;
 
     @Column(name = "class")
-    @ApiModelProperty(name = "class", notes = "")
+    @ApiModelProperty(name = "class", value = "A string value that serves as the class of the character", required = true)
     private String _class;
 
     @Column(name = "gender")
-    @ApiModelProperty(name = "gender", notes = "")
+    @ApiModelProperty(name = "gender", value = "A String value that denotes the gender of the character", required = true)
     private String gender;
 
     @Column(name = "level")
-    @ApiModelProperty(name = "level", notes = "")
+    @ApiModelProperty(name = "level", value = "An integer value that indicates the level of the character", required = true)
     private int level;
 
     @Column(name = "kills_elites")
-    @ApiModelProperty(name = "kills_elites", notes = "")
+    @ApiModelProperty(name = "kills_elites", value = "An integer value that serves as the kill_elites value of the character.", required = true)
     private int killsElites;
 
     @Column(name = "paragon_level")
-    @ApiModelProperty(name = "paragon_level", notes = "")
+    @ApiModelProperty(name = "paragon_level", value = "An integer value indicating the paragon level of a character.", required = true)
     private int paragonLevel;
 
     @Column(name = "hardcore")
-    @ApiModelProperty(name = "hardcore", notes = "")
+    @ApiModelProperty(name = "hardcore", value = "A boolean value indicating the hardcore status of a character", required = true)
     private boolean hardcore;
 
     @Column(name = "seasonal")
-    @ApiModelProperty(name = "seasonal", notes = "")
+    @ApiModelProperty(name = "seasonal", value = "A boolean value indicating the seasonal status of a character", required = true)
     private boolean seasonal;
 
     @Column(name = "dead")
-    @ApiModelProperty(name = "dead", notes = "")
+    @ApiModelProperty(name = "dead", value = "A boolean value indicating the death status of a character", required = true)
     private boolean dead;
 
     public UserCharacter() {

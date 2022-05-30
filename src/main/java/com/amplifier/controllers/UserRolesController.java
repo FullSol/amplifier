@@ -37,7 +37,7 @@ public class UserRolesController {
     private UserRolesService service;
 
     @GetMapping("/roles")
-    @ApiOperation(value = "Find all user roles.", notes = "Lookup all user roles from the API", response = UserRole.class)
+    @ApiOperation(value = "Find all user roles.", notes = "Provides a list of all user roles from the API", response = UserRole.class)
     public @ResponseBody List<UserRole> getAll() {
         return service.getAll();
     }
@@ -55,13 +55,13 @@ public class UserRolesController {
     }
 
     @PatchMapping("/role")
-    @ApiOperation(value = "Update user role entity by id.", notes = "Provide an id to update a specific user role from the API")
+    @ApiOperation(value = "Update user role entity by id.", notes = "Provide an id to update a specific user role in the API.")
     public @ResponseBody ClientMessage updateUserRole(@RequestBody UserRole userRole) {
         return service.edit(userRole) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/role")
-    @ApiOperation(value = "Remove user role entity.", notes = "Provide an id to remove a specific user role from the API")
+    @ApiOperation(value = "Remove user role entity by ID.", notes = "Provide an id to remove a specific user role from the API")
     public @ResponseBody ClientMessage deleteUserRole(@RequestBody UserRole userRole) {
         return service.remove(userRole.getId()) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }

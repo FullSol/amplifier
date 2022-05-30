@@ -20,11 +20,11 @@ public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any user role entity.", required = true, value = "1")
+    @ApiModelProperty(name = "id", value = "An integer value that serves as the unique identifier for any user role entity.", required = true)
     private int id;
 
     @Column(name = "userRole", unique = true, nullable = false)
-    @ApiModelProperty(name = "userRole", notes = "A String value that serves as the user role for the user.", required = true)
+    @ApiModelProperty(name = "userRole", value = "A String value that serves as the user role for the user.", required = true)
     private String userRole;
 
     public UserRole() {
