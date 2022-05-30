@@ -16,6 +16,9 @@ public class UserRolesServiceImpl implements UserRolesService {
     @Autowired
     private UserRolesRepository repository;
 
+    public UserRolesServiceImpl(UserRolesRepository repo) {
+    }
+
     @Override
     public boolean add(UserRole userRole) {
         int pk = repository.save(userRole).getId();
