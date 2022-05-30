@@ -60,7 +60,7 @@ public class UserRolesController {
     }
 
     @DeleteMapping("/role")
-    @ApiOperation(value = "Remove user role entity.", notes = "Provide an id to remove a specific user role from the API")
+    @ApiOperation(value = "Remove user role entity by ID.", notes = "Provide an id to remove a specific user role from the API")
     public @ResponseBody ClientMessage deleteUserRole(@RequestBody UserRole userRole) {
         return service.remove(userRole.getId()) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }

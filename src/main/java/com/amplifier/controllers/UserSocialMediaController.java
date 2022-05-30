@@ -46,13 +46,13 @@ public class UserSocialMediaController {
     }
 
     @PatchMapping("/user/social-media")
-    @ApiOperation(value = "Update user social media entity", notes = "Provide an id to update a specific user's social media information in the API.")
+    @ApiOperation(value = "Update user social media entity by ID.", notes = "Provide an id to update a specific user's social media information in the API.")
     public @ResponseBody ClientMessage updateUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
         return userSocialMediaService.edit(userSocialMedia) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/user/social-media")
-    @ApiOperation(value = "Remove user social media entity", notes = "Provide an id to delete a user's social media information from the API")
+    @ApiOperation(value = "Remove user social media entity by ID.", notes = "Provide an id to delete a user's social media information from the API")
     public @ResponseBody ClientMessage deleteUserSocialMedia(@RequestBody int id) {
         return userSocialMediaService.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }

@@ -38,7 +38,7 @@ public class UserBlizzardAccountController {
 
     @ApiOperation(value = "Find blizzard account by id number", notes = "Provide an id to lookup a specific blizzard account from the API", response = UserBlizzardAccount.class)
     @GetMapping(path = "/blizzard-account?id={id}")
-    public @ResponseBody UserBlizzardAccount getById(@RequestParam(value = "id", name = "id") int id) {
+    public @ResponseBody UserBlizzardAccount getById(@RequestParam(name = "id") int id) {
         return service.getById(id);
     }
 
@@ -61,7 +61,7 @@ public class UserBlizzardAccountController {
     }
 
     @DeleteMapping("/blizzard-account")
-    @ApiOperation(value = "Remove blizzard account entity by ID.", notes = "Proive an id to remove a user's blizzard account in the API.")
+    @ApiOperation(value = "Remove blizzard account entity by ID.", notes = "Provide an id to remove a user's blizzard account in the API.")
     public @ResponseBody ClientMessage deleteAccount(@RequestBody UserBlizzardAccount account) {
         return service.remove(account.getId()) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
