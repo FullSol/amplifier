@@ -24,24 +24,25 @@ public class ImgPostComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any user entity.")
+    @ApiModelProperty(name = "id", value = "An integer value that serves as the unique identifier for any image post comment entity.", required = true)
     private int id;
 
     @Column(name = "comment_text")
-    @ApiModelProperty()
+    @ApiModelProperty(name = "comment_text", value = "A string value denoting the body of text making up an image post comment entity.", required = true)
     private String commentText;
 
     @JoinColumn(name = "img_post_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    @ApiModelProperty()
+    @ApiModelProperty(name = "img_post_id", value = "An integer value that serves as the unique identifier for an image post entity.", required = true)
     private ImgPost imgPost;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", nullable = false)
+    @ApiModelProperty(name = "author", value = "User value specifiying the author of the image post comment entity.", required = true)
     private User author;
 
     @Column(name = "comment_date")
-    @ApiModelProperty(name = "comment_date")
+    @ApiModelProperty(name = "comment_date", value = "Date value specifiying the post date of an image post comment entity.", required = true)
     private LocalDate commentDate;
 
     public ImgPostComment() {
