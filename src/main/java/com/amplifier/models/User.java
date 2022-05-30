@@ -30,7 +30,7 @@ public class User {
     @Id
     @GeneratedValue(generator = "uuid4")
     @GenericGenerator(name = "uuid4", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "id", columnDefinition = "VARCHAR(255)")
+    @Column(name = "id")
     @ApiModelProperty(name = "id", value = "A UUID value that serves as the unique identifier for any user entity.", required = true)
     private UUID id;
 
