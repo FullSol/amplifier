@@ -76,7 +76,7 @@ public class User {
     @ApiModelProperty(name = "role_id", value = "A integer value that serves as the role id for the user.", required = true)
     private UserRole role;
 
-    @Column(name = "active", unique = true, nullable = false)
+    @Column(name = "active", nullable = false)
     @ApiModelProperty(name = "active", value = "A boolean value that serves as the user's active status indication.", required = true)
     private boolean active;
 
