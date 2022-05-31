@@ -707,11 +707,13 @@ Assignments:
         - [x] RankingList page that'll connect to the API
             - need to figure out and get images, + connection
         - [x] If we can run the front-end using a PHP server in VSCode for the header and footer? To prevent repeating work on HTML file
-            - if (PHP == true) {
+            ```java
+            if (PHP == true) {
                 System.out.println("Great!");
             } else {
                 System.out.println("We can just copy and paste at the end.");
             }
+            ```
     - Calvin:
         - [x] Swagger API are somewhat available (need to be able to run the dev version of the server). If not, see Levi.
         - [x] Compilation bugs were SQUASHED so the app was able to run
