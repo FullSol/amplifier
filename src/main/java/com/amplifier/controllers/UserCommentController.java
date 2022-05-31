@@ -30,13 +30,13 @@ import io.swagger.annotations.ApiOperation;
 @RestController
 @RequestMapping("/api/v1")
 @Api(value = "CommentRestController", description = "REST controller related to Comment Entities")
-public class CommentController {
+public class UserCommentController {
 
     @Autowired
     private ImgPostCommentService service;
 
     @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = ImgPostComment.class)
-    @GetMapping(path = "/comment?id={id}")
+    @GetMapping(path = "/comment")
     public @ResponseBody ImgPostComment getById(@RequestParam(name = "id") int id) {
         return service.getById(id);
     }

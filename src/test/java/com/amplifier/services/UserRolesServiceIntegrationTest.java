@@ -2,19 +2,12 @@ package com.amplifier.services;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import com.amplifier.models.User;
-import com.amplifier.models.UserBlizzardAccount;
 import com.amplifier.models.UserRole;
-import com.amplifier.models.UserSocialMedia;
 import com.amplifier.repositories.UserRolesRepository;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -25,72 +18,34 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.stubbing.OngoingStubbing;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserRolesServiceIntegrationTest {
 
-    @Autowired
+    @Mock
     private static UserRolesRepository repository;
 
     @InjectMocks
     private static UserRolesServiceImpl service;
 
-    private static UUID uuid1, uuid2, uuid3;
-    private static User mockUser1, mockUser2;
-    private static UserSocialMedia mockSocialMedia1, mockSocialMedia2, mockSocialMedia3;
-    private static UserBlizzardAccount mockAccount1, mockAccount2, mockAccount3;
     private static UserRole mockRole1, mockRole2, mockRole3;
     private static List<UserRole> dummyDb;
 
     @BeforeAll
     static void setUpBeforeClass() throws Exception {
-        LocalDate timestamp = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
-        String joinDate = formatter.format(timestamp);
-
-        /**
-         * Blizzard Account Mocks
-         */
-        mockAccount1 = new UserBlizzardAccount("Solsphere#1100");
-        mockAccount2 = new UserBlizzardAccount("Patrickometry#1100");
-        mockAccount3 = new UserBlizzardAccount("JMercado#1100");
-
-        /**
-         * Social Media Mocks
-         */
-        mockSocialMedia1 = new UserSocialMedia("www.solsphere.twitter.com", "www.solsphere.facebook.com",
-                "www.solsphere.instagram.com");
-        mockSocialMedia2 = new UserSocialMedia("www.patrickometry.twitter.com", "www.patrickometry.facebook.com",
-                "www.patrickometry.instagram.com");
-        mockSocialMedia3 = new UserSocialMedia("www.julian.twitter.com", "www.juian.facebook.com",
-                "www.julian.instagram.com");
+        repository = Mockito.mock(UserRolesRepository.class);
+        service = new UserRolesServiceImpl(repository);
 
         /**
          * User Role Mocks
          */
-        mockRole1 = new UserRole("User");
-        mockRole2 = new UserRole("Admin");
-
-        /**
-         * UUIDs
-         */
-        uuid1 = UUID.randomUUID();
-        uuid2 = UUID.randomUUID();
-        uuid3 = UUID.randomUUID();
-
-        /**
-         * Users
-         */
-        mockUser1 = new User(uuid1, "FullSol", "fullsol@gmail.com", "password",
-                "Calvin", "Raines", mockAccount1, mockSocialMedia1,
-                LocalDate.now(), mockRole1, true);
-        mockUser2 = new User(uuid2, "Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar", mockAccount2,
-                mockSocialMedia2,
-                LocalDate.now(), mockRole2, true);
+        mockRole1 = new UserRole(1, "User");
+        mockRole2 = new UserRole(2, "Admin");
 
         /**
          * MockDB
@@ -144,13 +99,15 @@ public class UserRolesServiceIntegrationTest {
     public void getByIdTest_success() {
 
         // Arrange
-        Integer userRoleId = 1;
+        // Integer userRoleId = 1;
 
         // Action
-        OngoingStubbing<UserRole> found = when(service.getById(userRoleId)).thenReturn(mockRole1);
+        // OngoingStubbing<UserRole> found = when(service.getById(userRoleId)).thenReturn(mockRole1);
+        when(repository.findById(1)).thenReturn(mockRole1);
 
         // Assert
-        assertEquals(mockRole1, found);
+        //assertEquals(mockRole1, found);
+        assertEquals(mockRole1, service.getById(1));
     }
 
     @Test
@@ -183,7 +140,9 @@ public class UserRolesServiceIntegrationTest {
     @Order(7)
     @DisplayName("7. Delete UserRole Test")
     void deleteTest_success() {
-        doNothing().when(repository).delete(mockRole2);
+        //doNothing().when(repository).delete(2);
+        //doNothing() is used when you are using a void method.
+        when(repository.delete(2)).thenReturn(true);
         // act + assert step
         assertEquals(true, service.remove(mockRole2.getId()));
     }

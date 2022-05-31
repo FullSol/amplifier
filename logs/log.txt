@@ -1,0 +1,2 @@
+2022-05-30 21:22:57 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$e6b6bef6:swaggerConfiguration]
+2022-05-30 21:22:57 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$e6b6bef6:swaggerConfiguration]
