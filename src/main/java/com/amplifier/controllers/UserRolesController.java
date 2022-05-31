@@ -48,7 +48,7 @@ public class UserRolesController {
         return service.getById(id);
     }
 
-    @PostMapping(path = "/role", consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE })
+    @PostMapping(path = "/role")
     @ApiOperation(value = "Create new user role entity", notes = "Add a new user role in the API.")
     public @ResponseBody ClientMessage createUserRole(UserRole userRole) throws Exception {
         return service.add(userRole) ? CREATION_SUCCESSFUL : CREATION_FAILED;

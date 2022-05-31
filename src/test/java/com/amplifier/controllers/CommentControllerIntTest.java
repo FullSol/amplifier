@@ -37,7 +37,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
  * @author Levi Choi
  */
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(CommentController.class)
+@WebMvcTest(UserCommentController.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CommentControllerIntTest {
         private static ImgPostComment mockComment1;
@@ -54,7 +54,7 @@ public class CommentControllerIntTest {
         ObjectMapper om = new ObjectMapper();
 
         @Autowired
-        CommentController commentController;
+        UserCommentController commentController;
 
         @Autowired
         private MockMvc mockMvc;
