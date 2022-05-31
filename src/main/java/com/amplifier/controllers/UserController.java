@@ -75,32 +75,31 @@ public class UserController {
 
     @PostMapping("/login")
     @ApiOperation(value = "Log user in, and return JWT", notes = "Adding a new user to the API.")
-    public ResponseEntity<String> login(@RequestBody User user) {
-        // return (service.login(user) != null) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+    public @ResponseBody ResponseEntity<String> login(@RequestBody User user) {
+
         try {
             user = service.login(user);
         } catch (InvalidKeyException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
         try {
             String jwt = jwtService.createJwt(user);
+
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.set("Baeldung-Example-Header",
+                    jwt);
+
+            return ResponseEntity.ok()
+                    .headers(responseHeaders)
+                    .body("Response with header using ResponseEntity");
         } catch (InvalidKeyException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Baeldung-Example-Header",
-                "Value-ResponseEntityBuilderWithHttpHeaders");
 
-        return ResponseEntity.ok()
-                .headers(responseHeaders)
-                .body("Response with header using ResponseEntity");
     }
 }
