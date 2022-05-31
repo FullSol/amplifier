@@ -1,14 +1,18 @@
 package com.amplifier.services;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import com.amplifier.models.User;
 import com.amplifier.repositories.UserRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import io.jsonwebtoken.security.InvalidKeyException;
 
 @Service
 @Transactional
@@ -16,6 +20,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private static JwtServiceImpl jwtService = new JwtServiceImpl();
 
     public UserServiceImpl(UserRepository repo) {
     }
@@ -61,8 +68,20 @@ public class UserServiceImpl implements UserService {
         return repository.delete(id);
     }
 
-    // @Override
-    // public User login(String username, String password) {
-    // return repository.login(username, password);
-    // }
+    @Override
+    public User login(User user) throws InvalidKeyException, JsonProcessingException {
+        Optional<User> users = repository.findAll()
+                .stream()
+                .filter(u -> (u.getUsername().equals(user.getUsername()) && u.getPassword().equals(user.getPassword())))
+                .findFirst();
+
+        // return (users.isPresent() ? users.get() : null);
+        if (users.isPresent() == false) {
+            // Update to return 403
+            return null;
+        }
+
+        String jwt = jwtService.createJwt(users.get());
+        return null;
+    }
 }

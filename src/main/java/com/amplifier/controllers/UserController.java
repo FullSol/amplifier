@@ -49,7 +49,7 @@ public class UserController {
 
     @PostMapping("/user")
     @ApiOperation(value = "Create new user entity.", notes = "Adding a new user to the API.")
-    public @ResponseBody ClientMessage createUser(@RequestBody User user) {
+    public @ResponseBody ClientMessage register(@RequestBody User user) {
         return service.add(user) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
@@ -63,5 +63,11 @@ public class UserController {
     @ApiOperation(value = "Remove user entity by ID.", notes = "Provide an id to delete a specific user from the API")
     public @ResponseBody ClientMessage deleteUser(@RequestBody String id) {
         return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
+    }
+
+    @PostMapping("/login")
+    @ApiOperation(value = "Log user in, and return JWT", notes = "Adding a new user to the API.")
+    public @ResponseBody ClientMessage login(@RequestBody User user) {
+        return (service.login(user) != null) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 }
