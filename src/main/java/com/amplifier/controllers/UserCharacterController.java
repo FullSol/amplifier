@@ -42,7 +42,7 @@ public class UserCharacterController {
     }
 
     @ApiOperation(value = "Find character by id number", notes = "Provide an id to lookup a specific character from the API", response = UserCharacter.class)
-    @GetMapping(path = "/character?id={id}")
+    @GetMapping(path = "/character")
     public @ResponseBody UserCharacter getCharacterById(@RequestParam(value = "id", name = "id") int id) {
         return service.getById(id);
     }
@@ -53,13 +53,13 @@ public class UserCharacterController {
         return service.add(character) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
-    @PatchMapping("/character?id={id}")
+    @PatchMapping("/character")
     @ApiOperation(value = "Update a character by ID", notes = "Provide an Id to update a specific character in the the API")
     public @ResponseBody ClientMessage updateCharacter(@RequestBody UserCharacter character) {
         return service.edit(character) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
-    @DeleteMapping("/character?id={id}")
+    @DeleteMapping("/character")
     @ApiOperation(value = "Delete a character by ID", notes = "Provide an Id to deletes a specific character from the API.")
     public @ResponseBody ClientMessage deleteCharacter(@RequestBody int id) {
         return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;

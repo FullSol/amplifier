@@ -31,9 +31,8 @@ public class User {
     @Id
     @GeneratedValue(generator = "uuid4")
     @GenericGenerator(name = "uuid4", strategy = "org.hibernate.id.UUIDGenerator")
-    @Type(type = "org.hibernate.type.UUIDCharType")
     @Column(name = "id")
-    @ApiModelProperty(name = "id", notes = "A UUID value that serves as the unique identifier for any user entity.", required = true, value = "1")
+    @ApiModelProperty(name = "id", value = "A UUID value that serves as the unique identifier for any user entity.", required = true)
     private UUID id;
 
     @Column(name = "username", unique = true, nullable = false)
@@ -74,7 +73,7 @@ public class User {
     private LocalDate joinDate;
 
     @ManyToOne
-    @JoinColumn(name = "role_id", unique = true, nullable = false)
+    @JoinColumn(name = "role_id", nullable = false)
     @ApiModelProperty(name = "role_id", value = "A integer value that serves as the role id for the user.", required = true)
     private UserRole role;
 

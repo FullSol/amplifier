@@ -41,7 +41,7 @@ public class ImgPostController {
         return imgPostService.getAll();
     }
 
-    @GetMapping(path = "/img-post?id={id}")
+    @GetMapping(path = "/img-post")
     @ApiOperation(value = "Find image post by id number", notes = "Provide an id to lookup a specific user's image post from the API", response = ImgPost.class)
     public @ResponseBody ImgPost getById(
             @RequestParam(name = "id") int id) {
@@ -60,7 +60,7 @@ public class ImgPostController {
         return imgPostService.edit(imgPost) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
-    @DeleteMapping("/img-post?id={id}")
+    @DeleteMapping("/img-post")
     @ApiOperation(value = "Remove image post entity by ID.", notes = "Provide an id to delete a specific image post in the API.")
     public @ResponseBody ClientMessage delete(@RequestParam(value = "id") int id) {
         return imgPostService.remove(id) ? DELETION_SUCCESSFUL
