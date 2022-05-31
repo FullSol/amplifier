@@ -76,12 +76,11 @@ public class UserServiceImpl implements UserService {
                 .findFirst();
 
         // return (users.isPresent() ? users.get() : null);
-        if (users.isPresent() == false) {
+        if (users.isPresent()) {
             // Update to return 403
-            return null;
+            return users.get();
         }
 
-        String jwt = jwtService.createJwt(users.get());
         return null;
     }
 }

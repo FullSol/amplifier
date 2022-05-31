@@ -11,9 +11,13 @@ import java.util.List;
 
 import com.amplifier.models.ClientMessage;
 import com.amplifier.models.User;
+import com.amplifier.services.JwtServiceImpl;
 import com.amplifier.services.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -24,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.jsonwebtoken.security.InvalidKeyException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -34,6 +39,9 @@ public class UserController {
 
     @Autowired
     private UserService service;
+
+    @Autowired
+    JwtServiceImpl jwtService;
 
     @GetMapping(path = "/user")
     @ApiOperation(value = "Find user by id number", notes = "Provide an id to lookup a specific user from the API", response = User.class)
@@ -67,7 +75,32 @@ public class UserController {
 
     @PostMapping("/login")
     @ApiOperation(value = "Log user in, and return JWT", notes = "Adding a new user to the API.")
-    public @ResponseBody ClientMessage login(@RequestBody User user) {
-        return (service.login(user) != null) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+    public ResponseEntity<String> login(@RequestBody User user) {
+        // return (service.login(user) != null) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+        try {
+            user = service.login(user);
+        } catch (InvalidKeyException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        try {
+            String jwt = jwtService.createJwt(user);
+        } catch (InvalidKeyException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Baeldung-Example-Header",
+                "Value-ResponseEntityBuilderWithHttpHeaders");
+
+        return ResponseEntity.ok()
+                .headers(responseHeaders)
+                .body("Response with header using ResponseEntity");
     }
 }

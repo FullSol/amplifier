@@ -1,5 +1,6 @@
 package com.amplifier.models;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import lombok.Data;
@@ -11,10 +12,11 @@ public class UserJwtDTO {
     private String email;
     private String firstName;
     private String lastName;
-    private String blizzardAccountId;
-    private String socialMediaId;
-    private String joinDate;
-    private String role;
+    private UserBlizzardAccount blizzardAccountId;
+    private UserSocialMedia socialMediaId;
+    private LocalDate joinDate;
+    private UserRole role;
+    private boolean active;
 
     /**
      * 
@@ -32,8 +34,9 @@ public class UserJwtDTO {
      * @param joinDate
      * @param role
      */
-    public UserJwtDTO(String username, String email, String firstName, String lastName, String blizzardAccountId,
-            String socialMediaId, String joinDate, String role) {
+    public UserJwtDTO(String username, String email, String firstName, String lastName,
+            UserBlizzardAccount blizzardAccountId, UserSocialMedia socialMediaId, LocalDate joinDate, UserRole role,
+            boolean active) {
         this.username = username;
         this.email = email;
         this.firstName = firstName;
@@ -42,6 +45,7 @@ public class UserJwtDTO {
         this.socialMediaId = socialMediaId;
         this.joinDate = joinDate;
         this.role = role;
+        this.active = active;
     }
 
     /**
@@ -55,8 +59,9 @@ public class UserJwtDTO {
      * @param joinDate
      * @param role
      */
-    public UserJwtDTO(UUID id, String username, String email, String firstName, String lastName,
-            String blizzardAccountId, String socialMediaId, String joinDate, String role) {
+    public UserJwtDTO(UUID id, String email, String username, String firstName, String lastName,
+            UserBlizzardAccount blizzardAccountId, UserSocialMedia socialMediaId, LocalDate joinDate, UserRole role,
+            boolean active) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -66,6 +71,7 @@ public class UserJwtDTO {
         this.socialMediaId = socialMediaId;
         this.joinDate = joinDate;
         this.role = role;
+        this.active = active;
     }
 
 }
