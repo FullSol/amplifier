@@ -23,10 +23,6 @@ public class UserSocialMedia {
   @ApiModelProperty(name = "socialMediaId", value = "An integer value that serves as the unique identifier for any user social media entity.", required = true)
   private int id;
 
-  @Column(name = "user_id", nullable = false)
-  @ApiModelProperty(name = "userId", value = "A String value that serves as the user id for the user.", required = true)
-  private String userId;
-
   @Column(name = "twitterLink")
   @ApiModelProperty(name = "twitterLink", value = "A String value serving as the twitter link as part of a user's social media.")
   private String twitterLink;
