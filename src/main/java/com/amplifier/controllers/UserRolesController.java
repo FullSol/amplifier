@@ -11,7 +11,7 @@ import java.util.List;
 
 import com.amplifier.models.ClientMessage;
 import com.amplifier.models.UserRole;
-import com.amplifier.services.UserRolesService;
+import com.amplifier.services.UserRolesServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiOperation;
 public class UserRolesController {
 
     @Autowired
-    private UserRolesService service;
+    private UserRolesServiceImpl service;
 
     @GetMapping("/roles")
     @ApiOperation(value = "Find all user roles.", notes = "Provides a list of all user roles from the API", response = UserRole.class)
@@ -42,7 +42,7 @@ public class UserRolesController {
     }
 
     @ApiOperation(value = "Find user role by id number", notes = "Provide an id to lookup a specific user role from the API", response = UserRole.class)
-    @GetMapping("/role?id={id}")
+    @GetMapping("/role")
     public @ResponseBody UserRole getById(@RequestParam(value = "id") int id) {
         return service.getById(id);
     }
@@ -55,13 +55,13 @@ public class UserRolesController {
 
     @PatchMapping("/role")
     @ApiOperation(value = "Update user role entity by id.", notes = "Provide an id to update a specific user role in the API.")
-    public @ResponseBody ClientMessage updateUserRole(@RequestBody UserRole userRole) {
-        return service.edit(userRole) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+    public @ResponseBody ClientMessage updateUserRole(@RequestParam(name= "id") int id, @RequestBody UserRole userRole) {
+        return service.edit(id, userRole) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/role")
     @ApiOperation(value = "Remove user role entity by ID.", notes = "Provide an id to remove a specific user role from the API")
-    public @ResponseBody ClientMessage deleteUserRole(@RequestBody UserRole userRole) {
-        return service.remove(userRole.getId()) ? DELETION_SUCCESSFUL : DELETION_FAILED;
+    public @ResponseBody ClientMessage deleteUserRole(@RequestParam(name = "id") int id) {
+        return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 }
