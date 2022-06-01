@@ -20,7 +20,7 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
     private UserSocialMediaRepository repository;
 
     @Autowired
-    private UserRepository userRepo;
+    UserRepository userRepository;
 
     @Autowired
     public UserSocialMediaServiceImpl(UserSocialMediaRepository repository) {
@@ -34,10 +34,9 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
 
     @Override
     public UserSocialMedia getByUserId(String userId) {
-        // Updated
         UUID userUUID = UUID.fromString(userId);
-        User user = userRepo.findById(userUUID).get();
-        return repository.findByUser(user.getId().toString());
+        User user = userRepository.findById(userUUID).get();
+        return repository.findByUser(user.getId());
     }
 
     @Override
@@ -48,7 +47,7 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
 
     @Override
     public boolean edit(UserSocialMedia userSocialMedia) {
-        UserSocialMedia target = repository.findById(userSocialMedia.getId());
+        UserSocialMedia target = repository.findById(userSocialMedia.getId()).get();
 
         target.setTwitterLink(userSocialMedia.getTwitterLink());
         target.setFacebookLink(userSocialMedia.getFacebookLink());

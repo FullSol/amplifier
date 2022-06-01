@@ -12,9 +12,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Entity
-@Table(name = "user_roles")
+@Table(name = "userRole")
 @Data
 @ApiModel(value = "UserRole", description = "This model serves as the basic model for all user role entity API operations.")
+
 public class UserRole {
 
     @Id
@@ -24,7 +25,7 @@ public class UserRole {
     private int id;
 
     @Column(name = "role", unique = true, nullable = false)
-    @ApiModelProperty(name = "userRole", value = "A String value that serves as the user role for the user.", required = true)
+    @ApiModelProperty(name = "role", value = "A String value that serves as the user role for the user.", required = true)
     private String role;
 
     public UserRole() {
