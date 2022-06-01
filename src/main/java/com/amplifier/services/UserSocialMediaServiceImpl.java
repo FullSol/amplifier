@@ -34,6 +34,7 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
 
     @Override
     public UserSocialMedia getByUserId(String userId) {
+        // Updated
         UUID userUUID = UUID.fromString(userId);
         User user = userRepo.findById(userUUID).get();
         return repository.findByUser(user.getId().toString());
