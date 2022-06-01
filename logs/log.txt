@@ -512,3 +512,93 @@
 2022-06-01 02:05:04 INFO  amplifier.aspects.LoggingAspect:44 - Result of this method invoking is: true
 2022-06-01 02:05:04 INFO  amplifier.aspects.LoggingAspect:47 - End of Around Advice
 2022-06-01 02:05:04 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.controllers.UserController:deleteUser]
+2022-06-01 02:07:29 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.controllers.UserCharacterController:getAllCharacters]
+2022-06-01 02:07:29 INFO  amplifier.aspects.LoggingAspect:37 - Around advice for: [class com.amplifier.services.UserCharacterServiceImpl:getAll]
+2022-06-01 02:07:29 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.services.UserCharacterServiceImpl:getAll]
+2022-06-01 02:07:29 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.services.UserCharacterServiceImpl:getAll]
+2022-06-01 02:07:29 INFO  amplifier.aspects.LoggingAspect:44 - Result of this method invoking is: []
+2022-06-01 02:07:29 INFO  amplifier.aspects.LoggingAspect:47 - End of Around Advice
+2022-06-01 02:07:29 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.controllers.UserCharacterController:getAllCharacters]
+2022-06-01 02:09:40 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$e6b6bef6:swaggerConfiguration]
+2022-06-01 02:09:40 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$e6b6bef6:swaggerConfiguration]
+2022-06-01 02:10:23 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$e6b6bef6:swaggerConfiguration]
+2022-06-01 02:10:23 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$e6b6bef6:swaggerConfiguration]
+2022-06-01 02:11:09 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$80b5c26e:swaggerConfiguration]
+2022-06-01 02:11:09 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$80b5c26e:swaggerConfiguration]
+2022-06-01 02:11:23 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.controllers.UserRolesController:createUserRole]
+2022-06-01 02:11:23 INFO  amplifier.aspects.LoggingAspect:37 - Around advice for: [class com.amplifier.services.UserRolesServiceImpl:add]
+2022-06-01 02:11:23 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.services.UserRolesServiceImpl:add]
+2022-06-01 02:11:23 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.sun.proxy.$Proxy153:save]
+2022-06-01 02:11:23 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.sun.proxy.$Proxy153:save]
+2022-06-01 02:11:23 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.services.UserRolesServiceImpl:add]
+2022-06-01 02:11:23 INFO  amplifier.aspects.LoggingAspect:44 - Result of this method invoking is: true
+2022-06-01 02:11:23 INFO  amplifier.aspects.LoggingAspect:47 - End of Around Advice
+2022-06-01 02:11:23 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.controllers.UserRolesController:createUserRole]
+2022-06-01 02:11:26 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.controllers.UserRolesController:createUserRole]
+2022-06-01 02:11:26 INFO  amplifier.aspects.LoggingAspect:37 - Around advice for: [class com.amplifier.services.UserRolesServiceImpl:add]
+2022-06-01 02:11:26 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.services.UserRolesServiceImpl:add]
+2022-06-01 02:11:26 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.sun.proxy.$Proxy153:save]
+2022-06-01 02:11:26 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.sun.proxy.$Proxy153:save]
+2022-06-01 02:11:26 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.services.UserRolesServiceImpl:add]
+2022-06-01 02:11:26 INFO  amplifier.aspects.LoggingAspect:44 - Result of this method invoking is: true
+2022-06-01 02:11:26 INFO  amplifier.aspects.LoggingAspect:47 - End of Around Advice
+2022-06-01 02:11:26 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.controllers.UserRolesController:createUserRole]
+2022-06-01 02:11:29 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.controllers.UserController:createUser]
+2022-06-01 02:11:29 INFO  amplifier.aspects.LoggingAspect:37 - Around advice for: [class com.amplifier.services.UserServiceImpl:add]
+2022-06-01 02:11:29 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.services.UserServiceImpl:add]
+2022-06-01 02:11:29 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.sun.proxy.$Proxy152:save]
+2022-06-01 02:11:29 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.sun.proxy.$Proxy152:save]
+2022-06-01 02:11:29 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.services.UserServiceImpl:add]
+2022-06-01 02:11:29 INFO  amplifier.aspects.LoggingAspect:44 - Result of this method invoking is: true
+2022-06-01 02:11:29 INFO  amplifier.aspects.LoggingAspect:47 - End of Around Advice
+2022-06-01 02:11:29 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.controllers.UserController:createUser]
+2022-06-01 02:11:32 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.controllers.UserController:createUser]
+2022-06-01 02:11:32 INFO  amplifier.aspects.LoggingAspect:37 - Around advice for: [class com.amplifier.services.UserServiceImpl:add]
+2022-06-01 02:11:32 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.services.UserServiceImpl:add]
+2022-06-01 02:11:32 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.sun.proxy.$Proxy152:save]
+2022-06-01 02:11:32 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.sun.proxy.$Proxy152:save]
+2022-06-01 02:11:32 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.services.UserServiceImpl:add]
+2022-06-01 02:11:32 INFO  amplifier.aspects.LoggingAspect:44 - Result of this method invoking is: true
+2022-06-01 02:11:32 INFO  amplifier.aspects.LoggingAspect:47 - End of Around Advice
+2022-06-01 02:11:32 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.controllers.UserController:createUser]
+2022-06-01 02:11:35 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.controllers.UserController:getAll]
+2022-06-01 02:11:35 INFO  amplifier.aspects.LoggingAspect:37 - Around advice for: [class com.amplifier.services.UserServiceImpl:getAll]
+2022-06-01 02:11:35 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.services.UserServiceImpl:getAll]
+2022-06-01 02:11:35 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.services.UserServiceImpl:getAll]
+2022-06-01 02:11:35 INFO  amplifier.aspects.LoggingAspect:44 - Result of this method invoking is: [User(id=f31bbcca-e9f0-4369-8b15-3a8875c42540, username=TheGamer007, email=thegamer007@gmail.com, password=password, firstName=James, lastName=Bond, blizzardAccount=null, socialMedia=null, imgPosts=[], joinDate=2022-05-22, userRole=UserRole(id=1, role=user), active=true), User(id=6afcf550-bc00-47b8-9168-21fe43211b60, username=FullSol, email=fullsol@gmail.com, password=password, firstName=Calvin, lastName=Raines, blizzardAccount=null, socialMedia=null, imgPosts=[], joinDate=2022-05-30, userRole=UserRole(id=1, role=user), active=true)]
+2022-06-01 02:11:35 INFO  amplifier.aspects.LoggingAspect:47 - End of Around Advice
+2022-06-01 02:11:35 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.controllers.UserController:getAll]
+2022-06-01 02:11:53 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.controllers.UserController:deleteUser]
+2022-06-01 02:11:53 INFO  amplifier.aspects.LoggingAspect:37 - Around advice for: [class com.amplifier.services.UserServiceImpl:remove]
+2022-06-01 02:11:53 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.services.UserServiceImpl:remove]
+2022-06-01 02:11:53 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.sun.proxy.$Proxy152:delete]
+2022-06-01 02:11:53 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.sun.proxy.$Proxy152:delete]
+2022-06-01 02:11:53 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.services.UserServiceImpl:remove]
+2022-06-01 02:11:53 INFO  amplifier.aspects.LoggingAspect:44 - Result of this method invoking is: true
+2022-06-01 02:11:53 INFO  amplifier.aspects.LoggingAspect:47 - End of Around Advice
+2022-06-01 02:11:53 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.controllers.UserController:deleteUser]
+2022-06-01 02:12:08 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.controllers.UserController:createUser]
+2022-06-01 02:12:08 INFO  amplifier.aspects.LoggingAspect:37 - Around advice for: [class com.amplifier.services.UserServiceImpl:add]
+2022-06-01 02:12:08 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.services.UserServiceImpl:add]
+2022-06-01 02:12:08 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.sun.proxy.$Proxy152:save]
+2022-06-01 02:12:08 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.sun.proxy.$Proxy152:save]
+2022-06-01 02:12:08 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.services.UserServiceImpl:add]
+2022-06-01 02:12:08 INFO  amplifier.aspects.LoggingAspect:44 - Result of this method invoking is: true
+2022-06-01 02:12:08 INFO  amplifier.aspects.LoggingAspect:47 - End of Around Advice
+2022-06-01 02:12:08 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.controllers.UserController:createUser]
+2022-06-01 02:12:24 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.controllers.UserCharacterController:getAllCharacters]
+2022-06-01 02:12:24 INFO  amplifier.aspects.LoggingAspect:37 - Around advice for: [class com.amplifier.services.UserCharacterServiceImpl:getAll]
+2022-06-01 02:12:24 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.services.UserCharacterServiceImpl:getAll]
+2022-06-01 02:12:24 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.services.UserCharacterServiceImpl:getAll]
+2022-06-01 02:12:24 INFO  amplifier.aspects.LoggingAspect:44 - Result of this method invoking is: []
+2022-06-01 02:12:24 INFO  amplifier.aspects.LoggingAspect:47 - End of Around Advice
+2022-06-01 02:12:24 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.controllers.UserCharacterController:getAllCharacters]
+2022-06-01 09:39:10 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.controllers.UserBlizzardAccountController:createAccount]
+2022-06-01 09:39:10 INFO  amplifier.aspects.LoggingAspect:37 - Around advice for: [class com.amplifier.services.UserBlizzardAccountServiceImpl:add]
+2022-06-01 09:39:10 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.services.UserBlizzardAccountServiceImpl:add]
+2022-06-01 09:39:10 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.sun.proxy.$Proxy149:save]
+2022-06-01 09:39:10 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.sun.proxy.$Proxy149:save]
+2022-06-01 09:39:10 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.services.UserBlizzardAccountServiceImpl:add]
+2022-06-01 09:39:10 INFO  amplifier.aspects.LoggingAspect:44 - Result of this method invoking is: true
+2022-06-01 09:39:10 INFO  amplifier.aspects.LoggingAspect:47 - End of Around Advice
+2022-06-01 09:39:10 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.controllers.UserBlizzardAccountController:createAccount]

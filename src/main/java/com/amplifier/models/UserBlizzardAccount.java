@@ -2,13 +2,13 @@ package com.amplifier.models;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,8 +32,11 @@ public class UserBlizzardAccount {
     @ApiModelProperty(name = "battle_tag", value = "A String value that serves as player-chosen nickname associated with a blizzard account entity.", required = true)
     private String battleTag;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<UserCharacter> characters;
+
+    @ManyToOne
+    private User user;
 
     public UserBlizzardAccount() {
         super();
@@ -47,12 +50,27 @@ public class UserBlizzardAccount {
     }
 
     /**
-     * @param id
-     * @param accountName
+     * @param battleTag
+     * @param characters
+     * @param user
      */
-    public UserBlizzardAccount(int id, String battleTag) {
-        this.id = id;
+    public UserBlizzardAccount(String battleTag, List<UserCharacter> characters, User user) {
         this.battleTag = battleTag;
+        this.characters = characters;
+        this.user = user;
     }
 
+    /**
+     *
+     * @param id
+     * @param battleTag
+     * @param characters
+     * @param user
+     */
+    public UserBlizzardAccount(int id, String battleTag, List<UserCharacter> characters, User user) {
+        this.id = id;
+        this.battleTag = battleTag;
+        this.characters = characters;
+        this.user = user;
+    }
 }

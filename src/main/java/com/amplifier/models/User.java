@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -55,17 +54,17 @@ public class User {
     @ApiModelProperty(name = "last_name", value = "A String value that serves as the last_name for the user.", required = true)
     private String lastName;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @OneToMany
     @JoinColumn(name = "blizzard_account_id", unique = true)
     @ApiModelProperty(name = "blizzard_account_id", value = "An integer value that represents the blizzard account information of the user.", required = true)
     private UserBlizzardAccount blizzardAccount;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "social_id", unique = true)
     @ApiModelProperty(name = "social_media_id", value = "An integer value that represents the social media information of the user.", required = true)
     private UserSocialMedia socialMedia;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author", cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
     private List<ImgPost> imgPosts;
 
     @Column(name = "join_date", nullable = false)
