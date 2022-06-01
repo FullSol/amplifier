@@ -29,7 +29,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/v1")
-@Api(value = "UserRestController", description = "REST controller related to User Entities")
+@Api(value = "UserCollection", description = "REST controller related to User Entities")
 public class UserController {
 
     @Autowired
