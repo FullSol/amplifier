@@ -13,13 +13,12 @@ public interface UserSocialMediaService {
 
     List<UserSocialMedia> getAll();
 
-    UserSocialMedia getById(int id);
+    UserSocialMedia getByUserId(String id);
 
-    boolean add(UserSocialMedia userSocialMedia);
+    boolean add(String userId, UserSocialMedia userSocialMedia);
 
-    boolean edit(UserSocialMedia userSocialMedia);
+    boolean edit(String userId, UserSocialMedia userSocialMedia);
 
-    boolean remove(int id);
-
+    boolean remove(String userId);
 
 }

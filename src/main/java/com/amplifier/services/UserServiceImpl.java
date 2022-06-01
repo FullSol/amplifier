@@ -34,12 +34,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getById(String id) {
         UUID idAsUUID = UUID.fromString(id);
-        return repository.findById(id);
+        return repository.findById(idAsUUID).get();
     }
 
     @Override
     public boolean edit(User user) {
-        User target = repository.findById(user.getId().toString());
+        User target = repository.findById(user.getId()).get();
 
         target.setUsername(user.getUsername());
         target.setEmail(user.getUsername());
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
         target.setBlizzardAccount(user.getBlizzardAccount());
         target.setSocialMedia(user.getSocialMedia());
         target.setJoinDate(user.getJoinDate());
-        target.setRole(user.getRole());
+        target.setUserRole(user.getUserRole());
         target.setActive(user.isActive());
 
         return (repository.save(target) != null) ? true : false;

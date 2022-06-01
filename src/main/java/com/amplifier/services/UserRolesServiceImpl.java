@@ -38,7 +38,7 @@ public class UserRolesServiceImpl implements UserRolesService {
     @Override
     public boolean edit(UserRole userRole) {
         UserRole target = repository.findById(userRole.getId());
-        target.setUserRole(userRole.getUserRole());
+        target.setRole(userRole.getRole());
         return (repository.save(target) != null) ? true : false;
     }
 

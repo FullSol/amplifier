@@ -16,7 +16,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -74,8 +73,8 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
-    @ApiModelProperty(name = "role_id", value = "A integer value that serves as the role id for the user.", required = true)
-    private UserRole role;
+    @ApiModelProperty(name = "user_role_id", value = "A integer value that serves as the role id for the user.", required = true)
+    private UserRole userRole;
 
     @Column(name = "active", nullable = false)
     @ApiModelProperty(name = "active", value = "A boolean value that serves as the user's active status indication.", required = true)
@@ -94,11 +93,11 @@ public class User {
      * @param blizzardAccount
      * @param socialMedia
      * @param joinDate
-     * @param role
+     * @param userRole
      * @param active
      */
     public User(String username, String email, String password, String firstName, String lastName,
-            UserBlizzardAccount blizzardAccount, UserSocialMedia socialMedia, LocalDate joinDate, UserRole role,
+            UserBlizzardAccount blizzardAccount, UserSocialMedia socialMedia, LocalDate joinDate, UserRole userRole,
             boolean active) {
         super();
         this.username = username;
@@ -109,7 +108,7 @@ public class User {
         this.blizzardAccount = blizzardAccount;
         this.socialMedia = socialMedia;
         this.joinDate = joinDate;
-        this.role = role;
+        this.userRole = userRole;
         this.active = active;
     }
 
@@ -123,11 +122,11 @@ public class User {
      * @param blizzardAccount
      * @param socialMedia
      * @param joinDate
-     * @param role
+     * @param userRole
      * @param active
      */
     public User(UUID id, String username, String email, String password, String firstName, String lastName,
-            UserBlizzardAccount blizzardAccount, UserSocialMedia socialMedia, LocalDate joinDate, UserRole role,
+            UserBlizzardAccount blizzardAccount, UserSocialMedia socialMedia, LocalDate joinDate, UserRole userRole,
             boolean active) {
         super();
         this.id = id;
@@ -139,7 +138,7 @@ public class User {
         this.blizzardAccount = blizzardAccount;
         this.socialMedia = socialMedia;
         this.joinDate = joinDate;
-        this.role = role;
+        this.userRole = userRole;
         this.active = active;
     }
 
