@@ -1,8 +1,11 @@
 package com.amplifier.services;
 
 import java.util.List;
+import java.util.UUID;
 
+import com.amplifier.models.User;
 import com.amplifier.models.UserSocialMedia;
+import com.amplifier.repositories.UserRepository;
 import com.amplifier.repositories.UserSocialMediaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,9 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
     private UserSocialMediaRepository repository;
 
     @Autowired
+    private UserRepository userRepo;
+
+    @Autowired
     public UserSocialMediaServiceImpl(UserSocialMediaRepository repository) {
         this.repository = repository;
     }
@@ -27,8 +33,10 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
     }
 
     @Override
-    public UserSocialMedia getById(int id) {
-        return repository.findById(id);
+    public UserSocialMedia getByUserId(String userId) {
+        UUID userUUID = UUID.fromString(userId);
+        User user = userRepo.findById(userUUID).get();
+        return repository.findByUser(user.getId().toString());
     }
 
     @Override
