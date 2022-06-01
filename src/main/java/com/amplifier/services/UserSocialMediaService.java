@@ -2,6 +2,7 @@ package com.amplifier.services;
 
 import java.util.List;
 
+import com.amplifier.models.User;
 import com.amplifier.models.UserSocialMedia;
 
 import org.springframework.stereotype.Service;
@@ -13,13 +14,12 @@ public interface UserSocialMediaService {
 
     List<UserSocialMedia> getAll();
 
-    UserSocialMedia getById(int id);
+    UserSocialMedia getByUserId(String user);
 
     boolean add(UserSocialMedia userSocialMedia);
 
     boolean edit(UserSocialMedia userSocialMedia);
 
     boolean remove(int id);
-
 
 }

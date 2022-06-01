@@ -2,6 +2,7 @@ package com.amplifier.repositories;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.transaction.Transactional;
@@ -30,7 +31,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
             boolean active, UUID id);
 
     @Query(value = "SELECT * FROM users WHERE id=?1", nativeQuery = true)
-    public User findById(String id);
+    public Optional<User> findById(UUID id);
 
     @Query(value = "DELETE FROM users WHERE id=?1 LIMIT 1", nativeQuery = true)
     public boolean delete(String id);

@@ -1,6 +1,7 @@
 package com.amplifier.repositories;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
@@ -20,6 +21,9 @@ public interface UserSocialMediaRepository extends JpaRepository<UserSocialMedia
 
 	@Query(value = "SELECT * FROM users_social_media WHERE id=?1", nativeQuery = true)
 	public UserSocialMedia findById(int id);
+
+	@Query(value = "SELECT * FROM users_social_media WHERE user_id=?1", nativeQuery = true)
+	public UserSocialMedia findByUser(String userId);
 
 	@Modifying
 	@Query(value = "UPDATE users_social_media SET twitter_link=?1, facebook_link=?2, instagram_link=?3 WHERE id=?4", nativeQuery = true)
