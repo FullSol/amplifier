@@ -1,7 +1,6 @@
 package com.amplifier.services;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import com.amplifier.models.User;
@@ -35,13 +34,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getById(String id) {
         UUID idAsUUID = UUID.fromString(id);
-        Optional<User> user = repository.findById(idAsUUID);
-        return (user.isPresent() ? user.get() : null);
+        return repository.findById(id);
     }
 
     @Override
     public boolean edit(User user) {
-        User target = repository.findById(user.getId()).get();
+        User target = repository.findById(user.getId().toString());
 
         target.setUsername(user.getUsername());
         target.setEmail(user.getUsername());
