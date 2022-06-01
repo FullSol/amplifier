@@ -35,6 +35,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     @Modifying
     @Query(value = "DELETE FROM users WHERE id=?1", nativeQuery = true)
-    public void delete(String id);
+    public void delete(UUID id);
 
 }

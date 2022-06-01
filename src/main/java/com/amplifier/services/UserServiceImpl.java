@@ -61,10 +61,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean remove(String id) {
-        // UUID idAsUUID = UUID.fromString(id);
+        UUID idAsUUID = UUID.fromString(id);
 
         try {
-            repository.delete(id);
+            repository.delete(idAsUUID);
         } catch (Exception e) {
             return false;
         }
