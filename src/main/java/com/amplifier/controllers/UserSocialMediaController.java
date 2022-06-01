@@ -36,6 +36,7 @@ public class UserSocialMediaController {
     @ApiOperation(value = "Find User Social Media by id number", notes = "Provide an id to lookup a specific user social media from the API", response = UserSocialMedia.class)
     @GetMapping(path = "/user/social-media")
     public @ResponseBody UserSocialMedia getUserSocialMediaById(@RequestParam(name = "user_id") String userId) {
+        // Hi
         return userSocialMediaService.getByUserId(userId);
     }
 
