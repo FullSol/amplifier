@@ -12,9 +12,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Entity
-@Table(name = "userRole")
+@Table(name = "user_roles")
 @Data
-@ApiModel(value = "UserRole", description = "This model serves as the basic model for all user role entity API operations.")
+@ApiModel(value = "user_roles", description = "This model serves as the basic model for all user role entity API operations.")
 
 public class UserRole {
 

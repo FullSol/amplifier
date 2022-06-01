@@ -36,18 +36,25 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
     public UserSocialMedia getByUserId(String userId) {
         UUID userUUID = UUID.fromString(userId);
         User user = userRepository.findById(userUUID).get();
-        return repository.findByUser(user.getId());
+        return repository.findByUserId(user.getId());
     }
 
     @Override
-    public boolean add(UserSocialMedia userSocialMedia) {
+    public boolean add(String userId, UserSocialMedia userSocialMedia) {
+        UUID userUUID = UUID.fromString(userId);
+        User user = userRepository.findById(userUUID).get();
+        userSocialMedia.setUser(user);
         int pk = repository.save(userSocialMedia).getId();
         return (pk > 0) ? true : false;
     }
 
     @Override
-    public boolean edit(UserSocialMedia userSocialMedia) {
-        UserSocialMedia target = repository.findById(userSocialMedia.getId()).get();
+    public boolean edit(String userId, UserSocialMedia userSocialMedia) {
+        UUID userUUID = UUID.fromString(userId);
+        User user = userRepository.findById(userUUID).get();
+        userSocialMedia.setUser(user);
+
+        UserSocialMedia target = repository.findByUserId(userSocialMedia.getUser().getId());
 
         target.setTwitterLink(userSocialMedia.getTwitterLink());
         target.setFacebookLink(userSocialMedia.getFacebookLink());
@@ -57,8 +64,17 @@ public class UserSocialMediaServiceImpl implements UserSocialMediaService {
     }
 
     @Override
-    public boolean remove(int id) {
-        return repository.delete(id);
+    public boolean remove(String userId) {
+        UUID userUUID = UUID.fromString(userId);
+        User user = userRepository.findById(userUUID).get();
+        UserSocialMedia target = repository.findByUserId(user.getId());
+
+        try {
+            repository.delete(target.getId());
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
 }

@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
         target.setBlizzardAccount(user.getBlizzardAccount());
         target.setSocialMedia(user.getSocialMedia());
         target.setJoinDate(user.getJoinDate());
-        target.setRole(user.getRole());
+        target.setUserRole(user.getUserRole());
         target.setActive(user.isActive());
 
         return (repository.save(target) != null) ? true : false;

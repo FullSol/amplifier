@@ -1,10 +1,15 @@
 package com.amplifier.models;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import io.swagger.annotations.ApiModel;
@@ -23,9 +28,10 @@ public class UserSocialMedia {
   @ApiModelProperty(name = "socialMediaId", value = "An integer value that serves as the unique identifier for any user social media entity.", required = true)
   private int id;
 
-  @Column(name = "user_id")
-  @ApiModelProperty(name = "userId", value = "An integer value that serves as the unique identifier for any user entity.", required = true)
-  private int userId;
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "user_id")
+  @ApiModelProperty(name = "userId", value = "An UUID value that serves as the unique identifier for any user entity.", required = true)
+  private User user;
 
   @Column(name = "twitterLink")
   @ApiModelProperty(name = "twitterLink", value = "A String value serving as the twitter link as part of a user's social media.")
@@ -42,14 +48,29 @@ public class UserSocialMedia {
   public UserSocialMedia() {
   }
 
-  public UserSocialMedia(String twitterLink, String facebookLink, String instagramLink) {
+  /**
+   * @param userId
+   * @param twitterLink
+   * @param facebookLink
+   * @param instagramLink
+   */
+  public UserSocialMedia(User user, String twitterLink, String facebookLink, String instagramLink) {
+    this.user = user;
     this.twitterLink = twitterLink;
     this.facebookLink = facebookLink;
     this.instagramLink = instagramLink;
   }
 
-  public UserSocialMedia(int id, String twitterLink, String facebookLink, String instagramLink) {
+  /**
+   * @param id
+   * @param userId
+   * @param twitterLink
+   * @param facebookLink
+   * @param instagramLink
+   */
+  public UserSocialMedia(int id, User user, String twitterLink, String facebookLink, String instagramLink) {
     this.id = id;
+    this.user = user;
     this.twitterLink = twitterLink;
     this.facebookLink = facebookLink;
     this.instagramLink = instagramLink;

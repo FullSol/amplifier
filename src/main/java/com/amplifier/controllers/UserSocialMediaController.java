@@ -36,26 +36,27 @@ public class UserSocialMediaController {
     @ApiOperation(value = "Find User Social Media by id number", notes = "Provide an id to lookup a specific user social media from the API", response = UserSocialMedia.class)
     @GetMapping(path = "/user/social-media")
     public @ResponseBody UserSocialMedia getUserSocialMediaById(@RequestParam(name = "user_id") String userId) {
-        // Hi
         return userSocialMediaService.getByUserId(userId);
     }
 
     @PostMapping("/user/social-media")
     @ApiOperation(value = "Create new user's social media entity", notes = "Add a new user's social media information in the API.")
-    public @ResponseBody ClientMessage addUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
-        return userSocialMediaService.add(userSocialMedia) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+    public @ResponseBody ClientMessage addUserSocialMedia(@RequestParam(name = "user_id") String userId,
+            @RequestBody UserSocialMedia userSocialMedia) {
+        return userSocialMediaService.add(userId, userSocialMedia) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PatchMapping("/user/social-media")
     @ApiOperation(value = "Update user social media entity by ID.", notes = "Provide an id to update a specific user's social media information in the API.")
-    public @ResponseBody ClientMessage updateUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
-        return userSocialMediaService.edit(userSocialMedia) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+    public @ResponseBody ClientMessage updateUserSocialMedia(@RequestParam(name = "user_id") String userId,
+            @RequestBody UserSocialMedia userSocialMedia) {
+        return userSocialMediaService.edit(userId, userSocialMedia) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/user/social-media")
     @ApiOperation(value = "Remove user social media entity by ID.", notes = "Provide an id to delete a user's social media information from the API")
-    public @ResponseBody ClientMessage deleteUserSocialMedia(@RequestBody int id) {
-        return userSocialMediaService.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
+    public @ResponseBody ClientMessage deleteUserSocialMedia(@RequestParam(name = "user_id") String userId) {
+        return userSocialMediaService.remove(userId) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 
 }
