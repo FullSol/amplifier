@@ -38,27 +38,37 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean edit(User user) {
-        User target = repository.findById(user.getId()).get();
+    public boolean edit(String userId, User user) {
+        UUID userUUID = UUID.fromString(userId);
+        User target = repository.findById(userUUID).get();
 
         target.setUsername(user.getUsername());
-        target.setEmail(user.getUsername());
-        target.setPassword(user.getUsername());
-        target.setFirstName(user.getUsername());
-        target.setLastName(user.getUsername());
+        target.setEmail(user.getEmail());
+        target.setPassword(user.getPassword());
+        target.setFirstName(user.getFirstName());
+        target.setLastName(user.getLastName());
         target.setBlizzardAccount(user.getBlizzardAccount());
         target.setSocialMedia(user.getSocialMedia());
-        target.setJoinDate(user.getJoinDate());
-        target.setUserRole(user.getUserRole());
-        target.setActive(user.isActive());
+
+        // This should be in admin only
+        // target.setUserRole(user.getUserRole());
+
+        // This should be admin only
+        // target.setActive(user.isActive());
 
         return (repository.save(target) != null) ? true : false;
     }
 
     @Override
     public boolean remove(String id) {
-        UUID idAsUUID = UUID.fromString(id);
-        return repository.delete(id);
+        // UUID idAsUUID = UUID.fromString(id);
+
+        try {
+            repository.delete(id);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
     // @Override

@@ -2,6 +2,7 @@ package com.amplifier.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,7 +32,7 @@ public class UserBlizzardAccount {
     @ApiModelProperty(name = "battle_tag", value = "A String value that serves as player-chosen nickname associated with a blizzard account entity.", required = true)
     private String battleTag;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<UserCharacter> characters;
 
     public UserBlizzardAccount() {
