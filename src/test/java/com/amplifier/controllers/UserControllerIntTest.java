@@ -54,6 +54,7 @@ public class UserControllerIntTest {
         private static User mockUserCreation;
         private static User mockUserModification;
         private static User mockUserDeletion;
+        private static UUID uuid1, uuid2, uuid3;
         private static List<User> dummyDb;
 
         public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
@@ -82,9 +83,16 @@ public class UserControllerIntTest {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
                 String joinDate = formatter.format(timestamp);
 
+                /**
+                 * Blizzard Accounts
+                 */
                 mockAccount1 = new UserBlizzardAccount("Solsphere#1100");
                 mockAccount2 = new UserBlizzardAccount("Patrickometry#1100");
                 mockAccount3 = new UserBlizzardAccount("JMercado#1100");
+
+                /**
+                 * Social Media
+                 */
                 mockSocialMedia1 = new UserSocialMedia("www.solsphere.twitter.com", "www.solsphere.facebook.com",
                                 "www.solsphere.instagram.com");
                 mockSocialMedia2 = new UserSocialMedia("www.patrickometry.twitter.com",
@@ -94,18 +102,24 @@ public class UserControllerIntTest {
                 mockRole1 = new UserRole("User");
                 mockRole2 = new UserRole("Admin");
 
-                mockUUID1 = UUID.randomUUID();
-                mockUUID2 = UUID.randomUUID();
-                mockUUID3 = UUID.randomUUID();
+                /**
+                 * UUIDs
+                 */
+                uuid1 = UUID.randomUUID();
+                uuid2 = UUID.randomUUID();
+                uuid3 = UUID.randomUUID();
 
-                mockUser1 = new User(mockUUID1, "FullSol", "fullsol@gmail.com", "password", "Calvin", "Raines",
-                                mockAccount1, mockSocialMedia1,
+                /**
+                 * Users
+                 */
+                mockUser1 = new User(uuid1, "FullSol", "fullsol@gmail.com", "password",
+                                "Calvin", "Raines", mockAccount1, mockSocialMedia1,
                                 LocalDate.now(), mockRole1, true);
-                mockUser2 = new User(mockUUID2, "Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar",
+                mockUser2 = new User(uuid2, "Patrickometry", "patrick@gmail.com", "password", "Patrick", "Yaegar",
                                 mockAccount2, mockSocialMedia2,
                                 LocalDate.now(), mockRole2, true);
 
-                mockUserCreation = new User(mockUUID3, "JulianMercado", "julianmercado@gmail.com", "password", "Julian",
+                mockUserCreation = new User(uuid3, "JulianMercado", "julianmercado@gmail.com", "password", "Julian",
                                 "Mercado",
                                 mockAccount3, mockSocialMedia3,
                                 LocalDate.now(), mockRole2, true);
@@ -149,7 +163,7 @@ public class UserControllerIntTest {
         @DisplayName("3. Attempt to pull invalid user")
         public void getUser_ShouldReturnInvalid() throws Exception {
                 //
-                when(userService.getById(mockUUID1)).thenReturn(mockUser1);
+                when(userService.getById(mockUUID1.toString())).thenReturn(mockUser1);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders.get("/api/v1/user?id=1");
@@ -164,7 +178,7 @@ public class UserControllerIntTest {
         @DisplayName("4. Attempt to pull valid user")
         public void getUser_ShouldReturnUser() throws Exception {
                 //
-                when(userService.getById(mockUUID1)).thenReturn(mockUser1);
+                when(userService.getById(mockUUID1.toString())).thenReturn(mockUser1);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
@@ -261,7 +275,7 @@ public class UserControllerIntTest {
         public void testDeleteUser() throws Exception {
 
                 //
-                when(userService.remove(mockUser1.getId())).thenReturn(true);
+                when(userService.remove(mockUser1.getId().toString())).thenReturn(true);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders
@@ -282,7 +296,7 @@ public class UserControllerIntTest {
         public void testDeleteUserFail() throws Exception {
 
                 //
-                when(userService.remove(mockUser1.getId())).thenReturn(true);
+                when(userService.remove(mockUser1.getId().toString())).thenReturn(true);
 
                 //
                 RequestBuilder request = MockMvcRequestBuilders

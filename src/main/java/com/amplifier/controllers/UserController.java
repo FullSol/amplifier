@@ -8,7 +8,6 @@ import static com.amplifier.util.ClientMessageUtil.UPDATE_FAILED;
 import static com.amplifier.util.ClientMessageUtil.UPDATE_SUCCESSFUL;
 
 import java.util.List;
-import java.util.UUID;
 
 import com.amplifier.models.ClientMessage;
 import com.amplifier.models.User;
@@ -30,39 +29,40 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/v1")
-@Api(value = "UserRestController", description = "REST controller related to User Entities")
+@Api(value = "UserCollection", description = "REST controller related to User Entities")
 public class UserController {
 
     @Autowired
     private UserService service;
 
+    @GetMapping(path = "/user")
     @ApiOperation(value = "Find user by id number", notes = "Provide an id to lookup a specific user from the API", response = User.class)
-    @GetMapping(path = "/user?id={id}")
-    public @ResponseBody User getById(@RequestParam(value = "id") UUID id) {
+    public @ResponseBody User getById(@RequestParam(value = "id") String id) {
         return service.getById(id);
     }
 
     @GetMapping("/users")
-    @ApiOperation(value = "Find all users")
+    @ApiOperation(value = "Find all users", notes = "Provides a list of all users from the API.", response = User.class)
     public @ResponseBody List<User> getAll() {
         return service.getAll();
     }
 
     @PostMapping("/user")
-    @ApiOperation(value = "Create new user entity")
+    @ApiOperation(value = "Create new user entity.", notes = "Adding a new user to the API.")
     public @ResponseBody ClientMessage createUser(@RequestBody User user) {
         return service.add(user) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
-    @PatchMapping("/user?id={id}")
-    @ApiOperation(value = "Update user entity")
-    public @ResponseBody ClientMessage updateUser(@RequestBody User user) {
-        return service.edit(user) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+    @PatchMapping("/user")
+    @ApiOperation(value = "Update user entity by ID.", notes = "Provide an id to update a specific user profile in the API.")
+    public @ResponseBody ClientMessage updateUser(@RequestParam(name = "user_id") String userId,
+            @RequestBody User user) {
+        return service.edit(userId, user) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
-    @DeleteMapping("/user?id={id}")
-    @ApiOperation(value = "Remove user entity")
-    public @ResponseBody ClientMessage deleteUser(@RequestBody UUID id) {
-        return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
+    @DeleteMapping("/user")
+    @ApiOperation(value = "Remove user entity by ID.", notes = "Provide an id to delete a specific user from the API")
+    public @ResponseBody ClientMessage deleteUser(@RequestParam(name = "user_id") String userId) {
+        return service.remove(userId) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 }

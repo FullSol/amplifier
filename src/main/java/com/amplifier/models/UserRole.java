@@ -1,31 +1,32 @@
 package com.amplifier.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "userRole")
+@Table(name = "user_roles")
 @Data
-@ApiModel(value = "UserRole", description = "This model serves as the basic model for all user role entity API operations.")
+@ApiModel(value = "user_roles", description = "This model serves as the basic model for all user role entity API operations.")
 
 public class UserRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any user role entity.", required = true, value = "1")
+    @ApiModelProperty(name = "id", value = "An integer value that serves as the unique identifier for any user role entity.", required = true)
     private int id;
 
-    @Column(name = "userRole", unique = true, nullable = false)
-    @ApiModelProperty(name = "userRole", notes = "A String value that serves as the user role for the user.", required = true)
-    private String userRole;
+    @Column(name = "role", unique = true, nullable = false)
+    @ApiModelProperty(name = "role", value = "A String value that serves as the user role for the user.", required = true)
+    private String role;
 
     public UserRole() {
     }
@@ -33,13 +34,13 @@ public class UserRole {
     /**
      * @param userRole
      */
-    public UserRole(String userRole) {
-        this.userRole = userRole;
+    public UserRole(String role) {
+        this.role = role;
     }
 
-    public UserRole(int id, String userRole) {
+    public UserRole(int id, String role) {
         this.id = id;
-        this.userRole = userRole;
+        this.role = role;
     }
 
 }

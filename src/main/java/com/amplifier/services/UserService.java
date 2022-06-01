@@ -15,10 +15,10 @@ public interface UserService {
 
     public boolean add(User user);
 
-    public User getById(UUID id);
+    public User getById(String id);
 
-    public boolean edit(User user);
+    public boolean edit(String userId, User user);
 
-    public boolean remove(UUID id);
+    public boolean remove(String id);
 
 }

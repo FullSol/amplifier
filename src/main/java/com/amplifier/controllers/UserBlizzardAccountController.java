@@ -25,41 +25,43 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/v1")
+@Api(value = "UserBlizzardAccountRestController", description = "REST controller related to User Blizzard Account Entities")
 public class UserBlizzardAccountController {
 
     @Autowired
     private UserBlizzardAccountService service;
 
-    @ApiOperation(value = "Find user's blizzard account by id number", notes = "Provide an id to lookup a specific blizzard account from the API", response = User.class)
-    @GetMapping(path = "/blizzard-account?id={id}")
-    public @ResponseBody UserBlizzardAccount getById(@RequestParam(value = "id", name = "id") int id) {
+    @ApiOperation(value = "Find blizzard account by id number", notes = "Provide an id to lookup a specific blizzard account from the API", response = UserBlizzardAccount.class)
+    @GetMapping(path = "/blizzard-account")
+    public @ResponseBody UserBlizzardAccount getById(@RequestParam(name = "id") int id) {
         return service.getById(id);
     }
 
-    @GetMapping("/blizzard-account")
-    @ApiOperation(value = "Find all users' blizzard accounts")
+    @GetMapping("/blizzard-accounts")
+    @ApiOperation(value = "Find all users' blizzard accounts", notes = "Provides a list of all user blizzard accounts from the API", response = UserBlizzardAccount.class)
     public @ResponseBody List<UserBlizzardAccount> getAll() {
         return service.getAll();
     }
 
     @PostMapping("/blizzard-account")
-    @ApiOperation(value = "Create new user's blizzard account entity")
+    @ApiOperation(value = "Create new blizzard account entity.", notes = "Adding a new blizzard account entitiy to the API.")
     public @ResponseBody ClientMessage createAccount(@RequestBody UserBlizzardAccount account) {
         return service.add(account) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PatchMapping("/blizzard-account")
-    @ApiOperation(value = "Update user's blizzard account entity")
+    @ApiOperation(value = "Update blizzard account entity by ID.", notes = "Provide an id to update a specific blizzard account in the API")
     public @ResponseBody ClientMessage updateAccount(@RequestBody UserBlizzardAccount account) {
         return service.edit(account) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/blizzard-account")
-    @ApiOperation(value = "Remove user's blizzard account entity")
+    @ApiOperation(value = "Remove blizzard account entity by ID.", notes = "Provide an id to remove a user's blizzard account in the API.")
     public @ResponseBody ClientMessage deleteAccount(@RequestBody UserBlizzardAccount account) {
         return service.remove(account.getId()) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }

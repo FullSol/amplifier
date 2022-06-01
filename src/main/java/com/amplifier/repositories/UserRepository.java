@@ -2,7 +2,10 @@ package com.amplifier.repositories;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+
+import javax.transaction.Transactional;
 
 import com.amplifier.models.User;
 import com.amplifier.models.UserBlizzardAccount;
@@ -14,11 +17,9 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import jakarta.transaction.Transactional;
-
 @Repository
 @Transactional
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, UUID> {
 
     @Query(value = "SELECT * FROM users", nativeQuery = true)
     public List<User> findAll();
@@ -30,11 +31,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             boolean active, UUID id);
 
     @Query(value = "SELECT * FROM users WHERE id=?1", nativeQuery = true)
-    public User findById(UUID id);
+    public Optional<User> findById(UUID id);
 
-    @Query(value = "DELETE FROM users WHERE id=?1 LIMIT 1", nativeQuery = true)
-    public boolean delete(UUID id);
-
-    // public User login(String username, String password);
+    @Modifying
+    @Query(value = "DELETE FROM users WHERE id=?1", nativeQuery = true)
+    public void delete(String id);
 
 }

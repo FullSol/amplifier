@@ -3,18 +3,19 @@ package com.amplifier.models;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
@@ -26,11 +27,11 @@ public class ImgPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    @ApiModelProperty(name = "id", notes = "An integer value that serves as the unique identifier for any image post entity.", required = true, value = "1")
+    @ApiModelProperty(name = "id", value = "An integer value that serves as the unique identifier for any image post entity.", required = true)
     private int id;
 
     @Column(name = "img_caption", nullable = false)
-    @ApiModelProperty(name = "caption", value = "A string value describing the location of an image post entity.", required = true)
+    @ApiModelProperty(name = "caption", value = "A string value denoting the caption of an image post entity.", required = true)
     private String imgCaption;
 
     @Column(name = "img_location", nullable = false)
@@ -43,6 +44,7 @@ public class ImgPost {
     private User author;
 
     @Column(name = "img_date", nullable = false)
+    @ApiModelProperty(name = "img_date", value = "Date value specifiying the post date of an image post entity.", required = true)
     private LocalDate postDate;
 
     @OneToMany(fetch = FetchType.LAZY)
