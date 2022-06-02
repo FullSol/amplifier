@@ -63,9 +63,6 @@ public class User {
     @ApiModelProperty(name = "social_media_id", value = "An integer value that represents the social media information of the user.", required = true)
     private UserSocialMedia socialMedia;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
-    private List<ImgPost> imgPosts;
-
     @Column(name = "join_date", nullable = false)
     @ApiModelProperty(name = "join_date", value = "A date value that serves as the joined date for the user.", required = true)
     private LocalDate joinDate;
@@ -91,14 +88,12 @@ public class User {
      * @param lastName
      * @param battleTag
      * @param socialMedia
-     * @param imgPosts
      * @param joinDate
      * @param userRole
      * @param active
      */
     public User(String username, String email, String password, String firstName, String lastName, String battleTag,
-            UserSocialMedia socialMedia, List<ImgPost> imgPosts, LocalDate joinDate, UserRole userRole,
-            boolean active) {
+            UserSocialMedia socialMedia, LocalDate joinDate, UserRole userRole, boolean active) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -106,7 +101,6 @@ public class User {
         this.lastName = lastName;
         this.battleTag = battleTag;
         this.socialMedia = socialMedia;
-        this.imgPosts = imgPosts;
         this.joinDate = joinDate;
         this.userRole = userRole;
         this.active = active;
@@ -127,7 +121,7 @@ public class User {
      * @param active
      */
     public User(UUID id, String username, String email, String password, String firstName, String lastName,
-            String battleTag, UserSocialMedia socialMedia, List<ImgPost> imgPosts, LocalDate joinDate,
+            String battleTag, UserSocialMedia socialMedia, LocalDate joinDate,
             UserRole userRole, boolean active) {
         this.id = id;
         this.username = username;
@@ -137,7 +131,6 @@ public class User {
         this.lastName = lastName;
         this.battleTag = battleTag;
         this.socialMedia = socialMedia;
-        this.imgPosts = imgPosts;
         this.joinDate = joinDate;
         this.userRole = userRole;
         this.active = active;
