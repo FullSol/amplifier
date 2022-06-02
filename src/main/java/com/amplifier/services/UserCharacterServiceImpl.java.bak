@@ -2,12 +2,14 @@ package com.amplifier.services;
 
 import java.util.List;
 
-import com.amplifier.models.UserCharacter;
-import com.amplifier.repositories.UserCharacterRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.amplifier.models.UserBlizzardAccount;
+import com.amplifier.models.UserCharacter;
+import com.amplifier.repositories.UserBlizzardAccountRepository;
+import com.amplifier.repositories.UserCharacterRepository;
 
 @Service
 @Transactional
@@ -15,6 +17,9 @@ public class UserCharacterServiceImpl implements UserCharacterService {
 
     @Autowired
     private UserCharacterRepository repository;
+
+    @Autowired
+    UserBlizzardAccountRepository userBlizzardAccountRepository;
 
     @Override
     public boolean add(UserCharacter character) {
@@ -28,8 +33,15 @@ public class UserCharacterServiceImpl implements UserCharacterService {
     };
 
     @Override
-    public List<UserCharacter> getAll() {
-        return repository.findAll();
+    public List<UserCharacter> getAll(String battleTag) {
+        UserBlizzardAccount account = userBlizzardAccountRepository.findByBattleTag(battleTag);
+        List<UserCharacter> characters = repository.findAll(account.getId());
+
+        for (UserCharacter character : characters) {
+            character.setUserBlizzardAccount(null);
+        }
+
+        return characters;
     };
 
     @Override

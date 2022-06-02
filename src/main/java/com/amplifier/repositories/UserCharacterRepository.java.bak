@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface UserCharacterRepository extends JpaRepository<UserCharacter, Integer> {
 
-    @Query(value = "SELECT * FROM user_character", nativeQuery = true)
-    public List<UserCharacter> findAll();
+    @Query(value = "SELECT * FROM user_character WHERE user_blizzard_account_id = ?1", nativeQuery = true)
+    public List<UserCharacter> findAll(int id);
 
     @Query(value = "SELECT * FROM user_character WHERE id=?1", nativeQuery = true)
     public UserCharacter findById(int id);
