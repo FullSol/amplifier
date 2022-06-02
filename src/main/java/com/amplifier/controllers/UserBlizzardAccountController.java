@@ -38,32 +38,28 @@ public class UserBlizzardAccountController {
 
     @ApiOperation(value = "Find blizzard account by id number", notes = "Provide an id to lookup a specific blizzard account from the API", response = UserBlizzardAccount.class)
     @GetMapping(path = "/blizzard-account")
-    public @ResponseBody UserBlizzardAccount getById(@RequestParam(name = "id") int id) {
-        return service.getById(id);
-    }
-
-    @GetMapping("/blizzard-accounts")
-    @ApiOperation(value = "Find all users' blizzard accounts", notes = "Provides a list of all user blizzard accounts from the API", response = UserBlizzardAccount.class)
-    public @ResponseBody List<UserBlizzardAccount> getAll() {
-        return service.getAll();
+    public @ResponseBody UserBlizzardAccount getById(@RequestParam(name = "user_id") String userId) {
+        return service.getByUserId(userId);
     }
 
     @PostMapping("/blizzard-account")
     @ApiOperation(value = "Create new blizzard account entity.", notes = "Adding a new blizzard account entitiy to the API.")
-    public @ResponseBody ClientMessage createAccount(@RequestBody UserBlizzardAccount account) {
-        return service.add(account) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+    public @ResponseBody ClientMessage createAccount(@RequestParam(name = "user_id") String userId,
+            @RequestBody UserBlizzardAccount account) {
+        return service.add(userId, account) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PatchMapping("/blizzard-account")
     @ApiOperation(value = "Update blizzard account entity by ID.", notes = "Provide an id to update a specific blizzard account in the API")
-    public @ResponseBody ClientMessage updateAccount(@RequestBody UserBlizzardAccount account) {
-        return service.edit(account) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+    public @ResponseBody ClientMessage updateAccount(@RequestParam(name = "user_id") String userId,
+            @RequestBody UserBlizzardAccount account) {
+        return service.edit(userId, account) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/blizzard-account")
     @ApiOperation(value = "Remove blizzard account entity by ID.", notes = "Provide an id to remove a user's blizzard account in the API.")
     public @ResponseBody ClientMessage deleteAccount(@RequestBody UserBlizzardAccount account) {
-        return service.remove(account.getId()) ? DELETION_SUCCESSFUL : DELETION_FAILED;
+        return service.remove(account.getBattleTag()) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 
 }

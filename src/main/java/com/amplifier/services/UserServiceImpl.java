@@ -47,7 +47,6 @@ public class UserServiceImpl implements UserService {
         target.setPassword(user.getPassword());
         target.setFirstName(user.getFirstName());
         target.setLastName(user.getLastName());
-        target.setBlizzardAccount(user.getBlizzardAccount());
         target.setSocialMedia(user.getSocialMedia());
 
         // This should be in admin only
