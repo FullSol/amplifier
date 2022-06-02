@@ -23,7 +23,7 @@ public class UserCharacter {
     @ApiModelProperty(name = "id", value = "An integer value that serves as the unique identifier for any chracter entity.", required = true)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_blizzard_account_id")
     @ApiModelProperty(name = "blizzard_account_id", value = "An integer value that serves as the blizzard account id for a character", required = true)
     private UserBlizzardAccount userBlizzardAccount;
