@@ -49,7 +49,7 @@ public class UserCommentController {
 
     @PostMapping("/comment")
     @ApiOperation(value = "Create new comment entity", notes = "Adding a new comment to the API.")
-    public @ResponseBody ClientMessage addNewComment(@RequestBody ImgPostComment comment) throws Exception {
+    public @ResponseBody ClientMessage addNewComment(@RequestBody ImgPostComment comment) {
         return service.add(comment) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
