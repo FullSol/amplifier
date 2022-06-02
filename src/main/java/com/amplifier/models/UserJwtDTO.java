@@ -12,7 +12,7 @@ public class UserJwtDTO {
     private String email;
     private String firstName;
     private String lastName;
-    private UserBlizzardAccount blizzardAccountId;
+    private String battleTag;
     private UserSocialMedia socialMediaId;
     private LocalDate joinDate;
     private UserRole role;
@@ -29,19 +29,19 @@ public class UserJwtDTO {
      * @param email
      * @param firstName
      * @param lastName
-     * @param blizzardAccountId
+     * @param battleTag
      * @param socialMediaId
      * @param joinDate
      * @param role
+     * @param active
      */
-    public UserJwtDTO(String username, String email, String firstName, String lastName,
-            UserBlizzardAccount blizzardAccountId, UserSocialMedia socialMediaId, LocalDate joinDate, UserRole role,
-            boolean active) {
+    public UserJwtDTO(String username, String email, String firstName, String lastName, String battleTag,
+            UserSocialMedia socialMediaId, LocalDate joinDate, UserRole role, boolean active) {
         this.username = username;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.blizzardAccountId = blizzardAccountId;
+        this.battleTag = battleTag;
         this.socialMediaId = socialMediaId;
         this.joinDate = joinDate;
         this.role = role;
@@ -54,20 +54,20 @@ public class UserJwtDTO {
      * @param email
      * @param firstName
      * @param lastName
-     * @param blizzardAccountId
+     * @param battleTag
      * @param socialMediaId
      * @param joinDate
      * @param role
+     * @param active
      */
-    public UserJwtDTO(UUID id, String email, String username, String firstName, String lastName,
-            UserBlizzardAccount blizzardAccountId, UserSocialMedia socialMediaId, LocalDate joinDate, UserRole role,
-            boolean active) {
+    public UserJwtDTO(UUID id, String username, String email, String firstName, String lastName, String battleTag,
+            UserSocialMedia socialMediaId, LocalDate joinDate, UserRole role, boolean active) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.blizzardAccountId = blizzardAccountId;
+        this.battleTag = battleTag;
         this.socialMediaId = socialMediaId;
         this.joinDate = joinDate;
         this.role = role;

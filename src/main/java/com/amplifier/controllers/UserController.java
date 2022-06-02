@@ -86,21 +86,21 @@ public class UserController {
             e.printStackTrace();
         }
 
+        HttpHeaders responseHeaders = new HttpHeaders();
+
         try {
             String jwt = jwtService.createJwt(user);
 
-            HttpHeaders responseHeaders = new HttpHeaders();
-            responseHeaders.set("Baeldung-Example-Header",
-                    jwt);
+            responseHeaders.set("X-Auth-Token",
+                    "Bearer " + jwt);
 
-            return ResponseEntity.ok()
-                    .headers(responseHeaders)
-                    .body("Response with header using ResponseEntity");
         } catch (InvalidKeyException e) {
             e.printStackTrace();
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
+        return ResponseEntity.ok()
+                .headers(responseHeaders)
+                .body("Hello");
     }
 }
