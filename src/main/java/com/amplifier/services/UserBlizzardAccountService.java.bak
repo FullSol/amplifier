@@ -11,14 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface UserBlizzardAccountService {
 
-    public boolean add(UserBlizzardAccount account);
+    public boolean add(String userId, UserBlizzardAccount account);
 
     public List<UserBlizzardAccount> getAll();
 
-    public UserBlizzardAccount getById(int id);
+    public UserBlizzardAccount getByUserId(String userId);
 
-    public boolean edit(UserBlizzardAccount account);
+    public boolean edit(String userId, UserBlizzardAccount account);
 
-    public boolean remove(int id);
+    public boolean remove(String battleTag);
 
 }

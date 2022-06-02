@@ -16,7 +16,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -55,10 +54,9 @@ public class User {
     @ApiModelProperty(name = "last_name", value = "A String value that serves as the last_name for the user.", required = true)
     private String lastName;
 
-    @ManyToOne
-    @JoinColumn(name = "blizzard_account_id", unique = true)
-    @ApiModelProperty(name = "blizzard_account_id", value = "An integer value that represents the blizzard account information of the user.", required = true)
-    private UserBlizzardAccount blizzardAccount;
+    @Column(name = "battle_tag", unique = true)
+    @ApiModelProperty(name = "battle_tag", value = "A String value that serves as the batt_tag for the user.", required = false)
+    private String battleTag;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "social_id", unique = true)
@@ -74,8 +72,8 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
-    @ApiModelProperty(name = "role_id", value = "A integer value that serves as the role id for the user.", required = true)
-    private UserRole role;
+    @ApiModelProperty(name = "user_role_id", value = "A integer value that serves as the role id for the user.", required = true)
+    private UserRole userRole;
 
     @Column(name = "active", nullable = false)
     @ApiModelProperty(name = "active", value = "A boolean value that serves as the user's active status indication.", required = true)
@@ -91,25 +89,26 @@ public class User {
      * @param password
      * @param firstName
      * @param lastName
-     * @param blizzardAccount
+     * @param battleTag
      * @param socialMedia
+     * @param imgPosts
      * @param joinDate
-     * @param role
+     * @param userRole
      * @param active
      */
-    public User(String username, String email, String password, String firstName, String lastName,
-            UserBlizzardAccount blizzardAccount, UserSocialMedia socialMedia, LocalDate joinDate, UserRole role,
+    public User(String username, String email, String password, String firstName, String lastName, String battleTag,
+            UserSocialMedia socialMedia, List<ImgPost> imgPosts, LocalDate joinDate, UserRole userRole,
             boolean active) {
-        super();
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.blizzardAccount = blizzardAccount;
+        this.battleTag = battleTag;
         this.socialMedia = socialMedia;
+        this.imgPosts = imgPosts;
         this.joinDate = joinDate;
-        this.role = role;
+        this.userRole = userRole;
         this.active = active;
     }
 
@@ -120,26 +119,27 @@ public class User {
      * @param password
      * @param firstName
      * @param lastName
-     * @param blizzardAccount
+     * @param battleTag
      * @param socialMedia
+     * @param imgPosts
      * @param joinDate
-     * @param role
+     * @param userRole
      * @param active
      */
     public User(UUID id, String username, String email, String password, String firstName, String lastName,
-            UserBlizzardAccount blizzardAccount, UserSocialMedia socialMedia, LocalDate joinDate, UserRole role,
-            boolean active) {
-        super();
+            String battleTag, UserSocialMedia socialMedia, List<ImgPost> imgPosts, LocalDate joinDate,
+            UserRole userRole, boolean active) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.blizzardAccount = blizzardAccount;
+        this.battleTag = battleTag;
         this.socialMedia = socialMedia;
+        this.imgPosts = imgPosts;
         this.joinDate = joinDate;
-        this.role = role;
+        this.userRole = userRole;
         this.active = active;
     }
 

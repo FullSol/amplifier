@@ -17,7 +17,7 @@ public interface UserRolesService {
 
     public UserRole getById(int id);
 
-    public boolean edit(UserRole userRole);
+    public boolean edit(int id, UserRole userRole);
 
     public boolean remove(int id);
 

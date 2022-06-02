@@ -14,7 +14,7 @@ public interface UserCharacterService {
 
     public UserCharacter getById(int id);
 
-    public List<UserCharacter> getAll();
+    public List<UserCharacter> getAll(String battleTag);
 
     public boolean edit(UserCharacter character);
 

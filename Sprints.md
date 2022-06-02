@@ -33,6 +33,8 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Meeting 4: 5/25/22](#meeting-4-52522)
     - [Meeting 5: 5/26/22](#meeting-5-052622)
     - [Meeting 6:5/27/22](#meeting-6-52722-frontend)
+    - [Meeting 7 : 5/31/22](#meeting-7-53122)
+    - [Meeting 8: 6/1/22](#meeting-8-6122)
 5. [Link to Front-End Draft](https://xd.adobe.com/view/443d6501-5900-4ff2-80ec-d06c965809e9-116e/
 )
 
@@ -682,3 +684,74 @@ Assignments:
 
 
 *For future reference* Julian's proposal- Retrospective Idea: Everyone plays DiabloIII Immortal(?) 
+
+<hr>
+
+### Meeting 7 (5/31/22)
+
+1. **Progress Check**
+    - Joachim:
+        - [x] pushed up frontend character card and character model (hard coded image in)
+        - [x] adapted styling and directions from Julian (THANK YOU JULIAN)
+    - Patrick:
+        - [x] Comment form/Image Post- are they being embedded into a page? Or do you just need a form by itself?
+            - Julian pushed a basic structure into the repository
+            - Comments will be located in the Image posts and Comments page (no functionality so far)
+                 - you won't create a commment in one page and go to another page just to see them.
+                 - Comments page = ImagePostsComments and ImagePosts
+            - a form will sit on top of this page, so yes, it will be embedded
+    - Julian:
+        - [x] took care of Login(?) page
+        - [x] Created structure for front-end
+        - [x] Home page (noticed that this should have the login form, included background)
+        - [x] Created a README.md file (in progress) that will tell you exactly how everything will work based on Azhya's example 
+        - [x] RankingList page that'll connect to the API
+            - need to figure out and get images, + connection
+        - [x] If we can run the front-end using a PHP server in VSCode for the header and footer? To prevent repeating work on HTML file
+            ```java
+            if (PHP == true) {
+                System.out.println("Great!");
+            } else {
+                System.out.println("We can just copy and paste at the end.");
+            }
+            ```
+    - Calvin:
+        - [x] Swagger API are somewhat available (need to be able to run the dev version of the server). If not, see Levi.
+        - [x] Compilation bugs were SQUASHED so the app was able to run
+        - [x] Other bugs were commented out to get the app to run
+        - [x] (In progress) JWT -> Patrick?
+            - once this is done, we'll have a login system
+        - [x] Currently routes that are working are the Create and Get for some (stuff)
+            - once everything is ready, you should be able to use our API to use in the frontend
+            - you need to be able to run your server! Make sure you're connected to your databse and go to `AmplifierApiApplication.java` under `java/com/amplifier`
+
+- _Issues_:
+    - Julian:
+        - [ ] solve the image by asking Google for help and perhaps use Photoshop to adjust the image (Rankings page)
+    - Calvin:
+        - [ ] Issues were created
+    - Levi:
+        - [ ] Update README.md's
+        - [ ] CI/CD pipeline
+        - [ ] Fix tests to run Jacoco
+        - [ ] Test endpoints and fix
+
+ <br> </br>
+
+
+[Return to: _Table of Contents_](#table-of-contents)
+
+<br>
+<hr>
+
+### Meeting 8: 6/1/22
+**CheckIn:**
+- Joachim is done with his tasks and is able to help in other areas.
+- Patrick is working on his frontend pages but needs some support. Julian will help him with that as soon as his internet is fixed.
+- Julian was able to upload an image for the characters and display each character from the Blizzard rankings(?). He is still working on this.
+- Calvin and Levi: Backend is nearly completed. Levi needs to test some more endpoint and implement CI/CD.
+
+**Moving forward**
+- [ ] CI/CD Implementation
+- [ ] Fixing Swagger documentation
+- [ ] Connecting front-end to backend

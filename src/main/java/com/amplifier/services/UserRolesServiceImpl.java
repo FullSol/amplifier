@@ -36,15 +36,29 @@ public class UserRolesServiceImpl implements UserRolesService {
     }
 
     @Override
-    public boolean edit(UserRole userRole) {
-        UserRole target = repository.findById(userRole.getId());
-        target.setUserRole(userRole.getUserRole());
+    public boolean edit(int id, UserRole userRole) {
+        UserRole target = repository.findById(id);
+        target.setRole(userRole.getRole());
         return (repository.save(target) != null) ? true : false;
     }
+//line 41: java.lang.NullPointerException\n\tat com.amplifier.services.UserRolesServiceImpl.edit(UserRolesServiceImpl.java:41)
 
     @Override
+    //@Transactional(rollbackFor = Exception.class)
     public boolean remove(int id) {
-        return repository.delete(id);
+        try {
+            repository.delete(id);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
+/*
+ "timestamp": "2022-06-01T23:04:21.718+00:00",
+    "status": 500,
+    "error": "Internal Server Error",
+    "trace": "org.springframework.transaction.UnexpectedRollbackException: Transaction silently rolled back because it has been marked as rollback-only
+message": "Transaction silently rolled back because it has been marked as rollback-only",
 
+*/
 }
