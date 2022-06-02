@@ -33,9 +33,8 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     @Query(value = "SELECT * FROM users WHERE id=?1", nativeQuery = true)
     public Optional<User> findById(UUID id);
 
-    @Query(value = "DELETE FROM users WHERE id=?1 LIMIT 1", nativeQuery = true)
-    public boolean delete(String id);
-
-    // public User login(String username, String password);
+    @Modifying
+    @Query(value = "DELETE FROM users WHERE id=?1", nativeQuery = true)
+    public void delete(UUID id);
 
 }

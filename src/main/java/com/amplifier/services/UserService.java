@@ -17,7 +17,7 @@ public interface UserService {
 
     public User getById(String id);
 
-    public boolean edit(User user);
+    public boolean edit(String userId, User user);
 
     public boolean remove(String id);
 
