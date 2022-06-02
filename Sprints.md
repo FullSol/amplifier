@@ -34,6 +34,7 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Meeting 5: 5/26/22](#meeting-5-052622)
     - [Meeting 6:5/27/22](#meeting-6-52722-frontend)
     - [Meeting 7 : 5/31/22](#meeting-7-53122)
+    - [Meeting 8: 6/1/22](#meeting-8-6122)
 5. [Link to Front-End Draft](https://xd.adobe.com/view/443d6501-5900-4ff2-80ec-d06c965809e9-116e/
 )
 
@@ -742,3 +743,15 @@ Assignments:
 
 <br>
 <hr>
+
+### Meeting 8: 6/1/22
+**CheckIn:**
+- Joachim is done with his tasks and is able to help in other areas.
+- Patrick is working on his frontend pages but needs some support. Julian will help him with that as soon as his internet is fixed.
+- Julian was able to upload an image for the characters and display each character from the Blizzard rankings(?). He is still working on this.
+- Calvin and Levi: Backend is nearly completed. Levi needs to test some more endpoint and implement CI/CD.
+
+**Moving forward**
+- [ ] CI/CD Implementation
+- [ ] Fixing Swagger documentation
+- [ ] Connecting front-end to backend

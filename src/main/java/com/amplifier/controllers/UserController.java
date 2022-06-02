@@ -37,8 +37,8 @@ public class UserController {
 
     @GetMapping(path = "/user")
     @ApiOperation(value = "Find user by id number", notes = "Provide an id to lookup a specific user from the API", response = User.class)
-    public @ResponseBody User getById(@RequestParam(value = "id") String id) {
-        return service.getById(id);
+    public @ResponseBody User getById(@RequestParam(value = "user_id") String userId) {
+        return service.getById(userId);
     }
 
     @GetMapping("/users")
@@ -55,13 +55,14 @@ public class UserController {
 
     @PatchMapping("/user")
     @ApiOperation(value = "Update user entity by ID.", notes = "Provide an id to update a specific user profile in the API.")
-    public @ResponseBody ClientMessage updateUser(@RequestBody User user) {
-        return service.edit(user) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+    public @ResponseBody ClientMessage updateUser(@RequestParam(name = "user_id") String userId,
+            @RequestBody User user) {
+        return service.edit(userId, user) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/user")
     @ApiOperation(value = "Remove user entity by ID.", notes = "Provide an id to delete a specific user from the API")
-    public @ResponseBody ClientMessage deleteUser(@RequestBody String id) {
-        return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
+    public @ResponseBody ClientMessage deleteUser(@RequestParam(name = "user_id") String userId) {
+        return service.remove(userId) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 }
