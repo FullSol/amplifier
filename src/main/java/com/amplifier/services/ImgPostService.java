@@ -17,7 +17,7 @@ public interface ImgPostService {
 
 	public ImgPost getById(int id);
 
-	public boolean edit(ImgPost imgPost);
+	public boolean edit(int id, ImgPost imgPost);
 
-	public boolean remove(int id);
+	public boolean remove(ImgPost imgPost);
 }

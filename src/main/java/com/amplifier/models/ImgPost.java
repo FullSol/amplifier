@@ -38,7 +38,7 @@ public class ImgPost {
     @ApiModelProperty(name = "imageLocation", value = "A string value describing the location of an image post entity.", required = true)
     private String imgLocation;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne //(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", nullable = false)
     @ApiModelProperty(name = "author", value = "User value specifiying the author of the image post entity.", required = true)
     private User author;

@@ -88,14 +88,12 @@ public class User {
      * @param lastName
      * @param battleTag
      * @param socialMedia
-     * @param imgPosts
      * @param joinDate
      * @param userRole
      * @param active
      */
     public User(String username, String email, String password, String firstName, String lastName, String battleTag,
-            UserSocialMedia socialMedia, LocalDate joinDate, UserRole userRole,
-            boolean active) {
+            UserSocialMedia socialMedia, LocalDate joinDate, UserRole userRole, boolean active) {
         this.username = username;
         this.email = email;
         this.password = password;

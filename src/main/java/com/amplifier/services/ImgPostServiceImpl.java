@@ -31,6 +31,11 @@ public class ImgPostServiceImpl implements ImgPostService {
     }
 
     @Override
+    public ImgPost getById(int id) {
+        return imgPostRepository.findById(id);
+    }
+
+    @Override
     public boolean add(String userId, ImgPost imgPost) {
         UUID userUUID = UUID.fromString(userId);
         User user = userRepository.findById(userUUID).get();
@@ -41,23 +46,24 @@ public class ImgPostServiceImpl implements ImgPostService {
     }
 
     @Override
-    public ImgPost getById(int id) {
-        return imgPostRepository.findById(id);
-    }
-
-    @Override
-    public boolean edit(ImgPost imgPost) {
-        ImgPost target = imgPostRepository.findById(imgPost.getId());
+    public boolean edit(int id, ImgPost imgPost) {
+        ImgPost target = imgPostRepository.findById(id);
 
         target.setImgLocation(imgPost.getImgLocation());
-        target.setAuthor(imgPost.getAuthor());
+        target.setImgCaption(imgPost.getImgCaption());
 
         return (imgPostRepository.save(target) != null) ? true : false;
     }
 
     @Override
-    public boolean remove(int id) {
-        return imgPostRepository.delete(id);
+    public boolean remove(ImgPost imgPost) {
+        try {
+            imgPostRepository.delete(imgPost);
+        }
+        catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
 }
