@@ -54,17 +54,12 @@ public class User {
     @ApiModelProperty(name = "last_name", value = "A String value that serves as the last_name for the user.", required = true)
     private String lastName;
 
-    @ManyToOne
-    @JoinColumn(name = "blizzard_account_id", unique = true)
-    @ApiModelProperty(name = "blizzard_account_id", value = "An integer value that represents the blizzard account information of the user.", required = true)
-    private UserBlizzardAccount blizzardAccount;
-
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "social_id", unique = true)
     @ApiModelProperty(name = "social_media_id", value = "An integer value that represents the social media information of the user.", required = true)
     private UserSocialMedia socialMedia;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "author")
     private List<ImgPost> imgPosts;
 
     @Column(name = "join_date", nullable = false)
@@ -105,7 +100,7 @@ public class User {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.blizzardAccount = blizzardAccount;
+        // this.blizzardAccount = blizzardAccount;
         this.socialMedia = socialMedia;
         this.joinDate = joinDate;
         this.userRole = userRole;
@@ -135,7 +130,7 @@ public class User {
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.blizzardAccount = blizzardAccount;
+        // this.blizzardAccount = blizzardAccount;
         this.socialMedia = socialMedia;
         this.joinDate = joinDate;
         this.userRole = userRole;
