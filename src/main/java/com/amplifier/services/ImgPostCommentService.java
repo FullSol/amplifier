@@ -15,14 +15,14 @@ public interface ImgPostCommentService {
 
   public ImgPostComment getById(int id);
 
-  public ImgPostComment getByAuthorId(int authorId);
+  public List<ImgPostComment> getByAuthorId(String authorId);
 
-  public ImgPostComment getByImagePostId(int imageId);
+  public List<ImgPostComment> getByImagePostId(int imageId);
 
-  public boolean add(ImgPostComment comment);
+  public boolean add(String authorId, ImgPostComment comment);
 
-  public boolean edit(ImgPostComment comment);
+  public boolean edit(int id, ImgPostComment comment);
 
-  public boolean remove(int id);
+  public boolean remove(ImgPostComment comment);
 
 }

@@ -47,15 +47,27 @@ public class UserCommentController {
         return service.getById(id);
     }
 
+    @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = ImgPostComment.class)
+    @GetMapping(path = "/comment")
+    public @ResponseBody ImgPostComment getByAuthorId(@RequestParam(name = "author_id") String authorId) {
+        return service.getByAuthorId(authorId);
+    }
+
+    @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = ImgPostComment.class)
+    @GetMapping(path = "/comment")
+    public @ResponseBody ImgPostComment getByImgPostId(@RequestParam(name = "img_post_id") int imgPostId) {
+        return service.getByImagePostId(imgPostId);
+    }
+
     @PostMapping("/comment")
     @ApiOperation(value = "Create new comment entity", notes = "Adding a new comment to the API.")
-    public @ResponseBody ClientMessage addNewComment(@RequestBody ImgPostComment comment) {
-        return service.add(comment) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+    public @ResponseBody ClientMessage addNewComment(@RequestParam(name = "author_id") String authorId, @RequestBody ImgPostComment comment) {
+        return service.add(authorId, comment) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PatchMapping("/comment")
     @ApiOperation(value = "Update comment entity by ID", notes = "Provide an id to editing a specific comment through the API.")
-    public @ResponseBody ClientMessage edit(@RequestBody ImgPostComment comment) {
+    public @ResponseBody ClientMessage edit(@RequestParam @RequestBody ImgPostComment comment) {
         return service.edit(comment) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
