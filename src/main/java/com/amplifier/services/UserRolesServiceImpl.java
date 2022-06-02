@@ -41,7 +41,6 @@ public class UserRolesServiceImpl implements UserRolesService {
         target.setRole(userRole.getRole());
         return (repository.save(target) != null) ? true : false;
     }
-//line 41: java.lang.NullPointerException\n\tat com.amplifier.services.UserRolesServiceImpl.edit(UserRolesServiceImpl.java:41)
 
     @Override
     //@Transactional(rollbackFor = Exception.class)
