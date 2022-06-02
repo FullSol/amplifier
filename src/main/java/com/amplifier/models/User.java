@@ -54,12 +54,16 @@ public class User {
     @ApiModelProperty(name = "last_name", value = "A String value that serves as the last_name for the user.", required = true)
     private String lastName;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @Column(name = "battle_tag", unique = true)
+    @ApiModelProperty(name = "battle_tag", value = "A String value that serves as the batt_tag for the user.", required = false)
+    private String battleTag;
+
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "social_id", unique = true)
     @ApiModelProperty(name = "social_media_id", value = "An integer value that represents the social media information of the user.", required = true)
     private UserSocialMedia socialMedia;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "author")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
     private List<ImgPost> imgPosts;
 
     @Column(name = "join_date", nullable = false)
@@ -85,23 +89,24 @@ public class User {
      * @param password
      * @param firstName
      * @param lastName
-     * @param blizzardAccount
+     * @param battleTag
      * @param socialMedia
+     * @param imgPosts
      * @param joinDate
      * @param userRole
      * @param active
      */
-    public User(String username, String email, String password, String firstName, String lastName,
-            UserBlizzardAccount blizzardAccount, UserSocialMedia socialMedia, LocalDate joinDate, UserRole userRole,
+    public User(String username, String email, String password, String firstName, String lastName, String battleTag,
+            UserSocialMedia socialMedia, List<ImgPost> imgPosts, LocalDate joinDate, UserRole userRole,
             boolean active) {
-        super();
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        // this.blizzardAccount = blizzardAccount;
+        this.battleTag = battleTag;
         this.socialMedia = socialMedia;
+        this.imgPosts = imgPosts;
         this.joinDate = joinDate;
         this.userRole = userRole;
         this.active = active;
@@ -114,24 +119,25 @@ public class User {
      * @param password
      * @param firstName
      * @param lastName
-     * @param blizzardAccount
+     * @param battleTag
      * @param socialMedia
+     * @param imgPosts
      * @param joinDate
      * @param userRole
      * @param active
      */
     public User(UUID id, String username, String email, String password, String firstName, String lastName,
-            UserBlizzardAccount blizzardAccount, UserSocialMedia socialMedia, LocalDate joinDate, UserRole userRole,
-            boolean active) {
-        super();
+            String battleTag, UserSocialMedia socialMedia, List<ImgPost> imgPosts, LocalDate joinDate,
+            UserRole userRole, boolean active) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        // this.blizzardAccount = blizzardAccount;
+        this.battleTag = battleTag;
         this.socialMedia = socialMedia;
+        this.imgPosts = imgPosts;
         this.joinDate = joinDate;
         this.userRole = userRole;
         this.active = active;
