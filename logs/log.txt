@@ -797,3 +797,7 @@
 2022-06-02 01:30:20 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.controllers.ImgPostController:getByUserId]
 2022-06-02 01:30:31 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$d90d4e34:swaggerConfiguration]
 2022-06-02 01:30:31 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$d90d4e34:swaggerConfiguration]
+2022-06-02 01:33:43 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$d90d4e34:swaggerConfiguration]
+2022-06-02 01:33:43 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$d90d4e34:swaggerConfiguration]
+2022-06-02 01:34:12 INFO  amplifier.aspects.LoggingAspect:21 - Before advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$d90d4e34:swaggerConfiguration]
+2022-06-02 01:34:12 INFO  amplifier.aspects.LoggingAspect:29 - After advice for: [class com.amplifier.config.Swagger2Configuration$$EnhancerBySpringCGLIB$$d90d4e34:swaggerConfiguration]

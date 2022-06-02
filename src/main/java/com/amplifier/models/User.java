@@ -94,7 +94,7 @@ public class User {
      * @param active
      */
     public User(String username, String email, String password, String firstName, String lastName, String battleTag,
-            UserSocialMedia socialMedia, List<ImgPost> imgPosts, LocalDate joinDate, UserRole userRole,
+            UserSocialMedia socialMedia, LocalDate joinDate, UserRole userRole,
             boolean active) {
         this.username = username;
         this.email = email;
@@ -103,7 +103,6 @@ public class User {
         this.lastName = lastName;
         this.battleTag = battleTag;
         this.socialMedia = socialMedia;
-        this.imgPosts = imgPosts;
         this.joinDate = joinDate;
         this.userRole = userRole;
         this.active = active;
@@ -124,7 +123,7 @@ public class User {
      * @param active
      */
     public User(UUID id, String username, String email, String password, String firstName, String lastName,
-            String battleTag, UserSocialMedia socialMedia, List<ImgPost> imgPosts, LocalDate joinDate,
+            String battleTag, UserSocialMedia socialMedia, LocalDate joinDate,
             UserRole userRole, boolean active) {
         this.id = id;
         this.username = username;
@@ -134,7 +133,6 @@ public class User {
         this.lastName = lastName;
         this.battleTag = battleTag;
         this.socialMedia = socialMedia;
-        this.imgPosts = imgPosts;
         this.joinDate = joinDate;
         this.userRole = userRole;
         this.active = active;
