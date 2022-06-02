@@ -37,22 +37,24 @@ public class ImgPostController {
 
     @GetMapping("/img-posts")
     @ApiOperation(value = "Find all image posts", notes = "Provides a list of all image posts from the API", response = ImgPost.class)
-    public @ResponseBody List<ImgPost> getAllImgPosts() {
-        return imgPostService.getAll();
+    public @ResponseBody List<ImgPost> getByUserId(@RequestParam(name = "author_id") String authorId) {
+        return imgPostService.getByAuthorId(authorId);
     }
 
     @GetMapping(path = "/img-post")
     @ApiOperation(value = "Find image post by id number", notes = "Provide an id to lookup a specific user's image post from the API", response = ImgPost.class)
-    public @ResponseBody ImgPost getById(
-            @RequestParam(name = "id") int id) {
+    public @ResponseBody ImgPost getById(@RequestParam(name = "id") int id) {
         return imgPostService.getById(id);
     }
 
     @PostMapping("/img-post")
     @ApiOperation(value = "Add a new image post entity.", notes = "Adding a new image post to the API.")
-    public @ResponseBody ClientMessage add(@RequestBody ImgPost imgPost) {
-        return imgPostService.add(imgPost) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+    public @ResponseBody ClientMessage add (
+        @RequestParam(name = "author_id") String authorId,
+        @RequestBody ImgPost imgPost) {
+        return imgPostService.add(authorId, imgPost) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
+
 
     @PatchMapping("/img-post")
     @ApiOperation(value = "Update image post entity by ID.", notes = "Provide an id to update a specific image post in the API.")

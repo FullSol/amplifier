@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface ImgPostService {
 
-	public List<ImgPost> getAll();
+	public List<ImgPost> getByAuthorId(String authorId);
 
-	public boolean add(ImgPost imgPost);
+	public boolean add(String userId, ImgPost imgPost);
 
 	public ImgPost getById(int id);
 

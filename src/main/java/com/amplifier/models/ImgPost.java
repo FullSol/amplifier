@@ -26,7 +26,7 @@ public class ImgPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     @ApiModelProperty(name = "id", value = "An integer value that serves as the unique identifier for any image post entity.", required = true)
     private int id;
 
@@ -38,8 +38,8 @@ public class ImgPost {
     @ApiModelProperty(name = "imageLocation", value = "A string value describing the location of an image post entity.", required = true)
     private String imgLocation;
 
-    @ManyToOne
-    @JoinColumn(name = "author_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id", nullable = false)
     @ApiModelProperty(name = "author", value = "User value specifiying the author of the image post entity.", required = true)
     private User author;
 
@@ -47,7 +47,7 @@ public class ImgPost {
     @ApiModelProperty(name = "img_date", value = "Date value specifiying the post date of an image post entity.", required = true)
     private LocalDate postDate;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY) //need to create that connection to comments
     private List<ImgPostComment> imgPostComments;
 
     public ImgPost() {

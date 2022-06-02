@@ -1,6 +1,7 @@
 package com.amplifier.repositories;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
@@ -14,8 +15,8 @@ import org.springframework.stereotype.Repository;
 @Transactional
 public interface ImgPostRepository extends JpaRepository<ImgPost, Integer> {
 
-    @Query(value = "SELECT * FROM img_posts", nativeQuery = true)
-    public List<ImgPost> findAll();
+    @Query(value = "SELECT * FROM img_posts WHERE author_id = ?1", nativeQuery = true)
+    public List<ImgPost> findAllByAuthor(UUID authorId);
 
     @Query(value = "SELECT * FROM img_posts WHERE id=?1", nativeQuery = true)
     public ImgPost findById(int id);
