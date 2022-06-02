@@ -33,7 +33,7 @@ public class ImgPostCommentServiceImpl implements ImgPostCommentService {
 
   @Override
   public ImgPostComment getByImagePostId(int imageId) {
-    return repository.findImagePostId(imageId);
+    return repository.findByImgPostId(imageId);
   }
 
   @Override
@@ -41,6 +41,13 @@ public class ImgPostCommentServiceImpl implements ImgPostCommentService {
     int pk = repository.save(comment).getId();
     return (pk > 0) ? true : false;
   }
+  /*
+    @Override
+    public boolean add(User user) {
+        UUID pk = repository.save(user).getId();
+        return (pk != null) ? true : false;
+    }
+  */
 
   @Override
   public boolean edit(ImgPostComment comment) {

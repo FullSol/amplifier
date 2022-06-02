@@ -23,7 +23,7 @@ public interface ImgPostCommentRepository extends JpaRepository<ImgPostComment, 
     public ImgPostComment findByAuthorId(int authorId);
 
     @Query(value = "SELECT * FROM img_post_comments WHERE img_post_id = ?1", nativeQuery = true)
-    public ImgPostComment findImagePostId(int imgPostId);
+    public ImgPostComment findByImgPostId(int imgPostId);
 
     @Query(value = "UPDATE img_post_comments SET comment_text = ?1", nativeQuery = true)
     public boolean update(String commentText);
