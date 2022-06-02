@@ -63,9 +63,6 @@ public class User {
     @ApiModelProperty(name = "social_media_id", value = "An integer value that represents the social media information of the user.", required = true)
     private UserSocialMedia socialMedia;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "author")
-    private List<ImgPost> imgPosts;
-
     @Column(name = "join_date", nullable = false)
     @ApiModelProperty(name = "join_date", value = "A date value that serves as the joined date for the user.", required = true)
     private LocalDate joinDate;
