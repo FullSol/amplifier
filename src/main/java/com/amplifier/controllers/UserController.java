@@ -37,8 +37,8 @@ public class UserController {
 
     @GetMapping(path = "/user")
     @ApiOperation(value = "Find user by id number", notes = "Provide an id to lookup a specific user from the API", response = User.class)
-    public @ResponseBody User getById(@RequestParam(value = "id") String id) {
-        return service.getById(id);
+    public @ResponseBody User getById(@RequestParam(value = "user_id") String userId) {
+        return service.getById(userId);
     }
 
     @GetMapping("/users")

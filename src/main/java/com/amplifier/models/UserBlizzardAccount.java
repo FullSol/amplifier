@@ -25,12 +25,12 @@ public class UserBlizzardAccount {
     @ApiModelProperty(name = "id", value = "An integer value that serves as the unique identifier for any user bliizard account entity.", required = true)
     private int id;
 
-    @Column(name = "battle_tag")
+    @Column(name = "battle_tag", unique = true)
     @ApiModelProperty(name = "battle_tag", value = "A String value that serves as player-chosen nickname associated with a blizzard account entity.", required = true)
     private String battleTag;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", unique = true)
     private User user;
 
     public UserBlizzardAccount() {
