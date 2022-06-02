@@ -14,8 +14,8 @@ import com.amplifier.services.UserSocialMediaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,37 +27,36 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/v1")
-@Api(value = "UserSocialMediaRestController", description = "REST controller related to User social media Entities")
+@Api(value = "UserSocialMediaRestController", description = "REST controller related to user social media entities")
 public class UserSocialMediaController {
 
     @Autowired
     private UserSocialMediaService userSocialMediaService;
 
     @ApiOperation(value = "Find User Social Media by id number", notes = "Provide an id to lookup a specific user social media from the API", response = UserSocialMedia.class)
-    @GetMapping(path = "/user/social-media?user_id={userId}&media_id={mediaId}")
-    public @ResponseBody UserSocialMedia getUserSocialMediaById(
-            @RequestParam(name = "user_id") int userId,
-            @RequestParam(name = "media_id") int mediaId) {
-        return userSocialMediaService.getUserSocialMediaById(userId, mediaId);
+    @GetMapping(path = "/social-media")
+    public @ResponseBody UserSocialMedia getUserSocialMediaById(@RequestParam(name = "user_id") String userId) {
+        return userSocialMediaService.getByUserId(userId);
     }
 
-    @PostMapping("/user/social-media")
-    @ApiOperation(value = "add new user social media entity")
-    public @ResponseBody ClientMessage addUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
-        return userSocialMediaService.addUserSocialMedia(userSocialMedia) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+    @PostMapping("/social-media")
+    @ApiOperation(value = "Create new user's social media entity", notes = "Add a new user's social media information in the API.")
+    public @ResponseBody ClientMessage addUserSocialMedia(@RequestParam(name = "user_id") String userId,
+            @RequestBody UserSocialMedia userSocialMedia) {
+        return userSocialMediaService.add(userId, userSocialMedia) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
-    @PutMapping("/user/social-media")
-    @ApiOperation(value = "Update user social media entity")
-    public @ResponseBody ClientMessage updateUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
-        return userSocialMediaService.updateUser(userSocialMedia) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+    @PatchMapping("/social-media")
+    @ApiOperation(value = "Update user social media entity by ID.", notes = "Provide an id to update a specific user's social media information in the API.")
+    public @ResponseBody ClientMessage updateUserSocialMedia(@RequestParam(name = "user_id") String userId,
+            @RequestBody UserSocialMedia userSocialMedia) {
+        return userSocialMediaService.edit(userId, userSocialMedia) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
-    @DeleteMapping("/user/social-media")
-    @ApiOperation(value = "Remove user social media entity")
-    public @ResponseBody ClientMessage deleteUserSocialMedia(@RequestBody UserSocialMedia userSocialMedia) {
-        return userSocialMediaService.deleteUserSocialMedia(userSocialMedia) ? DELETION_SUCCESSFUL
-                : DELETION_FAILED;
+    @DeleteMapping("/social-media")
+    @ApiOperation(value = "Remove user social media entity by ID.", notes = "Provide an id to delete a user's social media information from the API")
+    public @ResponseBody ClientMessage deleteUserSocialMedia(@RequestParam(name = "user_id") String userId) {
+        return userSocialMediaService.remove(userId) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 
 }

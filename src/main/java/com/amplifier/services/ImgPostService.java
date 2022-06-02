@@ -4,16 +4,20 @@ import java.util.List;
 
 import com.amplifier.models.ImgPost;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@Transactional
 public interface ImgPostService {
 
-    public List<ImgPost> getAllImgPosts();
+	public List<ImgPost> getByAuthorId(String authorId);
 
-    public boolean createImgPost(ImgPost imgPost);
+	public boolean add(String userId, ImgPost imgPost);
 
-    public ImgPost getImgPostById(int Id);
+	public ImgPost getById(int id);
 
-    public boolean updateImgPost(ImgPost imgPost);
+	public boolean edit(int id, ImgPost imgPost);
 
-    public boolean deleteImgPostById(int Id);
-
+	public boolean remove(ImgPost imgPost);
 }

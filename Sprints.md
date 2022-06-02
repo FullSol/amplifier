@@ -30,6 +30,13 @@ _**Members**_: Calvin, Julian, Levi, Patrick, Joachim
     - [Meeting 1: 5/20/22](#sprint-1-52022)
     - [Meeting 2: 5/23/22](#sprint-2-52322)
     - [Meeting 3: 5/24/22](#sprint-3-52422)
+    - [Meeting 4: 5/25/22](#meeting-4-52522)
+    - [Meeting 5: 5/26/22](#meeting-5-052622)
+    - [Meeting 6:5/27/22](#meeting-6-52722-frontend)
+    - [Meeting 7 : 5/31/22](#meeting-7-53122)
+    - [Meeting 8: 6/1/22](#meeting-8-6122)
+5. [Link to Front-End Draft](https://xd.adobe.com/view/443d6501-5900-4ff2-80ec-d06c965809e9-116e/
+)
 
 
 <br>
@@ -490,60 +497,70 @@ _Issues_
 <br>
 <hr>
 
-### Sprint #: XX/XX/XXXX
+### Meeting #4: 5/25/22
+**Calvin's Summary**
+- The goals of our current sprint is to finish our backend and testing by tomorrow. Our meeting's focus was checking in with the team to gauge where each of us were in terms of progress, and clarifying project naming conventions as well as any other misunderstandings or confusion (Ex: Service layer = Service + ServiceImpl; @Repostory annotaton takes care of RepoImpl for us)
+- As a team yesterday, we set and agreed on a basic project timeline. Again, we want to have backend and testing finished by tomorrow, and we want to fix any backend merging conflicts or bugs by (ideally) the end of this week
+- We also discussed the reqs for our front end... We will be collaborating on what we want it to look like tomorrow...
 
-1. **Progress Check** 
-    - Joachim: 
-        - [ ]  
-        - [ ]  
-    - Patrick: 
-        - [ ]  
-        - [ ]  
+1. **Progress Check**: Where are we in regards to completing our Milestone for tomorrow by tomorrow?
+    - Joachim: "real good"
+        - [ ] pushed up CharacterServiceTest
+    - Patrick:
+        - [ ] Comment Controller
+        - [ ] UserRoleService
+        - [ ] UserCharacter model - add flesh and bones to skeleton
+        - [ ] UserService - add business logic
     - Julian:
-        - [ ]  
-        - [ ]  
+        - [ ] UserCharacterTesting
+        - [ ] SocialMedia
     - Calvin:
-        - [ ]  
-        - [ ]  
+        - [ ] Confident
     - Levi:
-        - [ ]  
-        - [ ]  
+        - [ ] good~~
     <br> </br>
 
 2. **Any Issues?** 
-    - [ ]  
+    - [ ] Issue Service = Service && ServiceImpl (Levi will update issues so there is not misunderstanding)
+    - [ ] UserSocialMedia
+        - paths:
+            - socialmedia.facebook.
+            - socialmedia.instagram.handle
+        - CREATE = Adding their social media information (add link)
+        - UPDATE = Editing a user's social media info
+        - we ourselves may not use all of the CRUD operations for the webiste, but others who use our API might! More will come in the future
+
  <br> </br>
 
 3. **Agenda**
-    - [ ] Going over backend logic -testing, order of layers, etc.
-    - [ ]  
+    - [x] Bug - Repo:Service
+    - [x] Bug - Only need Repo layer (not Repo AND RepoImpl). Your Repo = RepoImpl
+        - the annotation takes care of the implementation for you, so you don't need to create the implementation yourself
+    - [ ] Front-end Design discussion (ex: Reddit design?) >stick to
+        - connecting Blizzard rankings
+        - what pages?
+            - login page
+                - login form
+            - logout page
+            - rankings page
+            - user profile
+            - registration page
+                - registration form
+            - image posts page
+            - add comments form
+            - form to add character info
+
  <br> </br>
 
-4. **Team Milestones/Tasks** 
+4. **Team Milestones/Tasks**
 - _Milestones:_
-    - [ ] 
-    - [ ] 
+    - [ ] Consider Front-End Design to have a discussion by next meeting
+    - [ ] Milestone 3
  <br> </br>
-- _Issues_
-    - Joachim: 
-        - [ ] 
-        - [ ]
-    - Patrick: 
-        - [ ] 
-        - [ ]
-    - Julian: 
-        - [ ] 
-        - [ ] 
-    - Calvin: 
-        - [ ] 
-        - [ ] 
-    - Levi: 
-        - [ ] 
-        - [ ] 
-- _Reminders: Topics to understand and implement:_
-    - [ ] 
-    - [ ] 
-    - [ ] 
+- _Issues_: already assigned
+    - Levi:
+        - [ ] Compile all updates into one section for easy reference
+
  <br> </br>
 
 
@@ -552,3 +569,189 @@ _Issues_
 <br>
 <hr>
 
+### Meeting 5: 05/26/22
+Summary:
+Project milestone for finishing tests and backend roughly met. Patrick, Calvin and Levi are reviewing all pending pull requests and requesting changes as needed. Our gaol is to finish those changes by tomorrow. Calvin has started a rough design for front end. Starting from today, debugging the backend will start with Calvin and Levi. Julian will lead the front-end team and begin working with Patrick and Joachim to start the front-end process. Once Calvin and Levi are done debugging, they will start catching up to front-end. Tasks to divide up front-end will be assigned by tomorrow.
+
+
+1. **Progress Check**: What did we get done? What is still pending? (If some items are still pending) When do you think you can get it done?
+    - Joachim:
+        - [ ] All good to go
+    - Patrick:
+        - [ ] UserCharacterModel - will return to it!
+            - Julian may have created it and the branches may have been merged
+        - [ ] Items in the middle of review
+    - Julian:
+        - [ ] Worked on all tickets
+        - [ ] Still working on the ticket that was sent back
+    - Calvin:
+        - [ ] started some front end design
+        - [ ] bug fixes  + reviewing
+    - Levi:
+        - [ ] finished my tickets
+    <br> </br>
+
+2. **Any Issues?**
+    - [ ] ClassPath changes? - This is the difference between Mac and Windows users OR you have done something that required yoru class path to change. Pleae just ignore it and add it with the rest of your work when you commit.
+        - wouldn't the changes that you bring into dev automatically change the class path for other people on our end? Because the class path is changed by your IDE, whatever changes that occur in class path need to be pushed into dev.
+        - solution: `git add .`
+ <br> </br>
+
+3. **Agenda**
+    - [ ] on to debugging and front end...
+    - [ ] While reviewing, whomever is reviewing will make comments on your code and will either approve your code or request changes. You will receive an email if changes are requested.
+    - [ ] Website design
+        - Home page: list of all image posts 
+            - title field 
+            - count of the comments
+            - expanding the posts and comments via bootstrap and writing animation with css
+        - Forms: login form, registration form, profile form, social media form, character form
+        - Ranking page (Blizzard API)
+ <br> </br>
+
+4. **Team Milestones/Tasks**
+- _Milestones:_
+    - [ ] Make any requested changes from pull requests by tomorrow! 
+ <br> </br>
+- _Issues_
+    - Levi: 
+        - [ ] CI/CD implementation
+        - [ ] Google fonts for front-end development
+- _Reminders: Topics to understand and implement:_
+    - [ ] Portfolio due by tomorrow
+    - [ ] HackerRank Sorting
+ <br> </br>
+
+
+[Return to: _Table of Contents_](#table-of-contents)
+
+<br>
+<hr>
+
+### Meeting 6 (5/27/22) FrontEnd:
+> *Discussed plans for front-end. Went through all of the different pages and forms and specified which fields are needed in each. Team members have been assigned to each page/form. Julian will create a template for everyone to follow. A new repo for front-end has been created and issues will be be assigned according to today's decisions.*
+
+- **Decisions: Plain (HTML, CSS, JS) and Bootstrap**
+- **Style Guide** = [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+- division of work: one person per page
+- Should we have a honeypot (A tricky way to capture spam)? YES~
+    - adds a hidden field inside a form
+    - the pot will read the input
+- Julian will create a template for everyone (HTML, CSS, JS) + folders
+     - img location (from API) will be a folder
+- Team:
+    - Watch bootstrap tutorials; Familiarize yourself with the different components
+        - [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+    - [Take a look at this](https://www.bezkoder.com/angular-spring-boot-postgresql/)
+    - clone the FrontEnd Repo into your computer [FrontEndRepo](https://github.com/FullSol/diablofansite)
+
+Assignments:
+1. Home page - Julian
+2. Blizzard rankings (page) -Julian
+3. UserProfile (page) - Levi
+    - Character
+    - User information
+    - Social Media (form)
+        - twitterLink
+        - facebookLink
+        - instagramLink
+4. Character modal (page) - Calvin
+5. Login (form) -Levi
+    - Username
+    - Password
+6. Register (form): -Calvin
+    - Username
+    - Password
+    - Email
+    - First Name
+    - Last Name
+    - JoinDate (hidden)
+    - RoleId (hidden)
+    - Active = true (hidden)
+7. Character (form) -Joachim
+    - API for pulling characters is by account:Use account name
+        - use cards to display characters; can pull a stock image to add it in -Joachim
+            - all characters are a hyperlink (the request URL)
+    -  Calvin: Refactor the UserCharacter to just accountName
+8. Image Post (form) - Patrick
+    - Calvin: (refactor) add caption
+    - Caption
+    - Image location
+    - (author is automatically in)
+9. Comment (form) - Patrick
+    - commentText
+    - (author is automatically in)
+
+
+*For future reference* Julian's proposal- Retrospective Idea: Everyone plays DiabloIII Immortal(?) 
+
+<hr>
+
+### Meeting 7 (5/31/22)
+
+1. **Progress Check**
+    - Joachim:
+        - [x] pushed up frontend character card and character model (hard coded image in)
+        - [x] adapted styling and directions from Julian (THANK YOU JULIAN)
+    - Patrick:
+        - [x] Comment form/Image Post- are they being embedded into a page? Or do you just need a form by itself?
+            - Julian pushed a basic structure into the repository
+            - Comments will be located in the Image posts and Comments page (no functionality so far)
+                 - you won't create a commment in one page and go to another page just to see them.
+                 - Comments page = ImagePostsComments and ImagePosts
+            - a form will sit on top of this page, so yes, it will be embedded
+    - Julian:
+        - [x] took care of Login(?) page
+        - [x] Created structure for front-end
+        - [x] Home page (noticed that this should have the login form, included background)
+        - [x] Created a README.md file (in progress) that will tell you exactly how everything will work based on Azhya's example 
+        - [x] RankingList page that'll connect to the API
+            - need to figure out and get images, + connection
+        - [x] If we can run the front-end using a PHP server in VSCode for the header and footer? To prevent repeating work on HTML file
+            ```java
+            if (PHP == true) {
+                System.out.println("Great!");
+            } else {
+                System.out.println("We can just copy and paste at the end.");
+            }
+            ```
+    - Calvin:
+        - [x] Swagger API are somewhat available (need to be able to run the dev version of the server). If not, see Levi.
+        - [x] Compilation bugs were SQUASHED so the app was able to run
+        - [x] Other bugs were commented out to get the app to run
+        - [x] (In progress) JWT -> Patrick?
+            - once this is done, we'll have a login system
+        - [x] Currently routes that are working are the Create and Get for some (stuff)
+            - once everything is ready, you should be able to use our API to use in the frontend
+            - you need to be able to run your server! Make sure you're connected to your databse and go to `AmplifierApiApplication.java` under `java/com/amplifier`
+
+- _Issues_:
+    - Julian:
+        - [ ] solve the image by asking Google for help and perhaps use Photoshop to adjust the image (Rankings page)
+    - Calvin:
+        - [ ] Issues were created
+    - Levi:
+        - [ ] Update README.md's
+        - [ ] CI/CD pipeline
+        - [ ] Fix tests to run Jacoco
+        - [ ] Test endpoints and fix
+
+ <br> </br>
+
+
+[Return to: _Table of Contents_](#table-of-contents)
+
+<br>
+<hr>
+
+### Meeting 8: 6/1/22
+**CheckIn:**
+- Joachim is done with his tasks and is able to help in other areas.
+- Patrick is working on his frontend pages but needs some support. Julian will help him with that as soon as his internet is fixed.
+- Julian was able to upload an image for the characters and display each character from the Blizzard rankings(?). He is still working on this.
+- Calvin and Levi: Backend is nearly completed. Levi needs to test some more endpoint and implement CI/CD.
+
+**Moving forward**
+- [ ] CI/CD Implementation
+- [ ] Fixing Swagger documentation
+- [ ] Connecting front-end to backend

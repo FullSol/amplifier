@@ -1,5 +1,5 @@
 package com.amplifier.services;
 
-public interface CommentService {
+public interface JwtService {
 
 }

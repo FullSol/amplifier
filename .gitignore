@@ -11,6 +11,7 @@
 
 # Log file
 *.log
+logs/log.txt
 
 # BlueJ files
 *.ctxt
@@ -98,3 +99,4 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,java
 .vscode/settings.json
+logs/log.txt

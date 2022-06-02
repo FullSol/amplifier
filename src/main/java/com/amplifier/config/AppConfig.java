@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @Configuration
-@ComponentScan(basePackages = { "com.amplifier.repos", "com.amplifier.services", "com.amplifier.aspects" })
+@ComponentScan(basePackages = { "com.amplifier.repositories", "com.amplifier.services", "com.amplifier.aspects" })
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class AppConfig {
 
