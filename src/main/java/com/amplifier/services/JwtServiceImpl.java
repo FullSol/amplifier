@@ -3,7 +3,7 @@ package com.amplifier.services;
 import java.io.IOException;
 import java.security.Key;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.amplifier.models.User;
@@ -20,6 +20,7 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtServiceImpl {
     private Key key;
+    private static Logger logger = Logger.getLogger(JwtServiceImpl.class);
 
     public JwtServiceImpl() {
         byte[] secret = "my_secret_passwordafdsalkj;lkvjasd;lkfoijeowiru324u02938098134lkhj;ldjfa;sldkjfDSFSLDKJFLSKJF"
@@ -28,7 +29,7 @@ public class JwtServiceImpl {
     }
 
     public String createJwt(User user) throws InvalidKeyException, JsonProcessingException {
-
+        logger.debug(user.toString());
         // 1. Turn user into userJwtDTO
         UserJwtDTO dto = new UserJwtDTO(
                 user.getId(),
@@ -38,10 +39,9 @@ public class JwtServiceImpl {
                 user.getLastName(),
                 user.getBattleTag(),
                 user.getSocialMedia(),
-                user.getJoinDate(),
                 user.getUserRole(),
                 user.isActive());
-
+        logger.debug(dto.toString());
         // 2. Create a JWT with our dto (HERE!!!!!!!!!!)
         String jwt = Jwts.builder()
                 .claim("user_dto", new ObjectMapper().writeValueAsString(dto))

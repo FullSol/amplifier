@@ -14,7 +14,6 @@ public class UserJwtDTO {
     private String lastName;
     private String battleTag;
     private UserSocialMedia socialMediaId;
-    private LocalDate joinDate;
     private UserRole role;
     private boolean active;
 
@@ -36,14 +35,13 @@ public class UserJwtDTO {
      * @param active
      */
     public UserJwtDTO(String username, String email, String firstName, String lastName, String battleTag,
-            UserSocialMedia socialMediaId, LocalDate joinDate, UserRole role, boolean active) {
+            UserSocialMedia socialMediaId, UserRole role, boolean active) {
         this.username = username;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.battleTag = battleTag;
         this.socialMediaId = socialMediaId;
-        this.joinDate = joinDate;
         this.role = role;
         this.active = active;
     }
@@ -61,7 +59,7 @@ public class UserJwtDTO {
      * @param active
      */
     public UserJwtDTO(UUID id, String username, String email, String firstName, String lastName, String battleTag,
-            UserSocialMedia socialMediaId, LocalDate joinDate, UserRole role, boolean active) {
+            UserSocialMedia socialMediaId, UserRole role, boolean active) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -69,7 +67,6 @@ public class UserJwtDTO {
         this.lastName = lastName;
         this.battleTag = battleTag;
         this.socialMediaId = socialMediaId;
-        this.joinDate = joinDate;
         this.role = role;
         this.active = active;
     }
