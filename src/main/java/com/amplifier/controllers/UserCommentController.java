@@ -11,7 +11,7 @@ import java.util.List;
 
 import com.amplifier.models.ClientMessage;
 import com.amplifier.models.ImgPostComment;
-import com.amplifier.services.ImgPostCommentService;
+import com.amplifier.services.ImgPostCommentServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,7 +33,7 @@ import io.swagger.annotations.ApiOperation;
 public class UserCommentController {
 
     @Autowired
-    private ImgPostCommentService service;
+    private ImgPostCommentServiceImpl service;
 
     @GetMapping("/comments")
     @ApiOperation(value = "Find all comments", notes = "Provides a list of all comments from the API", response = ImgPostComment.class)
@@ -47,34 +47,34 @@ public class UserCommentController {
         return service.getById(id);
     }
 
+    @GetMapping(path = "/comment/author")
     @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = ImgPostComment.class)
-    @GetMapping(path = "/comment")
-    public @ResponseBody ImgPostComment getByAuthorId(@RequestParam(name = "author_id") String authorId) {
+    public @ResponseBody List<ImgPostComment> getByAuthorId(@RequestParam(name = "author_id") String authorId) {
         return service.getByAuthorId(authorId);
     }
 
     @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = ImgPostComment.class)
-    @GetMapping(path = "/comment")
-    public @ResponseBody ImgPostComment getByImgPostId(@RequestParam(name = "img_post_id") int imgPostId) {
+    @GetMapping(path = "/comment/post")
+    public @ResponseBody List<ImgPostComment> getByImgPostId(@RequestParam(name = "img_post_id") int imgPostId) {
         return service.getByImagePostId(imgPostId);
     }
 
     @PostMapping("/comment")
     @ApiOperation(value = "Create new comment entity", notes = "Adding a new comment to the API.")
-    public @ResponseBody ClientMessage addNewComment(@RequestParam(name = "author_id") String authorId, @RequestBody ImgPostComment comment) {
-        return service.add(authorId, comment) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+    public @ResponseBody ClientMessage addNewComment(@RequestParam(name = "post_id") int postId, @RequestBody ImgPostComment comment) {
+        return service.add(postId, comment) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
     @PatchMapping("/comment")
     @ApiOperation(value = "Update comment entity by ID", notes = "Provide an id to editing a specific comment through the API.")
-    public @ResponseBody ClientMessage edit(@RequestParam @RequestBody ImgPostComment comment) {
-        return service.edit(comment) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+    public @ResponseBody ClientMessage edit(@RequestParam(value = "id") int id, @RequestBody ImgPostComment comment) {
+        return service.edit(id, comment) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/comment")
     @ApiOperation(value = "Remove user entity by ID", notes = "Provide an id to delete a specific comment in the API.")
     public @ResponseBody ClientMessage delete(@RequestParam(value = "id") int id) {
-        return service.remove(id) ? DELETION_SUCCESSFUL : DELETION_FAILED;
+        return service.remove(service.getById(id)) ? DELETION_SUCCESSFUL : DELETION_FAILED;
     }
 
 }
