@@ -1,6 +1,5 @@
 package com.amplifier.models;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 import lombok.Data;

@@ -21,9 +21,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository repository;
 
-    @Autowired
-    private static JwtServiceImpl jwtService = new JwtServiceImpl();
-
     public UserServiceImpl(UserRepository repo) {
     }
 
@@ -39,38 +36,63 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getById(String id) {
-        UUID idAsUUID = UUID.fromString(id);
-        return repository.findById(idAsUUID).get();
+    public User getById(UUID id) {
+        return repository.findById(id).get();
     }
 
     @Override
-    public boolean edit(String userId, User user) {
-        UUID userUUID = UUID.fromString(userId);
-        User target = repository.findById(userUUID).get();
+    public boolean edit(User user) {
+        // Get the DB user version from the DB
+        User target = repository.findById(user.getId()).get();
 
-        target.setUsername(user.getUsername());
-        target.setEmail(user.getEmail());
-        target.setPassword(user.getPassword());
-        target.setFirstName(user.getFirstName());
-        target.setLastName(user.getLastName());
-        target.setSocialMedia(user.getSocialMedia());
+        /**
+         * Compare the DB user version with the user version. If they are different,
+         * update the DB user version with the user version.
+         */
+        if (!target.getUsername().equals(user.getUsername()) && user.getUsername() != null) {
+            target.setUsername(user.getUsername());
+        }
 
-        // This should be in admin only
-        // target.setUserRole(user.getUserRole());
+        if (!target.getEmail().equals(user.getEmail()) && user.getEmail() != null) {
+            target.setEmail(user.getEmail());
+        }
 
-        // This should be admin only
-        // target.setActive(user.isActive());
+        if (!target.getPassword().equals(user.getPassword()) && user.getPassword() != null) {
+            target.setPassword(user.getPassword());
+        }
+
+        if (!target.getFirstName().equals(user.getFirstName()) && user.getFirstName() != null) {
+            target.setFirstName(user.getFirstName());
+        }
+
+        if (!target.getLastName().equals(user.getLastName()) && user.getLastName() != null) {
+            target.setLastName(user.getLastName());
+        }
+
+        if (!target.getSocialMedia().equals(user.getSocialMedia())) {
+            target.setSocialMedia(user.getSocialMedia());
+        }
+
+        if (!target.getBattleTag().equals(user.getBattleTag())) {
+            target.setBattleTag(user.getBattleTag());
+        }
+
+        if (!target.getUserRole().equals(user.getUserRole()) && user.getUserRole().getRole().equals("admin")) {
+            target.setUserRole(user.getUserRole());
+        }
+
+        if (!target.isActive() && user.isActive()) {
+            target.setActive(user.isActive());
+        }
 
         return (repository.save(target) != null) ? true : false;
     }
 
     @Override
-    public boolean remove(String id) {
-        UUID idAsUUID = UUID.fromString(id);
+    public boolean remove(UUID id) {
 
         try {
-            repository.delete(idAsUUID);
+            repository.delete(id);
         } catch (Exception e) {
             return false;
         }
@@ -84,12 +106,13 @@ public class UserServiceImpl implements UserService {
                 .filter(u -> (u.getUsername().equals(user.getUsername()) && u.getPassword().equals(user.getPassword())))
                 .findFirst();
 
-        // return (users.isPresent() ? users.get() : null);
-        if (users.isPresent()) {
-            // Update to return 403
-            return users.get();
-        }
+        User target = users.get();
 
-        return null;
+        if (target != null) {
+            // TODO: Update to return 403
+            return users.get();
+        } else {
+            throw new InvalidKeyException("Invalid user");
+        }
     }
 }
