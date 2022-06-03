@@ -16,9 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface ImgPostCommentRepository extends JpaRepository<ImgPostComment, Integer> {
 
-    @Query(value = "SELECT * FROM img_post_comments", nativeQuery = true)
-    public ArrayList<ImgPostComment> findAll();
-
     @Query(value = "SELECT * FROM img_post_comments WHERE id = ?1", nativeQuery = true)
     public ImgPostComment findById(int id);
 

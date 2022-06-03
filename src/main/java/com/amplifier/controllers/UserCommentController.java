@@ -35,27 +35,21 @@ public class UserCommentController {
     @Autowired
     private ImgPostCommentServiceImpl service;
 
-    @GetMapping("/comments")
-    @ApiOperation(value = "Find all comments", notes = "Provides a list of all comments from the API", response = ImgPostComment.class)
-    public @ResponseBody List<ImgPostComment> getAll() {
-        return service.getAll();
-    }
-
     @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = ImgPostComment.class)
     @GetMapping(path = "/comment")
     public @ResponseBody ImgPostComment getById(@RequestParam(name = "id") int id) {
         return service.getById(id);
     }
 
-    @GetMapping(path = "/comment/author")
-    @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = ImgPostComment.class)
+    @GetMapping(path = "/comments/author")
+    @ApiOperation(value = "Find all comments by Author Id.", notes = "Provide an id to lookup a specific comment from the API", response = ImgPostComment.class)
     public @ResponseBody List<ImgPostComment> getByAuthorId(@RequestParam(name = "author_id") String authorId) {
         return service.getByAuthorId(authorId);
     }
 
-    @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = ImgPostComment.class)
-    @GetMapping(path = "/comment/post")
-    public @ResponseBody List<ImgPostComment> getByImgPostId(@RequestParam(name = "img_post_id") int imgPostId) {
+    @ApiOperation(value = "Find all comments by Image Post Id.", notes = "Provide an id to lookup a specific comment from the API", response = ImgPostComment.class)
+    @GetMapping(path = "/comments/post")
+    public @ResponseBody List<ImgPostComment> getByImgPostId(@RequestParam(name = "post_id") int imgPostId) {
         return service.getByImagePostId(imgPostId);
     }
 

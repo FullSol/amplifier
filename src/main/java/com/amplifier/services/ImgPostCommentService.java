@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface ImgPostCommentService {
 
-  public List<ImgPostComment> getAll();
+  //public List<ImgPostComment> getAll();
 
   public ImgPostComment getById(int id);
 

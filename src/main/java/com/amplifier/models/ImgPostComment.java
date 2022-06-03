@@ -33,12 +33,12 @@ public class ImgPostComment {
     private String commentText;
 
     @JoinColumn(name = "img_post_id", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY) //might need to comment the fetchtype out
+    @ManyToOne
     @ApiModelProperty(name = "img_post_id", value = "An integer value that serves as the unique identifier for an image post entity.", required = true)
     private ImgPost imgPost;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id", nullable = false) //might need to comment the fetchtype out
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
     @ApiModelProperty(name = "author", value = "User value specifiying the author of the image post comment entity.", required = true)
     private User author;
 

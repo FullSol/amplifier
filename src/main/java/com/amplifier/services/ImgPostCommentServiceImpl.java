@@ -10,6 +10,8 @@ import com.amplifier.repositories.ImgPostCommentRepository;
 import com.amplifier.repositories.ImgPostRepository;
 import com.amplifier.repositories.UserRepository;
 
+import org.apache.log4j.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class ImgPostCommentServiceImpl implements ImgPostCommentService {
+
+  private Logger logger = Logger.getLogger(ImgPostCommentServiceImpl.class);
 
   @Autowired
   private ImgPostCommentRepository commentRepository;
@@ -27,10 +31,10 @@ public class ImgPostCommentServiceImpl implements ImgPostCommentService {
   @Autowired
     ImgPostRepository imgPostRepository;
 
-  @Override
-  public List<ImgPostComment> getAll() {
-    return commentRepository.findAll();
-  }
+  // @Override
+  // public List<ImgPostComment> getAll() {
+  //   return commentRepository.findAll();
+  // }
 
   @Override
   public ImgPostComment getById(int id) {
@@ -46,15 +50,15 @@ public class ImgPostCommentServiceImpl implements ImgPostCommentService {
 
   @Override
   public List<ImgPostComment> getByImagePostId(int imageId) {
-    return commentRepository.findByImgPostId(imageId);
+    ImgPost imgPost = imgPostRepository.findById(imageId);
+    return commentRepository.findByImgPostId(imgPost.getId());
   }
 
   @Override
   public boolean add(int postId, ImgPostComment comment) {
-    ImgPost imgPost = imgPostRepository.findById(comment.getImgPost().getId());
+    ImgPost imgPost = imgPostRepository.findById(postId);
+    logger.debug(imgPost);
     ImgPostComment target = commentRepository.findById(comment.getId());
-    // UUID userUUID = UUID.fromString(comment.getAuthor().toString());
-    // User user = userRepository.findById(userUUID).get();
     comment.setAuthor(comment.getAuthor());
     comment.setImgPost(imgPost);
     int pk = commentRepository.save(comment).getId();
