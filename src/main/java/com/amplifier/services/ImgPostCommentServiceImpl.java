@@ -3,9 +3,11 @@ package com.amplifier.services;
 import java.util.List;
 import java.util.UUID;
 
+import com.amplifier.models.ImgPost;
 import com.amplifier.models.ImgPostComment;
 import com.amplifier.models.User;
 import com.amplifier.repositories.ImgPostCommentRepository;
+import com.amplifier.repositories.ImgPostRepository;
 import com.amplifier.repositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class ImgPostCommentServiceImpl implements ImgPostCommentService {
 
   @Autowired
     UserRepository userRepository;
+
+  @Autowired
+    ImgPostRepository imgPostRepository;
 
   @Override
   public List<ImgPostComment> getAll() {
@@ -45,22 +50,16 @@ public class ImgPostCommentServiceImpl implements ImgPostCommentService {
   }
 
   @Override
-  public boolean add(String authorId, ImgPostComment comment) {
-    UUID userUUID = UUID.fromString(authorId);
-    User user = userRepository.findById(userUUID).get();
+  public boolean add(int postId, ImgPostComment comment) {
+    ImgPost imgPost = imgPostRepository.findById(comment.getImgPost().getId());
     ImgPostComment target = commentRepository.findById(comment.getId());
+    UUID userUUID = UUID.fromString(comment.getAuthor().toString());
+    User user = userRepository.findById(userUUID).get();
     comment.setAuthor(user);
+    comment.setImgPost(imgPost);
     int pk = commentRepository.save(comment).getId();
     return (pk > 0) ? true : false;
   }
-
-  /*
-    @Override
-    public boolean add(User user) {
-        UUID pk = repository.save(user).getId();
-        return (pk != null) ? true : false;
-    }
-  */
 
   @Override
   public boolean edit(int id, ImgPostComment comment) {

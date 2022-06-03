@@ -19,7 +19,7 @@ public interface ImgPostCommentService {
 
   public List<ImgPostComment> getByImagePostId(int imageId);
 
-  public boolean add(String authorId, ImgPostComment comment);
+  public boolean add(int postId, ImgPostComment comment);
 
   public boolean edit(int id, ImgPostComment comment);
 
