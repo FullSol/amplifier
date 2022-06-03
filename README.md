@@ -61,4 +61,4 @@ This full stack application is a online gaming based social media platform, wher
 | DevOps Engineer | Levi Choi|
 | GitFlow Master| Patrick Yaegar |
 | Front-End Lead | Julian Mercado |
-| | Joachim | 
+| | Joachim Ogodi | 
