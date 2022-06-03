@@ -53,9 +53,9 @@ public class ImgPostCommentServiceImpl implements ImgPostCommentService {
   public boolean add(int postId, ImgPostComment comment) {
     ImgPost imgPost = imgPostRepository.findById(comment.getImgPost().getId());
     ImgPostComment target = commentRepository.findById(comment.getId());
-    UUID userUUID = UUID.fromString(comment.getAuthor().toString());
-    User user = userRepository.findById(userUUID).get();
-    comment.setAuthor(user);
+    // UUID userUUID = UUID.fromString(comment.getAuthor().toString());
+    // User user = userRepository.findById(userUUID).get();
+    comment.setAuthor(comment.getAuthor());
     comment.setImgPost(imgPost);
     int pk = commentRepository.save(comment).getId();
     return (pk > 0) ? true : false;
