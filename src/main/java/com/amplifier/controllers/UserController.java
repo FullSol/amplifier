@@ -35,6 +35,7 @@ import io.jsonwebtoken.security.InvalidKeyException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+@CrossOrigin(origins = { "http://localhost:8080/", "http://127.0.0.1:8080/" })
 @RestController
 @RequestMapping("/api/v1")
 @Api(value = "UserCollection", description = "REST controller related to User Entities")
@@ -91,15 +92,14 @@ public class UserController {
         try {
             UserJwtDTO userDTO = jwtService.getDTO(authorization.replace("Bearer ", ""));
 
-            if (userDTO != null && userDTO.getRole().getRole().equals("admin")) {
-                return service.edit(userDTO) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
+            if (userDTO != null) {
+                return service.edit(user) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
             } else {
                 return new ClientMessage("You are not authorized to perform this action.");
             }
         } catch (InvalidKeyException e) {
             return new ClientMessage(e.getMessage());
         }
-        // return service.edit(userId, user) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 
     @DeleteMapping("/user")
@@ -119,7 +119,6 @@ public class UserController {
         }
     }
 
-    @CrossOrigin
     @PostMapping("/login")
     @ApiOperation(value = "Log user in, and return JWT", notes = "Adding a new user to the API.")
     public @ResponseBody ResponseEntity<String> login(@RequestBody User user) {
