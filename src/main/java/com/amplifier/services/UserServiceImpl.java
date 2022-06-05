@@ -115,4 +115,11 @@ public class UserServiceImpl implements UserService {
             throw new InvalidKeyException("Invalid user");
         }
     }
+
+    @Override
+    public User register(User user) {
+        UUID pk = repository.save(user).getId();
+        user.setId(pk);
+        return user;
+    }
 }

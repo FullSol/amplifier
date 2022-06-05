@@ -35,7 +35,7 @@ import io.jsonwebtoken.security.InvalidKeyException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = { "http://localhost:8080/", "http://127.0.0.1:8080/" })
+@CrossOrigin(origins = { "*" })
 @RestController
 @RequestMapping("/api/v1")
 @Api(value = "UserCollection", description = "REST controller related to User Entities")
@@ -81,7 +81,7 @@ public class UserController {
 
     @PostMapping("/user")
     @ApiOperation(value = "Create new user entity.", notes = "Adding a new user to the API.")
-    public @ResponseBody ClientMessage register(@RequestBody User user) {
+    public @ResponseBody ClientMessage create(@RequestBody User user) {
         return service.add(user) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
@@ -121,7 +121,7 @@ public class UserController {
 
     @PostMapping("/login")
     @ApiOperation(value = "Log user in, and return JWT", notes = "Adding a new user to the API.")
-    public @ResponseBody ResponseEntity<String> login(@RequestBody User user) {
+    public ResponseEntity<String> login(@RequestBody User user) {
         HttpHeaders responseHeaders = new HttpHeaders();
 
         try {
@@ -137,7 +137,31 @@ public class UserController {
 
             responseHeaders.set("X-Auth-Token",
                     "Bearer " + jwt);
+            responseHeaders.set("Access-Control-Expose-Headers", "X-Auth-Token");
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok()
+                .headers(responseHeaders)
+                .body("Login Successful");
+    }
 
+    @PostMapping("/register")
+    @ApiOperation(value = "Create new user entity.", notes = "Adding a new user to the API.")
+    public ResponseEntity<String> register(@RequestBody User user) {
+        HttpHeaders responseHeaders = new HttpHeaders();
+
+        // Add user to the DB and return the completed user.
+        user = service.register(user);
+
+        try {
+            String jwt = jwtService.createJwt(user);
+
+            responseHeaders.set("X-Auth-Token",
+                    "Bearer " + jwt);
+            responseHeaders.set("Access-Control-Expose-Headers", "X-Auth-Token");
         } catch (InvalidKeyException e) {
             e.printStackTrace();
         } catch (JsonProcessingException e) {

@@ -9,11 +9,6 @@ import static com.amplifier.util.ClientMessageUtil.UPDATE_SUCCESSFUL;
 
 import java.util.List;
 
-import com.amplifier.models.ClientMessage;
-import com.amplifier.models.ImgPost;
-import com.amplifier.services.ImgPostService;
-import com.amplifier.services.ImgPostServiceImpl;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.amplifier.models.ClientMessage;
+import com.amplifier.models.ImgPost;
+import com.amplifier.services.ImgPostServiceImpl;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -44,22 +43,21 @@ public class ImgPostController {
 
     @GetMapping(path = "/img-post")
     @ApiOperation(value = "Find image post by id number", notes = "Provide an id to lookup a specific user's image post from the API", response = ImgPost.class)
-    public @ResponseBody ImgPost getById(@RequestParam(name = "id") int id) throws Exception{
+    public @ResponseBody ImgPost getById(@RequestParam(name = "id") int id) throws Exception {
         return imgPostService.getById(id);
     }
 
     @PostMapping("/img-post")
     @ApiOperation(value = "Add a new image post entity.", notes = "Adding a new image post to the API.")
-    public @ResponseBody ClientMessage add (
-        @RequestParam(name = "author_id") String authorId,
-        @RequestBody ImgPost imgPost) {
+    public @ResponseBody ClientMessage add(
+            @RequestParam(name = "author_id") String authorId,
+            @RequestBody ImgPost imgPost) {
         return imgPostService.add(authorId, imgPost) ? CREATION_SUCCESSFUL : CREATION_FAILED;
     }
 
-
     @PatchMapping("/img-post")
     @ApiOperation(value = "Update image post entity by ID.", notes = "Provide an id to update a specific image post in the API.")
-    public @ResponseBody ClientMessage update(@RequestParam(value= "id") int id, @RequestBody ImgPost imgPost) {
+    public @ResponseBody ClientMessage update(@RequestParam(value = "id") int id, @RequestBody ImgPost imgPost) {
         return imgPostService.edit(id, imgPost) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
     }
 

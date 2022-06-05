@@ -26,4 +26,5 @@ public interface UserService {
 
     public User login(User user) throws InvalidKeyException, JsonProcessingException;
 
+    public User register(User user);
 }
