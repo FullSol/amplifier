@@ -18,7 +18,7 @@ import io.jsonwebtoken.security.InvalidKeyException;
 import io.jsonwebtoken.security.Keys;
 
 @Service
-public class JwtServiceImpl {
+public class JwtServiceImpl implements JwtService {
     private Key key;
     private static Logger logger = Logger.getLogger(JwtServiceImpl.class);
 
@@ -28,6 +28,7 @@ public class JwtServiceImpl {
         key = Keys.hmacShaKeyFor(secret);
     }
 
+    @Override
     public String createJwt(User user) throws InvalidKeyException, JsonProcessingException {
         logger.debug(user.toString());
         // 1. Turn user into userJwtDTO
@@ -42,6 +43,7 @@ public class JwtServiceImpl {
                 user.getUserRole(),
                 user.isActive());
         logger.debug(dto.toString());
+
         // 2. Create a JWT with our dto (HERE!!!!!!!!!!)
         String jwt = Jwts.builder()
                 .claim("user_dto", new ObjectMapper().writeValueAsString(dto))
@@ -52,6 +54,22 @@ public class JwtServiceImpl {
         return jwt;
     }
 
+    @Override
+    public UserJwtDTO getDTO(String jwt) {
+        UserJwtDTO dto = new UserJwtDTO();
+
+        try {
+            dto = this.parseJwt(jwt);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return dto;
+    }
+
+    @Override
     public UserJwtDTO parseJwt(String jwt) throws IOException, JsonProcessingException {
 
         // 1. Generate the token using claims from the jwt and our secret key

@@ -5,13 +5,14 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
-import com.amplifier.models.ImgPost;
-import com.amplifier.models.User;
-import com.amplifier.repositories.ImgPostRepository;
-import com.amplifier.repositories.UserRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.amplifier.models.ImgPost;
+import com.amplifier.models.User;
+import com.amplifier.models.UserJwtDTO;
+import com.amplifier.repositories.ImgPostRepository;
+import com.amplifier.repositories.UserRepository;
 
 @Service
 @Transactional
@@ -36,10 +37,15 @@ public class ImgPostServiceImpl implements ImgPostService {
     }
 
     @Override
-    public boolean add(String userId, ImgPost imgPost) {
-        UUID userUUID = UUID.fromString(userId);
-        User user = userRepository.findById(userUUID).get();
-        ImgPost target = imgPostRepository.findById(imgPost.getId());
+    public List<ImgPost> getAll() {
+        // findAll is like save. the repository doesn't need to have a findAll method.
+        return imgPostRepository.findAll();
+    }
+
+    @Override
+    public boolean add(UserJwtDTO userDTO, ImgPost imgPost) {
+        User user = userRepository.findById(userDTO.getId()).get();
+        // ImgPost target = imgPostRepository.findById(imgPost.getId());
         imgPost.setAuthor(user);
         int pk = imgPostRepository.save(imgPost).getId();
         return (pk > 0) ? true : false;
@@ -59,8 +65,7 @@ public class ImgPostServiceImpl implements ImgPostService {
     public boolean remove(ImgPost imgPost) {
         try {
             imgPostRepository.delete(imgPost);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
         return true;

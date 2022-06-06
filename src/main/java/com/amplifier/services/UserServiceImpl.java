@@ -21,9 +21,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository repository;
 
-    @Autowired
-    private static JwtServiceImpl jwtService = new JwtServiceImpl();
-
     public UserServiceImpl(UserRepository repo) {
     }
 
@@ -39,38 +36,44 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getById(String id) {
-        UUID idAsUUID = UUID.fromString(id);
-        return repository.findById(idAsUUID).get();
+    public User getById(UUID id) {
+        return repository.findById(id).get();
     }
 
     @Override
-    public boolean edit(String userId, User user) {
-        UUID userUUID = UUID.fromString(userId);
-        User target = repository.findById(userUUID).get();
+    public boolean edit(User user) {
+        // Get the DB user version from the DB
+        User target = repository.findById(user.getId()).get();
+
+        /**
+         * Compare the DB user version with the user version. If they are different,
+         * update the DB user version with the user version.
+         */
 
         target.setUsername(user.getUsername());
+
         target.setEmail(user.getEmail());
+
         target.setPassword(user.getPassword());
+
         target.setFirstName(user.getFirstName());
+
         target.setLastName(user.getLastName());
-        target.setSocialMedia(user.getSocialMedia());
 
-        // This should be in admin only
-        // target.setUserRole(user.getUserRole());
+        target.setBattleTag(user.getBattleTag());
 
-        // This should be admin only
-        // target.setActive(user.isActive());
+        target.setUserRole(user.getUserRole());
+
+        target.setActive(user.isActive());
 
         return (repository.save(target) != null) ? true : false;
     }
 
     @Override
-    public boolean remove(String id) {
-        UUID idAsUUID = UUID.fromString(id);
+    public boolean remove(UUID id) {
 
         try {
-            repository.delete(idAsUUID);
+            repository.delete(id);
         } catch (Exception e) {
             return false;
         }
@@ -84,12 +87,20 @@ public class UserServiceImpl implements UserService {
                 .filter(u -> (u.getUsername().equals(user.getUsername()) && u.getPassword().equals(user.getPassword())))
                 .findFirst();
 
-        // return (users.isPresent() ? users.get() : null);
-        if (users.isPresent()) {
-            // Update to return 403
-            return users.get();
-        }
+        User target = users.get();
 
-        return null;
+        if (target != null) {
+            // TODO: Update to return 403
+            return users.get();
+        } else {
+            throw new InvalidKeyException("Invalid user");
+        }
+    }
+
+    @Override
+    public User register(User user) {
+        UUID pk = repository.save(user).getId();
+        user.setId(pk);
+        return user;
     }
 }

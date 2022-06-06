@@ -18,12 +18,13 @@ public interface UserService {
 
     public boolean add(User user);
 
-    public User getById(String id);
+    public User getById(UUID id);
 
-    public boolean edit(String userId, User user);
+    public boolean edit(User user);
 
-    public boolean remove(String id);
+    public boolean remove(UUID id);
 
     public User login(User user) throws InvalidKeyException, JsonProcessingException;
 
+    public User register(User user);
 }

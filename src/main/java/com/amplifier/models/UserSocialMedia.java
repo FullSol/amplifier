@@ -28,7 +28,7 @@ public class UserSocialMedia {
   @ApiModelProperty(name = "socialMediaId", value = "An integer value that serves as the unique identifier for any user social media entity.", required = true)
   private int id;
 
-  @OneToOne(fetch = FetchType.LAZY)
+  @OneToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "user_id")
   @ApiModelProperty(name = "userId", value = "An UUID value that serves as the unique identifier for any user entity.", required = true)
   private User user;

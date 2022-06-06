@@ -47,10 +47,6 @@ public class ImgPost {
     @ApiModelProperty(name = "img_date", value = "Date value specifiying the post date of an image post entity.", required = true)
     private LocalDate postDate;
 
-    // @OneToMany(fetch = FetchType.LAZY) // need to create that connection to
-    // comments
-    // private List<ImgPostComment> imgPostComments;
-
     public ImgPost() {
     }
 
