@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.amplifier.models.UserRole;
-import com.amplifier.services.UserRolesService;
 import com.amplifier.services.UserRolesServiceImpl;
 import com.amplifier.util.ClientMessageUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
