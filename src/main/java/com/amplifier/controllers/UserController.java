@@ -109,7 +109,7 @@ public class UserController {
         try {
             UserJwtDTO userDTO = jwtService.getDTO(authorization.replace("Bearer ", ""));
 
-            if (userDTO != null) {
+            if (userDTO != null && userDTO.getRole().getRole().equals("admin")) {
                 return service.remove(userDTO.getId()) ? DELETION_SUCCESSFUL : DELETION_FAILED;
             } else {
                 return new ClientMessage("You are not authorized to perform this action.");
