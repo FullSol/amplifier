@@ -1,15 +1,18 @@
 package com.amplifier.controllers;
 
+import static com.amplifier.util.ClientMessageUtil.CREATION_FAILED;
+import static com.amplifier.util.ClientMessageUtil.CREATION_SUCCESSFUL;
 import static com.amplifier.util.ClientMessageUtil.DELETION_FAILED;
 import static com.amplifier.util.ClientMessageUtil.DELETION_SUCCESSFUL;
 import static com.amplifier.util.ClientMessageUtil.UPDATE_FAILED;
 import static com.amplifier.util.ClientMessageUtil.UPDATE_SUCCESSFUL;
-import static com.amplifier.util.ClientMessageUtil.CREATION_SUCCESSFUL;
-import static com.amplifier.util.ClientMessageUtil.CREATION_FAILED;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -31,6 +34,7 @@ import io.jsonwebtoken.security.InvalidKeyException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+@CrossOrigin(origins = { "*" })
 @RestController
 @RequestMapping("/api/v1")
 @Api(value = "ImpPostController", description = "REST Controller related to Image Post entities.")
@@ -44,7 +48,7 @@ public class ImgPostController {
 
     @GetMapping("/img-posts")
     @ApiOperation(value = "Find all image posts", notes = "Provides a list of all image posts from the API", response = ImgPost.class)
-    public @ResponseBody List<ImgPost> getAll() {
+    public List<ImgPost> getAll() {
         return imgPostService.getAll();
     }
 
