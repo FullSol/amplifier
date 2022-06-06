@@ -9,24 +9,35 @@ import static com.amplifier.util.ClientMessageUtil.UPDATE_SUCCESSFUL;
 
 import java.util.List;
 
-import com.amplifier.models.ClientMessage;
-import com.amplifier.models.ImgPostComment;
-import com.amplifier.services.ImgPostCommentServiceImpl;
-
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amplifier.models.ClientMessage;
+import com.amplifier.models.ImgPost;
+import com.amplifier.models.ImgPostComment;
+import com.amplifier.models.User;
+import com.amplifier.models.UserJwtDTO;
+import com.amplifier.services.ImgPostCommentServiceImpl;
+import com.amplifier.services.ImgPostServiceImpl;
+import com.amplifier.services.JwtServiceImpl;
+import com.amplifier.services.UserServiceImpl;
+
+import io.jsonwebtoken.security.InvalidKeyException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+@CrossOrigin(origins = { "*" })
 @RestController
 @RequestMapping("/api/v1")
 @Api(value = "CommentRestController", description = "REST controller related to Comment Entities")
@@ -34,6 +45,17 @@ public class UserCommentController {
 
     @Autowired
     private ImgPostCommentServiceImpl service;
+
+    @Autowired
+    JwtServiceImpl jwtService;
+
+    @Autowired
+    UserServiceImpl userService;
+
+    @Autowired
+    ImgPostServiceImpl imgPostService;
+
+    private static Logger logger = Logger.getLogger(UserCommentController.class);
 
     @ApiOperation(value = "Find comment by id number", notes = "Provide an id to lookup a specific comment from the API", response = ImgPostComment.class)
     @GetMapping(path = "/comment")
@@ -55,8 +77,24 @@ public class UserCommentController {
 
     @PostMapping("/comment")
     @ApiOperation(value = "Create new comment entity", notes = "Adding a new comment to the API.")
-    public @ResponseBody ClientMessage addNewComment(@RequestParam(name = "post_id") int postId, @RequestBody ImgPostComment comment) {
-        return service.add(postId, comment) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+    public ClientMessage addNewComment(@RequestHeader String authorization, @RequestParam(name = "post_id") int postId,
+            @RequestBody ImgPostComment comment) {
+        try {
+            UserJwtDTO userDTO = jwtService.getDTO(authorization.replace("Bearer ", ""));
+            logger.debug(userDTO);
+            if (userDTO != null) {
+                User user = userService.getById(userDTO.getId());
+                ImgPost imgPost = imgPostService.getById(postId);
+                comment.setAuthor(user);
+                comment.setImgPost(imgPost);
+                return service.add(comment) ? CREATION_SUCCESSFUL : CREATION_FAILED;
+            } else {
+                return null;
+            }
+        } catch (InvalidKeyException e) {
+            return null;
+        }
+
     }
 
     @PatchMapping("/comment")

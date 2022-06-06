@@ -26,14 +26,14 @@ public class ImgPostCommentServiceImpl implements ImgPostCommentService {
   private ImgPostCommentRepository commentRepository;
 
   @Autowired
-    UserRepository userRepository;
+  UserRepository userRepository;
 
   @Autowired
-    ImgPostRepository imgPostRepository;
+  ImgPostRepository imgPostRepository;
 
   // @Override
   // public List<ImgPostComment> getAll() {
-  //   return commentRepository.findAll();
+  // return commentRepository.findAll();
   // }
 
   @Override
@@ -55,12 +55,7 @@ public class ImgPostCommentServiceImpl implements ImgPostCommentService {
   }
 
   @Override
-  public boolean add(int postId, ImgPostComment comment) {
-    ImgPost imgPost = imgPostRepository.findById(postId);
-    logger.debug(imgPost);
-    ImgPostComment target = commentRepository.findById(comment.getId());
-    comment.setAuthor(comment.getAuthor());
-    comment.setImgPost(imgPost);
+  public boolean add(ImgPostComment comment) {
     int pk = commentRepository.save(comment).getId();
     return (pk > 0) ? true : false;
   }
@@ -78,11 +73,10 @@ public class ImgPostCommentServiceImpl implements ImgPostCommentService {
   }
 
   @Override
-  public boolean remove (ImgPostComment comment) {
+  public boolean remove(ImgPostComment comment) {
     try {
       commentRepository.delete(comment);
-    }
-    catch (Exception e) {
+    } catch (Exception e) {
       return false;
     }
     return true;

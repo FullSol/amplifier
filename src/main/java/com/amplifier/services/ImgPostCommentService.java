@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface ImgPostCommentService {
 
-  //public List<ImgPostComment> getAll();
+  // public List<ImgPostComment> getAll();
 
   public ImgPostComment getById(int id);
 
@@ -19,7 +19,7 @@ public interface ImgPostCommentService {
 
   public List<ImgPostComment> getByImagePostId(int imageId);
 
-  public boolean add(int postId, ImgPostComment comment);
+  public boolean add(ImgPostComment comment);
 
   public boolean edit(int id, ImgPostComment comment);
 
