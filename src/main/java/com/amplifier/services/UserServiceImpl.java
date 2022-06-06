@@ -49,41 +49,22 @@ public class UserServiceImpl implements UserService {
          * Compare the DB user version with the user version. If they are different,
          * update the DB user version with the user version.
          */
-        if (!target.getUsername().equals(user.getUsername()) && user.getUsername() != null) {
-            target.setUsername(user.getUsername());
-        }
 
-        if (!target.getEmail().equals(user.getEmail()) && user.getEmail() != null) {
-            target.setEmail(user.getEmail());
-        }
+        target.setUsername(user.getUsername());
 
-        if (!target.getPassword().equals(user.getPassword()) && user.getPassword() != null) {
-            target.setPassword(user.getPassword());
-        }
+        target.setEmail(user.getEmail());
 
-        if (!target.getFirstName().equals(user.getFirstName()) && user.getFirstName() != null) {
-            target.setFirstName(user.getFirstName());
-        }
+        target.setPassword(user.getPassword());
 
-        if (!target.getLastName().equals(user.getLastName()) && user.getLastName() != null) {
-            target.setLastName(user.getLastName());
-        }
+        target.setFirstName(user.getFirstName());
 
-        if (!target.getSocialMedia().equals(user.getSocialMedia())) {
-            target.setSocialMedia(user.getSocialMedia());
-        }
+        target.setLastName(user.getLastName());
 
-        if (!target.getBattleTag().equals(user.getBattleTag())) {
-            target.setBattleTag(user.getBattleTag());
-        }
+        target.setBattleTag(user.getBattleTag());
 
-        if (!target.getUserRole().equals(user.getUserRole()) && user.getUserRole().getRole().equals("admin")) {
-            target.setUserRole(user.getUserRole());
-        }
+        target.setUserRole(user.getUserRole());
 
-        if (!target.isActive() && user.isActive()) {
-            target.setActive(user.isActive());
-        }
+        target.setActive(user.isActive());
 
         return (repository.save(target) != null) ? true : false;
     }

@@ -93,6 +93,7 @@ public class UserController {
             UserJwtDTO userDTO = jwtService.getDTO(authorization.replace("Bearer ", ""));
 
             if (userDTO != null) {
+                user.setId(userDTO.getId());
                 return service.edit(user) ? UPDATE_SUCCESSFUL : UPDATE_FAILED;
             } else {
                 return new ClientMessage("You are not authorized to perform this action.");
